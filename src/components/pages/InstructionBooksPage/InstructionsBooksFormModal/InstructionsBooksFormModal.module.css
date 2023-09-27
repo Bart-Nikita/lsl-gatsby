@@ -1,0 +1,202 @@
+.container {
+
+}
+
+.body {
+    @apply max-w-[700px] bg-white
+}
+
+.close {
+
+}
+
+.gallery {
+
+}
+
+.gallery__display {
+
+}
+
+.display__list {
+}
+
+.display__item {
+}
+
+.display__picture {
+}
+
+.display__video {
+}
+
+.gallery__images {
+}
+
+.images__picture {
+}
+
+.images__image {
+}
+
+.images__play {
+
+}
+
+.container {
+    @apply h-full  block  justify-center bg-transparent py-[50px] overflow-y-auto
+    after:fixed after:block after:bottom-0 after:left-0 after:right-0 after:h-[92px] after:[background:linear-gradient(180deg,rgba(255,255,255,0.00)0%,#FFF_100%)]  after:opacity-0 md:px-[20px]
+
+}
+
+.container.light {
+    @apply after:opacity-[1]
+}
+
+.body {
+    @apply bg-white relative px-[100px] pt-[78px] pb-[162px] mx-auto block
+    md:px-[20px] md:py-[40px]
+}
+
+.close {
+    @apply absolute top-[-32px] right-[-32px] z-20 rounded-full w-[64px] h-[64px] flex items-center justify-center bg-[#FEC955] cursor-pointer transition-all hover:rotate-[50deg] focus:rotate-[90deg]
+    md:top-[12px] md:right-[12px] md:w-[48px] md:h-[48px]
+}
+
+.close__svg {
+    @apply w-[42px] h-[42px]
+    md:w-[32px] md:h-[32px]
+}
+
+.top {
+    @apply flex justify-between gap-[50px] mb-[40px]
+    md:block
+}
+
+.title {
+    @apply text-[28px] font-bold leading-[1.4]
+    md:mb-[32px]
+}
+
+.switch {
+    @apply flex  gap-[10px] cursor-pointer mt-[14px]
+}
+
+.switch:hover .switch__boll, .switch:focus .switch__boll {
+    @apply bg-[#FEC955]
+}
+
+
+.switch:hover .switch__body, .switch:focus .switch__body {
+    @apply border-[#FEC955] [box-shadow:_0px_0px_4px_0px_#FEC955;]
+}
+
+.switch__text {
+    @apply max-w-[108px] text-[16px] font-light leading-[1.1]
+}
+
+.switch.on .switch__body {
+    @apply justify-end
+}
+
+.switch__body {
+    @apply flex items-center justify-start transition-all w-[72px] h-[36px] px-[3px] rounded-full border-[#D9D9D9] border-[1px]
+}
+
+.switch__boll {
+    @apply w-[30px] h-[30px] bg-[#D9D9D9] transition-all rounded-full
+}
+
+.switch.on .switch__boll {
+    @apply bg-[#27AE60]
+}
+
+.label {
+    @apply text-[24px] font-normal leading-[1.4] mb-[10px]
+    xl:mb-[14px]
+    md:text-[18px] md:mb-[15px]
+}
+
+.form {
+    @apply grid grid-cols-2 gap-x-[20px]
+}
+
+.form__block {
+    @apply relative mb-[30px] flex justify-between flex-col col-span-2
+}
+
+.form__block.short {
+    @apply col-span-1
+}
+
+.input {
+    @apply rounded-[8px] bg-transparent border-[2px] border-[#FFF4DE] transition-all px-[25px] py-[13px] text-[24px] leading-[1.4] hover:border-[#FEC955] focus:border-[#FEC955]   placeholder-[#C3C3C3]
+    md:text-[18px] md:pt-[16px] md:pb-[16px]
+}
+
+.error .input {
+    @apply border-[#F00]
+}
+
+.error__text {
+    @apply text-[16px] absolute leading-[1.4] text-[#F00] bottom-[-26px] left-0 transition-all opacity-0
+    md:text-[10px] md:bottom-[-19px] md:whitespace-nowrap
+}
+
+.error .error__text {
+    @apply opacity-[1]
+}
+
+.sublist {
+    @apply absolute z-[5] left-0 top-[120%] flex flex-col w-full bg-white border-[#FFF4DE] border-[2px] rounded-[8px]
+}
+
+.sublist__item {
+    @apply shrink-0 w-full
+}
+
+.sublist__button {
+    @apply py-[13px] w-full text-left px-[25px] rounded-[8px] transition-all hover:bg-[#FEC955] focus:bg-[#FEC955] text-[24px] text-black font-normal leading-[1.4] md:text-[18px]
+}
+
+.checkbox {
+    @apply pr-[80px] flex gap-[10px] mb-[50px] col-span-2
+    md:pr-[0px] md:mb-[36px]
+}
+
+.checkbox__text {
+    @apply text-[20px] leading-[1.4]
+    md:text-[16px]
+}
+
+.checkbox__link {
+    @apply underline transition-all hover:text-[#FEC955] hover:[text-shadow:_0px_4px_4px_rgba(254,_201,_85,_0.55)] focus:text-[#FEC955] focus:[text-shadow:_0px_4px_4px_rgba(254,_201,_85,_0.55)]
+}
+
+.checkbox__box {
+    @apply w-[30px] z-[0] h-[30px] rounded-[5px]  shrink-0 border-[1px] border-[#FEC955] relative outline-none  hover:[box-shadow:_0px_0px_4px_0px_#FEC955] focus:[box-shadow:_0px_0px_4px_0px_#FEC955] transition-all
+}
+.checkbox__box.error {
+    @apply border-[#F00]
+}
+
+.checkbox__sign {
+    @apply absolute rounded-[3px] top-[50%] left-[50%]  bg-[#fec955] translate-x-[-50%] translate-y-[-50%] w-[60%] h-[60%] transition-all scale-0
+}
+
+.checkbox__box.checked .checkbox__sign {
+    @apply scale-100
+}
+
+.body .button {
+    @apply w-full col-span-2 py-[20px] rounded-[12px] text-[24px] font-bold leading-[1.4] md:text-[18px]
+}
+
+.input__arrow {
+@apply absolute bottom-[23px]  right-[24px]  transition-all
+}
+
+.input__arrow.up {
+    @apply rotate-[180deg] 
+}
+

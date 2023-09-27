@@ -1,0 +1,63 @@
+.body {
+
+}
+
+.title {
+    @apply mb-[52px]
+     mb-[39px]
+    xl:mb-[20px]
+}
+
+.list {
+    @apply flex justify-between mb-[60px] gap-[50px]
+     mb-[38px]  gap-[30px]
+    xl:mb-[20px] xl:gap-[18px]
+    xl:flex-wrap xl:gap-[20px]
+    md:gap-y-[10px]
+    md:mb-[10px]
+}
+
+.item {
+
+}
+
+.item {
+    @apply flex-grow  xl:w-[calc((100%-20px)/2)] xl:flex-grow-0 md:w-full md:flex-grow
+}
+
+.item__link{
+   @apply overflow-hidden block bg-white hover:bg-gray-800 h-[580px] rounded-[32px] border-[2px] border-[#DFDFDF]
+    h-[430px]  rounded-[24px]  border-[1px]
+   xl:h-[316px] xl:rounded-[12px]
+   xl:h-[354px]
+   md:w-full md:h-[300px] md:rounded-[10px]
+}
+
+.item__picture {
+    @apply w-full h-full scale-[1.01]
+}
+
+.item__image {
+    @apply object-cover object-top
+}
+
+.link {
+    @apply w-[397px] h-[95px]
+     w-[210px]  h-[74px]
+    xl:w-[177px] xl:h-[55px]
+    xl:translate-y-[-75px]
+    md:translate-y-[0px] md:w-[147px] md:h-[52px]
+}
+
+.remark {
+    @apply max-w-[800px]
+     max-w-[500px]
+    xl:max-w-[415px] xl:text-[16px]
+    md:max-w-[194px] md:text-[11px]
+    sm:max-w-full
+}
+
+.bottom {
+    @apply flex justify-between items-center
+    sm:flex-col-reverse sm:gap-[18px] sm:items-start
+}

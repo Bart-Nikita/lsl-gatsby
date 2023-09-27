@@ -1,0 +1,18 @@
+.text {
+    @apply text-[24px] leading-[1.4] max-w-[836px] font-normal
+    xl:max-w-full xl:text-[16px]
+}
+
+.text p {
+    @apply block h-[15px]
+    xl:h-[10px]
+}
+
+.form {
+    @apply mt-[-111px] xl:hidden
+}
+
+.body {
+    @apply flex justify-between mb-[86px]
+    xl:mb-[36px] md:mb-[60px]
+}

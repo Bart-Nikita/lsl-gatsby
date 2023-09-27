@@ -1,0 +1,85 @@
+.body {
+}
+
+.body .top {
+    @apply mb-[80px] gap-[60px]
+     mb-[45px]
+    xl:mb-[30px] xl:gap-[40px]
+    xl:block
+    md:mb-[25px]
+}
+
+.body .bottom {
+    @apply md:flex-col-reverse md:gap-[25px]
+}
+
+.top, .bottom {
+    @apply flex justify-between
+    xl:gap-[40px]
+    xl:gap-[47px]
+}
+
+
+.top .text {
+    @apply w-[1210px] shrink-0 pr-[50px]
+     w-[900px]  pr-[105px]
+        xl:shrink
+    xl:w-full
+    md:pr-[0px]
+}
+
+.top .text:not(:last-child) {
+    @apply mb-[11px]
+}
+
+.top .right {
+
+}
+
+.title {
+    @apply
+    xl:mb-[25px] md:mb-[20px]
+    xl:shrink-0
+}
+
+.body .text {
+    @apply  text-[22px] xl:text-[16px] md:text-[14px]
+}
+
+
+.video {
+    @apply relative rounded-[33px] overflow-hidden w-full border-[5px] border-yellow-400 shrink-0 w-[1210px] h-[660px]
+     w-[900px]  border-[4px]  h-[500px]  rounded-[20px]
+    xl:h-[340px] xl:border-[3px] xl:rounded-[14px] xl:shrink
+     xl:h-[280px] xl:border-[2px] xl:rounded-[12px]
+    md:w-full md:h-[260px]
+
+
+}
+
+.video__media {
+    @apply w-full h-full mt-[-5px]
+    xl:mt-[-10px]
+}
+
+.video__button {
+    @apply absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] rounded-full z-10 w-[160px] h-[160px]
+     w-[120px]  h-[120px]
+    xl:w-[72px] xl:h-[72px]
+    xl:w-[60px] xl:h-[60px]
+
+}
+
+.video__image {
+    @apply w-full h-full object-contain
+}
+
+
+.bottom .text {
+    @apply max-w-[545px]
+     max-w-[400px]
+    xl:max-w-[357px]
+    xl:max-w-[225px]
+    md:max-w-[370px]
+    sm:max-w-[260px]
+}

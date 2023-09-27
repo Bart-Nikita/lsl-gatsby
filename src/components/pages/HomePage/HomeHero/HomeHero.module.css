@@ -1,0 +1,127 @@
+.body {
+    @apply flex items-stretch gap-[60px] mb-[130px]
+     gap-[30px]
+    xl:gap-[20px] xl:mb-[100px]
+    xl:mb-[90px]
+    md:mb-[70px] md:flex-col md:gap-[10px]
+
+}
+
+.content {
+    @apply border-[5px] border-yellow-400 w-[calc(((100%-60px)/2)-9px)]
+     border-[4px]  w-[calc((100%-30px)/2)]
+    xl:border-[2px] xl:w-[calc((100%-20px)/2)]
+    md:w-full
+}
+
+.content__top, .content {
+    @apply rounded-[35px]  rounded-[26px]
+    xl:rounded-[10px]
+}
+
+.content__top, .content__bottom {
+    @apply pr-[50px] pl-[47px]
+     px-[40px]
+    xl:px-[20px]
+    xl:px-[15px]
+    md:px-[20px] md:pr-[30px]
+    sm:px-[10px]
+}
+
+.content__top {
+    @apply bg-yellow-400 py-[73px] mt-[-3px] mx-[-4px] pb-[76px]
+     pb-[35px]  pt-[30px]
+    xl:py-[50px] xl:mt-[-2px] xl:mx-[-2px]
+    xl:py-[15px] xl:mt-[-1px] xl:mx-[-1px]
+    md:py-[30px]
+    sm:py-[15px]
+}
+
+
+.content__bottom {
+    @apply py-[54px] pb-[93px]
+     pt-[37px]  pb-[70px]
+    xl:py-[31px]
+    xl:py-[15px]
+    md:pt-[12px] md:pb-[26px]
+    sm:py-[12px]
+}
+
+.title {
+    @apply mb-[25px]
+     mb-[20px]
+    xl:mb-[8px] xl:max-w-[310px]
+    sm:mb-[6px]
+}
+
+.subtitle {
+    @apply sm:max-w-[220px]
+}
+
+.body .text {
+    @apply mb-[20px]  mb-[15px] xl:mb-[10px] xl:text-[14px]
+    sm:mb-[5px] sm:max-w-[250px]
+}
+
+.small {
+    @apply sm:max-w-[206px]
+}
+
+.slider {
+    @apply w-[calc((100%-60px)/2)] shrink-0 rounded-[33px] overflow-hidden relative  flex-grow
+     w-[calc((100%-30px)/2)]  rounded-[25px]
+     xl:rounded-[12px] xl:w-[calc((100%-20px)/2)]
+    md:w-full md:h-[230px]
+}
+
+.slider__carousel {
+    @apply w-full h-full
+}
+
+.slider__image {
+    @apply object-top
+
+}
+
+.slider__picture {
+    @apply w-full h-full
+
+}
+
+.slider__btnPrev {
+    @apply left-0
+}
+
+.slider__btnNext {
+    @apply right-0
+}
+
+.slider__btn {
+    @apply pointer-events-auto absolute top-[45%] translate-y-[-50%] w-[80px] h-[80px]
+     w-[40px]  h-[40px]
+    xl:w-[33px] xl:h-[33px]
+    xl:w-[22px] xl:h-[22px]
+    md:w-[30px] md:h-[30px]
+
+}
+
+.slider__buttonWrapper {
+    @apply absolute  h-full pointer-events-none z-[100] top-0 flex justify-between  right-[40px] left-[40px]
+     right-[30px]  left-[30px]
+    xl:right-[20px] xl:left-[20px]
+    xl:right-[15px] xl:left-[15px]
+    md:right-[10px] md:left-[10px]
+
+}
+
+.slider__buttonIcon {
+    @apply object-contain
+}
+
+.button {
+    @apply absolute left-[50%] translate-x-[-50%] w-[434px] h-[95px] bottom-[60px] z-[100] pt-[2px]
+     w-[331px]  h-[74px]  bottom-[40px]
+    xl:w-[207px] xl:h-[52px] xl:bottom-[20px]
+    xl:bottom-[16px]
+    md:bottom-[22px]
+}

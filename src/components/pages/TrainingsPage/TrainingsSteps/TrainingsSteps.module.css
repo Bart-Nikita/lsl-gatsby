@@ -1,0 +1,48 @@
+.body {
+
+}
+
+.title {
+
+}
+
+.list {
+
+}
+
+.number {
+
+}
+
+.decor {
+
+}
+
+.decor__item {
+
+}
+
+.text {
+
+}
+
+.remark {
+
+}
+
+.remark__text {
+
+}
+
+.remark__icon {
+
+}
+
+
+.decor {
+    @apply flex gap-[5px] absolute top-[50%] translate-y-[-50%] left-[116px] z-0 xl:left-[72px] md:left-[31px] md:top-[100%] md:translate-y-[0px] md:rotate-[90deg] md:translate-x-[-50%]
+}
+
+.decor__item {
+    @apply rounded-full h-[2px] w-[12px] bg-[#FEC955] md:w-[7px]
+}

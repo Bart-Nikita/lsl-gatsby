@@ -1,3 +1,202 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+
+    * {
+        @apply box-border font-nunito text-black ;
+
+    }
+
+    :focus-visible, :focus-within {
+        outline: none;
+    }
+
+    /*:focus {*/
+    /*    outline: 3px solid black;*/
+    /*}*/
+
+    h1, h2, h3, h4, p, ul {
+        @apply m-0 p-0;
+    }
+
+    ul {
+        @apply list-none;
+    }
+
+    a {
+        @apply no-underline;
+    }
+
+    html {
+        @apply scroll-smooth
+    }
+
+    body {
+        @apply overflow-x-hidden
+    }
+
+    .container {
+        @apply max-w-[1440px] mx-auto px-[40px]
+        xl:px-[20px]
+    }
+
+    .container-new {
+        @apply max-w-[1440px] mx-auto px-[40px]
+        xl:px-[20px]
+    }
+
+    .title-primary {
+        @apply font-bold text-[56px] leading-[1.2]
+        text-[42px]
+        xl:text-[24px]
+        md:text-[22px]
+    }
+
+    .text-primary {
+        @apply font-bold text-[32px] leading-[1.4]
+        text-[24px]
+        xl:text-[16px] xl:leading-[1.3]
+        md:leading-[1.4]
+    }
+
+    .text-secondary {
+        @apply font-normal text-[28px] leading-[1.4]
+        text-[20px]
+        xl:text-[14px]
+    }
+
+    .text-simple {
+        @apply font-normal text-[28px] leading-[1.4]
+        text-[22px]
+        xl:text-[16px]
+        md:text-[14px]
+    }
+
+    .text-small {
+        @apply font-normal text-[26px] leading-[1.3]
+        text-[20px]
+        xl:text-[16px]
+        md:text-[14px]
+    }
+
+    .text-small-new {
+        @apply font-normal leading-[1.3]
+        text-[20px]
+        xl:text-[16px]
+        md:text-[14px]
+    }
+
+    .remark {
+        @apply font-normal text-[26px] leading-[1.3] text-gray-300
+        text-[18px]
+        xl:text-[14px]
+        md:text-[12px]
+    }
+
+    .remark-new {
+        @apply font-normal leading-[1.3] text-gray-300
+        text-[18px]
+        xl:text-[14px]
+        md:text-[12px]
+    }
+
+    .title-secondary {
+        @apply font-bold text-[52px] leading-[1.2]
+        text-[38px]
+        xl:text-[24px]
+        md:text-[22px]
+    }
+
+    .link {
+        @apply transition-all hover:opacity-[0.6] cursor-pointer
+    }
+
+    .button-primary {
+        @apply font-bold text-[32px] leading-[1.4] flex items-center justify-center rounded-[16px] border-[3px] bg-white border-yellow-400 transition-all hover:bg-yellow-400
+        rounded-[12px]  text-[24px]
+        xl:text-[16px] xl:rounded-[8px] xl:bg-yellow-400 xl:hover:bg-white xl:border-[2px]
+    }
+
+    .button-primary-new {
+        @apply font-bold leading-[1.4] flex items-center justify-center  border-[3px] bg-white border-yellow-400 transition-all hover:bg-yellow-400
+        rounded-[12px]  text-[24px]
+        xl:text-[16px] xl:rounded-[8px] xl:border-[2px]
+    }
+
+    .button-secondary {
+        @apply font-bold text-[32px] leading-[1.4] flex items-center justify-center rounded-[16px] border-[3px] bg-yellow-400 border-yellow-400 transition-all hover:bg-white
+        rounded-[12px]  text-[24px]
+        xl:text-[16px] xl:rounded-[8px] xl:border-[2px]
+    }
+
+    .button-secondary-new {
+        @apply font-bold  leading-[1.4] flex items-center justify-center border-[3px] bg-yellow-400 border-yellow-400 transition-all hover:bg-white
+        rounded-[12px] text-[24px]
+        xl:text-[16px] xl:rounded-[8px] xl:border-[2px]
+    }
+
+    .button-small {
+        @apply font-normal text-[20px] leading-[1] flex items-center justify-center border-[1px] border-white rounded-[4px] bg-white bg-opacity-[0] transition-all hover:bg-opacity-[1]
+        text-[18px]
+        xl:text-[14px]
+    }
+
+    .section-indent {
+        @apply mb-[200px]  mb-[130px] xl:mb-[90px]
+        md:mb-[70px]
+    }
+
+    .section-indent-new {
+        @apply mb-[140px] xl:mb-[86px] xl:mb-[72px] md:mb-[36px] sm:mb-[32px]
+    }
+
+    .section-mb {
+        @apply mb-[140px] xl:mb-[92px] md:mb-[64px]
+
+    }
+
+    .text-simple {
+        @apply text-[22px] leading-[1.4] font-normal
+        xl:text-[16px]
+        md:text-[14px]
+    }
+
+    .text-large {
+        @apply text-[38px] leading-[1.2] font-bold
+        xl:text-[32px]
+        md:text-[22px]
+    }
+
+    .text-large-new {
+        @apply text-[38px] leading-[1.2] font-bold
+        xl:text-[28px]
+        md:text-[24px]
+    }
+
+    .text-page {
+        @apply text-[48px] font-bold leading-[1.2]
+        xl:text-[32px]
+        md:text-[24px]
+    }
+
+    .ytp-large-play-button.ytp-button.ytp-large-play-button-red-bg {
+        @apply w-[160px] h-[160px] bg-[no-repeat_center/contain_url('/image/play.png')] rounded-full !important;
+
+    }
+
+    .ytp-large-play-button svg {
+        display: none !important;
+    }
+
+    .disabled {
+        @apply pointer-events-none bg-gray-400 border-gray-400
+    }
+
+    .nav-link {
+        @apply relative after:block after:transition-all after:absolute after:bottom-[-1px] after:w-[0%] after:h-[1px]  hover:after:bg-black hover:after:w-[100%] md:after:hidden
+    }
+
+}

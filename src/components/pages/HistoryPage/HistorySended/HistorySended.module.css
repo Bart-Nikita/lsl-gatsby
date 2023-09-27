@@ -1,0 +1,92 @@
+.body.heavy {
+    @apply pt-[12px] mb-[182px]
+    xl:pt-[0px] xl:mt-[-10px] xl:mb-[97px]
+    md:mt-[0px] md:mb-[70px]
+}
+
+.top {
+    @apply mb-[63px]
+    xl:mb-[36px]
+}
+
+.body .title {
+    @apply mb-[12px]
+    xl:mb-[36px]
+    md:mb-[20px]
+}
+
+.title, .subtitle {
+    @apply text-center
+}
+
+.body .title__text {
+    @apply leading-[1.4]
+    md:text-[20px] md:inline-block
+}
+
+.title__text:not(:last-child) {
+    @apply md:mb-[8px]
+}
+
+.title__marked {
+    @apply bg-[#FEC955] rounded-[12px] p-[10px] mx-[13px] inline-block pb-[9px]
+    xl:mx-[16px] xl:mb-[16px]
+    md:px-[8px] md:py-[4px]
+}
+
+.subtitle:not(:last-child) {
+    @apply mb-[10px]
+    xl:mb-[20px]
+    md:mb-[15px]
+}
+
+.subtitle__text {
+    @apply text-[32px] font-bold leading-[1.4]
+    xl:text-[24px] xl:leading-[1.5]
+    md:text-[16px]
+}
+
+.subtitle__text:not(.subtitle__marked) {
+    @apply md:block
+}
+
+.subtitle__marked {
+    @apply p-[10px] rounded-[8px] border-[2px] border-[#FEC955] mr-[14px] pb-[9px] inline-block
+    xl:mr-[12px]
+    md:px-[12px] md:pt-[5px] md:pb-[4px] md:mb-[8px] md:mr-[0px]
+}
+
+.display {
+    @apply flex flex-col gap-[86px]
+    xl:gap-[59px]
+    md:gap-[41px]
+
+}
+
+.display__row {
+    @apply flex gap-[86px]
+    xl:gap-[59px]
+    md:gap-[41px]
+}
+
+.display__row:nth-child(2n) {
+    @apply justify-end
+}
+
+.display__item {
+    @apply flex gap-[20px] items-center shrink-0
+    xl:gap-[13px]
+    md:gap-[10px]
+}
+
+.display__image {
+    @apply object-cover rounded-full w-[112px] h-[120px]
+    xl:w-[77px] xl:h-[82px]
+    md:w-[54px] md:h-[57px]
+}
+
+.display__text {
+    @apply text-[52px] leading-[1] font-bold shrink-0
+    xl:text-[36px]
+    md:text-[25px]
+}

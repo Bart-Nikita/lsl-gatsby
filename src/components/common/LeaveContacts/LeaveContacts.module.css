@@ -1,0 +1,44 @@
+.body {
+@apply flex gap-[150px]
+ xl:gap-[168px]
+    xl:gap-[59px]
+md:flex-col md:justify-start md:gap-[34px]  xl:mt-[50px]
+    sm:mt-[15px]
+}
+
+.title {
+    @apply text-[38px] xl:text-[24px] md:text-[22px] font-bold
+}
+
+.form {
+    @apply flex-col gap-[40px] w-[500px] flex
+    xl:w-[480px]
+    xl:w-[350px] xl:flex-grow
+    md:w-full
+}
+
+.input {
+ @apply text-[24px] rounded-[8px] border-[2px] border-yellow-200 px-[26px] py-[13px] md:py-[18px] w-full
+ md:text-[18px]
+}
+
+.input::placeholder {
+    @apply text-[#C4C4C4]
+}
+
+.label {
+    @apply text-[24px] mb-[15px] md:text-[18px]
+}
+
+.form__item {
+ @apply w-full relative
+}
+
+.form__error {
+    @apply absolute top-[100%] left-[0px]
+}
+
+.body .submit {
+@apply rounded-[12px] text-[24px] h-[74px]
+}
+

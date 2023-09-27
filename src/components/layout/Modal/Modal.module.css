@@ -1,0 +1,17 @@
+.modal {
+    @apply absolute block top-0 left-0 w-full h-full   duration-500 transition-all opacity-[0] invisible z-[200] pointer-events-auto cursor-pointer
+}
+
+
+
+.modal.open {
+    @apply visible opacity-[1]
+}
+
+.body {
+    @apply relative  h-full
+}
+
+.content {
+    @apply relative h-full
+}

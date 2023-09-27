@@ -1,0 +1,36 @@
+.body {
+    @apply flex md:flex-col
+}
+
+.picture {
+    @apply w-[657px] h-[797px] mr-[59px] shrink-0
+     w-[500px]  h-[624px]  mr-[45px]
+    xl:w-[405px] xl:h-[506px] xl:mr-[90px]
+    xl:w-[358px] xl:h-[447px] xl:mr-[20px]
+    md:w-[268px] md:h-[334px] md:mr-[0px] md:mb-[10px]
+
+}
+
+.image {
+    @apply object-contain
+}
+
+.content {
+    @apply mt-[80px]
+     mt-[65px]
+    xl:mt-[75px]
+    md:mt-[0px]
+}
+
+.title {
+    @apply mb-[19px]  mb-[20px]
+    xl:mb-[25px]
+    xl:mb-[20px]
+}
+
+.body .text {
+    @apply max-w-[700px]
+     max-w-[500px]  text-[22px]
+    xl:max-w-[482px] xl:text-[16px]
+    md:text-[14px]
+}

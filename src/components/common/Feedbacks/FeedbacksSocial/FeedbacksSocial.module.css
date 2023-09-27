@@ -1,0 +1,76 @@
+.body {
+    @apply flex justify-between
+    xl:block
+}
+
+.title, .text {
+    @apply select-none
+}
+
+.title {
+    @apply mb-[20px]
+     mb-[15px]
+    xl:mb-[8px]
+    md:mb-[10px]
+}
+
+.title, .text {
+    @apply relative z-[1]
+}
+
+.text {
+    @apply max-w-[500px]
+     max-w-[370px]
+    xl:max-w-none
+    md:max-w-[230px]
+}
+
+
+.slider__list {
+    @apply flex gap-[40px] select-none
+    xl:gap-[20px]
+    md:gap-[15px]
+    sm:gap-[10px]
+}
+
+
+.body .slide__picture {
+    @apply w-full h-full block
+}
+
+
+.slider__item {
+    @apply border-[2px] rounded-[27px] border-[#DFDFDF] overflow-hidden h-[800px] shrink-0 w-[450px] pointer-events-none select-none relative
+     border-[1px]  h-[600px]  rounded-[20px]  w-[337px]
+    xl:h-[460px] xl:rounded-[10px] xl:w-[260px]
+    md:h-[390px] md:rounded-[10px] md:w-[220px]
+
+}
+
+.slider__wrapper {
+    @apply absolute top-[-3px] right-[-3px] left-[-3px] bottom-[-3px]
+}
+
+.slider__image {
+    @apply object-cover
+}
+
+
+.content {
+    @apply shrink-0  w-[630px] relative z-[1] pointer-events-none
+    after:bg-white after:absolute after:top-0 after:right-[150px] after:bottom-0 after:pointer-events-auto after:w-[50vw] before:absolute before:top-0 before:right-0 before:bottom-0 before:w-[150px] before:bg-[linear-gradient(90deg,#FFF_0%,rgba(255,255,255,0.00)100%)]
+     w-[463px]
+    xl:mb-[40px] xl:w-auto xl:w-auto xl:after:hidden xl:before:hidden
+    xl:mb-[30px]
+    md:mb-[20px]
+}
+.sliders {
+    @apply w-[calc(100%-630px)]
+     w-[calc(100%-463px)]
+    xl:w-full
+}
+
+
+
+
+

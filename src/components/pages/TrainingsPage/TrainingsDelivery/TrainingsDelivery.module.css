@@ -1,0 +1,31 @@
+.body {
+ @apply mb-[140px]
+    xl:mb-[96px]
+    md:mb-[64px]
+}
+
+.list {
+    @apply grid grid-cols-3 gap-[30px]
+    xl:gap-[20px]
+    md:grid-cols-1 md:gap-[36px]
+    md:max-w-[80%]
+}
+
+.title {
+    @apply mb-[60px]
+    xl:mb-[36px]
+}
+
+.list__item {}
+
+.item__text {
+    @apply text-[24px] leading-[1.3] font-light
+    xl:text-[14px]
+    md:text-[]
+}
+
+.item__image {
+    @apply block object-contain h-[85px] mb-[26px]
+    xl:h-[45px] xl:mb-[28px]
+    md:mb-[16px]
+}

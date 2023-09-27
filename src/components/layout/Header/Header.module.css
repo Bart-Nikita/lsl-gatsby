@@ -1,0 +1,148 @@
+
+
+.body{
+    @apply
+    mt-[10px] mb-[40px]
+    xl:mb-[23px]
+    xl:mb-[33px]
+    md:mb-[20px]
+    sm:mb-[10px] sm:mt-[0px] sm:relative sm:after:absolute sm:after:w-[120vw] sm:after:h-[96px] sm:after:top-0 sm:after:left-[50%] sm:after:translate-x-[-50%] sm:after:bg-[linear-gradient(180deg,#FFF4DE_0%,rgba(255,255,255,0.00)100%)] sm:after:z-0
+}
+
+
+ .logo {
+    @apply
+    h-[40px] w-[65px]
+    xl:h-[30px] xl:w-[50px]
+    xl:h-[30px] xl:w-[48px]
+    sm:h-[40px] sm:w-[66px]
+}
+
+
+
+ .wrapper {
+    @apply bg-yellow-200 flex items-center justify-between
+    rounded-[10px] py-[11px] pl-[25px] pr-[6px]
+    xl:py-[8px]  xl:pl-[20px] xl:pr-[23px]
+    xl:py-[15px] xl:px-[15px] xl:pr-[23px]
+    md:py-[15px] md:px-[10px] md:rounded-[6px]
+    sm:px-[5px] sm:pt-[15px] sm:pb-[11px] sm:bg-transparent sm:z-[1] sm:relative
+}
+
+.body__nav {
+    @apply md:hidden
+}
+
+
+
+ .nav {
+    @apply flex items-center
+    gap-[30px]
+    xl:gap-[15px]
+    md:absolute md:top-[9px] md:right-[0px] md:rounded-[8px] md:p-[26px] md:pt-[40px] md:overflow-hidden md:flex-col md:items-start md:bg-yellow-200 md:w-[250px]
+}
+
+.nav__close {
+    @apply hidden md:block absolute top-[9px] right-[10px] w-[24px] h-[24px]
+}
+
+.nav__close__icon {
+    @apply object-contain w-full h-full
+}
+
+.nav__list {
+}
+
+.nav__item {
+}
+
+.nav .nav__link {
+    @apply font-bold
+    md:text-[16px]
+    sm:text-[14px]
+}
+
+
+
+ .nav__sublist {
+    @apply relative flex  items-center transition-all
+    gap-[10px]
+    xl:gap-[8px]
+    md:mb-[-15px]
+
+}
+
+
+.nav__indent {
+    @apply hidden md:block transition-all
+}
+
+.sublist__title {
+    @apply cursor-default
+}
+
+
+
+ .sublist__wrapper {
+    @apply absolute left-[0px] transition-all opacity-[0] invisible before:absolute before:w-full before:h-[20px] before:top-[-20px] before:left-[0px] z-[20]
+    top-[150%]
+    md:before:hidden  md:top-[100%]
+}
+
+.open .sublist__wrapper {
+    @apply opacity-[1] visible
+}
+
+
+
+ .sublist__arrow {
+    @apply  object-contain transition-all rotate-[180deg]
+     w-[12px] h-[7px]
+    xl:w-[10px] xl:h-[5px]
+}
+
+.open .sublist__arrow {
+    @apply rotate-[0deg]
+}
+
+
+
+ .sublist__list {
+    @apply  rounded-[8px] border-[1px] border-black bg-yellow-200
+    p-[20px]
+    xl:translate-x-[-4px]
+    md:border-none md:p-[0px] md:pt-[10px] md:translate-x-[0px] md:pb-[5px]
+}
+
+.nav .nav__sublist .sublist__item {
+    @apply block whitespace-nowrap
+    md:text-[14px]
+    sm:text-[12px]
+}
+
+
+
+ .sublist__item:not(:last-child) {
+    @apply mb-[11px]
+     mb-[10px]
+    md:mb-[5px]
+}
+
+
+
+ .button {
+    @apply 
+    w-[239px] h-[58px] text-[20px] ml-[103px] rounded-[10px]
+    xl:rounded-[8px] xl:w-[183px] xl:h-[52px] xl:text-[16px] xl:ml-[57px]
+    xl:hidden
+    md:flex md:w-[156px] md:h-[40px] md:text-[14px] md:ml-[0px] md:mt-[25px]
+    !important
+}
+
+.burger {
+    @apply hidden md:block w-[30px] h-[30px]
+    sm:w-[40px] sm:h-[40px]
+}
+
+.burger__icon {
+}

@@ -1,0 +1,34 @@
+.old.body {
+
+    @apply flex items-center gap-[33px]
+     gap-[23px]
+}
+
+.old .text {
+    @apply text-[29px] block
+     text-[22px]
+
+}
+
+.old .icon {
+    @apply w-[40px] h-[40px]
+     w-[32px]  h-[32px]
+}
+
+.new.body {
+
+    @apply flex items-center gap-[33px]
+     gap-[23px]
+}
+
+.new .text {
+    @apply text-[29px] block
+     text-[22px]
+
+}
+
+.new .icon {
+    @apply w-[40px] h-[40px]
+     w-[32px]  h-[32px]
+}
+

@@ -1,0 +1,231 @@
+.container {
+    @apply h-full  flex flex-col items-center justify-center bg-transparent py-[50px] overflow-y-auto
+    xl:block
+        md:px-[20px]
+    after:fixed after:block after:bottom-0 after:left-0 after:right-0 after:h-[92px] after:[background:linear-gradient(180deg,rgba(255,255,255,0.00)0%,#FFF_100%)]  after:opacity-0
+
+}
+
+.container.light {
+    @apply after:opacity-[1]
+}
+
+.body {
+    @apply bg-white relative p-[40px] block mx-[50px] max-w-[1360px] w-[1360px]
+    xl:mx-auto
+    xl:w-[100%] xl:max-w-[728px] xl:rounded-[10px] xl:p-0
+}
+
+.row {
+    @apply grid grid-cols-2 gap-[40px]
+    xl:block xl:gap-[48px]
+    md:gap-[20px]
+}
+
+.close {
+    @apply absolute top-[-32px] right-[-32px] z-20 rounded-full w-[64px] h-[64px] flex items-center justify-center bg-[#FEC955] cursor-pointer transition-all hover:rotate-[50deg] focus:rotate-[90deg]
+    xl:top-[16px] xl:right-[16px] xl:w-[48px] xl:h-[48px]
+    md:top-[8px] md:right-[8px] md:w-[36px] md:h-[36px]
+}
+
+.close__svg {
+    @apply w-[42px] h-[42px]
+    xl:w-[32px] xl:h-[32px]
+    md:w-[24px] md:h-[24px]
+}
+
+.gallery {
+    @apply relative
+    xl:mb-[40px]
+    md:mb-[32px]
+}
+
+.gallery__swiper {
+    @apply h-full
+    xl:rounded-[10px]
+}
+
+.gallery__display {
+    @apply block w-full h-[580px] overflow-hidden rounded-[24px]
+    xl:rounded-[10px] xl:h-[604px]
+    md:h-[89vw]
+}
+
+.gallery__decor {
+    @apply absolute top-[16px] left-[16px] w-[52px] h-[52px] z-10
+    xl:top-[22px] xl:left-[22px] xl:w-[36px] xl:h-[36px]
+    md:top-[10px] md:left-[10px]
+}
+
+.display__list {
+}
+
+.display__item {
+
+}
+
+.display__picture {
+    @apply block
+}
+
+.display__video {
+
+}
+
+.gallery__images {
+    @apply grid grid-cols-3 gap-[10px] absolute z-10 w-full left-[50%] translate-x-[-50%] bottom-[20px] px-[20px]
+    xl:gap-[22px] xl:px-[36px] xl:bottom-[-64px]
+    md:bottom-[-40px] md:px-[10px] md:gap-[8px]
+}
+
+.images__item {
+    @apply h-[140px]
+    xl:w-[204px]
+    md:h-[80px] md:w-[94px]
+}
+
+.images__button {
+    @apply relative rounded-[12px] overflow-hidden w-full h-full hover:border-[#FEC955] focus:border-[#FEC955] transition-all border-[3px] border-transparent  md:rounded-[8px]
+}
+
+.images__button.selected {
+    @apply border-[#FEC955]
+}
+
+.images__picture {
+}
+
+.images__image {
+}
+
+.images__play {
+    @apply absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] w-[60px] h-[60px]
+    xl:w-[40px] xl:h-[40px]
+    md:w-[30px] md:h-[30px]
+
+}
+
+.content {
+    @apply xl:px-[36px] xl:pb-[36px]
+    md:px-[16px] md:pb-[24px]
+}
+
+.content__top {
+    @apply block mb-[30px]
+    md:mb-[24px] 
+}
+
+.content__desc {
+    @apply font-bold text-[18px] leading-[1.4]
+}
+
+
+
+.content__text {
+    @apply text-[20px] leading-[1.3] font-light mb-[57px]
+    xl:mb-[24px]
+    md:text-[16px]
+}
+
+.body .content__price {
+    
+    @apply md:text-[16px]
+}
+
+
+
+.content__exist, .content__fit {
+    @apply py-[10px] px-[30px] rounded-[6px] border-[2px] border-[#FEC955] text-[18px] font-bold leading-[1.4] h-fit w-fit
+    md:text-[16px] md:rounded-[8px]
+}
+
+.content__title, .content__price {
+    @apply text-[28px]  font-bold leading-[1.4]
+
+}
+
+.content__title {
+    @apply mb-[20px] md:text-[24px] md:mb-[16px]
+}
+
+.content__fit {
+    @apply py-[15px] mb-[54px]
+    xl:mb-[40px]
+    md:py-[10px] md:mb-[20px] md:w-full md:text-center
+
+}
+
+
+.content__border {
+    @apply mb-[54px] flex flex-col gap-[20px]
+    xl:mb-[40px]
+    md:mb-[20px]
+
+
+}
+
+.border__item {
+}
+
+.border__text {
+    @apply  py-[15px] px-[30px] rounded-[6px] border-[2px] border-[#FEC955] text-[18px] font-bold leading-[1.4] h-fit w-fit
+    md:text-[16px] md:rounded-[8px]
+ md:py-[10px] 
+md:max-w-full
+}
+
+.body .content__submit {
+    @apply text-[24px] py-[20px] px-[40px] w-fit z-10
+    xl:w-full xl:text-center  xl:text-[24px] xl:sticky xl:bottom-[0px]
+    md:text-[16px] md:py-[15px] md:px-[20px]
+
+}
+
+.content__remark {
+    @apply text-[#929292] text-[16px] leading-[1.3]
+    xl:hidden
+}
+
+.video {
+    @apply relative overflow-hidden inline-block shrink-0 w-full h-[580px] z-[5] bg-black
+    xl:h-[604px]
+    md:h-[89vw]
+}
+
+.video.stop {
+    @apply bg-[#FEC955]
+}
+
+.video__image {
+    @apply object-cover
+}
+
+.video__picture {
+    @apply absolute top-0 right-0 left-0 bottom-0  opacity-[0]
+}
+
+.stop .video__picture {
+    @apply opacity-[1]
+}
+
+.video__media {
+    @apply w-full h-full mt-[-1px] z-[-1] relative opacity-[1] object-contain
+    md:mt-[0px]
+}
+
+.stop .video__media {
+    @apply opacity-[0]
+}
+
+.video__button {
+    @apply absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] rounded-full z-10 w-[160px] h-[160px]
+    md:w-[94px] md:h-[94px]
+
+}
+
+.gallery__picture {
+    @apply w-full h-full
+}
+
+.gallery__image {
+}

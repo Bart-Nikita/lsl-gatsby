@@ -1,0 +1,114 @@
+.content {
+@apply xl:mb-[30px] xl:max-w-[490px]
+    md:mb-[20px]
+sm:mb-[17px]
+}
+
+.title {
+    @apply mb-[30px]
+     mb-[23px]
+    xl:mb-[15px]
+    xl:mb-[20px]
+    sm:mb-[17px]
+}
+
+.text {
+    @apply mb-[84px]
+     mb-[71px]
+    xl:mb-[15px]
+    xl:mb-[20px]
+    sm:mb-[17px]
+}
+
+.content .remark {
+    @apply mr-[-450px]
+     mr-[47px]
+    xl:mr-[-150px]
+    md:mr-[0px]
+}
+
+.body {
+    @apply flex gap-[150px]
+     gap-[57px]
+    xl:gap-[20px]
+    xl:block
+}
+
+.donation .remark {
+    @apply max-w-[800px]
+     max-w-[600px]
+    xl:max-w-[460px]
+    md:max-w-[400px]
+}
+
+.donation {
+    @apply w-[944px] shrink-0
+     w-[700px]
+    xl:w-[483px]
+    xl:w-full
+}
+
+.donation__buttons {
+    @apply flex items-stretch justify-between mb-[50px]
+     mb-[33px]
+    xl:mb-[20px]
+    xl:justify-start xl:gap-[30px] xl:mb-[30px]
+    md:justify-between md:mb-[20px] md:gap-[20px]
+    sm:flex-wrap sm:gap-[15px] sm:justify-start
+}
+
+.body  .donation__button {
+    @apply w-[192px] h-[95px]
+    font-bold text-[32px] leading-[1.4] flex items-center hover:bg-yellow-200 justify-center rounded-[16px] border-[3px] bg-white border-yellow-400 transition-all
+     rounded-[12px]  text-[24px]  w-[145px]  h-[74px]  pt-[3px]
+    xl:text-[16px] xl:rounded-[8px]  xl:border-[2px] xl:w-[107px] xl:h-[55px]
+    xl:w-[144px] xl:h-[65px] xl:text-[18px]
+    md:w-[95px] md:h-[48px] md:text-[16px] md:flex-grow
+    sm:w-[90px] sm:h-[48px]
+}
+
+.body  .donation__button:last-child {
+    @apply sm:w-[calc((100%-15px*2)/3)] sm:flex-grow-0
+}
+
+.donation__button.selected {
+    @apply bg-yellow-400
+}
+
+
+.donation__bottom {
+    @apply flex items-end mb-[55px] justify-between
+     mb-[30px]
+    xl:flex-col xl:items-start xl:gap-[20px] xl:mb-[22px]
+    xl:gap-[30px] xl:mb-[30px] xl:flex-row xl:items-end xl:justify-start
+    md:flex-col md:gap-[20px] md:mb-[20px]
+    sm:gap-[15px] sm:mb-[16px]
+}
+
+.input {
+    @apply w-[586px] h-[175px] font-nunito resize-none
+    font-bold text-[32px] leading-[1.4] rounded-[16px] border-[3px] bg-white border-yellow-400 p-[40px]
+     rounded-[12px]  text-[24px]  w-[440px]  h-[174px]  p-[30px]
+    xl:text-[16px] xl:rounded-[8px]  xl:border-[2px] xl:w-[355px] xl:h-[150px] xl:px-[20px]
+    xl:w-[492px] xl:h-[168px]
+    md:w-full md:h-[130px] md:p-[15px] md:rounded-[12px]
+}
+
+.input::placeholder {
+    @apply text-[#979797]
+}
+
+.submit {
+    @apply w-[318px] h-[95px]
+     w-[230px]  h-[74px]
+    xl:w-[192px] xl:h-[65px]
+    md:w-[180px] md:h-[52px]
+    sm:w-[160px] sm:h-[52px]
+
+}
+
+.buttonToTop {
+
+}
+
+

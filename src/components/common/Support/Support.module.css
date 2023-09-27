@@ -1,0 +1,68 @@
+.old.body {
+
+}
+
+.old .content {
+
+}
+
+.old .title {
+}
+
+.old .text {
+
+}
+
+.old .link {
+}
+
+.old .picture {
+}
+
+.old .image {
+}
+
+.body {
+
+}
+
+.block {
+    @apply relative rounded-[45px] bg-[#FFF4DE] px-[60px] pb-[66px] pt-[82px] mb-[140px]
+    xl:rounded-[20px] xl:px-[20px] xl:py-[32px] xl:mb-[22px]
+    md:rounded-[16px] md:pb-[333px] md:pt-[36px] md:mb-[17px]
+}
+
+.content {
+    @apply max-w-[605px]
+    xl:max-w-[54%]
+    md:max-w-none
+
+}
+
+.body .title {
+    @apply mb-[24px] max-w-[500px]
+    xl:mb-[10px] xl:max-w-[90%] xl:text-[24px]
+    md:mb-[20px] md:max-w-[85%] md:text-[22px]
+}
+
+.text {
+    @apply mb-[32px]
+    xl:mb-[20px]
+    md:mb-[0px]
+}
+
+.body .link {
+    @apply inline-block text-center py-[20px] px-[40px]
+    xl:px-[30px] xl:text-[18px]
+    md:py-[12px] md:px-[53px] md:absolute md:z-[2] md:whitespace-nowrap md:right-[50%] md:translate-x-[50%] md:bottom-[24px] md:text-[16px]
+}
+
+.picture {
+    @apply absolute w-[493px] h-[635px] bottom-0 right-[138px] z-0
+    xl:w-[285px] xl:h-[367px] xl:right-[24px]
+    md:w-[183px] md:h-[236px] md:right-[50%] md:translate-x-[50%] md:bottom-[74px]
+}
+
+.image {
+    @apply object-contain
+}

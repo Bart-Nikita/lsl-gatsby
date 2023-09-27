@@ -1,0 +1,21 @@
+.body {
+    @apply xl:mt-[-10px]
+    md:mt-[-2px]
+}
+
+.content {
+    @apply bg-[#FFF4DE] rounded-[45px] py-[85px] pl-[62px] pr-[107px] flex items-center justify-between
+    xl:rounded-[20px] xl:py-[48px] xl:px-[40px] xl:gap-[60px]
+    md:py-[36px] md:px-[24px] md:flex-col md:gap-[24px]
+
+}
+
+.body  .title {
+    @apply max-w-[560px] md:text-[24px]
+}
+
+.body .link {
+    @apply px-[40px] py-[20px] shrink-0
+    xl:px-[30px] xl:py-[10px]
+    md:px-[40px] md:text-center
+}

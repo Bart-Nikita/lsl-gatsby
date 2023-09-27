@@ -1,0 +1,17 @@
+.swiper {
+@apply z-0
+}
+
+.swiper__wrapper {
+@apply flex relative
+}
+
+.swiper__wrapper.transition {
+    @apply transition-all duration-[0.3s]
+}
+
+.swiper__sky {
+    @apply absolute top-0 right-0 left-0 bottom-0
+}
+
+

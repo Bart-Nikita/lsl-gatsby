@@ -1,9 +1,12 @@
 import type { GatsbyConfig } from "gatsby";
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `LSL`,
-    siteUrl: `https://www.yourdomain.tld`
+    title: `Little Sweet Lemon`,
+    url: process.env.BASE_URL || 'http://localhost:9000'
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -12,7 +15,7 @@ const config: GatsbyConfig = {
   plugins: [{
     resolve: 'gatsby-source-wordpress',
     options: {
-      "url": "https://lsl-test.bart-group.com/back/graphql"
+      "url":process.env.WPGRAPHQL_URL || "https://lsl-test.bart-group.com/back/graphql"
     }
   }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-postcss"]
 };

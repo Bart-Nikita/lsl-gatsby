@@ -1,0 +1,86 @@
+.body {
+    @apply pt-[96px]
+     pt-[171px]
+        xl:pt-[73px]
+    xl:pt-[37px]
+    md:pt-[0px]
+}
+
+.content {
+    @apply z-10 relative
+}
+
+.wrapper {
+    @apply relative rounded-[33px] bg-yellow-200 px-[93px] py-[70px]
+     rounded-[24px]  px-[60px]  pb-[47px]  pt-[60px]
+    xl:pl-[20px] xl:pt-[60px] xl:pb-[70px] xl:rounded-[20px]
+    xl:px-[20px] xl:pb-[115px] xl:pt-[30px]
+    md:pl-[10px] md:pt-[34px] md:pb-[140px]
+    sm:pb-[236px] sm:pt-[20px]
+}
+
+.withPhone  .wrapper {
+    @apply md:pb-[94px] sm:pb-[76px]
+}
+
+.title {
+    @apply mb-[26px]
+     mb-[20px]
+    xl:mb-[10px]
+    md:mb-[8px]
+}
+
+.body .text {
+    @apply font-normal mb-[70px]
+     mb-[50px]
+        xl:text-[18px]
+    xl:mb-[20px] xl:text-[16px]
+    md:text-[14px] md:mb-[40px]
+    sm:mb-[22px]
+}
+
+.withPhone .text {
+    @apply md:mb-[40px] sm:mb-[60px] !important
+}
+
+.body .link {
+    @apply w-[403px] h-[95px] rounded-[16px] text-[26px]
+     w-[341px]  h-[74px]  text-[24px]  rounded-[12px]
+    xl:w-[256px] xl:h-[65px] xl:text-[18px] xl:rounded-[12px]
+    xl:w-[256px] xl:h-[65px] xl:text-[18px] xl:rounded-[8px]
+    md:w-[214px] md:h-[52px] md:text-[16px] md:rounded-[8px]
+}
+
+.picture {
+    @apply w-[474px] h-[581px] absolute bottom-0 right-[143px]
+     w-[437px]  h-[536px]  right-[54px]
+    xl:w-[340px] xl:h-[417px] xl:right-[62px]
+    xl:w-[285px] xl:h-[350px] xl:right-[18px]
+    md:w-[215px] md:h-[264px] md:right-[20px]
+    sm:w-[181px] sm:h-[222px] sm:right-[13px]
+
+}
+
+.withPhone .picture {
+    @apply  right-[55px]
+    xl:right-[62px]
+    xl:right-[18px]
+    md:right-[20px]
+    sm:right-[13px]
+}
+
+.buttons {
+    @apply flex gap-[67px]
+     gap-[50px]
+    xl:gap-[30px]
+    xl:gap-[20px] xl:flex-col
+}
+
+.body .phoneButton {
+    @apply bg-transparent w-[403px] h-[96px] hover:bg-yellow-400 text-[26px] rounded-[16px]
+     w-[341px]  h-[74px]  text-[24px]  rounded-[12px]
+    xl:w-[256px] xl:h-[65px] xl:pt-[3px] xl:rounded-[12px] xl:text-[18px]
+    xl:rounded-[8px]
+    md:h-[42px]  md:w-[214px] md:h-[52px] md:text-[16px] md:pt-[0px]
+
+}

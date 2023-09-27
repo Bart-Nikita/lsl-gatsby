@@ -1,0 +1,94 @@
+.body {
+    @apply  overflow-hidden rounded-[20px] py-[74px] px-[60px] flex items-center justify-between bg-[#FFF4DE]
+    xl:pt-[62px] xl:pb-[73px] xl:pl-[40px] xl:pr-[48px] xl:rounded-[0px]
+    md:px-[20px] md:py-[36px] md:rounded-[20px] md:flex-col
+}
+
+.container {
+    @apply
+    mb-[120px]
+    xl:mb-[35px]
+    md:mb-[0px]
+}
+
+.small.container {
+    @apply mb-[0px]  relative z-[5] pr-[13px]
+}
+
+.small .body {
+    @apply pt-[48px] w-[433px] px-[30px] pb-[52px] flex-col gap-[24px]
+}
+
+.small .body .title {
+    @apply mb-[15px]
+}
+
+.body .title {
+    @apply mb-[19px]
+    xl:mb-[16px]
+    md:mb-[0px] md:text-[24px]
+}
+
+.body  .text {
+@apply md:text-center md:text-[16px]
+}
+
+.content {
+    @apply max-w-[438px]
+        xl:max-w-[351px]
+    md:flex md:flex-col md:gap-[16px] md:mb-[20px] md:max-w-full md:items-center
+}
+
+.form {
+    @apply flex gap-[18px]
+    xl:flex-col xl:gap-[16px] xl:items-center xl:translate-y-[7px]
+    md:translate-y-[0px]
+}
+
+.small .form {
+    @apply flex-col gap-[16px]
+
+}
+
+.form__section {
+    @apply relative w-[393px]
+    xl:w-[257px]
+}
+
+.input, .button {
+    @apply h-[74px]
+    xl:h-[42px]
+}
+
+.small .input, .small .button, .small .form {
+    @apply w-full
+}
+
+.input::placeholder {
+    @apply text-[#C4C4C4] font-bold
+
+}
+
+.small .error {
+    @apply top-[96%]
+}
+
+.button {
+    @apply px-[59px]
+    xl:px-[30px]
+    xl:text-[16px] xl:rounded-[8px] xl:border-[2px] xl:w-fit
+    font-bold  leading-[1.4] flex items-center justify-center border-[3px] bg-white border-yellow-400 transition-all hover:bg-yellow-400
+    rounded-[12px]  text-[24px]
+}
+
+.input {
+    @apply text-[24px] rounded-[8px] border-[3px] border-[#FEC955] px-[20px] font-bold
+        xl:text-[16px] xl:border-[2px]
+    md:py-[18px] w-full
+    md:text-[18px];
+}
+
+.error {
+    @apply absolute top-[100%] left-[50%] translate-x-[-50%] whitespace-nowrap
+    xl:text-[14px] xl:top-[98%]
+}

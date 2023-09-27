@@ -1,0 +1,54 @@
+.body {
+ @apply xl:mt-[-14px]
+    md:mt-[-3px]
+}
+
+.title {
+    @apply mb-[72px]
+    xl:mb-[52px]
+    md:mb-[38px]
+}
+
+.list {
+    @apply flex gap-[48px]
+    xl:gap-[32px]
+    md:gap-[25px]
+}
+
+.item {
+    @apply w-[396px] select-none
+    md:w-[224px]
+}
+
+
+.item__top {
+    @apply mb-[32px] relative
+    xl:mb-[48px]
+    md:mb-[24px]
+}
+
+.body .item__year {
+    @apply px-[28px] py-[10px] rounded-[81px] bg-[#FEC955] inline-block z-[2] relative
+    xl:text-[24px]
+    md:py-[8px] md:px-[16px] md:text-[16px]
+}
+
+.decor {
+    @apply flex gap-[5px] absolute top-[50%] translate-y-[-50%] left-[120px] z-0
+    md:left-[78px]
+}
+
+.decor__item {
+    @apply rounded-full h-[2px] w-[12px] bg-[#FEC955]
+    md:w-[7px]
+}
+
+.text p {
+    @apply block h-[10px]
+    xl:h-[8px]
+    md:h-[8px]
+}
+
+.body .text {
+    @apply md:leading-[22px]
+}

@@ -1,0 +1,40 @@
+.title {
+    @apply w-[400px] shrink-0
+    xl:w-[236px] xl:mt-[5px]
+}
+
+.top {
+    @apply flex gap-[60px] mb-[64px]
+    xl:gap-[50px] xl:mb-[34px]
+    md:flex-col md:gap-[12px] md:mb-[22px]
+}
+
+.body {
+@apply mb-[150px]
+    xl:mb-[92px]
+    md:mb-[66px]
+}
+
+.text {
+    @apply mt-[6px]
+    md:mt-[0px]
+}
+
+.list {
+    @apply grid grid-cols-2 gap-[20px]
+    md:gap-[12px]
+}
+
+.list__item {
+
+}
+
+.picture {
+    @apply rounded-[24px] border-[2px] border-[#F6F6F6] overflow-hidden relative block h-[340px]
+        xl:h-[34vw]
+    md:rounded-[12px] md:h-[32vw]
+}
+
+.image {
+    @apply object-cover w-[calc(100%+4px)] h-[calc(100%+4px)] max-w-none absolute top-[-2px] right-[-2px] left-[-2px] bottom-[-2px] block
+}

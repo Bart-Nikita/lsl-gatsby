@@ -1,0 +1,108 @@
+.body {
+    @apply flex justify-between mb-[146px] xl:mb-[92px] md:mb-[64px]
+    xl:block
+}
+
+.title, .text {
+    @apply select-none
+}
+
+
+.body .link {
+    @apply relative z-10 pointer-events-auto px-[60px] py-[20px] w-fit leading-none xl:py-[10px] xl:px-[30px] xl:ml-auto
+    md:ml-0 md:order-3
+}
+
+.title {
+    @apply mb-[20px]
+     mb-[15px]
+    xl:mb-[8px]
+    md:mb-[10px]
+}
+
+.title, .text {
+    @apply relative z-[1]
+}
+
+.text {
+    @apply
+     max-w-[370px] mb-[53px]
+  xl:mb-[0px] xl:w-full xl:order-12 xl:shrink-0
+    md:max-w-[230px] md:order-[0] md:mb-[24px]
+}
+
+.slider {
+}
+
+.list {
+    @apply flex gap-[53px]
+     gap-[40px]
+    xl:gap-[20px]
+    md:gap-[15px]
+    sm:gap-[10px]
+}
+
+
+.slider__item {
+    @apply  bg-gray-400   select-none shrink-0
+     rounded-[24px]  p-[30px]  w-[610px]
+    xl:rounded-[24px] xl:py-[20px] xl:px-[30px] xl:w-[440px]
+    md:w-[305px] md:pt-[16px] md:pb-[16px] md:pl-[25px] md:pr-[30px]
+    sm:px-[16px] sm:w-[234px]
+}
+
+
+
+.slider__picture {
+    @apply rounded-full w-[160px] h-[160px] mr-[26px]  pointer-events-none
+     w-[120px]  h-[120px]  mr-[20px]
+    xl:w-[70px] xl:h-[70px] xl:mr-[10px]
+    md:w-[60px] md:h-[60px]
+}
+
+.slider__image {
+    @apply object-cover
+}
+
+.slider__name {
+    @apply font-bold text-[38px] mb-[7px] leading-none
+     text-[28px]  mb-[5px]
+    xl:text-[20px] xl:mb-[3px]
+    md:text-[18px]
+}
+
+.slider__desc {
+}
+
+.slider__text {
+
+}
+
+.slider__top {
+    @apply flex items-center mb-[40px]
+     mb-[30px]
+    xl:mb-[10px]
+}
+
+.slider__person {
+}
+
+.content {
+    @apply shrink-0  relative z-[1] pointer-events-none
+    after:bg-white after:absolute after:top-0 after:right-[150px] after:bottom-0 after:pointer-events-auto after:w-[50vw] before:absolute before:top-0 before:right-0 before:bottom-0 before:w-[150px] before:bg-[linear-gradient(90deg,#FFF_0%,rgba(255,255,255,0.00)100%)]
+     w-[463px]
+     xl:w-auto xl:after:hidden xl:before:hidden xl:grid xl:grid-cols-2
+    xl:mb-[30px]
+    md:mb-[20px] md:grid-cols-1
+}
+
+.sliders {
+    @apply w-[calc(100%-630px)]
+     w-[calc(100%-463px)]
+    xl:w-full
+}
+
+
+
+
+

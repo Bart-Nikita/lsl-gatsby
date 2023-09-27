@@ -1,0 +1,57 @@
+.body {
+    @apply flex justify-between
+    xl:block
+}
+
+.title {
+    @apply xl:mb-[20px]
+    md:mb-[15px]
+}
+
+.list {
+    @apply flex gap-[130px]
+     gap-[33px]
+    xl:gap-[55px]
+    xl:grid xl:grid-cols-[1fr,1fr]
+    md:block
+}
+
+.item {
+    @apply w-[500px] block
+     w-[400px]
+    xl:w-[295px]
+}
+
+.item:nth-child(2) .item__picture {
+    @apply h-[590px] translate-y-[8px] mb-[14px]
+     h-[445px]  translate-y-[8px]  mb-[10px]
+    xl:h-[348px]
+    md:translate-y-[0px]
+}
+
+.item:not(:last-child) {
+    @apply md:mb-[20px]
+    sm:mb-[40px]
+}
+
+.item__picture {
+    @apply w-[460px] h-[580px] mb-[30px]
+     w-[346px]  h-[438px]  mb-[20px]
+    xl:w-[272px] xl:h-[347px] xl:mb-[12px]
+    md:w-[242px] md:h-[307px] md:mb-[10px]
+}
+
+.item__image {
+    @apply object-contain object-left
+}
+
+.body .item__text {
+    @apply  text-[22px]
+    xl:text-[16px]
+    md:text-[14px]
+}
+
+.title {
+}
+
+

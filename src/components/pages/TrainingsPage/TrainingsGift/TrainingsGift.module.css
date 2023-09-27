@@ -1,0 +1,29 @@
+.body {
+    @apply overflow-y-hidden
+    mb-[140px]
+    xl:mb-[96px]
+    md:mb-[64px]
+}
+
+.picture {
+    @apply absolute h-[462px] w-[462px] left-[18px] bottom-[-36px]
+    xl:h-[295px] xl:w-[295px] xl:left-[32px] xl:bottom-[-24px]
+    md:left-[50%] md:translate-x-[-50%]
+    md:bottom-[-15px]
+}
+
+.image {
+    @apply w-full h-full object-contain
+}
+
+.title {
+@apply text-[38px] leading-[1.2] font-bold max-w-[711px]
+    xl:text-[28px] xl:max-w-[50%]
+    md:max-w-full md:text-[24px]
+}
+
+.content {
+@apply rounded-[20px] bg-[#FFF4DE] flex justify-end items-center py-[88px] px-[85px] min-h-[270x] relative mt-[154px]
+    xl:py-[64px] xl:px-[69px] xl:min-h-[222px] xl:mt-[52px]
+    md:min-h-[392px] md:py-[36px] md:px-[20px] md:items-start
+}

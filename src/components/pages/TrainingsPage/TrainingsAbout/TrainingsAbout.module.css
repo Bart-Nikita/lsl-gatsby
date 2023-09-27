@@ -1,0 +1,35 @@
+.title {
+@apply mb-[28px]
+    xl:mb-[32px] xl:text-[24px]
+    md:mb-[16px]
+}
+
+.body {
+    @apply mb-[140px] xl:mb-[92px] md:mb-[64px]
+}
+
+.content {
+    @apply grid grid-cols-2 gap-[30px]
+    xl:grid-cols-1 xl:gap-[24px]
+    md:gap-[19px]
+}
+
+.picture {
+    @apply h-full xl:h-auto xl:w-full
+}
+
+.image {
+    @apply object-contain
+}
+
+.body .text {
+    @apply leading-[1.4] pr-[9px]
+    xl:pr-0
+
+}
+
+.text span {
+    @apply block h-[13px]
+    xl:h-[12px]
+
+}

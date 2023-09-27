@@ -1,0 +1,143 @@
+.body {
+    @apply mb-[133px]
+    xl:mt-[-36px] xl:mb-[92px]
+    md:mb-[58px]
+}
+
+.top {
+    @apply mb-[80px]
+    xl:mb-[40px]
+}
+
+.bottom {
+}
+
+.top, .bottom {
+    @apply flex justify-between
+    xl:justify-start xl:gap-[16px]
+    md:gap-[24px]
+}
+
+.top {
+    @apply md:flex-col
+}
+
+.bottom {
+    @apply mb-[-20px]
+    xl:mb-[-89px]
+    md:flex-col-reverse md:mb-[0px]
+}
+
+.title {
+    @apply font-bold mb-[18px] text-[32px] leading-[1.4]
+    xl:mb-[12px]
+    md:text-[20px] md:max-w-[200px]
+}
+
+.top__picture {
+    @apply absolute right-[38px] bottom-[23px] rounded-[24px] overflow-hidden h-[467px] w-[705px]
+    xl:h-[350px] xl:w-[420px] xl:right-[16px] xl:bottom-[24px]
+    md:h-auto  md:w-[calc(100%+15px)] md:relative md:translate-x-[-12px] md:translate-y-[-20px] md:rounded-[0px_24px_24px_0px]
+}
+
+.top__image {
+    @apply object-[left_top] xl:object-left
+    md:object-[top_left]
+}
+
+.top__indent {
+    @apply h-[153px]
+    xl:hidden
+}
+
+.bottom__indent {
+    @apply
+    md:hidden
+}
+
+.top__back {
+    @apply bg-[#FFF4DE] rounded-[24px] absolute right-0 top-0  h-[480px] w-[calc(100%+50px)]
+        xl:h-full
+    md:h-[calc(100%-30px)]
+}
+
+
+.top__content {
+}
+
+.body .text {
+    @apply break-normal
+    md:leading-[22px]
+}
+
+.bottom .text p {
+    @apply h-[12px]
+    xl:h-[10px]
+    md:h-[8px]
+}
+
+.bottom__picture {
+    @apply h-[644px] w-[507px]  rounded-[24px] overflow-hidden top-[212px] left-[148px] absolute
+    xl:h-[414px] xl:w-[326px] xl:top-[158px] xl:left-[28px]
+    md:h-auto md:relative md:w-full md:translate-x-[68px] md:translate-y-[126px] md:left-auto md:top-auto
+}
+
+.bottom__image {
+    @apply object-cover
+}
+
+.bottom__right, .bottom__content, .top__left, .top__content {
+    @apply w-[calc((100%-30px)/2)]
+    xl:w-auto
+}
+
+
+.bottom__right {
+    @apply relative
+    xl:w-[350px] xl:shrink-0
+    md:w-full md:mb-[115px]
+
+}
+
+
+.bottom__quote {
+    @apply relative
+    md:absolute md:top-[45px] md:left-[16px]
+}
+
+.quote__text {
+    @apply block italic relative text-[24px] font-bold text-center leading-[1.2]
+    xl:text-[16px]
+    md:text-[14px] md:text-left md:max-w-[220px]
+}
+
+.bottom__back {
+    @apply bg-[#FEC955] left-0 top-[-160px] absolute w-[561px] h-[644px] rounded-[36px] py-[75px] px-[50px]
+    xl:top-[-3px] xl:left-[19px] xl:w-[338px] xl:h-[410px] xl:px-[24px] xl:py-[57px]
+    md:w-[calc(100%-68px)] md:h-auto md:relative md:rounded-[24px] md:p-0 md:top-[-5px] md:left-[0px]
+}
+
+
+.bottom__content {
+@apply w-[calc(((100%-30px)/2)-10px)]
+    md:w-full
+}
+
+.quote__top {
+    @apply absolute top-[-23px] right-[3px]
+    xl:top-[-29px] xl:right-[-11px]
+    md:right-[0px]
+}
+
+.quote__bottom {
+    @apply absolute bottom-[-24px] left-[-4px]
+    xl:bottom-[-27px] xl:left-[-10px]
+    md:left-[0px] md:bottom-[-36px]
+}
+
+.top__left {
+    @apply relative shrink-0  mt-[29px]
+    xl:mt-[67px] xl:w-[355px] xl:h-[306px]
+    md:mt-[56px] md:h-auto md:w-full md:mb-[-32px]
+}
+

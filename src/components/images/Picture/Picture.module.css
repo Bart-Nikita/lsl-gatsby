@@ -1,0 +1,7 @@
+.picture {
+    @apply inline-block
+}
+
+.image {
+    @apply w-full h-full object-cover
+}

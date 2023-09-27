@@ -1,0 +1,51 @@
+
+.item__number {
+    @apply font-black text-yellow-400 text-[98px] mb-[30px] leading-[1.2]
+     text-[74px]  mb-[24px]
+    xl:text-[54px] xl:mb-[10px]
+
+}
+
+.body .item__text {
+    @apply  text-[22px] xl:text-[16px]
+    md:text-[14px]
+}
+
+
+.title, .item {
+    @apply w-[580px] flex-grow rounded-[32px] shrink-0 px-[50px] py-[53px]
+     w-[434px]  rounded-[24px]  px-[30px]  py-[40px]
+}
+
+.body, .list {
+    @apply flex gap-[50px]
+     gap-[29px]
+}
+
+.body {
+    @apply xl:gap-[38px]
+    xl:block
+}
+
+.title {
+    @apply bg-yellow-400 h-[520px]
+     h-[390px]
+    xl:rounded-[8px] xl:p-[40px] xl:w-[218px] xl:h-[145px]
+    xl:py-[23px] xl:px-[15px] xl:mb-[20px] xl:w-[155px] xl:h-[104px]
+    md:mb-[10px]
+}
+
+.title__text {
+}
+
+.list {
+    @apply flex-wrap xl:gap-[20px]
+}
+
+.item {
+    @apply bg-yellow-200 min-h-[520px]
+     min-h-[390px]
+    xl:rounded-[10px] xl:min-h-[240px] xl:w-[354px] xl:px-[15px] xl:pt-[23px] xl:pb-[32px]
+    md:min-h-[200px] md:w-full md:px-[15px] md:pt-[25px] md:pb-[40px]
+    sm:pb-[20px] sm:min-h-[220px]
+}
