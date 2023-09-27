@@ -1,5 +1,5 @@
 import  {useEffect, useState} from 'react';
-import styles from './HomeSupport.module.css'
+import * as styles from './HomeSupport.module.css'
 import {stack} from "../../../../hooks/useClassName";
 import {useGlobalContext} from "../../../../context/context";
 

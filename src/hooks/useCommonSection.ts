@@ -1,17 +1,16 @@
 import {useEffect, useState} from "react";
 import {useGlobalContext} from "../context/context";
-import {CommonSectionsNode} from "../types/data";
 
 
 export const useCommonSection = (slug: string) => {
-    const [section, setSection] = useState<CommonSectionsNode>()
-    const { data} = useGlobalContext()
+    const [section, setSection] = useState<Queries.WpCommonSection>()
+    const { commonSections} = useGlobalContext()
 
     useEffect(() => {
-        if (data) {
-            const item = data.commonSections?.nodes?.find(el => el.slug === slug)
+        if (commonSections) {
+            const item = commonSections.find(el => el.slug === slug)
             item &&  setSection(item)
         }
-    } , [data])
+    } , [commonSections])
     return [section]
 }

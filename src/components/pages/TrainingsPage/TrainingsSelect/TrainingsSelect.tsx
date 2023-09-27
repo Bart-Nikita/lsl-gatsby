@@ -1,9 +1,9 @@
 import React, {createRef, useEffect, useMemo, useState, memo, useLayoutEffect} from 'react';
-import styles from './TrainingsSelect.module.css'
+import * as styles from './TrainingsSelect.module.css'
 import {useGlobalContext} from "../../../../context/context";
 import {useTrainings} from "../../../../hooks/useTrainings";
 import {stack} from "../../../../hooks/useClassName";
-import {Link} from "react-router-dom";
+import {Link} from "gatsby";
 import Picture from "../../../images/Picture/Picture";
 import LightPicture from "../../../images/LightPicture/LightPicture";
 import {TrainingsNode} from "../../../../types/data";

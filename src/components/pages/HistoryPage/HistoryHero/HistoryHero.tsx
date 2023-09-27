@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './HistoryHero.module.css'
+import * as styles from './HistoryHero.module.css'
 import {useGlobalContext} from "../../../../context/context";
 import {stack} from "../../../../hooks/useClassName";
 import Picture from "../../../images/Picture/Picture";

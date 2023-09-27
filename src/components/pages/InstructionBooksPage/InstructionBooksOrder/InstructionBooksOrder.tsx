@@ -1,5 +1,5 @@
 import React, { ChangeEvent, createRef, useEffect, useState } from 'react';
-import styles from './InstructionBooksOrder.module.css'
+import * as styles from './InstructionBooksOrder.module.css'
 import { useGlobalContext } from "../../../../context/context";
 import { stack } from "../../../../hooks/useClassName";
 import { typo } from '../../../../tipograf';

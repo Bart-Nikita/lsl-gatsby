@@ -1,5 +1,5 @@
 import React, {createRef, useEffect, useLayoutEffect, useState} from 'react';
-import styles from './HistoryWe.module.css'
+import * as styles from './HistoryWe.module.css'
 import {stack} from "../../../../hooks/useClassName";
 import Picture from "../../../images/Picture/Picture";
 import {useGlobalContext} from "../../../../context/context";

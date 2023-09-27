@@ -1,5 +1,5 @@
 import React, {createRef, useEffect, useState} from 'react';
-import styles from './BlogPostMedia.module.css'
+import * as styles from './BlogPostMedia.module.css'
 import {stack} from "../../../../hooks/useClassName";
 import Picture from "../../../images/Picture/Picture";
 import {useGlobalContext} from "../../../../context/context";

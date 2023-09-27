@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './HistoryFind.module.css'
+import * as styles from './HistoryFind.module.css'
 import {stack} from "../../../../hooks/useClassName";
 import {useGlobalContext} from "../../../../context/context";
-import {Link} from "react-router-dom";
+import {Link} from "gatsby";
 
 const HistoryFind = () => {
     const {historyPage} = useGlobalContext()

@@ -25,10 +25,34 @@ const InstructionsPage: React.FC<PageProps<Queries.InstructionsPageQuery>> = ({ 
 export default InstructionsPage
 
 export const query = graphql` query InstructionsPage {
-  site {
+   site {
     siteMetadata {
       title
       url
+    }
+  }
+  allWpMenuItem(filter: {parentId: {eq: null}}, sort: {order: ASC}) {
+    nodes {
+        label
+        url
+        childItems {
+            nodes {
+                url
+                label
+                childItems {
+                    nodes {
+                        url
+                        label
+                    }
+                }
+            }
+        }
+    }
+}
+  allFile {
+    nodes {
+      name
+      publicURL
     }
   }
   wpPage(slug: {eq: "obuchayushhie-posobiya"}) {

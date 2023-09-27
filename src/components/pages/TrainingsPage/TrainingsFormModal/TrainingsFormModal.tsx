@@ -1,11 +1,11 @@
 import React, {ChangeEvent, ChangeEventHandler, createRef, useEffect, useState} from 'react';
-import styles from './TrainingsFormModal.module.css'
+import * as styles from './TrainingsFormModal.module.css'
 import {useGlobalContext} from "../../../../context/context";
 import {stack} from "../../../../hooks/useClassName";
 import {InView} from "react-intersection-observer";
 import Chrest from "../../../svg/Chrest";
 import {useInputState, useInputStateType} from "../../../../hooks/useInputState";
-import {Form} from "react-router-dom";
+import {Form} from "gatsby";
 import ReactInputMask from "react-input-mask";
 import {TrainingsModalSpisokGorodov} from "../../../../types/data";
 import {useCommonSection} from "../../../../hooks/useCommonSection";

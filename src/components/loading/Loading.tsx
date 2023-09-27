@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import styles from './Loading.module.css'
+import * as styles from './Loading.module.css'
 import {useGlobalContext} from "../../context/context";
 import {stack} from "../../hooks/useClassName";
 

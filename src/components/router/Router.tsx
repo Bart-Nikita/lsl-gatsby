@@ -1,5 +1,5 @@
 import {memo, ReactElement, ReactNode, useEffect} from 'react';
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes} from "gatsby";
 import Home from "../../pages/Home";
 import Contacts from "../../pages/Contacts";
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './Logo.module.css'
-import {Link} from "react-router-dom";
+import * as styles from './Logo.module.css'
+import {Link} from "gatsby";
 import {stack} from "../../../hooks/useClassName";
 
 type LogoProps = {

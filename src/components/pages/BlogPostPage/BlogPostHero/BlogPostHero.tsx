@@ -1,11 +1,11 @@
 import React from 'react';
 import {useGlobalContext} from "../../../../context/context";
 import {stack} from "../../../../hooks/useClassName";
-import styles from "./BlogPostHero.module.css";
+import * as styles from "./BlogPostHero.module.css";
 import Picture from "../../../images/Picture/Picture";
-import {Link} from "react-router-dom";
+import {Link} from "gatsby";
 import LightPicture from "../../../images/LightPicture/LightPicture";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "gatsby";
 
 
 const BlogPostHero = () => {

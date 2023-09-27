@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import styles from './Online.module.css'
+import * as styles from './Online.module.css'
 import {stack} from "../../../hooks/useClassName";
 import {useCommonSection} from "../../../hooks/useCommonSection";
 import {useMutation} from "@apollo/client";

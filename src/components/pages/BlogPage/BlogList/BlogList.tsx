@@ -1,11 +1,11 @@
 import React, {useEffect, useLayoutEffect, useState} from 'react';
-import styles from './BlogList.module.css'
+import * as styles from './BlogList.module.css'
 import {stack} from "../../../../hooks/useClassName";
 import {useGlobalContext} from "../../../../context/context";
 import {useTrainings} from "../../../../hooks/useTrainings";
 import Picture from "../../../images/Picture/Picture";
 import {usePosts} from "../../../../hooks/usePosts";
-import {Link} from "react-router-dom";
+import {Link} from "gatsby";
 import {AllBlogNode} from "../../../../types/data";
 
 

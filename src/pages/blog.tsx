@@ -25,10 +25,34 @@ const BlogPage: React.FC<PageProps<Queries.BlogPageQuery>> = ({ data }: PageProp
 export default BlogPage
 
 export const query = graphql` query BlogPage {
-  site {
+   site {
     siteMetadata {
       title
       url
+    }
+  }
+  allWpMenuItem(filter: {parentId: {eq: null}}, sort: {order: ASC}) {
+    nodes {
+        label
+        url
+        childItems {
+            nodes {
+                url
+                label
+                childItems {
+                    nodes {
+                        url
+                        label
+                    }
+                }
+            }
+        }
+    }
+}
+  allFile {
+    nodes {
+      name
+      publicURL
     }
   }
   wpPage(slug: {eq: "blog"}) {

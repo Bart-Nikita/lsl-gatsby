@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Modal from "../../../Modal/Modal";
 import {useGlobalContext} from "../../../../../context/context";
 import {stack} from "../../../../../hooks/useClassName";
-import styles from './NavModal.module.css'
+import * as styles from './NavModal.module.css'
 import {Navigation} from "../../Header";
 
 const NavModal = () => {

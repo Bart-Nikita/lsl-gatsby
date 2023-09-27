@@ -18,72 +18,73 @@ type LayoutProps = {
     children: ReactElement | ReactNode
 }
 
-// const ModalLayer = () => {
+const ModalLayer = () => {
 
 
-//     const {
-//         setIsTrainingModalOpen,
-//         setIsTrainingFormModalOpen,
-//         setIsNavModalOpen,
-//         isTrainingModalOpen,
-//         isTrainingFormModalOpen,
-//         isNavModalOpen,
-//         isInstructionBooksFormModalOpen,
-//         isInstructionBooksHeroFormModalOpen,
-//         isInstructionBooksModalOpen,
-//         setIsInstructionBooksHeroFormModalOpen,
-//         setIsInstructionBooksModalOpen,
-//         setIsInstructionBooksFormModalOpen
-//     } = useGlobalContext()
-//     const onNavModalClose = (value: boolean) => {
-//         setIsNavModalOpen(false)
-//     }
+    const {
+        setIsTrainingModalOpen,
+        setIsTrainingFormModalOpen,
+        setIsNavModalOpen,
+        isTrainingModalOpen,
+        isTrainingFormModalOpen,
+        isNavModalOpen,
+        isInstructionBooksFormModalOpen,
+        isInstructionBooksHeroFormModalOpen,
+        isInstructionBooksModalOpen,
+        setIsInstructionBooksHeroFormModalOpen,
+        setIsInstructionBooksModalOpen,
+        setIsInstructionBooksFormModalOpen,
+        historyLength
+    } = useGlobalContext()
+    const onNavModalClose = (value: boolean) => {
+        setIsNavModalOpen(false)
+    }
 
-//     const onTrainingModalClose = (value: boolean) => {
-//         setIsTrainingModalOpen(false)
-//     }
+    const onTrainingModalClose = (value: boolean) => {
+        setIsTrainingModalOpen(false)
+    }
 
-//     const onTrainingFormModalClose = (value: boolean) => {
-//         setIsTrainingFormModalOpen(false)
-//     }
+    const onTrainingFormModalClose = (value: boolean) => {
+        setIsTrainingFormModalOpen(false)
+    }
 
-//     const onInstructionsFormModalClose = (value: boolean) => {
-//         if (isInstructionBooksFormModalOpen) {
-//             setIsInstructionBooksFormModalOpen(false)
-//         } 
+    const onInstructionsFormModalClose = (value: boolean) => {
+        if (isInstructionBooksFormModalOpen) {
+            setIsInstructionBooksFormModalOpen(false)
+        }
 
-//         if (isInstructionBooksHeroFormModalOpen) {
-//             setIsInstructionBooksHeroFormModalOpen(false)
-//         }  
-//       }
+        if (isInstructionBooksHeroFormModalOpen) {
+            setIsInstructionBooksHeroFormModalOpen(false)
+        }
+    }
 
-//     const onInstructionsModalClose = (value: boolean) => {
-//         setIsInstructionBooksModalOpen(false)
-//     }
+    const onInstructionsModalClose = (value: boolean) => {
+        setIsInstructionBooksModalOpen(false)
+    }
 
-//     const onInstructionsHeroFormModalClose = (value: boolean) => {
-//         setIsInstructionBooksHeroFormModalOpen(false)
-//     }
-//     return <FixedLayer>
-//         <Cookies></Cookies>
-//         <Modal open={isNavModalOpen} setOpen={onNavModalClose}>
-//             {isNavModalOpen && <Navigation></Navigation>}
-//         </Modal>
-//         <Modal open={isTrainingModalOpen} setOpen={onTrainingModalClose}>
-//             {isTrainingModalOpen && <TrainingsModal></TrainingsModal>}
-//         </Modal>
-//         <Modal open={isTrainingFormModalOpen} setOpen={onTrainingFormModalClose}>
-//             {isTrainingFormModalOpen && <TrainingsFormModal></TrainingsFormModal>}
-//         </Modal>
-//         <Modal open={isInstructionBooksFormModalOpen || isInstructionBooksHeroFormModalOpen} setOpen={onInstructionsFormModalClose}>
-//             {(isInstructionBooksFormModalOpen || isInstructionBooksHeroFormModalOpen) && <InstructionsBooksFormModal></InstructionsBooksFormModal>}
-//         </Modal>
-//         <Modal open={isInstructionBooksModalOpen} setOpen={onInstructionsModalClose}>
-//             {isInstructionBooksModalOpen && <InstructionsBooksModal></InstructionsBooksModal>}
-//         </Modal>
+    const onInstructionsHeroFormModalClose = (value: boolean) => {
+        setIsInstructionBooksHeroFormModalOpen(false)
+    }
+    return <FixedLayer>
+        {historyLength < 2 && <Cookies></Cookies>}
+        <Modal open={isNavModalOpen} setOpen={onNavModalClose}>
+            {isNavModalOpen && <Navigation></Navigation>}
+        </Modal>
+        {/* <Modal open={isTrainingModalOpen} setOpen={onTrainingModalClose}>
+            {isTrainingModalOpen && <TrainingsModal></TrainingsModal>}
+        </Modal>
+        <Modal open={isTrainingFormModalOpen} setOpen={onTrainingFormModalClose}>
+            {isTrainingFormModalOpen && <TrainingsFormModal></TrainingsFormModal>}
+        </Modal>
+        <Modal open={isInstructionBooksFormModalOpen || isInstructionBooksHeroFormModalOpen} setOpen={onInstructionsFormModalClose}>
+            {(isInstructionBooksFormModalOpen || isInstructionBooksHeroFormModalOpen) && <InstructionsBooksFormModal></InstructionsBooksFormModal>}
+        </Modal>
+        <Modal open={isInstructionBooksModalOpen} setOpen={onInstructionsModalClose}>
+            {isInstructionBooksModalOpen && <InstructionsBooksModal></InstructionsBooksModal>}
+        </Modal> */}
 
-//     </FixedLayer>
-// }
+    </FixedLayer>
+}
 
 const Layout = memo(({ children }: LayoutProps) => {
     const {
@@ -98,47 +99,18 @@ const Layout = memo(({ children }: LayoutProps) => {
         setMainPage
     } = useGlobalContext()
 
-   
-    useEffect(() => {
-        document.body.addEventListener('focusin', (e) => {
-            // console.log(e.target)
-        })
-    }, []);
-    console.log('layout')
+
 
     return (
-        <div>
-            {children}
-        </div>
-    )
-
-    // return (
-    //     <>
-    //         <Helmet>
-    //             {title && <title>{title}</title>}
-    //         </Helmet>
-
-    //         {historyLength < 2 ?
-    //             <>
-    //                 <Loading></Loading>
-    //                 <div style={{ display: isLoading ? 'none' : 'block' }} className={!isLoading ? 'animate-appear' : ''}>
-    //                     <Header></Header>
-    //                     <ModalLayer></ModalLayer>
-    //                     <main id={'main'}>
-    //                         {children}
-    //                     </main>
-    //                     <Footer></Footer>
-    //                 </div>
-    //             </>
-    //             : <>
-    //                 <Header></Header>
-    //                 <ModalLayer></ModalLayer>
-    //                 {children}
-    //                 <Footer></Footer>
-    //             </>}
-
-    //     </>
-    // );
+        <>
+            <Header></Header>
+            <ModalLayer></ModalLayer>
+            <main id="main">
+                {children}
+            </main>
+            <Footer></Footer>
+        </>
+    );
 });
 
 export default Layout;

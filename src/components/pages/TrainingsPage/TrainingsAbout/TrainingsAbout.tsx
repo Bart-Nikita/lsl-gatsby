@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './TrainingsAbout.module.css'
+import * as styles from './TrainingsAbout.module.css'
 import {stack} from "../../../../hooks/useClassName";
 import {useGlobalContext} from "../../../../context/context";
 import Picture from "../../../images/Picture/Picture";

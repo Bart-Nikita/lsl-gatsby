@@ -1,7 +1,8 @@
 import React, {createRef, useEffect, useState} from 'react';
-import styles from './HomeSafety.module.css'
+import * as styles from './HomeSafety.module.css'
 import {stack} from "../../../../hooks/useClassName";
 import {useGlobalContext} from "../../../../context/context";
+import { useFile } from '../../../../hooks/useFile';
 
 const HomeSafety = () => {
     const {mainPage:page} = useGlobalContext()
@@ -21,28 +22,30 @@ const HomeSafety = () => {
         }
     }, [isPlaying])
 
+    const [play] = useFile('play')
+
     return (
         <section className={stack('container','section-indent', styles.body)}>
             <div className={styles.top}>
                 <h2 className={stack('title-secondary', styles.title)}
-                    dangerouslySetInnerHTML={{__html: page?.main?.mainSafetyZagolovok}}></h2>
+                    dangerouslySetInnerHTML={{__html: page?.wpPage?.main?.mainSafetyZagolovok || ''}}></h2>
                 <div className={styles.right}>
                 <p className={stack('text-secondary', styles.text)}
-                   dangerouslySetInnerHTML={{__html: page?.main?.mainSafetyPervyjTekst}}></p>
+                   dangerouslySetInnerHTML={{__html: page?.wpPage?.main?.mainSafetyPervyjTekst || ''}}></p>
                 <p className={stack('text-secondary', styles.text)}
-                   dangerouslySetInnerHTML={{__html: page?.main?.mainSafetyVtorojTekst}}></p>
+                   dangerouslySetInnerHTML={{__html: page?.wpPage?.main?.mainSafetyVtorojTekst || ''}}></p>
                 </div>
             </div>
             <div className={styles.bottom}>
                 <p className={stack('text-secondary', styles.text)}
-                   dangerouslySetInnerHTML={{__html: page?.main?.mainSafetyThirdTekst}}></p>
+                   dangerouslySetInnerHTML={{__html: page?.wpPage?.main?.mainSafetyThirdTekst || ''}}></p>
                 <div onClick={videoClickHandler} className={styles.video}>
                     <video ref={video} className={styles.video__media}
-                           src={page?.main?.mainSafetyVideo.mediaItemUrl}
+                           src={page?.wpPage?.main?.mainSafetyVideo?.mediaItemUrl || ''}
                     ></video>
                     {!isPlaying && <button
                                            className={stack('link', styles.video__button)}>
-                        <img className={styles.video__image} src="/image/play.png" alt="Иконка Play"/></button>}
+                        <img className={styles.video__image} src={play} alt="Иконка Play"/></button>}
                 </div>
             </div>
         </section>

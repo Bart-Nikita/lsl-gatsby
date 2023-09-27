@@ -1,10 +1,10 @@
 import React from 'react';
 import {useCommonSection} from "../../../../hooks/useCommonSection";
 import {stack} from "../../../../hooks/useClassName";
-import styles from "./TrainingsFeedbacks.module.css";
+import * as styles from "./TrainingsFeedbacks.module.css";
 import SwiperLight from "../../../lowleveled/SwiperLight/SwiperLight";
 import Picture from "../../../images/Picture/Picture";
-import {Link} from "react-router-dom";
+import {Link} from "gatsby";
 
 const TrainingsFeedbacks = ({className}: { className?: string }) => {
     const [section] = useCommonSection('otzyvy')

@@ -1,6 +1,6 @@
 import React, {createRef, useEffect, useLayoutEffect, useState} from 'react';
 import {useGlobalContext} from "../../../../context/context";
-import styles from './HistoryHistory.module.css'
+import * as styles from './HistoryHistory.module.css'
 import {stack} from "../../../../hooks/useClassName";
 import SwiperLight from "../../../lowleveled/SwiperLight/SwiperLight";
 import {InView} from "react-intersection-observer";

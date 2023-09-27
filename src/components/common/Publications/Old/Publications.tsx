@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import styles from './Publications.module.css'
+import * as styles from './Publications.module.css'
 import {stack} from "../../../../hooks/useClassName";
 import {useGlobalContext} from "../../../../context/context";
 import {sortDate} from "../../../../hooks/useSortDate";
 import Picture from "../../../images/Picture/Picture";
-import {Link} from "react-router-dom";
+import {Link} from "gatsby";
 import {PublicationsNode} from "../../../../types/data";
 
 const Publications = () => {

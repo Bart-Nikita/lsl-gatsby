@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useCommonSection} from "../../../../hooks/useCommonSection";
 import {stack} from "../../../../hooks/useClassName";
-import styles from "./FeedbacksSocial.module.css";
+import * as styles from "./FeedbacksSocial.module.css";
 import Picture from "../../../images/Picture/Picture";
 import SwiperLight from "../../../lowleveled/SwiperLight/SwiperLight";
 

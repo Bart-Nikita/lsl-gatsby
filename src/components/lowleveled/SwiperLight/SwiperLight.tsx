@@ -9,7 +9,7 @@ import React, {
     createRef
 } from 'react';
 import {stack} from "../../../hooks/useClassName";
-import styles from './SwiperLight.module.css'
+import * as styles from './SwiperLight.module.css'
 import {InView} from 'react-intersection-observer'
 
 type SwiperProps = {

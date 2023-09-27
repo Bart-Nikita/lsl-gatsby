@@ -25,19 +25,42 @@ const FeedbacksPage: React.FC<PageProps<Queries.FeedbacksPageQuery>> = ({ data }
 export default FeedbacksPage
 
 export const query = graphql` query FeedbacksPage {
-  site {
+   site {
     siteMetadata {
       title
       url
     }
   }
+  allWpMenuItem(filter: {parentId: {eq: null}}, sort: {order: ASC}) {
+    nodes {
+        label
+        url
+        childItems {
+            nodes {
+                url
+                label
+                childItems {
+                    nodes {
+                        url
+                        label
+                    }
+                }
+            }
+        }
+    }
+}
   wpPage(slug: {eq: "otzyvy"}) {
     metaData {
       metaOpisanie
       metaZagolovok
     }
   }
-  
+  allFile {
+    nodes {
+      name
+      publicURL
+    }
+  }
   allWpCommonSection {
     nodes {
       slug

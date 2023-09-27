@@ -25,10 +25,34 @@ const ContactsPage: React.FC<PageProps<Queries.ContactsPageQuery>> = ({ data }: 
 export default ContactsPage
 
 export const query = graphql` query ContactsPage {
-  site {
+   site {
     siteMetadata {
       title
       url
+    }
+  }
+  allWpMenuItem(filter: {parentId: {eq: null}}, sort: {order: ASC}) {
+    nodes {
+        label
+        url
+        childItems {
+            nodes {
+                url
+                label
+                childItems {
+                    nodes {
+                        url
+                        label
+                    }
+                }
+            }
+        }
+    }
+}
+  allFile {
+    nodes {
+      name
+      publicURL
     }
   }
   wpPage(slug: {eq: "kontakty"}) {

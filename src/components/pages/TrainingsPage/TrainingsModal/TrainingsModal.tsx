@@ -1,5 +1,5 @@
 import React, { createRef, MouseEventHandler, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import styles from './TrainingsModal.module.css'
+import * as styles from './TrainingsModal.module.css'
 import { useGlobalContext } from "../../../../context/context";
 import { stack } from "../../../../hooks/useClassName";
 import Chrest from "../../../svg/Chrest";
@@ -9,10 +9,8 @@ import { TrainingGallereya } from "../../../../types/data";
 import { typo } from "../../../../tipograf";
 import { InView } from "react-intersection-observer";
 import trainingsSelect from "../TrainingsSelect/TrainingsSelect";
-import FocusTrap from 'focus-trap-react'
 import ReactModal from 'react-modal';
-import App from "../../../../App";
-import { root } from "../../../../main";
+
 
 
 type GalleryItem = TrainingGallereya

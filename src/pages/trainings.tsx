@@ -25,10 +25,34 @@ const TrainingsPage: React.FC<PageProps<Queries.TrainingsPageQuery>> = ({ data }
 export default TrainingsPage
 
 export const query = graphql` query TrainingsPage {
-  site {
+   site {
     siteMetadata {
       title
       url
+    }
+  }
+  allWpMenuItem(filter: {parentId: {eq: null}}, sort: {order: ASC}) {
+    nodes {
+        label
+        url
+        childItems {
+            nodes {
+                url
+                label
+                childItems {
+                    nodes {
+                        url
+                        label
+                    }
+                }
+            }
+        }
+    }
+}
+  allFile {
+    nodes {
+      name
+      publicURL
     }
   }
   wpPage(slug: {eq: "trenazhery"}) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './BlogPostContent.module.css'
+import * as styles from './BlogPostContent.module.css'
 import {useGlobalContext} from "../../../../context/context";
 import {stack} from "../../../../hooks/useClassName";
 import Online from "../../../common/Online/Online";

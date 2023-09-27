@@ -1,5 +1,5 @@
 import React, {createRef, useEffect, useState} from 'react';
-import styles from './HistorySended.module.css'
+import * as styles from './HistorySended.module.css'
 import {stack} from "../../../../hooks/useClassName";
 import {useGlobalContext} from "../../../../context/context";
 import history from "../../../../pages/History";

@@ -1,5 +1,5 @@
 import React, {createRef, Dispatch, RefObject, SetStateAction, useEffect, useLayoutEffect, useState} from 'react';
-import styles from './Picture.module.css'
+import * as styles from './Picture.module.css'
 import {stack} from "../../../hooks/useClassName";
 import {useResize} from "../../../hooks/useResize";
 import {useGlobalContext} from "../../../context/context";

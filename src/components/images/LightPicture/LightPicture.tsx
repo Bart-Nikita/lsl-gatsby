@@ -2,7 +2,8 @@ import {createRef, Dispatch, SetStateAction, useLayoutEffect} from "react";
 import {useGlobalContext} from "../../../context/context";
 import {useResize} from "../../../hooks/useResize";
 import {stack} from "../../../hooks/useClassName";
-import styles from './LightPicture.module.css'
+import * as styles from './LightPicture.module.css'
+import React from 'react'
 
 type PictureProps = {
     desktopIImage: string,

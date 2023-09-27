@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {stack} from "../../../hooks/useClassName";
-import styles from './LeaveContacts.module.css'
+import * as styles from './LeaveContacts.module.css'
 import ReactInputMask from "react-input-mask";
 import {useMutation} from "@apollo/client";
 import {SEND_MAIL} from "../../../gql/mutations/sendMail";

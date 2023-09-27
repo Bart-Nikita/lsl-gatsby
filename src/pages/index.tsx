@@ -24,12 +24,26 @@ export const Head = ({ data }: PageProps<Queries.IndexPageQuery>) => {
 }
 
 const IndexPage: React.FC<PageProps<Queries.IndexPageQuery>> = ({ data }: PageProps<Queries.IndexPageQuery>) => {
-
+  //@ts-ignore
   const state = globalState(data)
 
   return (
     <GlobalContext.Provider value={state}>
-      <Layout>Home Page</Layout>
+      <Layout>
+        <HomeHero></HomeHero>
+        <HomeTrainings></HomeTrainings>
+        <HomeSafety></HomeSafety>
+        <Steps></Steps>
+        <Messenger></Messenger>
+        <HomeAbout></HomeAbout>
+        <Publications></Publications>
+        <HomeValues></HomeValues>
+        <Blog title={data?.wpPage?.main?.mainBlogZagolovok || ''} remark={data?.wpPage?.main?.mainBlogRemarka || ''}
+          linkHref={data?.wpPage?.main?.mainBlogAdresSsylki || ''}
+          linkText={data?.wpPage?.main?.mainBlogTekstSsylki || ''}></Blog>
+        <Feedbacks></Feedbacks>
+        <Support></Support>
+      </Layout>
     </GlobalContext.Provider>
   )
 }
@@ -37,13 +51,56 @@ const IndexPage: React.FC<PageProps<Queries.IndexPageQuery>> = ({ data }: PagePr
 export default IndexPage
 
 export const query = graphql` query IndexPage {
-  site {
+   site {
     siteMetadata {
       title
       url
     }
   }
+  allWpMenuItem(filter: {parentId: {eq: null}}, sort: {order: ASC}) {
+    nodes {
+        label
+        url
+        childItems {
+            nodes {
+                url
+                label
+                childItems {
+                    nodes {
+                        url
+                        label
+                    }
+                }
+            }
+        }
+    }
+}
+  allWpMenuItem(filter: {parentId: {eq: null}}, sort: {order: ASC}) {
+    nodes {
+        label
+        url
+        childItems {
+            nodes {
+                url
+                label
+                childItems {
+                    nodes {
+                        url
+                        label
+                    }
+                }
+            }
+        }
+    }
+}
+  allFile {
+    nodes {
+      name
+      publicURL
+    }
+  }
   wpPage(slug: {eq: "glavnaya"}) {
+    slug
     metaData {
       metaOpisanie
       metaZagolovok
@@ -244,7 +301,6 @@ export const query = graphql` query IndexPage {
         }
       }
       footer {
-        fieldGroupName
         footerAdresSajta
         footerContactsZagolovok
         footerKopirajt
@@ -260,6 +316,24 @@ export const query = graphql` query IndexPage {
         footerLogotip {
           altText
           sourceUrl
+        }
+        footerLogotipMobile {
+          altText
+          sourceUrl
+        }
+        footerPolitikaKonfidenczialnosti {
+          mediaItemUrl
+        }
+        footerPublichnayaOferta {
+          mediaItemUrl
+        }
+        footerSocialSpisok {
+          footerSocialAdres
+          footerSocialTekst
+          footerSocialIkonka {
+            altText
+            sourceUrl
+          }
         }
       }
       header {

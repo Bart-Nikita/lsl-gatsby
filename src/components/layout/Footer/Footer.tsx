@@ -1,16 +1,16 @@
 import React, {useEffect} from 'react';
 import {useCommonSection} from "../../../hooks/useCommonSection";
 import {useGlobalContext} from "../../../context/context";
-import styles from './Footer.module.css'
+import * as styles from './Footer.module.css'
 import {stack} from "../../../hooks/useClassName";
-import {Link} from "react-router-dom";
+import {Link} from "gatsby";
 import Logo from "../../images/Logo/Logo";
 import ToTopButton from "../../common/ToTopButton/ToTopButton";
 
 const Footer = () => {
 
     const [section] = useCommonSection("podval")
-    const {data, isNewContainer} = useGlobalContext()
+    const {menuItems, isNewContainer} = useGlobalContext()
 
     if (!section) return null
 
@@ -20,52 +20,52 @@ const Footer = () => {
             <ToTopButton className={styles.buttonToTop}></ToTopButton>
             <div className={styles.footer__body}>
                 <div className={styles.logo}>
-                    <Logo className={styles.logo__link} mobileUrl={section?.footer?.footerLogotipMobile?.sourceUrl}
-                          desktopUrl={section?.footer?.footerLogotip?.sourceUrl}
-                          alt={section?.footer?.footerLogotip?.altText}></Logo>
+                    <Logo className={styles.logo__link} mobileUrl={section?.footer?.footerLogotipMobile?.sourceUrl || ''}
+                          desktopUrl={section?.footer?.footerLogotip?.sourceUrl || ''}
+                          alt={section?.footer?.footerLogotip?.altText || ''}></Logo>
                     <p className={stack(styles.text, styles.logo__copy)}
-                       dangerouslySetInnerHTML={{__html: section?.footer?.footerKopirajt}}></p>
+                       dangerouslySetInnerHTML={{__html: section?.footer?.footerKopirajt || ''}}></p>
                 </div>
                 <div className={styles.doc}>
-                    <a href={section?.footer?.footerPublichnayaOferta?.mediaItemUrl}
+                    <a href={section?.footer?.footerPublichnayaOferta?.mediaItemUrl || ''}
                        className={stack('link', styles.text, styles.doc__item)}
                        target={"_blank"}>Публичная оферта</a>
-                    <a href={section?.footer?.footerPolitikaKonfidenczialnosti?.mediaItemUrl}
+                    <a href={section?.footer?.footerPolitikaKonfidenczialnosti?.mediaItemUrl || ''}
                        className={stack('link', styles.text, styles.doc__item)}
                        target={"_blank"}>Политика конфиденциальности</a>
                 </div>
 
                 <div className={styles.nav}>
                     <h3 className={stack(styles.title, styles.nav__title)}
-                        dangerouslySetInnerHTML={{__html: section?.footer?.footerMenuZagolovok}}></h3>
+                        dangerouslySetInnerHTML={{__html: section?.footer?.footerMenuZagolovok || ''}}></h3>
                     <ul className={styles.nav__list}>
-                        {data?.menu?.menuItems?.nodes?.map((item, index) => <li key={item.label}
+                        {menuItems?.map((item, index) => <li key={item.label}
                                                                                 className={styles.li}>
                             <Link className={stack('nav-link', styles.text, styles.nav__link)}
-                                  to={item.url}>{item.label}</Link>
+                                  to={item?.url || ''}>{item.label}</Link>
                         </li>)}
                     </ul>
                 </div>
 
                 <div className={styles.social}>
                     <h3 className={stack(styles.title, styles.social__title)}
-                        dangerouslySetInnerHTML={{__html: section?.footer?.footerSocialZagolovok}}></h3>
+                        dangerouslySetInnerHTML={{__html: section?.footer?.footerSocialZagolovok || ''}}></h3>
                     <ul className={styles.social__list}>
                         {section?.footer?.footerSocialSpisok?.map((item, index) => <li className={styles.li}
                                                                                        key={index}>
                             <a
-                                href={item.footerSocialAdres}
+                                href={item?.footerSocialAdres || ''}
                                 target={"_blank"}
                                 className={stack('link', styles.social__item)}
                             >
-                                <img className={styles.social__icon} src={item?.footerSocialIkonka?.sourceUrl}
-                                     alt={item?.footerSocialIkonka?.altText}/>
-                                <p className={stack(styles.text, styles.social__text)}>{item.footerSocialTekst}</p>
+                                <img className={styles.social__icon} src={item?.footerSocialIkonka?.sourceUrl || ''}
+                                     alt={item?.footerSocialIkonka?.altText || ''}/>
+                                <p className={stack(styles.text, styles.social__text)}>{item?.footerSocialTekst|| ''}</p>
                             </a>
                         </li>)}
                     </ul>
                     <p className={stack(isNewContainer ? 'remark-new' : 'remark', styles.social__remark)}
-                       dangerouslySetInnerHTML={{__html: section?.footer?.footerSocialRemarka}}></p>
+                       dangerouslySetInnerHTML={{__html: section?.footer?.footerSocialRemarka|| ''}}></p>
                 </div>
 
                 <div className={styles.contacts}>
@@ -74,9 +74,9 @@ const Footer = () => {
                         {section?.footer?.footerContactsSpisok?.map((item, index) => <li key={index}
                                                                                          className={styles.li}>
                             <a className={stack('link', styles.contacts__link)}
-                               href={item.footerContactsHref.split(' ').join('').split('−').join('').split('(').join('').split(')').join('')}>
-                                <p className={stack(styles.text, styles.contacts__text)}>{item.footerContactsTekst}</p>
-                                {item.footerContactsEstKommentarij === "true" &&
+                               href={item?.footerContactsHref?.split(' ').join('').split('−').join('').split('(').join('').split(')').join('')}>
+                                <p className={stack(styles.text, styles.contacts__text)}>{item?.footerContactsTekst}</p>
+                                {item?.footerContactsEstKommentarij === "true" &&
                                     <p className={styles.contacts__description}> {item.footerContactsKommentarij}</p>}
 
                             </a>

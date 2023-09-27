@@ -1,10 +1,10 @@
 import React, {useLayoutEffect, useState} from 'react';
-import styles from './BlogPostMore.module.css'
+import * as styles from './BlogPostMore.module.css'
 import {stack} from "../../../../hooks/useClassName";
 import {useGlobalContext} from "../../../../context/context";
 import SwiperLight from "../../../lowleveled/SwiperLight/SwiperLight";
 import {usePosts} from "../../../../hooks/usePosts";
-import {Link} from "react-router-dom";
+import {Link} from "gatsby";
 import Picture from "../../../images/Picture/Picture";
 
 const BlogPostMore = () => {

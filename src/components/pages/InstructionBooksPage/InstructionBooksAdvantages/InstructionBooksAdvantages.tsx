@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './InstructionBooksAdvantages.module.css'
+import * as styles from './InstructionBooksAdvantages.module.css'
 import {useGlobalContext} from "../../../../context/context";
 import {stack} from "../../../../hooks/useClassName";
 import {typo} from "../../../../tipograf";

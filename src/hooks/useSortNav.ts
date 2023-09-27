@@ -1,10 +1,9 @@
 import {useEffect, useState} from "react";
-import {MenuItemsNode} from "../types/data";
 
-export const useSortNav = (arg: MenuItemsNode[] | undefined) => {
-    const [arr, setArr] = useState<MenuItemsNode[]>([])
+export const useSortNav = (arg: Queries.WpMenuItem[] | undefined | null) => {
+    const [arr, setArr] = useState<Queries.WpMenuItem[]>([])
     useEffect(() => {
-        if(arg) {setArr(arg.sort((a,b) => a.order > b.order ? 1 : -1))}
+        if(arg) {setArr(arg.sort((a,b) => a?.order > b?.order ? 1 : -1))}
     }, [arg])
     return [arr]
 }

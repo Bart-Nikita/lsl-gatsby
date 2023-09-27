@@ -1,6 +1,7 @@
 .body {
-    @apply flex justify-between
-    xl:block
+    @apply flex justify-between mb-[240px]
+    xl:block xl:mb-[160px]
+    md:mb-[70px]
 }
 
 .title {

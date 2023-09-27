@@ -17,7 +17,15 @@ const config: GatsbyConfig = {
     options: {
       "url":process.env.WPGRAPHQL_URL || "https://lsl-test.bart-group.com/back/graphql"
     }
-  }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-postcss"]
+  },
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+
+    },
+}, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-postcss"]
 };
 
 export default config;

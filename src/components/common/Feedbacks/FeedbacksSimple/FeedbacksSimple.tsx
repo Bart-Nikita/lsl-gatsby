@@ -1,6 +1,6 @@
 import React, {createRef, useEffect, useLayoutEffect, useState} from 'react';
 import {useCommonSection} from "../../../../hooks/useCommonSection";
-import styles from './FeedbacksSimple.module.css'
+import * as styles from './FeedbacksSimple.module.css'
 import {stack} from "../../../../hooks/useClassName";
 import Picture from "../../../images/Picture/Picture";
 import SwiperLight from "../../../lowleveled/SwiperLight/SwiperLight";

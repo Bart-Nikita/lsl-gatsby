@@ -9,7 +9,7 @@
 }
 
 .list {
-    @apply flex justify-between mb-[60px] gap-[50px]
+    @apply grid grid-cols-3 justify-between mb-[60px] gap-[50px]
      mb-[38px]  gap-[30px]
     xl:mb-[20px] xl:gap-[18px]
     xl:flex-wrap xl:gap-[20px]

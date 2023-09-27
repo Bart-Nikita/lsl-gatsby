@@ -1,4 +1,4 @@
-import styles from './InstructionsBooksModal.module.css'
+import * as styles from './InstructionsBooksModal.module.css'
 import React, { createRef, MouseEventHandler, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useGlobalContext } from "../../../../context/context";
 import { stack } from "../../../../hooks/useClassName";

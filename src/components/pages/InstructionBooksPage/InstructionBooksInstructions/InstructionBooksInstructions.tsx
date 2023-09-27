@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './InstructionBooksInstructions.module.css'
+import * as styles from './InstructionBooksInstructions.module.css'
 import {useGlobalContext} from "../../../../context/context";
 import {stack} from "../../../../hooks/useClassName";
 import LightPicture from "../../../images/LightPicture/LightPicture";

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './TrainingsDelivery.module.css'
+import * as styles from './TrainingsDelivery.module.css'
 import {stack} from "../../../../hooks/useClassName";
 import {useGlobalContext} from "../../../../context/context";
 const TrainingsDelivery = () => {

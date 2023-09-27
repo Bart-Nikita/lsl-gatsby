@@ -1,5 +1,5 @@
 import React, {createRef, useEffect, useLayoutEffect, useState} from 'react';
-import styles from './InstructionBooksSteps.module.css'
+import * as styles from './InstructionBooksSteps.module.css'
 import {useGlobalContext} from "../../../../context/context";
 import {stack} from "../../../../hooks/useClassName";
 import {typo} from "../../../../tipograf";

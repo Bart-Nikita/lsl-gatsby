@@ -1,5 +1,5 @@
 import React, { ChangeEvent, createRef, useEffect, useState } from 'react'
-import styles from './InstructionsBooksFormModal.module.css'
+import * as styles from './InstructionsBooksFormModal.module.css'
 import { stack } from '../../../../hooks/useClassName';
 import { useGlobalContext } from '../../../../context/context';
 import Chrest from '../../../svg/Chrest';
