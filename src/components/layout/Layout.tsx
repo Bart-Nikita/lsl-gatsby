@@ -15,7 +15,7 @@ import InstructionsBooksFormModal from '../pages/InstructionBooksPage/Instructio
 import InstructionsBooksModal from '../pages/InstructionBooksPage/InstructionsBooksModal/InstructionsBooksModal';
 
 type LayoutProps = {
-    children: ReactElement | ReactNode,
+    children: ReactElement | ReactNode
 }
 
 // const ModalLayer = () => {
@@ -81,7 +81,7 @@ type LayoutProps = {
 //         <Modal open={isInstructionBooksModalOpen} setOpen={onInstructionsModalClose}>
 //             {isInstructionBooksModalOpen && <InstructionsBooksModal></InstructionsBooksModal>}
 //         </Modal>
-    
+
 //     </FixedLayer>
 // }
 
@@ -94,7 +94,11 @@ const Layout = memo(({ children }: LayoutProps) => {
         historyLength,
         isTrainingFormModalOpen,
         isTrainingModalOpen,
+        mainPage,
+        setMainPage
     } = useGlobalContext()
+
+   
     useEffect(() => {
         document.body.addEventListener('focusin', (e) => {
             // console.log(e.target)
@@ -103,7 +107,9 @@ const Layout = memo(({ children }: LayoutProps) => {
     console.log('layout')
 
     return (
-        <div></div>
+        <div>
+            {children}
+        </div>
     )
 
     // return (

@@ -3,7 +3,7 @@ import type { HeadFC, PageProps } from "gatsby"
 
 import { graphql } from "gatsby"
 import Seo from "../components/seo/Seo"
-import GlobalContextLay from "../components/common/Context"
+// import GlobalContextLay from "../components/common/Context"
 import HomeTrainings from "../components/pages/HomePage/HomeTrainings/HomeTrainings"
 import HomeSafety from "../components/pages/HomePage/HomeSafety/HomeSafety"
 import Steps from "../components/common/Steps/Steps"
@@ -16,7 +16,7 @@ import Blog from "../components/common/Blog/Blog"
 import Feedbacks from "../components/common/Feedbacks/Feedbacks"
 import Support from "../components/common/Support/Support"
 import Publications from "../components/common/Publications/Publications"
-import { useGlobalContext } from "../context/context"
+import { GlobalContext, globalState, useGlobalContext } from "../context/context"
 
 export const Head = ({ data }: PageProps<Queries.IndexPageQuery>) => {
   return (
@@ -24,34 +24,13 @@ export const Head = ({ data }: PageProps<Queries.IndexPageQuery>) => {
 }
 
 const IndexPage: React.FC<PageProps<Queries.IndexPageQuery>> = ({ data }: PageProps<Queries.IndexPageQuery>) => {
-  const { setMainPage, setCommonSections } = useGlobalContext()
 
-  React.useEffect(() => {
-    if (data) {
-  setMainPage(data)
-    //@ts-ignore
-  setCommonSections(data?.allWpCommonSection?.nodes)
-    }
-  }, [data])
+  const state = globalState(data)
+
   return (
-      <div>
-         {/* <Layout>
-        <HomeHero></HomeHero>
-        <HomeTrainings></HomeTrainings>
-        <HomeSafety></HomeSafety>
-        <Steps></Steps>
-        <Messenger></Messenger>
-        <HomeAbout></HomeAbout>
-        <Publications></Publications>
-        <HomeValues></HomeValues>
-        <Blog title={data?.wpPage?.main?.mainBlogZagolovok || ''} remark={data?.wpPage?.main?.mainBlogRemarka || ''}
-          linkHref={data?.wpPage?.main?.mainBlogAdresSsylki || ''}
-          linkText={data?.wpPage?.main?.mainBlogTekstSsylki || ''}></Blog>
-        <Feedbacks></Feedbacks>
-        <Support></Support>
-      </Layout> */}
-      </div>
-     
+    <GlobalContext.Provider value={state}>
+      <Layout>Home Page</Layout>
+    </GlobalContext.Provider>
   )
 }
 

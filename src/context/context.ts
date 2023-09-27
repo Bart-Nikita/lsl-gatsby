@@ -50,7 +50,7 @@ export type GlobalContextType = {
 }
 
 
-export const globalState = (): GlobalContextType => {
+export const globalState = (data: any): GlobalContextType => {
     const [title, setTitle] = useState<string>()
     const [description, setDescription] = useState<string>()
     const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -104,11 +104,11 @@ export const globalState = (): GlobalContextType => {
 
     }, [])
 
-    useEffect(() => {
-        setHistoryLength(prev => prev + 1)
-        scrollTo(0, 0)
+    // useEffect(() => {
+    //     setHistoryLength(prev => prev + 1)
+    //     scrollTo(0, 0)
 
-    }, [location.href])
+    // }, [location.href])
 
     useEffect(() => {
         // if (isTrainingFormModalOpen || isNavModalOpen || isTrainingModalOpen || isInstructionBooksFormModalOpen || isInstructionBooksHeroFormModalOpen || isInstructionBooksModalOpen) {
@@ -119,6 +119,12 @@ export const globalState = (): GlobalContextType => {
         // }
     }, [isTrainingFormModalOpen, isNavModalOpen, isTrainingModalOpen, isInstructionBooksFormModalOpen, isInstructionBooksHeroFormModalOpen, isInstructionBooksModalOpen]);
 
+
+    useEffect(() => {
+        console.log(data)
+        console.log(data?.wpPage?.main?.mainHeroZagolovok)
+
+    }, [data])
 
     return {
         title,
