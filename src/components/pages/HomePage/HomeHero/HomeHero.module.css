@@ -10,7 +10,7 @@
 .content {
     @apply border-[5px] border-yellow-400 w-[calc(((100%-60px)/2)-9px)]
      border-[4px]  w-[calc((100%-30px)/2)]
-    xl:border-[2px] xl:w-[calc((100%-20px)/2)]
+    xl:border-[2px] xl:w-[calc((100%-20px)/2)] xl:h-fit
     md:w-full
 }
 
@@ -70,8 +70,8 @@
 .slider {
     @apply w-[calc((100%-60px)/2)] shrink-0 rounded-[33px] overflow-hidden relative  flex-grow
      w-[calc((100%-30px)/2)]  rounded-[25px]
-     xl:rounded-[12px] xl:w-[calc((100%-20px)/2)]
-    md:w-full md:h-[230px]
+     xl:rounded-[12px] xl:w-[calc((100%-20px)/2)] xl:h-[39vw]
+    md:w-full md:h-[72vw]
 }
 
 .slider__carousel {

@@ -35,15 +35,15 @@ const HistoryHistory = () => {
     return (
         <div className={stack('container-new', 'section-mb', styles.body)}>
             <InView onChange={value => setIsInView(value)}></InView>
-            <h2 className={stack('text-large', styles.title)}>{historyPage?.history.historyHistoryZagolovok}</h2>
+            <h2 className={stack('text-large', styles.title)}>{historyPage?.wpPage?.history?.historyHistoryZagolovok}</h2>
             <SwiperLight>
                 <ul className={styles.list}>
-                    {historyPage?.history.historyHistoryList.map((item, index) => {
+                    {historyPage?.wpPage?.history?.historyHistoryList?.map((item, index) => {
 
                         return <li ref={listItem} key={index} className={styles.item}>
                             <div className={styles.item__top}>
                                 <p className={stack('text-large', styles.item__year)}>{item.god}</p>
-                                {index + 1 !== historyPage?.history.historyHistoryList.length &&
+                                {index + 1 !== historyPage?.wpPage?.history?.historyHistoryList?.length &&
                                     <div className={styles.decor}>
                                         {index === 0 ? <div ref={decorItem} className={styles.decor__item}></div> :
                                             <div className={styles.decor__item}></div>}
@@ -51,7 +51,7 @@ const HistoryHistory = () => {
                                                                                                      className={styles.decor__item}></div>)}
                                     </div>}
                             </div>
-                            <div className={stack('text-simple', styles.text)} dangerouslySetInnerHTML={{__html: item.tekst}}></div>
+                            <div className={stack('text-simple', styles.text)} dangerouslySetInnerHTML={{__html: item?.tekst || ''}}></div>
                         </li>
                     })}
                 </ul>

@@ -47,7 +47,7 @@
 
 
 .body .list .list__item .item__image {
-    @apply w-full  md:h-[310px] md:mb-[10px] sm:mb-[5px] sm:h-[230px]  !important
+    @apply w-full  xl:h-[40vw] md:mb-[10px] md:h-[80vw]   
 }
 
 .picture__image {
@@ -57,8 +57,8 @@
 .item__image {
     @apply mb-[8px] rounded-[32px] overflow-hidden h-[520px] border-[5px] border-transparent transition-all box-border
      rounded-[24px]  mb-[15px]  h-[390px]
-    xl:rounded-[18px] xl:h-[284px] xl:mb-[12px] xl:border-[3px]
-    xl:rounded-[12px] xl:h-[250px] xl:shrink-0 xl:mb-[10px]
+      xl:mb-[12px] xl:border-[3px] xl:h-[40vw]
+    xl:rounded-[12px] md:h-[80vw] xl:shrink-0 
     md:border-[0px]
 }
 
@@ -68,8 +68,7 @@
 
 .list .list__item:nth-child(1) .item__image, .list .list__item:nth-child(2) .item__image {
     @apply h-[700px]  h-[530px]
-    xl:h-[385px]
-    xl:h-[340px] xl:w-[467px] xl:mb-[0px]
+    xl:h-[80vw] xl:w-full xl:mb-[0px]
 }
 
 .list .item__title, .list .item__price {

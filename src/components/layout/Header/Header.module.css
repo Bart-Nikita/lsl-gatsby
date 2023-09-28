@@ -1,7 +1,7 @@
 
 
 .body{
-    @apply
+    @apply relative z-[999]
     mt-[10px] mb-[40px]
     xl:mb-[23px]
     xl:mb-[33px]
@@ -39,7 +39,7 @@
     @apply flex items-center
     gap-[30px]
     xl:gap-[15px]
-    md:absolute md:top-[9px] md:right-[0px] md:rounded-[8px] md:p-[26px] md:pt-[40px] md:overflow-hidden md:flex-col md:items-start md:bg-yellow-200 md:w-[250px]
+    md:absolute md:top-[9px] md:right-[20px] md:rounded-[8px] md:p-[26px] md:pt-[40px] md:overflow-hidden md:flex-col md:items-start md:bg-yellow-200 md:w-[250px]
 }
 
 .nav__close {
@@ -65,7 +65,7 @@
 
 
  .nav__sublist {
-    @apply relative flex  items-center transition-all
+    @apply relative flex  items-center transition-all z-[100]
     gap-[10px]
     xl:gap-[8px]
     md:mb-[-15px]

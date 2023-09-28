@@ -5,7 +5,6 @@ import { useGlobalContext } from '../../../../context/context';
 import Chrest from '../../../svg/Chrest';
 import ArrowDown from '../../../svg/ArrowDown';
 import ReactInputMask from 'react-input-mask';
-import { TrainingsNode } from '../../../../types/data';
 import { useTrainings } from '../../../../hooks/useTrainings';
 import { useInputState, useInputStateType } from '../../../../hooks/useInputState';
 import { InView } from 'react-intersection-observer';
@@ -27,13 +26,13 @@ const emailTypeError = 'Email должен содержать "@" и "."'
 const numberTypeError = 'Поле должно содержать только цифры'
 
 
-const FormInput = (item: InputItem) => {
+const FormInput = (item: InputItem & {dialog?: HTMLDialogElement}) => {
 
     if (item.id === 'training') {
-        const [trainings] = useTrainings()
         const [value, setValue] = useState<string>()
         const [searchValue, setSearchValue] = useState<string>()
-        const [filteredArr, setFilteredArr] = useState<TrainingsNode[]>()
+        const [filteredArr, setFilteredArr] = useState<Queries.WpTraining[]>()
+        const {trainings, isMobile} = useGlobalContext()
 
         useEffect(() => {
             if (value !== undefined) {
@@ -46,14 +45,14 @@ const FormInput = (item: InputItem) => {
 
         useEffect(() => {
             if (!!searchValue) {
-                if (trainings.some(item => item.title === searchValue)) {
-                    setFilteredArr(trainings)
+                if (trainings?.some(item => item.title === searchValue)) {
+                    trainings &&  setFilteredArr(trainings)
                     return
                 }
                 setValue('')
-                setFilteredArr(trainings.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase())))
+                setFilteredArr(trainings?.filter(item => item?.title?.toLowerCase().includes(searchValue.toLowerCase())))
             } else {
-                setFilteredArr(trainings)
+                trainings &&  setFilteredArr(trainings)
             }
         }, [searchValue, trainings]);
 
@@ -61,7 +60,7 @@ const FormInput = (item: InputItem) => {
             setSearchValue(e.target.value)
         }
 
-        const onItemClick = (item: TrainingsNode) => {
+        const onItemClick = (item: Queries.WpTraining) => {
 
             setValue(item.title || '')
             setSearchValue(item.title || '')
@@ -78,7 +77,7 @@ const FormInput = (item: InputItem) => {
 
 
         const onInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-            if (isSublistOpen && !!filteredArr.length && e.key === "Tab") {
+            if (isSublistOpen && !!filteredArr?.length && e.key === "Tab") {
                 // ref.current.focus()
             }
         }
@@ -92,7 +91,7 @@ const FormInput = (item: InputItem) => {
             }
         }
 
-        const onItemKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>, item: TrainingsNode) => {
+        const onItemKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>, item: Queries.WpTraining) => {
             if (e.key === "Enter" || e.key === "Space") {
                 e.stopPropagation()
                 e.preventDefault()
@@ -100,17 +99,43 @@ const FormInput = (item: InputItem) => {
             }
         }
 
-        return <div className={stack(styles.form__block, item.input.error && styles.error)} onKeyDown={onBlockKeyDown}
-            onClick={() => setIsSublistOpen(prev => !prev)} onBlur={() => setIsSublistOpen(false)}>
+        const block = createRef<HTMLDivElement>()
+        const [hover, setHover] = useState(false)
+        const [clickCounter, setClickCOunter] = useState(0)
+
+        useEffect(() => {
+            if (item?.dialog && block?.current) {
+                
+                item?.dialog?.addEventListener('mousedown', (e) => {
+
+                    setClickCOunter(prev => prev + 1)
+                })
+                return () => {
+                    item?.dialog?.removeEventListener('mousedown', (e) => {
+                        setClickCOunter(prev => prev + 1)
+                    })
+                }
+            }
+        }, [item?.dialog, block?.current])
+
+        useEffect(() => {
+            if (!hover) {
+                !isMobile &&  setIsSublistOpen(false)
+            }
+            console.log('hi')
+        }, [clickCounter])
+
+        return <div  className={stack(styles.form__block, item.input.error && styles.error)} onKeyDown={onBlockKeyDown}
+        onMouseEnter={() =>!isMobile && setHover(true)} onMouseLeave={() =>!isMobile &&  setHover(false)}>
             <label className={styles.label} htmlFor={item.id}>{item.label}</label>
-            <input id={item.id} onKeyDown={onInputKeyDown} className={styles.input} type="text"
+            <input onClick={() => setIsSublistOpen(prev => !prev)} id={item.id} onKeyDown={onInputKeyDown} className={styles.input} type="text"
                 placeholder={item.placeholder}
                 onChange={onChange} value={searchValue || ''} />
             {item.input.error && <span className={styles.error__text}>{item.input.error}</span>}
             {isSublistOpen && <ul className={styles.sublist}>
                 {filteredArr?.map((item, index) => <li key={index} className={styles.sublist__item}>
                     <button {...index === 0 ? { ref } : {}} onKeyDown={e => onItemKeyDown(e, item)}
-                        onClick={(e) => (e.stopPropagation(), onItemClick(item))}
+                        onClick={(e) => onItemClick(item)}
                         className={styles.sublist__button}>{item.title}</button>
                 </li>)}
             </ul>}
@@ -215,7 +240,7 @@ export default function InstructionsBooksFormModal() {
 
     const onSubmit = () => {
         const inputArr = inputsGroup
-        let error: boolean;
+        let error: boolean | undefined;
 
         inputArr.forEach(item => {
             if (item.input.value === '') {
@@ -270,9 +295,11 @@ export default function InstructionsBooksFormModal() {
         
     }
 
+    const ref = createRef<HTMLDialogElement>()
+
     return (
         <div className={stack(styles.container, !isBottomVisible && styles.light)}>
-            <dialog onClick={e => e.stopPropagation()}
+            <dialog ref={ref} onClick={e => e.stopPropagation()}
                 className={stack(styles.body)}>
                 <button onClick={closeClickHandler} className={styles.close}>
                     <Chrest className={styles.close__svg}></Chrest>
@@ -283,7 +310,7 @@ export default function InstructionsBooksFormModal() {
                 </div>
                 <form onSubmit={e => e.preventDefault()} className={styles.form} action="#">
 
-                    {inputsGroup.map(item => <FormInput key={item.id} {...item}></FormInput>)}
+                    {inputsGroup.map(item => <FormInput dialog={ref.current || undefined} key={item.id} {...item}></FormInput>)}
 
                     <div className={styles.checkbox}>
                         <button type={"button"} onClick={onCheckboxClick}
@@ -291,7 +318,7 @@ export default function InstructionsBooksFormModal() {
                             <div className={styles.checkbox__sign}></div>
                         </button>
                         <p className={styles.checkbox__text}>Я соглашаюсь с&nbsp; <a className={styles.checkbox__link}
-                            href={section?.footer?.footerPolitikaKonfidenczialnosti?.mediaItemUrl}>условиями
+                            href={section?.footer?.footerPolitikaKonfidenczialnosti?.mediaItemUrl || ''}>условиями
                             обработки</a> персональных данных</p>
                     </div>
                     <button type={"submit"} onClick={onSubmit} className={stack(styles.button, 'button-secondary-new')}>Отправить

@@ -1,5 +1,8 @@
-import { createContext, Dispatch, ReactElement, ReactNode, SetStateAction, useContext, useEffect, useState } from "react";
+import { createContext, Dispatch, ReactElement, ReactNode, SetStateAction, useContext, useEffect, useLayoutEffect, useState } from "react";
+import TrainingsModal from "../components/pages/TrainingsPage/TrainingsModal/TrainingsModal";
+import { BlogPostProps } from "../templates/blogPost";
 
+const isBrowser = typeof window !== "undefined"
 
 export type GlobalContextType = {
 
@@ -56,10 +59,13 @@ export type GlobalContextType = {
     setMenuItems: Dispatch<SetStateAction<Queries.WpMenuItem[] | undefined | null>>,
     trainings: Queries.WpTraining[] | undefined | null,
     setTrainings: Dispatch<SetStateAction<Queries.WpTraining[] | undefined | null>>,
+    feedbacksPage: Queries.FeedbacksPageQuery | undefined | null,
+    setFeedbacksPage: Dispatch<SetStateAction<Queries.FeedbacksPageQuery | undefined | null>>,
 }
 
+const doc = typeof window === 'undefined' ? null : window.document
 
-type PageData = Queries.IndexPageQuery & Queries.HistoryPageQuery & Queries.ContactsPageQuery & Queries.BlogPageQuery & Queries.TrainingsPageQuery & Queries.WpBlog
+type PageData = Queries.IndexPageQuery & Queries.HistoryPageQuery & Queries.ContactsPageQuery & Queries.BlogPageQuery & Queries.TrainingsPageQuery & BlogPostProps
 
 export const globalState = (data: PageData): GlobalContextType => {
     const [title, setTitle] = useState<string>()
@@ -79,6 +85,7 @@ export const globalState = (data: PageData): GlobalContextType => {
     const [isTrainingFormModalOpen, setIsTrainingFormModalOpen] = useState(false)
     const [trainingModalData, setTrainingModalData] = useState<Queries.WpTraining | null>(null)
     const [instructionBooksPage, setInstructionBooksPage] = useState<Queries.InstructionsPageQuery>()
+    const [feedbacksPage, setFeedbacksPage] = useState<Queries.FeedbacksPageQuery | null>()
 
     const [isInstructionBooksModalOpen, setIsInstructionBooksModalOpen] = useState(false)
     const [isInstructionBooksFormModalOpen, setIsInstructionBooksFormModalOpen] = useState(false)
@@ -114,44 +121,73 @@ export const globalState = (data: PageData): GlobalContextType => {
 
 
     useEffect(() => {
-        // setIsMobile(document.body.clientWidth < 1024)
+        if (isBrowser) {
+            window.document?.body?.clientWidth && setIsMobile(window.document?.body?.clientWidth < 1024)
 
-    }, [])
+        }
 
-    // useEffect(() => {
+    }, [isBrowser])
+
+    // useLayoutEffect(() => {
     //     setHistoryLength(prev => prev + 1)
     //     scrollTo(0, 0)
 
-    // }, [location.href])
+    // }, [window?.location?.href])
 
     useEffect(() => {
-        // if (isTrainingFormModalOpen || isNavModalOpen || isTrainingModalOpen || isInstructionBooksFormModalOpen || isInstructionBooksHeroFormModalOpen || isInstructionBooksModalOpen) {
-        //     document.body.style.overflowY = 'hidden'
-        //     return () => {
-        //         document.body.style.overflowY = 'auto'
-        //     }
-        // }
-    }, [isTrainingFormModalOpen, isNavModalOpen, isTrainingModalOpen, isInstructionBooksFormModalOpen, isInstructionBooksHeroFormModalOpen, isInstructionBooksModalOpen]);
-
+        if ((isTrainingFormModalOpen || isNavModalOpen || isTrainingModalOpen || isInstructionBooksFormModalOpen || isInstructionBooksHeroFormModalOpen || isInstructionBooksModalOpen) && isBrowser) {
+            window.document.body.classList.add('scroll-prohibited')
+            console.log(doc)
+            return () => {
+                window.document.body.classList.remove('scroll-prohibited')
+            }
+        }
+    }, [isTrainingFormModalOpen, isNavModalOpen, isTrainingModalOpen, isInstructionBooksFormModalOpen, isInstructionBooksHeroFormModalOpen, isInstructionBooksModalOpen, isBrowser]);
 
     useEffect(() => {
         if (data) {
             if (data?.wpPage) {
                 //@ts-ignore
                 data?.wpPage.slug === 'glavnaya' && setMainPage(data)
+                //@ts-ignore
+                data?.wpPage.slug === 'istoriya' && setHistoryPage(data)
+                //@ts-ignore
+                data?.wpPage.slug === 'trenazhery' && setTrainingsPage(data)
+                //@ts-ignore
+                data?.wpPage.slug === 'blog' && setBlogPage(data)
+                //@ts-ignore
+                data?.wpPage.slug === 'kontakty' && setContactPage(data)
+                //@ts-ignore
+                data?.wpPage.slug === 'otzyvy' && setFeedbacksPage(data)
+                //@ts-ignore
+                data?.wpPage.slug === 'obuchayushhie-posobiya' && setInstructionBooksPage(data)
             }
-            //@ts-ignore
-            setCommonSections(data?.allWpCommonSection?.nodes)
-            //@ts-ignore
-            setPosts(data?.allWpBlog?.nodes)
-            //@ts-ignore
-            setPublications(data?.allWpPublication?.nodes)
-            //@ts-ignore
-            setFiles(data?.allFile?.nodes)
-            //@ts-ignore
-            setMenuItems(data?.allWpMenuItem?.nodes)
-            //@ts-ignore
-            setTrainings(data?.allWpTraining?.nodes)
+
+              //@ts-ignore
+              setCommonSections(data?.allWpCommonSection?.nodes)
+              //@ts-ignore
+              setPosts(data?.allWpBlog?.nodes)
+              //@ts-ignore
+              setPublications(data?.allWpPublication?.nodes)
+              //@ts-ignore
+              setFiles(data?.allFile?.nodes)
+              //@ts-ignore
+              setMenuItems(data?.allWpMenuItem?.nodes)
+              //@ts-ignore
+              setTrainings(data?.allWpTraining?.nodes)
+
+            if (data?.pageContext) {
+                console.log(data?.pageContext)
+                //@ts-ignore
+                setCommonSections(data?.pageContext?.commonSections)
+                //@ts-ignore
+                setPosts(data?.pageContext?.allPosts)
+                //@ts-ignore
+                setBlogPostPage(data?.pageContext?.post)
+                setFiles(data?.pageContext?.allFiles)
+                setMenuItems(data?.pageContext?.menuItems)
+            }
+          
         }
 
     }, [data])
@@ -195,7 +231,7 @@ export const globalState = (data: PageData): GlobalContextType => {
         setInstructionBooksPage,
         setIsInstructionBooksFormModalOpen,
         isInstructionBooksModalOpen,
-        setIsInstructionBooksModalOpen, isInstructionBooksHeroFormModalOpen, setIsInstructionBooksHeroFormModalOpen, commonSections, setCommonSections, posts, setPosts, publications, setPublications, files, setFiles, menuItems, setMenuItems, trainings, setTrainings
+        setIsInstructionBooksModalOpen, isInstructionBooksHeroFormModalOpen, setIsInstructionBooksHeroFormModalOpen, commonSections, setCommonSections, posts, setPosts, publications, setPublications, files, setFiles, menuItems, setMenuItems, trainings, setTrainings, feedbacksPage, setFeedbacksPage
     }
 }
 

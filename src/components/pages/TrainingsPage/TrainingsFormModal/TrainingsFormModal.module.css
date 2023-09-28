@@ -10,6 +10,10 @@
 
 }
 
+.on {
+
+}
+
 .gallery {
 
 }
@@ -78,36 +82,36 @@
     md:mb-[32px]
 }
 
-.switch {
+.switcher {
     @apply flex  gap-[10px] cursor-pointer mt-[14px]
 }
 
-.switch:hover .switch__boll, .switch:focus .switch__boll {
+.switcher:hover .switcher__boll, .switcher:focus .switcher__boll {
     @apply bg-[#FEC955]
 }
 
 
-.switch:hover .switch__body, .switch:focus .switch__body {
+.switcher:hover .switcher__body, .switcher:focus .switcher__body {
     @apply border-[#FEC955] [box-shadow:_0px_0px_4px_0px_#FEC955;]
 }
 
-.switch__text {
+.switcher__text {
     @apply max-w-[108px] text-[16px] font-light leading-[1.1]
 }
 
-.switch.on .switch__body {
+.switcher.on .switcher__body {
     @apply justify-end
 }
 
-.switch__body {
+.switcher__body {
     @apply flex items-center justify-start transition-all w-[72px] h-[36px] px-[3px] rounded-full border-[#D9D9D9] border-[1px]
 }
 
-.switch__boll {
+.switcher__boll {
     @apply w-[30px] h-[30px] bg-[#D9D9D9] transition-all rounded-full
 }
 
-.switch.on .switch__boll {
+.switcher.on .switcher__boll {
     @apply bg-[#27AE60]
 }
 
@@ -191,3 +195,11 @@
     @apply w-full col-span-2 py-[20px] rounded-[12px] text-[24px] font-bold leading-[1.4] md:text-[18px]
 }
 
+.input__arrow {
+    @apply absolute bottom-[23px]  right-[24px]  transition-all
+    }
+    
+    .input__arrow.up {
+        @apply rotate-[180deg] 
+    }
+    

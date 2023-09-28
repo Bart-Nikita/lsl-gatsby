@@ -12,7 +12,7 @@ const FeedbacksSimple = ({className} : {className?: string}) => {
         <section className={stack('container', 'section-indent', styles.body, className)}>
             <div className={styles.content}>
                 <h2 className={stack('title-secondary', styles.title)}
-                    dangerouslySetInnerHTML={{__html: section?.feedbacks?.feedbacksZagolovok2}}></h2>
+                    dangerouslySetInnerHTML={{__html: section?.feedbacks?.feedbacksZagolovok2 || ''}}></h2>
             </div>
 
             <div className={styles.sliders}>
@@ -25,19 +25,19 @@ const FeedbacksSimple = ({className} : {className?: string}) => {
                                     <div key={index} className={styles.slider__item} >
                                         <div className={styles.slider__top} >
                                             <Picture className={styles.slider__picture}
-                                                     mobileIImageX1={item?.feedbacksSimpleTelefon1x?.sourceUrl}
-                                                     mobileIImageX2={item?.feedbacksSimpleTelefon2x?.sourceUrl}
-                                                     desktopIImageX1={item?.feedbacksSimpleKompyuter1x?.sourceUrl}
-                                                     desktopIImageX2={item?.feedbacksSimpleKompyuter2x?.sourceUrl} alt={item?.feedbacksSimpleKompyuter1x?.altText}></Picture>
+                                                     mobileIImageX1={item?.feedbacksSimpleTelefon1x?.sourceUrl || ''}
+                                                     mobileIImageX2={item?.feedbacksSimpleTelefon2x?.sourceUrl || ''}
+                                                     desktopIImageX1={item?.feedbacksSimpleKompyuter1x?.sourceUrl || ''}
+                                                     desktopIImageX2={item?.feedbacksSimpleKompyuter2x?.sourceUrl || ''} alt={item?.feedbacksSimpleKompyuter1x?.altText || ''}></Picture>
                                             <div className={styles.slider__person}>
                                                 <h3 className={stack(styles.slider__name)}
-                                                    dangerouslySetInnerHTML={{__html: item?.feedbacksSimpleImya}}></h3>
+                                                    dangerouslySetInnerHTML={{__html: item?.feedbacksSimpleImya || ''}}></h3>
                                                 <p className={stack('text-simple', styles?.slider__desc)}
-                                                   dangerouslySetInnerHTML={{__html: item?.feedbacksSimpleOpisanieKlienta}}></p>
+                                                   dangerouslySetInnerHTML={{__html: item?.feedbacksSimpleOpisanieKlienta || ''}}></p>
                                             </div>
                                         </div>
                                         <p className={stack('text-simple', styles.slider__text)}
-                                           dangerouslySetInnerHTML={{__html: item?.feedbacksSimpleTekstOtzyva}}></p>
+                                           dangerouslySetInnerHTML={{__html: item?.feedbacksSimpleTekstOtzyva || ''}}></p>
 
                                   </div>
                     )   }

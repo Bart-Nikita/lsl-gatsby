@@ -3,23 +3,25 @@ import type { HeadFC, PageProps } from "gatsby"
 
 import { graphql } from "gatsby"
 import Seo from "../components/seo/Seo"
+import Layout from "../components/layout/Layout"
+import LeaveContacts from "../components/common/LeaveContacts/LeaveContacts"
+import Messenger from "../components/common/Messenger/Messenger"
+import { GlobalContext, globalState } from "../context/context"
 
 export const Head = ({ data }: PageProps<Queries.ContactsPageQuery>) => {
-  console.log(data?.site)
-
-
   return (
-<Seo url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>  )
+    <Seo url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>)
 }
 
-
-
-
 const ContactsPage: React.FC<PageProps<Queries.ContactsPageQuery>> = ({ data }: PageProps<Queries.ContactsPageQuery>) => {
-  console.log(data)
-  return <div>
-    {data?.wpPage?.metaData?.metaZagolovok}
-  </div>
+  //@ts-ignore
+  const state = globalState(data)
+  return <GlobalContext.Provider value={state}>
+    <Layout>
+      <LeaveContacts title={data?.wpPage?.contacts?.contactsPageZagolovok || ''} buttonText={data?.wpPage?.contacts?.contactsPageTekstKnopki || ''}></LeaveContacts>
+      <Messenger text={data?.wpPage?.contacts?.contactsPagePodzagolovok || ''}></Messenger>
+    </Layout>
+  </GlobalContext.Provider>
 }
 
 export default ContactsPage
@@ -56,6 +58,7 @@ export const query = graphql` query ContactsPage {
     }
   }
   wpPage(slug: {eq: "kontakty"}) {
+    slug
     metaData {
       metaOpisanie
       metaZagolovok
@@ -77,7 +80,6 @@ export const query = graphql` query ContactsPage {
         }
       }
       footer {
-        fieldGroupName
         footerAdresSajta
         footerContactsZagolovok
         footerKopirajt
@@ -90,9 +92,28 @@ export const query = graphql` query ContactsPage {
           footerContactsKommentarij
           footerContactsTekst
         }
+        
         footerLogotip {
           altText
           sourceUrl
+        }
+        footerLogotipMobile {
+          altText
+          sourceUrl
+        }
+        footerPolitikaKonfidenczialnosti {
+          mediaItemUrl
+        }
+        footerPublichnayaOferta {
+          mediaItemUrl
+        }
+        footerSocialSpisok {
+          footerSocialAdres
+          footerSocialTekst
+          footerSocialIkonka {
+            altText
+            sourceUrl
+          }
         }
       }
       header {

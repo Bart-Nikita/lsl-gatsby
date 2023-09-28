@@ -13,9 +13,9 @@ const FeedbacksSocial = ({className} : {className?: string}) => {
         <section className={stack('container', 'section-indent-new', styles.body, className)}>
             <div className={styles.content}>
                 <h2 className={stack('title-secondary', styles.title)}
-                    dangerouslySetInnerHTML={{__html: section?.feedbacks?.feedbacksZagolovok1}}></h2>
+                    dangerouslySetInnerHTML={{__html: section?.feedbacks?.feedbacksZagolovok1 || ''}}></h2>
                 <p className={stack('text-simple', styles.text)}
-                   dangerouslySetInnerHTML={{__html: section?.feedbacks?.feedbacksPodzagolovok1}}></p>
+                   dangerouslySetInnerHTML={{__html: section?.feedbacks?.feedbacksPodzagolovok1 || ''}}></p>
 
             </div>
             <div className={styles.sliders}>
@@ -26,10 +26,10 @@ const FeedbacksSocial = ({className} : {className?: string}) => {
                                 <div className={styles.slider__wrapper}>
                                     <Picture
                                         imageClassName={styles.slider__image}
-                                        desktopIImageX1={item?.feedbacksImageKompyuter1x?.sourceUrl}
-                                        desktopIImageX2={item?.feedbacksImageKompyuter2x?.sourceUrl}
-                                        mobileIImageX1={item?.feedbacksImageTelefon1x?.sourceUrl}
-                                        mobileIImageX2={item?.feedbacksImageTelefon2x?.sourceUrl}
+                                        desktopIImageX1={item?.feedbacksImageKompyuter1x?.sourceUrl || ''}
+                                        desktopIImageX2={item?.feedbacksImageKompyuter2x?.sourceUrl || ''}
+                                        mobileIImageX1={item?.feedbacksImageTelefon1x?.sourceUrl || ''}
+                                        mobileIImageX2={item?.feedbacksImageTelefon2x?.sourceUrl || ''}
                                         className={styles.slide__picture} alt={"Фото-отзыв"}></Picture>
                                 </div>
                             </div>

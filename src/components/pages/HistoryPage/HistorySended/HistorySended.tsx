@@ -1,19 +1,17 @@
-import React, {createRef, useEffect, useState} from 'react';
+import React, { createRef, useEffect, useState } from 'react';
 import * as styles from './HistorySended.module.css'
-import {stack} from "../../../../hooks/useClassName";
-import {useGlobalContext} from "../../../../context/context";
-import history from "../../../../pages/History";
-import {InView} from "react-intersection-observer";
-import {useView} from "../../../../hooks/useView";
-import {HistorySendedGoroda, StrokaGorodov} from "../../../../types/data";
+import { stack } from "../../../../hooks/useClassName";
+import { useGlobalContext } from "../../../../context/context";
+import { InView } from "react-intersection-observer";
+import { useView } from "../../../../hooks/useView";
 
 type DisplayRow = {
-    row: HistorySendedGoroda,
+    row: Queries.WpPage_History_historySendedGoroda,
     isInView: boolean,
     index: number
 }
 
-const DisplayRow = ({row, isInView, index}: DisplayRow) => {
+const DisplayRow = ({ row, isInView, index }: DisplayRow) => {
     const [x, setX] = useState(0)
     const [directionLeft, setDirectionLeft] = useState(false)
     const [isToBeRearranged, setIstoBeRearranged] = useState(false)
@@ -40,7 +38,7 @@ const DisplayRow = ({row, isInView, index}: DisplayRow) => {
     const ref = createRef<HTMLDivElement>()
 
     useEffect(() => {
-        if (ref?.current && row && Math.ceil(x) % 10 === 0 ) {
+        if (ref?.current && row && Math.ceil(x) % 10 === 0 && ref?.current.parentElement) {
             const rowLength = ref?.current.children.length
             const parent = ref?.current.parentElement
             const currentChild = directionLeft ? ref?.current.children[0] : ref?.current.children[rowLength - 1]
@@ -66,12 +64,12 @@ const DisplayRow = ({row, isInView, index}: DisplayRow) => {
 
 
     return <div ref={ref} key={index}
-                className={styles.display__row}
-                style={{transform: `translateX(${directionLeft ? -x : x}px)`}}>
-        {row?.strokaGorodov.map((item, index) => <div key={index} className={styles.display__item}>
-            <img className={styles.display__image} src={item.izobrazhenie.sourceUrl}
-                 alt={item.izobrazhenie.altText}/>
-            <p className={styles.display__text}>{item.nazvanieGoroda}</p>
+        className={styles.display__row}
+        style={{ transform: `translateX(${directionLeft ? -x : x}px)` }}>
+        {row?.strokaGorodov?.map((item, index) => <div key={index} className={styles.display__item}>
+            <img className={styles.display__image} src={item?.izobrazhenie?.sourceUrl || ''}
+                alt={item?.izobrazhenie?.altText || ''} />
+            <p className={styles?.display__text}>{item?.nazvanieGoroda}</p>
         </div>)}
     </div>
 
@@ -79,37 +77,37 @@ const DisplayRow = ({row, isInView, index}: DisplayRow) => {
 
 const HistorySended = () => {
 
-    const {historyPage} = useGlobalContext()
-    const {setIsTopInView, isInView, setIsBottomInView} = useView()
+    const { historyPage } = useGlobalContext()
+    const { setIsTopInView, isInView, setIsBottomInView } = useView()
 
     return (
-        <div className={stack('container-new',  styles.body, styles.heavy)}>
+        <div className={stack('container-new', styles.body, styles.heavy)}>
             <div className={styles.top}>
                 <h2 className={stack('text-large', styles.title)}>
                     <span className={stack('text-large', styles.title__text)}
-                          dangerouslySetInnerHTML={{__html: historyPage?.history.historySendedNachaloPervojStroki}}></span>
+                        dangerouslySetInnerHTML={{ __html: historyPage?.wpPage?.history?.historySendedNachaloPervojStroki || '' }}></span>
                     <span
                         className={stack(styles.title__text, styles.title__marked)}
-                        dangerouslySetInnerHTML={{__html: historyPage?.history.historySendedVydelennyjTekstPervojStroki}}></span>
+                        dangerouslySetInnerHTML={{ __html: historyPage?.wpPage?.history?.historySendedVydelennyjTekstPervojStroki || '' }}></span>
                     <span className={stack('text-large', styles.title__text)}
-                          dangerouslySetInnerHTML={{__html: historyPage?.history.historySendedKoneczPervojStroki}}></span>
+                        dangerouslySetInnerHTML={{ __html: historyPage?.wpPage?.history?.historySendedKoneczPervojStroki || '' }}></span>
                 </h2>
                 <p className={styles.subtitle}>
                     <span
                         className={stack(styles.subtitle__marked, styles.subtitle__text)}
-                        dangerouslySetInnerHTML={{__html: historyPage?.history.historySendedVydelennyjTekstVtorojStroki}}></span>
+                        dangerouslySetInnerHTML={{ __html: historyPage?.wpPage?.history?.historySendedVydelennyjTekstVtorojStroki || '' }}></span>
                     <span className={styles.subtitle__text}
-                          dangerouslySetInnerHTML={{__html: historyPage?.history.historySendedKoneczVtorojStroki}}></span>
+                        dangerouslySetInnerHTML={{ __html: historyPage?.wpPage?.history?.historySendedKoneczVtorojStroki || '' }}></span>
                 </p>
                 <p className={stack(styles.subtitle, styles.subtitle__text)}
-                   dangerouslySetInnerHTML={{__html: historyPage?.history.historySendedTretyaStroka}}></p>
+                    dangerouslySetInnerHTML={{ __html: historyPage?.wpPage?.history?.historySendedTretyaStroka || '' }}></p>
             </div>
             <InView onChange={value => setIsTopInView(value)}></InView>
             <div className={styles.display}>
-
-                {historyPage?.history.historySendedGoroda.map((row, index) => <DisplayRow isInView={isInView}
-                                                                                          key={index} row={row}
-                                                                                          index={index}></DisplayRow>)}
+                {historyPage?.wpPage?.history?.historySendedGoroda?.map(
+                        //@ts-ignore
+                        (row, index) => <DisplayRow isInView={isInView} key={index} row={row}
+                            index={index}></DisplayRow>)}
             </div>
             <InView onChange={value => setIsBottomInView(value)}></InView>
         </div>

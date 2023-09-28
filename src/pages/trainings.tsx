@@ -3,23 +3,40 @@ import type { HeadFC, PageProps } from "gatsby"
 
 import { graphql } from "gatsby"
 import Seo from "../components/seo/Seo"
+import Online from "../components/common/Online/Online"
+import TrainingsAbout from "../components/pages/TrainingsPage/TrainingsAbout/TrainingsAbout"
+import TrainingsAdvantages from "../components/pages/TrainingsPage/TrainingsAdvantages/TrainingsAdvantages"
+import TrainingsDelivery from "../components/pages/TrainingsPage/TrainingsDelivery/TrainingsDelivery"
+import TrainingsFeedbacks from "../components/pages/TrainingsPage/TrainingsFeedbacks/TrainingsFeedbacks"
+import TrainingsGift from "../components/pages/TrainingsPage/TrainingsGift/TrainingsGift"
+import TrainingsHero from "../components/pages/TrainingsPage/TrainingsHero/TrainingsHero"
+import TrainingsSelect from "../components/pages/TrainingsPage/TrainingsSelect/TrainingsSelect"
+import TrainingsSteps from "../components/pages/TrainingsPage/TrainingsSteps/TrainingsSteps"
+import { GlobalContext, globalState } from "../context/context"
+import Layout from "../components/layout/Layout"
 
 export const Head = ({ data }: PageProps<Queries.TrainingsPageQuery>) => {
-  console.log(data?.site)
-
 
   return (
-<Seo url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>  )
+    <Seo url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>)
 }
 
-
-
-
 const TrainingsPage: React.FC<PageProps<Queries.TrainingsPageQuery>> = ({ data }: PageProps<Queries.TrainingsPageQuery>) => {
-  console.log(data)
-  return <div>
-    {data?.wpPage?.metaData?.metaZagolovok}
-  </div>
+  //@ts-ignore
+  const state = globalState(data)
+  return <GlobalContext.Provider value={state}>
+    <Layout>
+      <TrainingsHero></TrainingsHero>
+      <TrainingsAdvantages></TrainingsAdvantages>
+      <TrainingsSelect></TrainingsSelect>
+      <TrainingsGift></TrainingsGift>
+      <TrainingsDelivery></TrainingsDelivery>
+      <TrainingsSteps></TrainingsSteps>
+      <TrainingsFeedbacks></TrainingsFeedbacks>
+      <Online className={'mb-[140px] xl:mb-[92px] md:mb-[64px]'}></Online>
+      <TrainingsAbout></TrainingsAbout>
+    </Layout>
+  </GlobalContext.Provider>
 }
 
 export default TrainingsPage
@@ -56,6 +73,7 @@ export const query = graphql` query TrainingsPage {
     }
   }
   wpPage(slug: {eq: "trenazhery"}) {
+    slug
     metaData {
       metaOpisanie
       metaZagolovok
@@ -265,7 +283,6 @@ export const query = graphql` query TrainingsPage {
         }
       }
       footer {
-        fieldGroupName
         footerAdresSajta
         footerContactsZagolovok
         footerKopirajt
@@ -278,9 +295,28 @@ export const query = graphql` query TrainingsPage {
           footerContactsKommentarij
           footerContactsTekst
         }
+        
         footerLogotip {
           altText
           sourceUrl
+        }
+        footerLogotipMobile {
+          altText
+          sourceUrl
+        }
+        footerPolitikaKonfidenczialnosti {
+          mediaItemUrl
+        }
+        footerPublichnayaOferta {
+          mediaItemUrl
+        }
+        footerSocialSpisok {
+          footerSocialAdres
+          footerSocialTekst
+          footerSocialIkonka {
+            altText
+            sourceUrl
+          }
         }
       }
       header {
@@ -306,6 +342,7 @@ export const query = graphql` query TrainingsPage {
  
   allWpTraining {
     nodes {
+      title
       slug
       training {
         trainingCzena

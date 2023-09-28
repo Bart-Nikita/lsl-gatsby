@@ -9,11 +9,11 @@
 }
 
 .list {
-    @apply grid grid-cols-3 justify-between mb-[60px] gap-[50px]
+    @apply grid grid-cols-3 justify-between
      mb-[38px]  gap-[30px]
-    xl:mb-[20px] xl:gap-[18px]
-    xl:flex-wrap xl:gap-[20px]
-    md:gap-y-[10px]
+    xl:mb-[20px] 
+    xl:gap-[20px] xl:grid-cols-2
+    md:gap-y-[10px] md:grid-cols-1
     md:mb-[10px]
 }
 
@@ -22,15 +22,15 @@
 }
 
 .item {
-    @apply flex-grow  xl:w-[calc((100%-20px)/2)] xl:flex-grow-0 md:w-full md:flex-grow
+    @apply flex-grow   md:w-full 
 }
 
 .item__link{
    @apply overflow-hidden block bg-white hover:bg-gray-800 h-[580px] rounded-[32px] border-[2px] border-[#DFDFDF]
-    h-[430px]  rounded-[24px]  border-[1px]
-   xl:h-[316px] xl:rounded-[12px]
-   xl:h-[354px]
-   md:w-full md:h-[300px] md:rounded-[10px]
+    h-[430px]   border-[1px]
+    xl:rounded-[12px]
+   xl:h-[47vw]
+   md:w-full md:h-[80vw] md:rounded-[10px]
 }
 
 .item__picture {

@@ -4,7 +4,6 @@ import { useGlobalContext } from "../../../../context/context";
 import { stack } from "../../../../hooks/useClassName";
 import LightPicture from "../../../images/LightPicture/LightPicture";
 import { typo } from "../../../../tipograf";
-import instructionBooks from "../../../../pages/InstructionBooks";
 
 const InstructionBooksHome = () => {
     const { instructionBooksPage, setIsInstructionBooksHeroFormModalOpen } = useGlobalContext()
@@ -16,25 +15,25 @@ const InstructionBooksHome = () => {
             <div className={stack('container', styles.container)}>
                 <div className={styles.first}
                 >
-                    <img className={styles.first__picture} src={instructionBooksPage?.instructionBooks?.instructionsHeroFonovoeIzobrazhenie.sourceUrl} alt={instructionBooksPage?.instructionBooks?.instructionsHeroFonovoeIzobrazhenie.altText} />
-                    <h1 className={styles.title}>{typo.execute(instructionBooksPage?.instructionBooks?.instructionsHeroZagolovok)}</h1>
-                    <p className={styles.subtitle}>{typo.execute(instructionBooksPage?.instructionBooks?.instructionsHeroPodzagolovok)}</p>
+                    <img className={styles.first__picture} src={instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroFonovoeIzobrazhenie?.sourceUrl || ''} alt={instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroFonovoeIzobrazhenie?.altText || ''} />
+                    <h1 className={styles.title}>{typo.execute(instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroZagolovok || '')}</h1>
+                    <p className={styles.subtitle}>{typo.execute(instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroPodzagolovok || '')}</p>
                     <button onClick={onClickHandler} className={stack('button-secondary-new', styles.button)}>
-                        {instructionBooksPage?.instructionBooks?.instructionsHeroTekstKnopki}
+                        {instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroTekstKnopki}
                     </button>
                 </div>
                 <LightPicture className={styles.second} imageClassName={styles.second__image}
-                    desktopIImage={instructionBooksPage?.instructionBooks?.instructionsHeroIzobrazhenieDlyaKompyutera.sourceUrl}
-                    mobileIImage={instructionBooksPage?.instructionBooks?.instructionsHeroIzobrazhenieDlyaTelefona.sourceUrl}
-                    alt={instructionBooksPage?.instructionBooks?.instructionsHeroIzobrazhenieDlyaKompyutera.altText} />
+                    desktopIImage={instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroIzobrazhenieDlyaKompyutera?.sourceUrl || ''}
+                    mobileIImage={instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroIzobrazhenieDlyaTelefona?.sourceUrl || ''}
+                    alt={instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroIzobrazhenieDlyaKompyutera?.altText || ''} />
                 <p className={stack(styles.text, styles.desktop)}>
-                    {typo.execute(instructionBooksPage?.instructionBooks?.instructionsHeroTekstSleva)}
+                    {typo.execute(instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroTekstSleva || '')}
                 </p>
                 <p className={stack(styles.text, styles.desktop)}>
-                    {typo.execute(instructionBooksPage?.instructionBooks?.instructionsHeroTekstSprava)}
+                    {typo.execute(instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroTekstSprava || '')}
                 </p>
                 <p className={stack(styles.text, styles.mobile)}>
-                    {typo.execute(instructionBooksPage?.instructionBooks?.instructionsHeroTekstSleva + ' ' + instructionBooksPage?.instructionBooks?.instructionsHeroTekstSprava)}
+                    {typo.execute(instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroTekstSleva + ' ' + instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroTekstSprava)}
                 </p>
             </div>
         </section>

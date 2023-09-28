@@ -31,11 +31,15 @@
     }
 
     html {
-        @apply scroll-smooth overflow-x-hidden
+        @apply scroll-smooth overflow-x-hidden 
+    }
+
+    html:has(body.scroll-prohibited) {
+     @apply   overflow-y-hidden
     }
 
     body {
-        @apply overflow-x-hidden
+        @apply overflow-x-hidden 
     }
 
     .container {
@@ -200,7 +204,7 @@
     }
 
     .portal {
-        @apply fixed top-0 right-0 left-0 bottom-0 z-[999] pointer-events-none
+        @apply fixed top-0 right-0 left-0 bottom-0 z-[99999] pointer-events-none
     }
 
 }

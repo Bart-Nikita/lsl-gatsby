@@ -27,7 +27,7 @@ const HomeTrainings = () => {
                         <div className={styles.item__content}>
                             <div className={styles.item__top}>
                                 <h3 className={stack('text-primary', styles.item__title)}
-                                    dangerouslySetInnerHTML={{ __html: item.title || '' }}></h3>
+                                    dangerouslySetInnerHTML={{ __html: item?.title || '' }}></h3>
                                 <p className={stack('text-primary', styles.item__price)}
                                 >{item?.training?.trainingCzena} </p>
                             </div>

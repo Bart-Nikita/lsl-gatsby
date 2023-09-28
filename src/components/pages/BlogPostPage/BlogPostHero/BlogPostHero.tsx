@@ -5,12 +5,11 @@ import * as styles from "./BlogPostHero.module.css";
 import Picture from "../../../images/Picture/Picture";
 import {Link} from "gatsby";
 import LightPicture from "../../../images/LightPicture/LightPicture";
-import { useNavigate } from "gatsby";
+import { navigate } from "gatsby";
 
 
 const BlogPostHero = () => {
     const {blogPostPage} = useGlobalContext()
-    const navigate = useNavigate()
 
     return (
         <div className={stack('container-new', styles.body)}>
@@ -24,12 +23,12 @@ const BlogPostHero = () => {
                     </svg>
                     Назад</button>
                 <LightPicture imageClassName={styles.image} className={styles.picture}
-                         alt={blogPostPage?.blog.blogPostHeroImageKompyuter1x.altText}
-                         desktopIImage={blogPostPage?.blog.blogPostHeroImageKompyuter1x.sourceUrl}
-                         mobileIImage={blogPostPage?.blog.blogPostHeroImageTelefon1x.sourceUrl}
+                         alt={blogPostPage?.blog?.blogPostHeroImageKompyuter1x?.altText || ''}
+                         desktopIImage={blogPostPage?.blog?.blogPostHeroImageKompyuter1x?.sourceUrl || ''}
+                         mobileIImage={blogPostPage?.blog?.blogPostHeroImageTelefon1x?.sourceUrl || ''}
                         ></LightPicture>
                 <div className={stack(styles.content)}>
-                    <h1 className={stack('text-page',styles.title)}>{blogPostPage?.blog.blogPostHeroZagolovok}</h1>
+                    <h1 className={stack('text-page',styles.title)}>{blogPostPage?.blog?.blogPostHeroZagolovok}</h1>
                 </div>
             </div>
         </div>

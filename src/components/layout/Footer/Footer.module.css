@@ -3,9 +3,8 @@
 .footer {
     @apply pt-[73px] relative z-[2]
     mb-[42px]
-    pt-[55px] mb-[22px]
-    xl:mb-[30px]
-    xl:mb-[20px]
+    pt-[55px] mb-[80px]
+    xl:mb-[60px]
     md:mb-[22px]
 }
 

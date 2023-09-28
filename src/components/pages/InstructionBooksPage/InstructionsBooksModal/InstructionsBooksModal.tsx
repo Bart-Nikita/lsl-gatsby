@@ -4,10 +4,10 @@ import { useGlobalContext } from "../../../../context/context";
 import { stack } from "../../../../hooks/useClassName";
 import Chrest from "../../../svg/Chrest";
 import LightPicture from "../../../images/LightPicture/LightPicture";
-import { TrainingGallereya } from "../../../../types/data";
 import { typo } from "../../../../tipograf";
 import { InView } from "react-intersection-observer";
 import FileSvg from '../../../svg/FileSvg';
+import { useFile } from '../../../../hooks/useFile';
 
 export default function InstructionsBooksModal() {
     const {
@@ -42,6 +42,8 @@ export default function InstructionsBooksModal() {
     const onOrderClick = () => {
         setIsInstructionBooksFormModalOpen(true)
     }
+
+    const [play] = useFile('play')
     return (
         <div className={stack(styles.container, !isBottomVisible && styles.light)}>
 
@@ -55,33 +57,33 @@ export default function InstructionsBooksModal() {
                             <div onClick={videoClickHandler}
                                 className={stack(styles.video, !isPlaying && styles.stop)}>
                                 <video ref={video} className={styles.video__media}
-                                    src={instructionBooksModalData?.videoDlyaModalnogoOkna?.mediaItemUrl}
+                                    src={instructionBooksModalData?.videoDlyaModalnogoOkna?.mediaItemUrl || ''}
                                 ></video>
                                 {!isPlaying &&
                                     <button
                                         className={stack('link', styles.video__button)}>
-                                        <img className={styles.video__image} src="/image/play.png"
+                                        <img className={styles.video__image} src={play}
                                             alt="Иконка Play" /></button>
                                 }
                                 <LightPicture className={styles.video__picture} imageClassName={styles.video__image}
-                                    alt={instructionBooksModalData?.izobrazhenieDlyaKompyutera?.altText}
-                                    desktopIImage={instructionBooksModalData?.izobrazhenieDlyaKompyutera?.sourceUrl}
-                                    mobileIImage={instructionBooksModalData?.izobrazhenieDlyaTelefona?.sourceUrl}></LightPicture>
+                                    alt={instructionBooksModalData?.izobrazhenieDlyaKompyutera?.altText || ''}
+                                    desktopIImage={instructionBooksModalData?.izobrazhenieDlyaKompyutera?.sourceUrl || ''}
+                                    mobileIImage={instructionBooksModalData?.izobrazhenieDlyaTelefona?.sourceUrl || ''}></LightPicture>
                             </div>
                         </div>
                     </div>
                     <div className={styles.content}>
                         <div className={styles.content__top}>
                             <p className={styles.content__desc}>Инструкция к&nbsp;тренажеру</p>
-                            <h2 className={styles.content__title}>{typo.execute(instructionBooksModalData?.nazvanie)}</h2>
+                            <h2 className={styles.content__title}>{typo.execute(instructionBooksModalData?.nazvanie || '')}</h2>
                             <p className={styles.content__price}
-                                dangerouslySetInnerHTML={{ __html: instructionBooksModalData?.czena }}></p>
+                                dangerouslySetInnerHTML={{ __html: instructionBooksModalData?.czena || ''}}></p>
                         </div>
                         <p className={styles.content__text}
-                        >{typo.execute(instructionBooksModalData?.polnoeOpisanie)}</p>
-                        {instructionBooksModalData?.vRamkeVModalnomOkne?.length > 0 && <ul className={styles.content__border}>
+                        >{typo.execute(instructionBooksModalData?.polnoeOpisanie || '')}</p>
+                        {(instructionBooksModalData?.vRamkeVModalnomOkne?.length && instructionBooksModalData?.vRamkeVModalnomOkne?.length > 0) && <ul className={styles.content__border}>
                             {instructionBooksModalData?.vRamkeVModalnomOkne?.map((item, index) => <li className={styles.border__item} key={index} >
-                                <p className={styles.border__text} dangerouslySetInnerHTML={{__html:item.tekst}}></p>
+                                <p className={styles.border__text} dangerouslySetInnerHTML={{__html:item?.tekst || ''}}></p>
                             </li>)}
                         </ul>}
                         <button onClick={onOrderClick}

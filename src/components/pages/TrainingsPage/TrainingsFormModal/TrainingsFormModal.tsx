@@ -5,13 +5,12 @@ import {stack} from "../../../../hooks/useClassName";
 import {InView} from "react-intersection-observer";
 import Chrest from "../../../svg/Chrest";
 import {useInputState, useInputStateType} from "../../../../hooks/useInputState";
-import {Form} from "gatsby";
 import ReactInputMask from "react-input-mask";
-import {TrainingsModalSpisokGorodov} from "../../../../types/data";
 import {useCommonSection} from "../../../../hooks/useCommonSection";
 import {useMutation} from "@apollo/client";
 import {SEND_MAIL} from "../../../../gql/mutations/sendMail";
 import {CONTACTS_MAIL_SUBJECT, EMAIL_FROM, EMAIL_TO} from "../../../../config";
+import ArrowDown from '../../../svg/ArrowDown';
 
 type InputItem = {
     input: useInputStateType
@@ -31,7 +30,7 @@ const FormInput = (item: InputItem) => {
         const {trainingsPage} = useGlobalContext()
         const [value, setValue] = useState<string>()
         const [searchValue, setSearchValue] = useState<string>()
-        const [filteredArr, setFilteredArr] = useState<TrainingsModalSpisokGorodov[]>()
+        const [filteredArr, setFilteredArr] = useState<Queries.WpPage_Trainings_trainingsModalSpisokGorodov[]>()
 
         useEffect(() => {
             if (value !== undefined) {
@@ -44,14 +43,17 @@ const FormInput = (item: InputItem) => {
 
         useEffect(() => {
             if (!!searchValue) {
-                if (trainingsPage?.trainings?.trainingsModalSpisokGorodov.some(item => item.nazvanieGoroda === searchValue)) {
-                    setFilteredArr(trainingsPage?.trainings?.trainingsModalSpisokGorodov)
+                if (trainingsPage?.wpPage?.trainings?.trainingsModalSpisokGorodov?.some(item => item?.nazvanieGoroda === searchValue)) {
+                    //@ts-ignore
+                   setFilteredArr(trainingsPage?.wpPage?.trainings?.trainingsModalSpisokGorodov)
                     return
                 }
                 setValue('')
-                setFilteredArr(trainingsPage?.trainings?.trainingsModalSpisokGorodov.filter(item => item.nazvanieGoroda.toLowerCase().includes(searchValue.toLowerCase())))
+                 //@ts-ignore
+                setFilteredArr(trainingsPage?.wpPage?.trainings?.trainingsModalSpisokGorodov.filter(item => item.nazvanieGoroda.toLowerCase().includes(searchValue.toLowerCase())))
             } else {
-                setFilteredArr(trainingsPage?.trainings?.trainingsModalSpisokGorodov)
+                                    //@ts-ignore
+                setFilteredArr(trainingsPage?.wpPage?.trainings?.trainingsModalSpisokGorodov)
             }
         }, [searchValue]);
 
@@ -59,7 +61,7 @@ const FormInput = (item: InputItem) => {
             setSearchValue(e.target.value)
         }
 
-        const onItemClick = ( item: TrainingsModalSpisokGorodov) => {
+        const onItemClick = ( item: Queries.WpPage_Trainings_trainingsModalSpisokGorodov) => {
 
             setValue(item.nazvanieGoroda || '')
             setSearchValue(item.nazvanieGoroda || '')
@@ -76,7 +78,7 @@ const FormInput = (item: InputItem) => {
 
 
         const onInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-            if (isSublistOpen && !!filteredArr.length && e.key === "Tab") {
+            if (isSublistOpen && !!filteredArr?.length && e.key === "Tab") {
                 // ref.current.focus()
             }
         }
@@ -90,7 +92,7 @@ const FormInput = (item: InputItem) => {
             }
         }
 
-        const onItemKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>, item: TrainingsModalSpisokGorodov) => {
+        const onItemKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>, item: Queries.WpPage_Trainings_trainingsModalSpisokGorodov) => {
             if (e.key === "Enter" || e.key === "Space") {
                 e.stopPropagation()
                 e.preventDefault()
@@ -112,6 +114,7 @@ const FormInput = (item: InputItem) => {
                             className={styles.sublist__button}>{item.nazvanieGoroda}</button>
                 </li>)}
             </ul>}
+            <ArrowDown className={stack(styles.input__arrow, isSublistOpen && styles.up)}></ArrowDown>
         </div>
     }
 
@@ -280,7 +283,7 @@ const TrainingsFormModal = () => {
 
     const onSubmit = () => {
         const inputArr = !isOrganisation ? firstInputsGroup : secondInputsGroup
-        let error: boolean;
+        let error: boolean | undefined;
 
         inputArr.forEach(item => {
             if (item.input.value === '') {
@@ -314,8 +317,6 @@ const TrainingsFormModal = () => {
 
         }
 
-        console.log('error')
-
         if (!error) {
             console.log(emailBody)
 
@@ -342,11 +343,11 @@ const TrainingsFormModal = () => {
                 <div className={styles.top}>
                     <h2 className={styles.title}>Заполните форму</h2>
                     <button onClick={() => setIsOrganisation(prev => !prev)}
-                            className={stack(styles.switch, isOrganisation && styles.on)}>
-                        <div className={styles.switch__body}>
-                            <div className={styles.switch__boll}></div>
+                            className={stack(styles.switcher, isOrganisation && styles.on)}>
+                        <div className={styles.switcher__body}>
+                            <div className={styles.switcher__boll}></div>
                         </div>
-                        <span className={styles.switch__text}>Юр.лицо (организация)</span>
+                        <span className={styles.switcher__text}>Юр.лицо (организация)</span>
                     </button>
                 </div>
                 <form onSubmit={e => e.preventDefault()} className={styles.form} action="#">
@@ -362,7 +363,7 @@ const TrainingsFormModal = () => {
                             <div className={styles.checkbox__sign}></div>
                         </button>
                         <p className={styles.checkbox__text}>Я соглашаюсь с&nbsp; <a className={styles.checkbox__link}
-                                                                                     href={section?.footer?.footerPolitikaKonfidenczialnosti?.mediaItemUrl}>условиями
+                                                                                     href={section?.footer?.footerPolitikaKonfidenczialnosti?.mediaItemUrl || ''}>условиями
                             обработки</a> персональных данных</p>
                     </div>
                     <button type={"submit"} onClick={onSubmit} className={stack(styles.button, 'button-secondary-new')}>Оформить заказ

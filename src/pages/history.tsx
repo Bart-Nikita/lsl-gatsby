@@ -3,23 +3,38 @@ import type { HeadFC, PageProps } from "gatsby"
 
 import { graphql } from "gatsby"
 import Seo from "../components/seo/Seo"
+import { GlobalContext, globalState } from "../context/context"
+import Layout from "../components/layout/Layout"
+import HistoryHero from "../components/pages/HistoryPage/HistoryHero/HistoryHero"
+import Support from "../components/common/Support/Support"
+import HistoryFind from "../components/pages/HistoryPage/HistoryFind/HistoryFind"
+import HistoryHistory from "../components/pages/HistoryPage/HistoryHistory/HistoryHistory"
+import HistoryProjects from "../components/pages/HistoryPage/HistoryProjects/HistoryProjects"
+import HistorySended from "../components/pages/HistoryPage/HistorySended/HistorySended"
+import HistoryWe from "../components/pages/HistoryPage/HistoryWe/HistoryWe"
 
 export const Head = ({ data }: PageProps<Queries.HistoryPageQuery>) => {
-    console.log(data?.site)
-
-
-    return (
-        <Seo url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>)
+  return (
+    <Seo url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>)
 }
 
 
 
 
 const HistoryPage: React.FC<PageProps<Queries.HistoryPageQuery>> = ({ data }: PageProps<Queries.HistoryPageQuery>) => {
-    console.log(data)
-    return <div>
-        {data?.wpPage?.metaData?.metaZagolovok}
-    </div>
+  //@ts-ignore
+  const state = globalState(data)
+  return <GlobalContext.Provider value={state}>
+    <Layout>
+      <HistoryHero></HistoryHero>
+      <HistoryWe></HistoryWe>
+      <HistoryProjects></HistoryProjects>
+      <HistoryFind></HistoryFind>
+      <HistoryHistory></HistoryHistory>
+      <HistorySended></HistorySended>
+      <Support></Support>
+    </Layout>
+  </GlobalContext.Provider>
 }
 
 export default HistoryPage
@@ -47,7 +62,7 @@ export const query = graphql` query HistoryPage {
                 }
             }
         }
-    }
+      }
 }
   allFile {
     nodes {
@@ -55,12 +70,12 @@ export const query = graphql` query HistoryPage {
       publicURL
     }
   }
-  wpPage(slug: {eq: "glavnaya"}) {
+  wpPage(slug: {eq: "istoriya"}) {
+    slug
     metaData {
       metaOpisanie
       metaZagolovok
     }
-    
       history {
         historyFindTrainingAdresSsylki
         historyFindTrainingTekst
@@ -161,7 +176,6 @@ export const query = graphql` query HistoryPage {
         historyWeZagolovok
       }
   }
- 
   allWpCommonSection {
     nodes {
       slug
@@ -172,7 +186,6 @@ export const query = graphql` query HistoryPage {
         }
       }
       footer {
-        fieldGroupName
         footerAdresSajta
         footerContactsZagolovok
         footerKopirajt
@@ -185,9 +198,28 @@ export const query = graphql` query HistoryPage {
           footerContactsKommentarij
           footerContactsTekst
         }
+        
         footerLogotip {
           altText
           sourceUrl
+        }
+        footerLogotipMobile {
+          altText
+          sourceUrl
+        }
+        footerPolitikaKonfidenczialnosti {
+          mediaItemUrl
+        }
+        footerPublichnayaOferta {
+          mediaItemUrl
+        }
+        footerSocialSpisok {
+          footerSocialAdres
+          footerSocialTekst
+          footerSocialIkonka {
+            altText
+            sourceUrl
+          }
         }
       }
       header {

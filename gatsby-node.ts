@@ -13,6 +13,103 @@ exports.createPages = async ({ graphql, actions, reporter }: CreatePagesArgs) =>
   const result = await graphql<Queries.AllBlogPostQuery>(
     `
     query AllBlogPost {
+      allWpMenuItem(filter: {parentId: {eq: null}}, sort: {order: ASC}) {
+        nodes {
+            label
+            url
+            childItems {
+                nodes {
+                    url
+                    label
+                    childItems {
+                        nodes {
+                            url
+                            label
+                        }
+                    }
+                }
+            }
+        }
+    }
+      site {
+        siteMetadata {
+          title
+          url
+        }
+      }
+      allFile {
+        nodes {
+          name
+          publicURL
+        }
+      }
+      allWpCommonSection {
+        nodes {
+          slug
+          online {
+            onlineTekst
+            onlineTekstKnopki
+            onlineZagolovok
+          }
+          cookies {
+            fieldGroupName
+            cookiesPolitikaKonfidenczialnosti {
+              mediaItemUrl
+            }
+          }
+          footer {
+            footerAdresSajta
+            footerContactsZagolovok
+            footerKopirajt
+            footerMenuZagolovok
+            footerSocialRemarka
+            footerSocialZagolovok
+            footerContactsSpisok {
+              footerContactsEstKommentarij
+              footerContactsHref
+              footerContactsKommentarij
+              footerContactsTekst
+            }
+            
+            footerLogotip {
+              altText
+              sourceUrl
+            }
+            footerLogotipMobile {
+              altText
+              sourceUrl
+            }
+            footerPolitikaKonfidenczialnosti {
+              mediaItemUrl
+            }
+            footerPublichnayaOferta {
+              mediaItemUrl
+            }
+            footerSocialSpisok {
+              footerSocialAdres
+              footerSocialTekst
+              footerSocialIkonka {
+                altText
+                sourceUrl
+              }
+            }
+          }
+          header {
+            headerAdresSajta
+            headerLogotipAlt
+            headerTelefon
+            headerLogotip {
+              altText
+              sourceUrl
+            }
+            headerLogotipMobile {
+              altText
+              sourceUrl
+            }
+          }
+         
+        }
+      }
         allWpBlog {
           nodes {
             slug
@@ -105,6 +202,12 @@ exports.createPages = async ({ graphql, actions, reporter }: CreatePagesArgs) =>
       // In your blog post template's graphql query, you can use pagePath
       // as a GraphQL variable to query for data from the markdown file.
       context: {
+        menuItems: result.data?.allWpMenuItem.nodes,
+        site: result.data?.site,
+        allFiles:  result.data?.allFile?.nodes,
+        slug: 'blogPost',
+        commonSections: result.data?.allWpCommonSection.nodes,
+        allPosts: result.data?.allWpBlog.nodes,
         post: node,
         url: process.env.BASE_URL || 'http://localhost:9000'
       },

@@ -4,7 +4,6 @@ import { useGlobalContext } from "../../../../context/context";
 import { stack } from "../../../../hooks/useClassName";
 import { typo } from '../../../../tipograf';
 import { useInputState, useInputStateType } from '../../../../hooks/useInputState';
-import { NodeTrainings, TrainingsNode } from '../../../../types/data';
 import { useTrainings } from '../../../../hooks/useTrainings';
 import ReactInputMask from 'react-input-mask';
 import { useCommonSection } from '../../../../hooks/useCommonSection';
@@ -26,14 +25,16 @@ const phoneEmptyError = 'Не корректный номер'
 const emailTypeError = 'Email должен содержать "@" и "."'
 const numberTypeError = 'Поле должно содержать только цифры'
 
+const isBrowser = typeof window !== "undefined"
+
 
 const FormInput = (item: InputItem) => {
 
     if (item.id === 'training') {
-        const [trainings] = useTrainings()
+        const {trainings, isMobile} = useGlobalContext()
         const [value, setValue] = useState<string>()
         const [searchValue, setSearchValue] = useState<string>()
-        const [filteredArr, setFilteredArr] = useState<TrainingsNode[]>()
+        const [filteredArr, setFilteredArr] = useState<Queries.WpTraining[]>()
 
         useEffect(() => {
             if (value !== undefined) {
@@ -46,14 +47,14 @@ const FormInput = (item: InputItem) => {
 
         useEffect(() => {
             if (!!searchValue) {
-                if (trainings.some(item => item.title === searchValue)) {
+                if (trainings?.some(item => item.title === searchValue)) {
                     setFilteredArr(trainings)
                     return
                 }
                 setValue('')
-                setFilteredArr(trainings.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase())))
+                setFilteredArr(trainings?.filter(item => item?.title?.toLowerCase().includes(searchValue.toLowerCase())))
             } else {
-                setFilteredArr(trainings)
+                trainings && setFilteredArr(trainings)
             }
         }, [searchValue, trainings]);
 
@@ -61,11 +62,10 @@ const FormInput = (item: InputItem) => {
             setSearchValue(e.target.value)
         }
 
-        const onItemClick = (item: TrainingsNode) => {
-
+        const onItemClick = (item: Queries.WpTraining) => {
+            setIsSublistOpen(false)
             setValue(item.title || '')
             setSearchValue(item.title || '')
-            setIsSublistOpen(false)
         }
 
         const ref = createRef<HTMLButtonElement>()
@@ -78,12 +78,14 @@ const FormInput = (item: InputItem) => {
 
 
         const onInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-            if (isSublistOpen && !!filteredArr.length && e.key === "Tab") {
+            if (isSublistOpen && !!filteredArr?.length && e.key === "Tab") {
                 // ref.current.focus()
             }
         }
 
         const onBlockKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+            // console.log('hi')
+
             if (e.key === "Enter" || e.key === "Space") {
                 setIsSublistOpen(prev => !prev)
             } else {
@@ -92,29 +94,54 @@ const FormInput = (item: InputItem) => {
             }
         }
 
-        const onItemKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>, item: TrainingsNode) => {
+        const onItemKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>, item: Queries.WpTraining) => {
+            // console.log('hi')
             if (e.key === "Enter" || e.key === "Space") {
                 e.stopPropagation()
                 e.preventDefault()
                 onItemClick(item)
             }
         }
+        const block = createRef<HTMLDivElement>()
+        const [hover, setHover] = useState(false)
+        const [clickCounter, setClickCOunter] = useState(0)
 
-        return <div className={stack(styles.form__block, item.input.error && styles.error)} onKeyDown={onBlockKeyDown}
-            onClick={() => setIsSublistOpen(prev => !prev)} onBlur={() => setIsSublistOpen(false)}>
+        useEffect(() => {
+            if (isBrowser && block?.current) {
+                
+                window.document.addEventListener('mousedown', (e) => {
+
+                    setClickCOunter(prev => prev + 1)
+                })
+                return () => {
+                    window.document.removeEventListener('mousedown', (e) => {
+                        setClickCOunter(prev => prev + 1)
+                    })
+                }
+            }
+        }, [isBrowser, block?.current])
+
+        useEffect(() => {
+            if (!hover) {
+                !isMobile &&  setIsSublistOpen(false)
+            }
+        }, [clickCounter])
+
+        return <div ref={block} className={stack(styles.form__block, item.input.error && styles.error)} onKeyDown={onBlockKeyDown}
+            onMouseEnter={() =>!isMobile && setHover(true)} onMouseLeave={() =>!isMobile &&  setHover(false)} >
             <label className={styles.label} htmlFor={item.id}>{item.label}</label>
-            <input id={item.id} onKeyDown={onInputKeyDown} className={styles.input} type="text"
+            <input onClick={() => setIsSublistOpen(prev => !prev)} id={item.id} onKeyDown={onInputKeyDown} className={styles.input} type="text"
                 placeholder={item.placeholder}
                 onChange={onChange} value={searchValue || ''} />
             {item.input.error && <span className={styles.error__text}>{item.input.error}</span>}
             {isSublistOpen && <ul className={styles.sublist}>
-                {filteredArr?.map((item, index) => <li key={index} className={styles.sublist__item}>
+                {filteredArr?.map((item, index) => <li key={item.slug} className={styles.sublist__item}>
                     <button {...index === 0 ? { ref } : {}} onKeyDown={e => onItemKeyDown(e, item)}
-                        onClick={(e) => (e.stopPropagation(), onItemClick(item))}
+                        onClick={(e) => (e.preventDefault(), onItemClick(item))}
                         className={styles.sublist__button}>{item.title}</button>
                 </li>)}
             </ul>}
-            <ArrowDown className={stack(styles.input__arrow, isSublistOpen && styles.up)}></ArrowDown>   
+            <ArrowDown className={stack(styles.input__arrow, isSublistOpen && styles.up)}></ArrowDown>
         </div>
     }
 
@@ -199,7 +226,7 @@ const InstructionBooksOrder = () => {
 
     const onSubmit = () => {
         const inputArr = inputsGroup
-        let error: boolean;
+        let error: boolean | undefined;
 
         inputArr.forEach(item => {
             if (item.input.value === '') {
@@ -233,7 +260,6 @@ const InstructionBooksOrder = () => {
 
         }
 
-        console.log('error')
 
         if (!error) {
             console.log(emailBody)
@@ -258,11 +284,11 @@ const InstructionBooksOrder = () => {
 
     return (
         <section className={stack(styles.section)} >
-            <LightPicture className={styles.picture} desktopIImage={instructionBooksPage?.instructionBooks?.instructionsOrderFonovoeIzobrazhenieDlyaKonpyutera?.sourceUrl} imageClassName={styles.image} mobileIImage={instructionBooksPage?.instructionBooks?.instructionsOrderFonovoeIzobrazhenieDlyaTelefona?.sourceUrl} alt={instructionBooksPage?.instructionBooks?.instructionsOrderFonovoeIzobrazhenieDlyaKonpyutera?.altText}></LightPicture>
+            <LightPicture className={styles.picture} desktopIImage={instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderFonovoeIzobrazhenieDlyaKonpyutera?.sourceUrl || ''} imageClassName={styles.image} mobileIImage={instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderFonovoeIzobrazhenieDlyaTelefona?.sourceUrl || ''} alt={instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderFonovoeIzobrazhenieDlyaKonpyutera?.altText || ''}></LightPicture>
             <div className={stack('container', styles.container)} >
                 <div className={styles.left}>
-                    <h2 className={styles.title}>{typo.execute(instructionBooksPage?.instructionBooks.instructionsOrderZagolovok)}</h2>
-                    <p className={styles.text}>{typo.execute(instructionBooksPage?.instructionBooks.instructionsOrderPodzagolovok)}</p>
+                    <h2 className={styles.title}>{typo.execute(instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderZagolovok || '')}</h2>
+                    <p className={styles.text}>{typo.execute(instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderPodzagolovok || '')}</p>
                 </div>
 
                 <div className={styles.right}>
@@ -276,7 +302,7 @@ const InstructionBooksOrder = () => {
                                 <div className={styles.checkbox__sign}></div>
                             </button>
                             <p className={styles.checkbox__text}>Я соглашаюсь с&nbsp; <a className={styles.checkbox__link}
-                                href={section?.footer?.footerPolitikaKonfidenczialnosti?.mediaItemUrl}>условиями
+                                href={section?.footer?.footerPolitikaKonfidenczialnosti?.mediaItemUrl || ''}>условиями
                                 обработки</a> персональных данных</p>
                         </div>
                         <button type={"submit"} onClick={onSubmit} className={stack(styles.button, 'button-secondary-new')}>Отправить

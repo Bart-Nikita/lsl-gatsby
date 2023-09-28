@@ -4,7 +4,7 @@ import Header, { Navigation } from "./Header/Header";
 import Cookies from "./Cookies/Cookies";
 import Footer from "./Footer/Footer";
 import { useGlobalContext } from "../../context/context";
-import { useQuery } from "@apollo/client";
+import { ApolloProvider, useQuery } from "@apollo/client";
 import Loading from "../loading/Loading";
 import FixedLayer from "./FixedLayer/FixedLayer";
 import Modal from "./Modal/Modal";
@@ -13,6 +13,7 @@ import TrainingsFormModal from "../pages/TrainingsPage/TrainingsFormModal/Traini
 import TrainingsModal from "../pages/TrainingsPage/TrainingsModal/TrainingsModal";
 import InstructionsBooksFormModal from '../pages/InstructionBooksPage/InstructionsBooksFormModal/InstructionsBooksFormModal';
 import InstructionsBooksModal from '../pages/InstructionBooksPage/InstructionsBooksModal/InstructionsBooksModal';
+import { client } from '../../gql/apollo/client';
 
 type LayoutProps = {
     children: ReactElement | ReactNode
@@ -68,9 +69,9 @@ const ModalLayer = () => {
     return <FixedLayer>
         {historyLength < 2 && <Cookies></Cookies>}
         <Modal open={isNavModalOpen} setOpen={onNavModalClose}>
-            {isNavModalOpen && <Navigation></Navigation>}
+        {isNavModalOpen && <Navigation></Navigation>}
         </Modal>
-        {/* <Modal open={isTrainingModalOpen} setOpen={onTrainingModalClose}>
+        <Modal open={isTrainingModalOpen} setOpen={onTrainingModalClose}>
             {isTrainingModalOpen && <TrainingsModal></TrainingsModal>}
         </Modal>
         <Modal open={isTrainingFormModalOpen} setOpen={onTrainingFormModalClose}>
@@ -81,7 +82,7 @@ const ModalLayer = () => {
         </Modal>
         <Modal open={isInstructionBooksModalOpen} setOpen={onInstructionsModalClose}>
             {isInstructionBooksModalOpen && <InstructionsBooksModal></InstructionsBooksModal>}
-        </Modal> */}
+        </Modal>
 
     </FixedLayer>
 }
@@ -102,14 +103,14 @@ const Layout = memo(({ children }: LayoutProps) => {
 
 
     return (
-        <>
+        <ApolloProvider client={client}>
             <Header></Header>
             <ModalLayer></ModalLayer>
             <main id="main">
                 {children}
             </main>
             <Footer></Footer>
-        </>
+         </ApolloProvider>
     );
 });
 

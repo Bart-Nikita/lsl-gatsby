@@ -59,9 +59,9 @@ const Online = ({className, isSmall}: OnlineProps) => {
             <div className={styles.body}>
                 <div className={styles.content}>
                     <h2 className={stack("text-large", styles.title)}
-                        dangerouslySetInnerHTML={{__html: section?.online.onlineZagolovok}}></h2>
+                        dangerouslySetInnerHTML={{__html: section?.online?.onlineZagolovok || ''}}></h2>
                     <p className={stack('text-simple', styles.text)}
-                       dangerouslySetInnerHTML={{__html: section?.online.onlineTekst}}></p>
+                       dangerouslySetInnerHTML={{__html: section?.online?.onlineTekst || ''}}></p>
                 </div>
                 <div className={styles.form}>
                     <div className={styles.form__section}>
@@ -71,7 +71,7 @@ const Online = ({className, isSmall}: OnlineProps) => {
                         {emailTypeError &&
                             <p className={styles.error}>{emailError}</p>}                    </div>
                     <button onClick={onSubmit}
-                            className={stack( styles.button, loading && 'disabled')}>{section?.online.onlineTekstKnopki}</button>
+                            className={stack( styles.button, loading && 'disabled')}>{section?.online?.onlineTekstKnopki}</button>
                 </div>
             </div>
         </div>

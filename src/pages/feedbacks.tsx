@@ -3,23 +3,34 @@ import type { HeadFC, PageProps } from "gatsby"
 
 import { graphql } from "gatsby"
 import Seo from "../components/seo/Seo"
+import { GlobalContext, globalState } from "../context/context"
+import FeedbacksSimple from "../components/common/Feedbacks/FeedbacksSimple/FeedbacksSimple"
+import FeedbacksSocial from "../components/common/Feedbacks/FeedbacksSocial/FeedbacksSocial"
+import Publications from "../components/common/Publications/Publications"
+import Messenger from "../components/common/Messenger/Messenger"
+import Layout from "../components/layout/Layout"
 
 export const Head = ({ data }: PageProps<Queries.FeedbacksPageQuery>) => {
-  console.log(data?.site)
-
 
   return (
-<Seo url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>  )
+    <Seo url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>)
 }
 
-
-
-
 const FeedbacksPage: React.FC<PageProps<Queries.FeedbacksPageQuery>> = ({ data }: PageProps<Queries.FeedbacksPageQuery>) => {
-  console.log(data)
-  return <div>
-    {data?.wpPage?.metaData?.metaZagolovok}
-  </div>
+  //@ts-ignore
+  const state = globalState(data)
+  return <GlobalContext.Provider value={state}>
+    <Layout>
+      <h1 className="hidden">Отзывы</h1>
+      <div className="  mt-[70px]
+ xl:mt-[50px] md:mt-[37px] sm:mt-[7px]">
+        <FeedbacksSimple className={'section-indent-new'}></FeedbacksSimple>
+      </div>
+      <FeedbacksSocial></FeedbacksSocial>
+      <Publications className=" mb-[120px] xl:mb-[75px] xl:mb-[66px] md:mb-[43px] sm:mb-[40px]"></Publications>
+      <Messenger className="mb-[130px]  mb-[121px] xl:mb-[18px] xl:mb-[10px] md:mb-[-12px]"></Messenger>
+    </Layout>
+  </GlobalContext.Provider>
 }
 
 export default FeedbacksPage
@@ -50,6 +61,7 @@ export const query = graphql` query FeedbacksPage {
     }
 }
   wpPage(slug: {eq: "otzyvy"}) {
+    slug
     metaData {
       metaOpisanie
       metaZagolovok
@@ -117,7 +129,6 @@ export const query = graphql` query FeedbacksPage {
         }
       }
       footer {
-        fieldGroupName
         footerAdresSajta
         footerContactsZagolovok
         footerKopirajt
@@ -130,9 +141,28 @@ export const query = graphql` query FeedbacksPage {
           footerContactsKommentarij
           footerContactsTekst
         }
+        
         footerLogotip {
           altText
           sourceUrl
+        }
+        footerLogotipMobile {
+          altText
+          sourceUrl
+        }
+        footerPolitikaKonfidenczialnosti {
+          mediaItemUrl
+        }
+        footerPublichnayaOferta {
+          mediaItemUrl
+        }
+        footerSocialSpisok {
+          footerSocialAdres
+          footerSocialTekst
+          footerSocialIkonka {
+            altText
+            sourceUrl
+          }
         }
       }
       header {

@@ -76,7 +76,7 @@ const LeaveContacts = ({title, buttonText}: LeaveContacts) => {
 
         return (
             <section className={stack('section-indent', 'container', styles.body)}>
-                <h2 className={stack(styles.title)} dangerouslySetInnerHTML={{__html: title}}></h2>
+                <h2 className={stack(styles.title)} dangerouslySetInnerHTML={{__html: title || ''}}></h2>
                 <div className={styles.form}>
                     <div className={styles.form__item}>
                         <p className={styles.label}>Имя</p>
@@ -101,7 +101,7 @@ const LeaveContacts = ({title, buttonText}: LeaveContacts) => {
                             <p className={styles.form__error}>{emailError}</p>}
                     </div>
                     <button onClick={onSubmit}
-                            className={stack( styles.submit, loading && 'disabled')}>{buttonText}</button>
+                            className={stack( 'button-secondary-new', styles.submit, loading && 'disabled')}>{buttonText}</button>
                 </div>
             </section>
         );

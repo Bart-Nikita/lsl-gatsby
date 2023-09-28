@@ -3,23 +3,32 @@ import type { HeadFC, PageProps } from "gatsby"
 
 import { graphql } from "gatsby"
 import Seo from "../components/seo/Seo"
+import InstructionBooksAdvantages from "../components/pages/InstructionBooksPage/InstructionBooksAdvantages/InstructionBooksAdvantages"
+import InstructionBooksInstructions from "../components/pages/InstructionBooksPage/InstructionBooksInstructions/InstructionBooksInstructions"
+import InstructionBooksOrder from "../components/pages/InstructionBooksPage/InstructionBooksOrder/InstructionBooksOrder"
+import InstructionBooksSteps from "../components/pages/InstructionBooksPage/InstructionBooksSteps/InstructionBooksSteps"
+import { GlobalContext, globalState } from "../context/context"
+import Layout from "../components/layout/Layout"
+import InstructionBooksHome from "../components/pages/InstructionBooksPage/InstructionBooksHome/InstructionBooksHome"
 
 export const Head = ({ data }: PageProps<Queries.InstructionsPageQuery>) => {
-  console.log(data?.site)
-
 
   return (
-<Seo url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>  )
+    <Seo url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>)
 }
 
-
-
-
 const InstructionsPage: React.FC<PageProps<Queries.InstructionsPageQuery>> = ({ data }: PageProps<Queries.InstructionsPageQuery>) => {
-  console.log(data)
-  return <div>
-    {data?.wpPage?.metaData?.metaZagolovok}
-  </div>
+  //@ts-ignore
+  const state = globalState(data)
+  return <GlobalContext.Provider value={state}>
+    <Layout>
+      <InstructionBooksHome></InstructionBooksHome>
+      <InstructionBooksAdvantages></InstructionBooksAdvantages>
+      <InstructionBooksInstructions></InstructionBooksInstructions>
+      <InstructionBooksSteps></InstructionBooksSteps>
+      <InstructionBooksOrder></InstructionBooksOrder>
+    </Layout>
+  </GlobalContext.Provider>
 }
 
 export default InstructionsPage
@@ -56,6 +65,7 @@ export const query = graphql` query InstructionsPage {
     }
   }
   wpPage(slug: {eq: "obuchayushhie-posobiya"}) {
+    slug
     metaData {
       metaOpisanie
       metaZagolovok
@@ -204,7 +214,6 @@ export const query = graphql` query InstructionsPage {
         }
       }
       footer {
-        fieldGroupName
         footerAdresSajta
         footerContactsZagolovok
         footerKopirajt
@@ -217,9 +226,28 @@ export const query = graphql` query InstructionsPage {
           footerContactsKommentarij
           footerContactsTekst
         }
+        
         footerLogotip {
           altText
           sourceUrl
+        }
+        footerLogotipMobile {
+          altText
+          sourceUrl
+        }
+        footerPolitikaKonfidenczialnosti {
+          mediaItemUrl
+        }
+        footerPublichnayaOferta {
+          mediaItemUrl
+        }
+        footerSocialSpisok {
+          footerSocialAdres
+          footerSocialTekst
+          footerSocialIkonka {
+            altText
+            sourceUrl
+          }
         }
       }
       header {
@@ -235,6 +263,12 @@ export const query = graphql` query InstructionsPage {
           sourceUrl
         }
       }
+    }
+  }
+  allWpTraining {
+    nodes {
+      title
+      slug
     }
   }
 }

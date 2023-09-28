@@ -3,23 +3,28 @@ import type { HeadFC, PageProps } from "gatsby"
 
 import { graphql } from "gatsby"
 import Seo from "../components/seo/Seo"
+import { GlobalContext, globalState } from "../context/context"
+import Layout from "../components/layout/Layout"
+import BlogList from "../components/pages/BlogPage/BlogList/BlogList"
+import Online from "../components/common/Online/Online"
 
 export const Head = ({ data }: PageProps<Queries.BlogPageQuery>) => {
-  console.log(data?.site)
-
-
   return (
-<Seo url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>  )
+    <Seo url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>)
 }
 
 
 
 
 const BlogPage: React.FC<PageProps<Queries.BlogPageQuery>> = ({ data }: PageProps<Queries.BlogPageQuery>) => {
-  console.log(data)
-  return <div>
-    {data?.wpPage?.metaData?.metaZagolovok}
-  </div>
+    //@ts-ignore
+  const state = globalState(data)
+  return <GlobalContext.Provider value={state}>
+    <Layout>
+      <BlogList></BlogList>
+      <Online></Online>
+    </Layout>
+  </GlobalContext.Provider>
 }
 
 export default BlogPage
@@ -56,6 +61,7 @@ export const query = graphql` query BlogPage {
     }
   }
   wpPage(slug: {eq: "blog"}) {
+    slug
     metaData {
         metaOpisanie
         metaZagolovok
@@ -100,7 +106,6 @@ export const query = graphql` query BlogPage {
         }
       }
       footer {
-        fieldGroupName
         footerAdresSajta
         footerContactsZagolovok
         footerKopirajt
@@ -113,9 +118,28 @@ export const query = graphql` query BlogPage {
           footerContactsKommentarij
           footerContactsTekst
         }
+        
         footerLogotip {
           altText
           sourceUrl
+        }
+        footerLogotipMobile {
+          altText
+          sourceUrl
+        }
+        footerPolitikaKonfidenczialnosti {
+          mediaItemUrl
+        }
+        footerPublichnayaOferta {
+          mediaItemUrl
+        }
+        footerSocialSpisok {
+          footerSocialAdres
+          footerSocialTekst
+          footerSocialIkonka {
+            altText
+            sourceUrl
+          }
         }
       }
       header {

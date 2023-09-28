@@ -75,24 +75,6 @@ export const query = graphql` query IndexPage {
         }
     }
 }
-  allWpMenuItem(filter: {parentId: {eq: null}}, sort: {order: ASC}) {
-    nodes {
-        label
-        url
-        childItems {
-            nodes {
-                url
-                label
-                childItems {
-                    nodes {
-                        url
-                        label
-                    }
-                }
-            }
-        }
-    }
-}
   allFile {
     nodes {
       name
@@ -313,6 +295,7 @@ export const query = graphql` query IndexPage {
           footerContactsKommentarij
           footerContactsTekst
         }
+        
         footerLogotip {
           altText
           sourceUrl
@@ -441,6 +424,7 @@ export const query = graphql` query IndexPage {
   }
   allWpTraining {
     nodes {
+      title
       slug
       training {
         trainingCzena

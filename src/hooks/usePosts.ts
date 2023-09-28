@@ -1,19 +1,19 @@
 import {useEffect, useState} from "react";
-import {AllBlogNode} from "../types/data";
 import {useGlobalContext} from "../context/context";
 
 export const usePosts = (excludeSlug?: string) => {
-    const {data} = useGlobalContext()
-    const [posts, setPosts] = useState<AllBlogNode[]>()
+    const {posts} = useGlobalContext()
+    const [postsFiltered, setPostsFiltered] = useState<Queries.WpBlog[]>()
     useEffect(() => {
-        if (data) {
+        if (posts) {
             if (excludeSlug) {
-                setPosts(data.allBlog.nodes.filter(item => item.slug !== excludeSlug))
+                console.log(excludeSlug)
+                console.log(posts.find(item => item.slug === excludeSlug))
+                setPostsFiltered(posts.filter(item => item.slug !== excludeSlug))
                 return
             }
-            setPosts(data.allBlog.nodes)
-
+            setPostsFiltered(posts)
         }
-    }, [data]);
-    return [ posts]
+    }, [posts]);
+    return [ postsFiltered]
 }

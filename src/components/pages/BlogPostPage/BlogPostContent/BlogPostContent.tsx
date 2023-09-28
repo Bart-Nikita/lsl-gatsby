@@ -8,7 +8,7 @@ const BlogPostContent = () => {
 
     return (
         <div className={stack('container-new',  styles.body)}>
-            <div className={styles.text} dangerouslySetInnerHTML={{__html: blogPostPage?.blog.blogPostContentTekst}}></div>
+            <div className={styles.text} dangerouslySetInnerHTML={{__html: blogPostPage?.blog?.blogPostContentTekst || ''}}></div>
             <Online className={styles.form} isSmall={true}></Online>
         </div>
     );
