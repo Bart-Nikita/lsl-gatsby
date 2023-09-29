@@ -43,9 +43,9 @@ const HomeSafety = () => {
                     <video ref={video} className={styles.video__media}
                            src={page?.wpPage?.main?.mainSafetyVideo?.mediaItemUrl || ''}
                     ></video>
-                    {!isPlaying && <button
-                                           className={stack('link', styles.video__button)}>
-                        <img className={styles.video__image} src={play} alt="Иконка Play"/></button>}
+                     <button
+                                           className={stack('link', styles.video__button , !isPlaying && styles.visible)}>
+                        <img className={styles.video__image} src={play} alt="Иконка Play"/></button>
                 </div>
             </div>
         </section>

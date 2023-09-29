@@ -50,23 +50,33 @@
 .video {
     @apply relative rounded-[33px] overflow-hidden w-full border-[5px] border-yellow-400 shrink-0 w-[1210px] h-[660px]
      w-[900px]  border-[4px]  h-[500px]  rounded-[20px]
-    xl:h-[340px] xl:border-[3px] xl:rounded-[14px] xl:shrink
-     xl:h-[280px] xl:border-[2px] xl:rounded-[12px]
+     xl:shrink
+     xl:h-[37vw] xl:border-[2px] xl:rounded-[12px]
     md:w-full md:h-[260px]
 
 
 }
 
 .video__media {
-    @apply w-full h-full mt-[-5px]
-    xl:mt-[-10px]
+    @apply w-full h-full  absolute top-[-10px] right-[0px] left-[20px] bottom-0
+    xl:left-[50%]  xl:right-auto xl:top-[50%] xl:translate-y-[-55%] xl:translate-x-[-48%] ;
+
+    clip-path: inset(10px 10px)!important; 
 }
 
-.video__button {
-    @apply absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] rounded-full z-10 w-[160px] h-[160px]
+.body .video__button {
+    @apply absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] rounded-full z-10 w-[160px] h-[160px] opacity-0 transition-all
      w-[120px]  h-[120px]
     xl:w-[72px] xl:h-[72px]
     xl:w-[60px] xl:h-[60px]
+
+}
+
+.video__button.visible {
+@apply opacity-[1] 
+}
+
+.visible {
 
 }
 
