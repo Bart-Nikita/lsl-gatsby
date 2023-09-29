@@ -53,10 +53,10 @@ const Seo = ({ url, description, title }: SeoProps) => {
             <meta
                 name="twitter:creator"
                 content="@" />
-            <link
+            {/* <link
                 rel="shortcut icon"
                 href={url + image}
-                type="image/vnd.microsoft.icon" />
+                type="image/vnd.microsoft.icon" /> */}
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
             <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,700;0,900;1,700&display=swap"
