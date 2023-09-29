@@ -1,7 +1,7 @@
 import React from "react"
 import smallImageUrl from '../../static/share_510х228.jpg';
 import bigImageUrl from '../../static/share_1200x630.jpg';
-import image from '../../static/favicon.svg'
+import image from '../../static/favicon.ico'
 
 interface SeoProps {
     url: string,
@@ -55,7 +55,7 @@ const Seo = ({ url, description, title }: SeoProps) => {
                 content="@" />
             <link
                 rel="shortcut icon"
-                href={url + '/static/favicon.svg'}
+                href={url + image}
                 type="image/vnd.microsoft.icon" />
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

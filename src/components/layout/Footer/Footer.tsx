@@ -42,7 +42,7 @@ const Footer = () => {
                         {menuItems?.map((item, index) => <li key={item.label}
                                                                                 className={styles.li}>
                             <Link className={stack('nav-link', styles.text, styles.nav__link)}
-                                  to={item?.url || ''}>{item.label}</Link>
+                                  to={item?.url || '/history'}>{item.label}</Link>
                         </li>)}
                     </ul>
                 </div>
