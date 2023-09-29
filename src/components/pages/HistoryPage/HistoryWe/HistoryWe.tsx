@@ -15,16 +15,16 @@ const HistoryWe = () => {
     const text = createRef<HTMLParagraphElement>()
     const [width] = useResize()
 
-    useEffect(() => {
-        setIndent(pictureBottom - textBottom)
-    }, [textBottom, pictureBottom])
+    // useEffect(() => {
+    //     setIndent(pictureBottom - textBottom)
+    // }, [textBottom, pictureBottom])
 
-    useLayoutEffect(() => {
-        if (text?.current) {
-            const value = text.current.getBoundingClientRect().bottom
-            setTextBottom(value)
-        }
-    }, [width, text?.current, historyPage]);
+    // useLayoutEffect(() => {
+    //     if (text?.current) {
+    //         const value = text.current.getBoundingClientRect().bottom
+    //         setTextBottom(value)
+    //     }
+    // }, [width, text?.current, historyPage]);
 
 
     return (

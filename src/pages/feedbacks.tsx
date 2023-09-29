@@ -13,7 +13,7 @@ import Layout from "../components/layout/Layout"
 export const Head = ({ data }: PageProps<Queries.FeedbacksPageQuery>) => {
 
   return (
-    <Seo url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>)
+    <Seo favicon={data.wpMenu?.favicon?.favikon?.sourceUrl || ''} url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>)
 }
 
 const FeedbacksPage: React.FC<PageProps<Queries.FeedbacksPageQuery>> = ({ data }: PageProps<Queries.FeedbacksPageQuery>) => {
@@ -36,6 +36,13 @@ const FeedbacksPage: React.FC<PageProps<Queries.FeedbacksPageQuery>> = ({ data }
 export default FeedbacksPage
 
 export const query = graphql` query FeedbacksPage {
+   wpMenu(slug: {eq: "osnovnoe"}) {
+    favicon {
+      favikon {
+        sourceUrl
+      }
+    }
+  }
    site {
     siteMetadata {
       title

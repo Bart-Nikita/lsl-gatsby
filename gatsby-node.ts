@@ -31,12 +31,19 @@ exports.createPages = async ({ graphql, actions, reporter }: CreatePagesArgs) =>
             }
         }
     }
-      site {
-        siteMetadata {
-          title
-          url
+    wpMenu(slug: {eq: "osnovnoe"}) {
+      favicon {
+        favikon {
+          sourceUrl
         }
       }
+    }
+     site {
+      siteMetadata {
+        title
+        url
+      }
+    }
       allFile {
         nodes {
           name
@@ -209,7 +216,8 @@ exports.createPages = async ({ graphql, actions, reporter }: CreatePagesArgs) =>
         commonSections: result.data?.allWpCommonSection.nodes,
         allPosts: result.data?.allWpBlog.nodes,
         post: node,
-        url: process.env.BASE_URL || 'http://localhost:9000'
+        url: process.env.BASE_URL || 'http://localhost:9000',
+        favicon: result.data?.wpMenu?.favicon?.favikon?.sourceUrl
       },
     })
   })

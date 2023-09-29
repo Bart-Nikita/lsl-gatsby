@@ -14,7 +14,7 @@ import InstructionBooksHome from "../components/pages/InstructionBooksPage/Instr
 export const Head = ({ data }: PageProps<Queries.InstructionsPageQuery>) => {
 
   return (
-    <Seo url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>)
+    <Seo favicon={data.wpMenu?.favicon?.favikon?.sourceUrl || ''} url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>)
 }
 
 const InstructionsPage: React.FC<PageProps<Queries.InstructionsPageQuery>> = ({ data }: PageProps<Queries.InstructionsPageQuery>) => {
@@ -34,6 +34,14 @@ const InstructionsPage: React.FC<PageProps<Queries.InstructionsPageQuery>> = ({ 
 export default InstructionsPage
 
 export const query = graphql` query InstructionsPage {
+  
+   wpMenu(slug: {eq: "osnovnoe"}) {
+    favicon {
+      favikon {
+        sourceUrl
+      }
+    }
+  }
    site {
     siteMetadata {
       title

@@ -18,7 +18,7 @@ import Layout from "../components/layout/Layout"
 export const Head = ({ data }: PageProps<Queries.TrainingsPageQuery>) => {
 
   return (
-    <Seo url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>)
+    <Seo favicon={data.wpMenu?.favicon?.favikon?.sourceUrl || ''} url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>)
 }
 
 const TrainingsPage: React.FC<PageProps<Queries.TrainingsPageQuery>> = ({ data }: PageProps<Queries.TrainingsPageQuery>) => {
@@ -42,6 +42,14 @@ const TrainingsPage: React.FC<PageProps<Queries.TrainingsPageQuery>> = ({ data }
 export default TrainingsPage
 
 export const query = graphql` query TrainingsPage {
+
+   wpMenu(slug: {eq: "osnovnoe"}) {
+    favicon {
+      favikon {
+        sourceUrl
+      }
+    }
+  }
    site {
     siteMetadata {
       title

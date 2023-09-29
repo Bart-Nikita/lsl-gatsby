@@ -20,7 +20,7 @@ import { GlobalContext, globalState, useGlobalContext } from "../context/context
 
 export const Head = ({ data }: PageProps<Queries.IndexPageQuery>) => {
   return (
-    <Seo url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>)
+    <Seo favicon={data.wpMenu?.favicon?.favikon?.sourceUrl || ''} url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>)
 }
 
 const IndexPage: React.FC<PageProps<Queries.IndexPageQuery>> = ({ data }: PageProps<Queries.IndexPageQuery>) => {
@@ -51,6 +51,14 @@ const IndexPage: React.FC<PageProps<Queries.IndexPageQuery>> = ({ data }: PagePr
 export default IndexPage
 
 export const query = graphql` query IndexPage {
+  
+   wpMenu(slug: {eq: "osnovnoe"}) {
+    favicon {
+      favikon {
+        sourceUrl
+      }
+    }
+  }
    site {
     siteMetadata {
       title

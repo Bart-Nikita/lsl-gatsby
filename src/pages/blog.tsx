@@ -10,7 +10,7 @@ import Online from "../components/common/Online/Online"
 
 export const Head = ({ data }: PageProps<Queries.BlogPageQuery>) => {
   return (
-    <Seo url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>)
+    <Seo favicon={data.wpMenu?.favicon?.favikon?.sourceUrl || ''} url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>)
 }
 
 
@@ -30,6 +30,13 @@ const BlogPage: React.FC<PageProps<Queries.BlogPageQuery>> = ({ data }: PageProp
 export default BlogPage
 
 export const query = graphql` query BlogPage {
+   wpMenu(slug: {eq: "osnovnoe"}) {
+    favicon {
+      favikon {
+        sourceUrl
+      }
+    }
+  }
    site {
     siteMetadata {
       title

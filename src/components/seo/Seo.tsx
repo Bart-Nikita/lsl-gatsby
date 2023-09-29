@@ -1,15 +1,15 @@
 import React from "react"
 import smallImageUrl from '../../static/share_510х228.jpg';
 import bigImageUrl from '../../static/share_1200x630.jpg';
-import image from '../../static/favicon.ico'
 
 interface SeoProps {
     url: string,
     description: string,
-    title: string
+    title: string,
+    favicon: string
 }
 
-const Seo = ({ url, description, title }: SeoProps) => {
+const Seo = ({ url, description, title, favicon }: SeoProps) => {
 
     return (
         <>
@@ -53,10 +53,10 @@ const Seo = ({ url, description, title }: SeoProps) => {
             <meta
                 name="twitter:creator"
                 content="@" />
-            {/* <link
+            <link
                 rel="shortcut icon"
-                href={url + image}
-                type="image/vnd.microsoft.icon" /> */}
+                href={favicon || ''}
+                type="image/vnd.microsoft.icon" />
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
             <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,700;0,900;1,700&display=swap"

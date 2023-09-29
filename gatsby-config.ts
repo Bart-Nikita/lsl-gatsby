@@ -25,22 +25,6 @@ const config: GatsbyConfig = {
         path: `${__dirname}/src/images`,
 
     },
-}, {
-  resolve: 'gatsby-plugin-favicons',
-  options: {
-    logo: './src/fav.svg',
-    appName: 'Little Sweet Lemon',
-    background: '#fff',
-    icons: {
-      android: true,
-      appleIcon: true,
-      appleStartup: true,
-      coast: false,
-      favicons: true,
-      yandex: true,
-      windows: false
-    }
-  }
 }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-postcss"]
 };
 

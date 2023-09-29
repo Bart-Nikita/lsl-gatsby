@@ -11,7 +11,7 @@ import Layout from '../components/layout/Layout'
 export const Head = (data: BlogPostProps) => {
   console.log(data.pageContext.site.siteMetadata?.url)
   return (
-    <Seo url={data.pageContext.site.siteMetadata?.url || ''} title={('LSL | ' + data.pageContext.post.blog?.blogPostHeroZagolovok) || ''} description={data.pageContext.post.blog?.blogPostHeroKratkoeOpisanie || ''}></Seo>)
+    <Seo favicon={data.pageContext.favicon} url={data.pageContext.site.siteMetadata?.url || ''} title={('LSL | ' + data.pageContext.post.blog?.blogPostHeroZagolovok) || ''} description={data.pageContext.post.blog?.blogPostHeroKratkoeOpisanie || ''}></Seo>)
 }
 
 export type BlogPostProps = {
@@ -23,6 +23,7 @@ export type BlogPostProps = {
     slug: string,
     site: Queries.Site,
     allFiles: Queries.File[],
+    favicon: string
   }
 }
 

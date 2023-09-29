@@ -15,7 +15,7 @@ import HistoryWe from "../components/pages/HistoryPage/HistoryWe/HistoryWe"
 
 export const Head = ({ data }: PageProps<Queries.HistoryPageQuery>) => {
   return (
-    <Seo url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>)
+    <Seo favicon={data.wpMenu?.favicon?.favikon?.sourceUrl || ''} url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>)
 }
 
 
@@ -40,6 +40,13 @@ const HistoryPage: React.FC<PageProps<Queries.HistoryPageQuery>> = ({ data }: Pa
 export default HistoryPage
 
 export const query = graphql` query HistoryPage {
+   wpMenu(slug: {eq: "osnovnoe"}) {
+    favicon {
+      favikon {
+        sourceUrl
+      }
+    }
+  }
    site {
     siteMetadata {
       title

@@ -10,7 +10,7 @@ import { GlobalContext, globalState } from "../context/context"
 
 export const Head = ({ data }: PageProps<Queries.ContactsPageQuery>) => {
   return (
-    <Seo url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>)
+    <Seo favicon={data.wpMenu?.favicon?.favikon?.sourceUrl || ''} url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>)
 }
 
 const ContactsPage: React.FC<PageProps<Queries.ContactsPageQuery>> = ({ data }: PageProps<Queries.ContactsPageQuery>) => {
@@ -27,6 +27,13 @@ const ContactsPage: React.FC<PageProps<Queries.ContactsPageQuery>> = ({ data }: 
 export default ContactsPage
 
 export const query = graphql` query ContactsPage {
+   wpMenu(slug: {eq: "osnovnoe"}) {
+    favicon {
+      favikon {
+        sourceUrl
+      }
+    }
+  }
    site {
     siteMetadata {
       title
