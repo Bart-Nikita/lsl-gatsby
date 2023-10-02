@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useLayoutEffect, useState } from 'react';
+import React, { MouseEventHandler, createRef, useEffect, useLayoutEffect, useState } from 'react';
 import { useGlobalContext } from "../../../context/context";
 import { sortDate } from "../../../hooks/useSortDate";
 import { stack } from "../../../hooks/useClassName";
@@ -10,7 +10,12 @@ import SwiperLight from "../../lowleveled/SwiperLight/SwiperLight";
 
 const SlideItem = (item: Queries.WpPublication) => {
 
-    return <Link to={item?.publications?.publicationsAdresSsylki || ''} target={"_blank"} onMouseMove={(e) => e.preventDefault()} className={stack('link', styles.item)}>
+    const onMouseDownHandler = (e: React.MouseEvent) => {
+        e.preventDefault()
+    }
+
+
+    return <Link onMouseDown={onMouseDownHandler}  to={item?.publications?.publicationsAdresSsylki || ''} target={"_blank"} onMouseMove={(e) => e.preventDefault()} className={stack('link', styles.item)}>
         <div className={styles.item__top}>
             <div className={styles.item__decor}></div>
             <Picture imageClassName={styles.item__image} className={styles.item__picture}

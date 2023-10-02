@@ -34,7 +34,6 @@ const SelectItem = (item: Queries.WpTraining & { index: number }) => {
     if (!item?.training?.trainingImageKompyuter && !item?.training?.trainingImageTelefon) return
 
     const itemCLickHandler = () => {
-        console.log('click')
         setTrainingModalData(item)
         setIsTrainingModalOpen(true)
     }

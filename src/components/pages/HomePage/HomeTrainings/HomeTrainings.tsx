@@ -10,7 +10,12 @@ import { useTrainings } from "../../../../hooks/useTrainings";
 
 const HomeTrainings = () => {
 
-    const { mainPage: page, trainings } = useGlobalContext()
+    const { mainPage: page, trainings, setTrainingModalData, setIsTrainingModalOpen } = useGlobalContext()
+
+    const itemCLickHandler = (item: Queries.WpTraining) => {
+        setTrainingModalData(item)
+        setIsTrainingModalOpen(true)
+    }
 
     return (
         <section className={stack('container', 'section-indent', styles.body)}>
@@ -19,7 +24,7 @@ const HomeTrainings = () => {
                 {trainings?.slice(0, 5).map((item, index) => {
 
                     if (!item?.training?.trainingImageKompyuter && !item?.training?.trainingImageTelefon) return
-                    return <Link to={''} key={index} className={stack(styles.list__item)}>
+                    return <button onClick={() => itemCLickHandler(item)} key={index} className={stack(styles.list__item)}>
                         <LightPicture className={styles.item__image} imageClassName={styles.picture__image}
                             desktopIImage={item?.training?.trainingImageKompyuter?.sourceUrl || ''}
                             mobileIImage={item?.training?.trainingImageTelefon?.sourceUrl || ''}
@@ -34,7 +39,7 @@ const HomeTrainings = () => {
                             <p className={stack('text-small', styles.item__text)}
                                 dangerouslySetInnerHTML={{ __html: item?.training?.trainingKratkoeOpisanie || '' }}></p>
                         </div>
-                    </Link>
+                    </button>
                 })}
             </div>
             <Link className={stack('button-primary', styles.button)}

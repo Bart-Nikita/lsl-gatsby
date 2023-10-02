@@ -125,7 +125,7 @@ export const query = graphql` query InstructionsPage {
         }
         videoDlyaModalnogoOkna {
           altText
-          sourceUrl
+          mediaItemUrl
         }
       }
       instructionsOrderFonovoeIzobrazhenieDlyaKonpyutera {

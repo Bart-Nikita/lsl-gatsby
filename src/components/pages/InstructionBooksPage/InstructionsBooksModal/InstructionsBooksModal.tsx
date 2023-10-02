@@ -42,6 +42,9 @@ export default function InstructionsBooksModal() {
     const onOrderClick = () => {
         setIsInstructionBooksFormModalOpen(true)
     }
+    useEffect(() => {
+        console.log(instructionBooksModalData)
+    }, [instructionBooksModalData])
 
     const [play] = useFile('play')
     return (
@@ -77,13 +80,13 @@ export default function InstructionsBooksModal() {
                             <p className={styles.content__desc}>Инструкция к&nbsp;тренажеру</p>
                             <h2 className={styles.content__title}>{typo.execute(instructionBooksModalData?.nazvanie || '')}</h2>
                             <p className={styles.content__price}
-                                dangerouslySetInnerHTML={{ __html: instructionBooksModalData?.czena || ''}}></p>
+                                dangerouslySetInnerHTML={{ __html: instructionBooksModalData?.czena || '' }}></p>
                         </div>
                         <p className={styles.content__text}
                         >{typo.execute(instructionBooksModalData?.polnoeOpisanie || '')}</p>
                         {(instructionBooksModalData?.vRamkeVModalnomOkne?.length && instructionBooksModalData?.vRamkeVModalnomOkne?.length > 0) && <ul className={styles.content__border}>
                             {instructionBooksModalData?.vRamkeVModalnomOkne?.map((item, index) => <li className={styles.border__item} key={index} >
-                                <p className={styles.border__text} dangerouslySetInnerHTML={{__html:item?.tekst || ''}}></p>
+                                <p className={styles.border__text} dangerouslySetInnerHTML={{ __html: item?.tekst || '' }}></p>
                             </li>)}
                         </ul>}
                         <button onClick={onOrderClick}
