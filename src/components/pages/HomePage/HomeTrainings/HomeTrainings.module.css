@@ -29,12 +29,17 @@
     xl:w-full xl:block xl:gap-[15px]
 }
 
+.item__text, .item__price, .item__title {
+    @apply text-left
+}
+
+
 .list .list__item:nth-child(1) .item__text , .list  .list__item:nth-child(2)  .item__text {
-    @apply max-w-[75%] xl:max-w-[80%] md:max-w-none
+    @apply  md:max-w-none
 }
 
 .list__item {
-    @apply w-[calc((100%-50px*2)/3)] cursor-pointer
+    @apply w-[calc((100%-50px*2)/3)] cursor-pointer flex flex-col justify-start
      w-[calc((100%-30px*2)/3)]
     xl:w-[calc((100%-20px*2)/3)]
     xl:w-[calc((100%-20px)/2)]
@@ -76,7 +81,7 @@
 }
 
  .list__item:not(:last-child) .item__text {
-    @apply max-w-[75%] xl:max-w-none
+    @apply  xl:max-w-none
 }
 
 .item__price {}

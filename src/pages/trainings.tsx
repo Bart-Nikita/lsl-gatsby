@@ -348,7 +348,7 @@ export const query = graphql` query TrainingsPage {
     }
   }
  
-  allWpTraining {
+  allWpTraining(sort: {date: DESC}) {
     nodes {
       title
       slug

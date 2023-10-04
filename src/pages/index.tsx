@@ -430,7 +430,7 @@ export const query = graphql` query IndexPage {
       }
     }
   }
-  allWpTraining {
+  allWpTraining(sort: {date: DESC}) {
     nodes {
       title
       slug
