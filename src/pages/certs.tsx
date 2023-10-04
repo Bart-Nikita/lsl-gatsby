@@ -7,7 +7,7 @@ import { GlobalContext, globalState, useGlobalContext } from "../context/context
 import { GatsbyImage } from "gatsby-plugin-image";
 import Typo from "../components/common/Typo/Typo"
 import { typo } from "../tipograf"
-import { useFile } from "../hooks/useFile"
+import { useStaticFile } from "../hooks/useStaticFile"
 
 export const Head = ({ data }: PageProps<Queries.CertsPageQuery>) => {
   return (
@@ -18,8 +18,11 @@ const CertsPage: React.FC<PageProps<Queries.CertsPageQuery>> = ({ data }: PagePr
   //@ts-ignore
   const state = globalState(data)
 
-  const [certs] = useFile('certs')
-  const [painting] = useFile('painting')
+  const files = data?.allFile?.nodes
+ //@ts-ignore
+  const [certs] = useStaticFile('certs', files)
+   //@ts-ignore
+  const [painting] = useStaticFile('painting', files)
 
 
   return (
