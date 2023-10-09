@@ -9,7 +9,7 @@
 }
 
  .footer__body {
-    @apply bg-yellow-200 rounded-[30px]  pt-[68px] pb-[60px] pl-[67px] pr-[40px] grid grid-cols-[483px,auto,1fr,1fr] grid-rows-[auto,auto] gap-x-[80px] gap-y-[74px]
+    @apply bg-yellow-200 rounded-[30px] relative pt-[68px] pb-[60px] pl-[67px] pr-[40px] grid grid-cols-[483px,auto,1fr,1fr] grid-rows-[auto,auto] gap-x-[80px] gap-y-[74px]
     px-[40px] pt-[49px] pb-[44px] gap-y-[56px] gap-x-[60px] grid-cols-[362px,auto,1fr,1fr]
     xl:rounded-[10px]  xl:p-[20px] xl:pb-[29px] xl:pr-[37px] xl:gap-y-[42px] xl:gap-x-[42px] xl:grid-cols-[198px,auto,1fr,auto]
     xl:rounded-[10px]  xl:px-[20px] xl:py-[20px] xl:gap-y-[18px] xl:gap-x-[36px] xl:grid-cols-[203px,0.5fr,255px]
