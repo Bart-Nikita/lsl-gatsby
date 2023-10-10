@@ -9,6 +9,7 @@ import { typo } from "../../../../tipograf";
 import { InView } from "react-intersection-observer";
 import trainingsSelect from "../TrainingsSelect/TrainingsSelect";
 import ReactModal from 'react-modal';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 
 
@@ -41,10 +42,7 @@ const GalleryItem = (item: Queries.WpTraining_Training_trainingGallereya) => {
                 <img className={styles.video__image} src="/image/play.png"
                     alt="Иконка Play" /></button>
         }
-        <LightPicture className={styles.video__picture} imageClassName={styles.video__image}
-            alt={item?.izobrazhenieDlyaKompyutera?.altText || ''}
-            desktopIImage={item?.izobrazhenieDlyaKompyutera?.sourceUrl || ''}
-            mobileIImage={item?.izobrazhenieDlyaTelefona?.sourceUrl || ''}></LightPicture>
+      <GatsbyImage className={styles.video__picture} image={item?.izobrazhenieDlyaKompyutera?.gatsbyImage} alt={item?.izobrazhenieDlyaKompyutera?.altText}></GatsbyImage>
     </li>
 
 
@@ -113,16 +111,9 @@ const TrainingsModal = () => {
                                         <img className={styles.video__image} src="/image/play.png"
                                             alt="Иконка Play" /></button>
                                 }
-                                <LightPicture className={styles.video__picture} imageClassName={styles.video__image}
-                                    alt={selectedItem?.izobrazhenieDlyaKompyutera?.altText || ''}
-                                    desktopIImage={selectedItem?.izobrazhenieDlyaKompyutera?.sourceUrl || ''}
-                                    mobileIImage={selectedItem?.izobrazhenieDlyaTelefona?.sourceUrl || ''}></LightPicture>
+                                  <GatsbyImage className={styles.video__picture} image={selectedItem?.izobrazhenieDlyaKompyutera?.gatsbyImage} alt={selectedItem?.izobrazhenieDlyaKompyutera?.altText}></GatsbyImage>
                             </div> :
-                                <LightPicture className={styles.gallery__picture}
-                                    imageClassName={styles.gallery__image}
-                                    alt={selectedItem?.izobrazhenieDlyaKompyutera?.altText || ''}
-                                    desktopIImage={selectedItem?.izobrazhenieDlyaKompyutera?.sourceUrl || ''}
-                                    mobileIImage={selectedItem?.izobrazhenieDlyaTelefona?.sourceUrl || ''}></LightPicture>
+                                 <GatsbyImage className={styles.gallery__picture} image={selectedItem?.izobrazhenieDlyaKompyutera?.gatsbyImage} alt={selectedItem?.izobrazhenieDlyaKompyutera?.altText}></GatsbyImage>
                             }
                         </div>
                         {(trainingModalData?.training?.trainingGallereya?.length && trainingModalData?.training?.trainingGallereya?.length > 1) &&
@@ -135,10 +126,7 @@ const TrainingsModal = () => {
                                             {item?.video?.mediaItemUrl &&
                                                 <img className={styles.images__play} src="/image/play.png"
                                                     alt="Иконка Play" />}
-                                            <LightPicture className={styles.images__picture}
-                                                alt={item?.izobrazhenieDlyaKompyutera?.altText || ''}
-                                                desktopIImage={item?.izobrazhenieDlyaKompyutera?.sourceUrl || ''}
-                                                mobileIImage={item?.izobrazhenieDlyaTelefona?.sourceUrl || ''}></LightPicture>
+                                            <GatsbyImage className={styles.images__picture} image={item?.izobrazhenieDlyaKompyutera?.gatsbyImage} alt={item?.izobrazhenieDlyaKompyutera?.altText}></GatsbyImage>
                                         </button>
                                     </li>)}
                             </ul>}

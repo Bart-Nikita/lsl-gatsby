@@ -12,6 +12,7 @@ import { SEND_MAIL } from '../../../../gql/mutations/sendMail';
 import { CONTACTS_MAIL_SUBJECT, EMAIL_FROM, EMAIL_TO } from '../../../../config';
 import LightPicture from '../../../images/LightPicture/LightPicture';
 import ArrowDown from '../../../svg/ArrowDown';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 type InputItem = {
     input: useInputStateType
@@ -284,7 +285,7 @@ const InstructionBooksOrder = () => {
 
     return (
         <section className={stack(styles.section)} >
-            <LightPicture className={styles.picture} desktopIImage={instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderFonovoeIzobrazhenieDlyaKonpyutera?.sourceUrl || ''} imageClassName={styles.image} mobileIImage={instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderFonovoeIzobrazhenieDlyaTelefona?.sourceUrl || ''} alt={instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderFonovoeIzobrazhenieDlyaKonpyutera?.altText || ''}></LightPicture>
+           <GatsbyImage className={styles.picture} image={instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderFonovoeIzobrazhenieDlyaKonpyutera?.gatsbyImage} alt={instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderFonovoeIzobrazhenieDlyaKonpyutera?.altText}></GatsbyImage>
             <div className={stack('container', styles.container)} >
                 <div className={styles.left}>
                     <h2 className={styles.title}>{typo.execute(instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderZagolovok || '')}</h2>

@@ -90,19 +90,7 @@ export const query = graphql` query HistoryPage {
         historyHeroBolshojTekst
         historyHeroImageKompyuterX1 {
           altText
-          sourceUrl
-        }
-        historyHeroImageKompyuterX2 {
-          altText
-          sourceUrl
-        }
-        historyHeroImageTelefonX1 {
-          altText
-          sourceUrl
-        }
-        historyHeroImageTelefonX2 {
-          altText
-          sourceUrl
+          gatsbyImage(formats: WEBP, outputPixelDensities: 2, width: 1500)
         }
         historyHeroMalyjTekst
         historyHistoryList {
@@ -113,19 +101,7 @@ export const query = graphql` query HistoryPage {
         historyProjectsSpisok {
           kompyuterX1 {
             altText
-            sourceUrl
-          }
-          kompyuterX2 {
-            altText
-            sourceUrl
-          }
-          telefonX1 {
-            altText
-            sourceUrl
-          }
-          telefonX2 {
-            altText
-            sourceUrl
+            gatsbyImage(formats: WEBP, outputPixelDensities: 2, width: 400)
           }
         }
         historyProjectsTekst
@@ -135,7 +111,7 @@ export const query = graphql` query HistoryPage {
             nazvanieGoroda
             izobrazhenie {
               altText
-              sourceUrl
+              gatsbyImage(formats: WEBP, outputPixelDensities: 2, width: 200)
             }
           }
         }
@@ -148,35 +124,11 @@ export const query = graphql` query HistoryPage {
         historyWeCzitata
         historyWeFirstImageKompyuterX1 {
           altText
-          sourceUrl
-        }
-        historyWeFirstImageKompyuterX2 {
-          altText
-          sourceUrl
-        }
-        historyWeFirstImageTelefonX1 {
-          altText
-          sourceUrl
-        }
-        historyWeFirstImageTelefonX2 {
-          altText
-          sourceUrl
+          gatsbyImage(formats: WEBP, outputPixelDensities: 2, width: 800)
         }
         historyWeSecondImageKompyuterX1 {
           altText
-          sourceUrl
-        }
-        historyWeSecondImageKompyuterX2 {
-          altText
-          sourceUrl
-        }
-        historyWeSecondImageTelefonX1 {
-          altText
-          sourceUrl
-        }
-        historyWeSecondImageTelefonX2 {
-          altText
-          sourceUrl
+          gatsbyImage(formats: WEBP, outputPixelDensities: 2, width: 800)
         }
         historyWeTekstSverhu
         historyWeTekstVnizu
@@ -205,14 +157,9 @@ export const query = graphql` query HistoryPage {
           footerContactsKommentarij
           footerContactsTekst
         }
-        
         footerLogotip {
           altText
-          sourceUrl
-        }
-        footerLogotipMobile {
-          altText
-          sourceUrl
+          gatsbyImage(width: 200, outputPixelDensities: 2, formats: WEBP)
         }
         footerPolitikaKonfidenczialnosti {
           mediaItemUrl
@@ -225,7 +172,7 @@ export const query = graphql` query HistoryPage {
           footerSocialTekst
           footerSocialIkonka {
             altText
-            sourceUrl
+            gatsbyImage(width: 100, outputPixelDensities: 2, formats: WEBP)
           }
         }
       }
@@ -235,11 +182,7 @@ export const query = graphql` query HistoryPage {
         headerTelefon
         headerLogotip {
           altText
-          sourceUrl
-        }
-        headerLogotipMobile {
-          altText
-          sourceUrl
+          gatsbyImage(outputPixelDensities: 2, width: 100, formats: WEBP)
         }
       }
       messenger {
@@ -250,22 +193,9 @@ export const query = graphql` query HistoryPage {
         messengerZagolovok
         messengerImageKompyuter1x {
           altText
-          sourceUrl
-        }
-        messengerImageKompyuter2x {
-          altText
-          sourceUrl
-        }
-        messengerImageTelefon1x {
-          altText
-          sourceUrl
-        }
-        messengerImageTelefon2x {
-          altText
-          sourceUrl
+          gatsbyImage(width: 400, formats: WEBP, outputPixelDensities: 2)
         }
       }
-
       support {
         supportAdresSsylki
         supportTekst
@@ -273,19 +203,7 @@ export const query = graphql` query HistoryPage {
         supportZagolovok
         supportImageKompyuterX1 {
           altText
-          sourceUrl
-        }
-        supportImageKompyuterX2 {
-          altText
-          sourceUrl
-        }
-        supportImageTelefonX1 {
-          altText
-          sourceUrl
-        }
-        supportImageTelefonX2 {
-          altText
-          sourceUrl
+          gatsbyImage(outputPixelDensities: 2, width: 400, formats: WEBP)
         }
       }
     }

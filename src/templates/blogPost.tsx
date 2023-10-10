@@ -28,16 +28,19 @@ export type BlogPostProps = {
 }
 
 
-export default function blogPost(data: BlogPostProps ) {
+export default function blogPost(data: BlogPostProps) {
   //@ts-ignore
   const state = globalState(data)
   return <GlobalContext.Provider value={state}>
     <Layout>
-      <BlogPostHero></BlogPostHero>
-      <BlogPostContent></BlogPostContent>
-      <BlogPostMedia></BlogPostMedia>
-      <BlogPostMore></BlogPostMore>
-      <Online className={'hidden xl:block'}></Online>
+      {
+        data?.pageContext?.post?.pageStatus?.status === 'prod' ? <><BlogPostHero></BlogPostHero>
+          <BlogPostContent></BlogPostContent>
+          <BlogPostMedia></BlogPostMedia>
+          <BlogPostMore></BlogPostMore>
+          <Online className={'hidden xl:block'}></Online></>
+          : <div className='flex justify-center items-center min-h-[50vh] md:min-h-[30vh] container' > <h1 className='text-[48px] xl:text-[36px] md:text-[24px] text-[#FEC955] font-bold text-center'>Страница в разработке</h1></div>
+      }
     </Layout>
   </GlobalContext.Provider>
 }

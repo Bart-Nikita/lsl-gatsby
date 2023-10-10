@@ -5,6 +5,7 @@ import Picture from "../../../images/Picture/Picture";
 import {useGlobalContext} from "../../../../context/context";
 import LightPicture from "../../../images/LightPicture/LightPicture";
 import { useFile } from '../../../../hooks/useFile';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const BlogPostMedia = () => {
     const {blogPostPage} = useGlobalContext()
@@ -38,10 +39,7 @@ const BlogPostMedia = () => {
                                 className={stack('link', styles.video__button)}>
                                 <img className={styles.video__image} src={play} alt="Иконка Play"/></button>
                     }
-                    <LightPicture alt={blogPostPage?.blog?.blogPostMediaZastavkaDlyaVideoKompyuter?.altText || ''}
-                                  className={stack(styles.video__picture)} imageClassName={styles.video__image}
-                                  desktopIImage={blogPostPage?.blog?.blogPostMediaZastavkaDlyaVideoKompyuter?.sourceUrl || ''}
-                                  mobileIImage={blogPostPage?.blog?.blogPostMediaZastavkaDlyaVideoKompyuterKopiya?.sourceUrl || ''}></LightPicture>
+                    <GatsbyImage className={styles.video__picture} image={blogPostPage?.blog?.blogPostMediaZastavkaDlyaVideoKompyuter?.gatsbyImage} alt={blogPostPage?.blog?.blogPostMediaZastavkaDlyaVideoKompyuter?.altText}></GatsbyImage>
                 </div>
 
                 <div className={styles.left__back}></div>
@@ -53,12 +51,7 @@ const BlogPostMedia = () => {
                    dangerouslySetInnerHTML={{__html: blogPostPage?.blog?.blogPostMediaTekstNadIzobrazheniem || ''}}></p>
                 <div className={styles.right__back}>
                 </div>
-                <Picture imageClassName={styles.right__image} className={styles.right__picture}
-                         mobileIImageX1={blogPostPage?.blog?.blogPostMediaIzobrazhenieDlyaTelefonaX1?.sourceUrl || ""}
-                         mobileIImageX2={blogPostPage?.blog?.blogPostMediaIzobrazhenieDlyaTelefonaX2?.sourceUrl || ""}
-                         desktopIImageX1={blogPostPage?.blog?.blogPostMediaIzobrazhenieDlyaKompyuteraX1?.sourceUrl || ""}
-                         desktopIImageX2={blogPostPage?.blog?.blogPostMediaIzobrazhenieDlyaKompyuteraX2?.sourceUrl || ""}
-                         alt={blogPostPage?.blog?.blogPostMediaIzobrazhenieDlyaKompyuteraX1?.altText || ''}></Picture>
+       <GatsbyImage className={styles.right__picture} imgClassName={styles.right__image} image={blogPostPage?.blog?.blogPostMediaIzobrazhenieDlyaKompyuteraX1?.gatsbyImage} alt={blogPostPage?.blog?.blogPostMediaIzobrazhenieDlyaKompyuteraX1?.altText}></GatsbyImage>
             </div>
         </div>
     );

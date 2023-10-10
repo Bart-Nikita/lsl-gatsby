@@ -3,6 +3,7 @@ import * as styles from './HistoryProjects.module.css'
 import {useGlobalContext} from "../../../../context/context";
 import {stack} from "../../../../hooks/useClassName";
 import Picture from "../../../images/Picture/Picture";
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const HistoryProjects = () => {
     const {historyPage} = useGlobalContext()
@@ -18,12 +19,7 @@ const HistoryProjects = () => {
             <ul className={styles.list}>
                 {historyPage?.wpPage?.history?.historyProjectsSpisok?.map((item, index) => <li key={index}
                                                                                     className={styles.list__item}>
-                    <Picture imageClassName={styles.image} className={styles.picture}
-                             alt={item?.kompyuterX1?.altText || ''}
-                             desktopIImageX1={item?.kompyuterX1?.sourceUrl || ''}
-                             desktopIImageX2={item?.kompyuterX2?.sourceUrl || ''}
-                             mobileIImageX1={item?.telefonX1?.sourceUrl || ''}
-                             mobileIImageX2={item?.telefonX2?.sourceUrl || ''}></Picture>
+               <GatsbyImage image={item?.kompyuterX1?.gatsbyImage} alt={item?.kompyuterX1?.altText} className={styles.picture}></GatsbyImage>
                 </li>)}
 
             </ul>

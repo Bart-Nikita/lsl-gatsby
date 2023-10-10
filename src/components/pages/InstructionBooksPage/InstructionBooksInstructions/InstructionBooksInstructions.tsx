@@ -1,12 +1,13 @@
 import React from 'react';
 import * as styles from './InstructionBooksInstructions.module.css'
-import {useGlobalContext} from "../../../../context/context";
-import {stack} from "../../../../hooks/useClassName";
+import { useGlobalContext } from "../../../../context/context";
+import { stack } from "../../../../hooks/useClassName";
 import LightPicture from "../../../images/LightPicture/LightPicture";
-import {typo} from "../../../../tipograf";
+import { typo } from "../../../../tipograf";
 import FileSvg from "../../../svg/FileSvg";
+import { GatsbyImage } from 'gatsby-plugin-image';
 const InstructionBooksInstructions = () => {
-    const {instructionBooksPage, setInstructionBooksModalData, setIsInstructionBooksModalOpen} = useGlobalContext()
+    const { instructionBooksPage, setInstructionBooksModalData, setIsInstructionBooksModalOpen } = useGlobalContext()
     const itemClickHandler = (item?: Queries.WpPage_Instructionbooks_instructionsInstructionsSpisok) => {
         item && setInstructionBooksModalData(item)
         setIsInstructionBooksModalOpen(true)
@@ -18,17 +19,14 @@ const InstructionBooksInstructions = () => {
                 <ul className={styles.list}>
                     {instructionBooksPage?.wpPage?.instructionBooks?.instructionsInstructionsSpisok?.map((item, index) => <li key={index} className={styles.list__item}>
                         <button onClick={() => itemClickHandler(item)} className={stack(styles.button)}>
-                            <LightPicture className={styles.picture} imageClassName={styles.image}
-                                          desktopIImage={item?.izobrazhenieDlyaKompyutera?.sourceUrl || ''}
-                                          mobileIImage={item?.izobrazhenieDlyaTelefona?.sourceUrl || ''}
-                                          alt={item?.izobrazhenieDlyaKompyutera?.altText || ''}></LightPicture>
+                            <GatsbyImage className={styles?.picture} image={item?.izobrazhenieDlyaKompyutera?.gatsbyImage} alt={item?.izobrazhenieDlyaKompyutera?.altText}></GatsbyImage>
                             <div className={styles.item__content}>
                                 <p className={styles.content__title}
-                                   >{typo.execute(item?.nazvanie || '')}</p>
+                                >{typo.execute(item?.nazvanie || '')}</p>
                                 <p className={styles.content__price}
-                                   >{typo.execute(item?.czena || '')}</p>
+                                >{typo.execute(item?.czena || '')}</p>
                                 <p className={styles.content__text}
-                                   >{typo.execute(item?.kratkoeOpisanie || '')}</p>
+                                >{typo.execute(item?.kratkoeOpisanie || '')}</p>
                             </div>
                             <FileSvg className={styles.button__decor}></FileSvg>
                         </button>

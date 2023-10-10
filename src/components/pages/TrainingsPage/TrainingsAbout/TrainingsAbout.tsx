@@ -3,6 +3,7 @@ import * as styles from './TrainingsAbout.module.css'
 import {stack} from "../../../../hooks/useClassName";
 import {useGlobalContext} from "../../../../context/context";
 import Picture from "../../../images/Picture/Picture";
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const TrainingsAbout = () => {
     const {trainingsPage} = useGlobalContext()
@@ -12,12 +13,7 @@ const TrainingsAbout = () => {
             <h2 className={stack('text-large-new', styles.title)}
                 dangerouslySetInnerHTML={{__html: trainingsPage?.wpPage?.trainings?.trainingsAboutZagolovok || ''}}></h2>
             <div className={styles.content}>
-                <Picture className={styles.picture} imageClassName={styles.image} breakpoint={767}
-                         alt={trainingsPage?.wpPage?.trainings?.trainingsAboutIzobrazhenieDlyaKompyutera?.altText || ''}
-                         mobileIImageX1={trainingsPage?.wpPage?.trainings?.trainingsAboutIzobrazhenieDlyaTelefona?.sourceUrl || ''}
-                         mobileIImageX2={trainingsPage?.wpPage?.trainings?.trainingsAboutIzobrazhenieDlyaPlansheta?.sourceUrl || ''}
-                         desktopIImageX1={trainingsPage?.wpPage?.trainings?.trainingsAboutIzobrazhenieDlyaPlansheta?.sourceUrl || ''}
-                         desktopIImageX2={trainingsPage?.wpPage?.trainings?.trainingsAboutIzobrazhenieDlyaKompyutera?.sourceUrl || ''}></Picture>
+                <GatsbyImage className={styles.picture} image={trainingsPage?.wpPage?.trainings?.trainingsAboutIzobrazhenieDlyaKompyutera?.gatsbyImage} alt={trainingsPage?.wpPage?.trainings?.trainingsAboutIzobrazhenieDlyaKompyutera?.altText}></GatsbyImage>
                 <p className={stack('text-simple', styles.text)}
                    dangerouslySetInnerHTML={{__html: trainingsPage?.wpPage?.trainings?.trainingsAboutTekst || ''}}></p>
             </div>

@@ -8,6 +8,7 @@ import { typo } from "../../../../tipograf";
 import { InView } from "react-intersection-observer";
 import FileSvg from '../../../svg/FileSvg';
 import { useFile } from '../../../../hooks/useFile';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 export default function InstructionsBooksModal() {
     const {
@@ -68,10 +69,7 @@ export default function InstructionsBooksModal() {
                                         <img className={styles.video__image} src={play}
                                             alt="Иконка Play" /></button>
                                 }
-                                <LightPicture className={styles.video__picture} imageClassName={styles.video__image}
-                                    alt={instructionBooksModalData?.izobrazhenieDlyaKompyutera?.altText || ''}
-                                    desktopIImage={instructionBooksModalData?.izobrazhenieDlyaKompyutera?.sourceUrl || ''}
-                                    mobileIImage={instructionBooksModalData?.izobrazhenieDlyaTelefona?.sourceUrl || ''}></LightPicture>
+                             <GatsbyImage className={styles.video__picture} image={instructionBooksModalData?.izobrazhenieDlyaKompyutera?.gatsbyImage} alt={instructionBooksModalData?.izobrazhenieDlyaKompyutera?.altText}></GatsbyImage>
                             </div>
                         </div>
                     </div>

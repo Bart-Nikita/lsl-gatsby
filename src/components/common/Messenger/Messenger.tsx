@@ -3,6 +3,7 @@ import { stack } from "../../../hooks/useClassName";
 import * as styles from './Messenger.module.css'
 import { useCommonSection } from "../../../hooks/useCommonSection";
 import Picture from "../../images/Picture/Picture";
+import { GatsbyImage } from 'gatsby-plugin-image';
 type MessengerProps = {
     isPhoneButton?: boolean,
     text?: string,
@@ -31,12 +32,7 @@ const Messenger = ({ isPhoneButton, text, className }: MessengerProps) => {
                         </div>
                     }
                 </div>
-                <Picture className={styles.picture}
-                    desktopIImageX1={section?.messenger?.messengerImageKompyuter1x?.sourceUrl || ''}
-                    desktopIImageX2={section?.messenger?.messengerImageKompyuter2x?.sourceUrl || ''}
-                    mobileIImageX1={section?.messenger?.messengerImageTelefon1x?.sourceUrl || ''}
-                    mobileIImageX2={section?.messenger?.messengerImageTelefon2x?.sourceUrl || ''} alt={section?.messenger?.messengerImageKompyuter1x?.altText || ''}
-                ></Picture>
+                <GatsbyImage className={styles.picture} image={section?.messenger?.messengerImageKompyuter1x?.gatsbyImage} alt={section?.messenger?.messengerImageKompyuter1x?.altText}></GatsbyImage>
             </div>
         </section>
     );

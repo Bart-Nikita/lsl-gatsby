@@ -99,14 +99,9 @@ export const query = graphql` query ContactsPage {
           footerContactsKommentarij
           footerContactsTekst
         }
-        
         footerLogotip {
           altText
-          sourceUrl
-        }
-        footerLogotipMobile {
-          altText
-          sourceUrl
+          gatsbyImage(width: 200, outputPixelDensities: 2, formats: WEBP)
         }
         footerPolitikaKonfidenczialnosti {
           mediaItemUrl
@@ -119,7 +114,7 @@ export const query = graphql` query ContactsPage {
           footerSocialTekst
           footerSocialIkonka {
             altText
-            sourceUrl
+            gatsbyImage(width: 100, outputPixelDensities: 2, formats: WEBP)
           }
         }
       }
@@ -129,11 +124,7 @@ export const query = graphql` query ContactsPage {
         headerTelefon
         headerLogotip {
           altText
-          sourceUrl
-        }
-        headerLogotipMobile {
-          altText
-          sourceUrl
+          gatsbyImage(outputPixelDensities: 2, width: 100, formats: WEBP)
         }
       }
       messenger {
@@ -144,21 +135,9 @@ export const query = graphql` query ContactsPage {
         messengerZagolovok
         messengerImageKompyuter1x {
           altText
-          sourceUrl
+          gatsbyImage(width: 400, formats: WEBP, outputPixelDensities: 2)
         }
-        messengerImageKompyuter2x {
-          altText
-          sourceUrl
-        }
-        messengerImageTelefon1x {
-          altText
-          sourceUrl
-        }
-        messengerImageTelefon2x {
-          altText
-          sourceUrl
-        }
-      } 
+      }
     }
   }
 }

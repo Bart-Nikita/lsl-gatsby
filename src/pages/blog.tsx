@@ -86,19 +86,7 @@ export const query = graphql` query BlogPage {
         blogPostHeroZagolovok
         blogPostPreviewIzobrazhenieDlyaKompyuteraX1 {
           altText
-          sourceUrl
-        }
-        blogPostPreviewIzobrazhenieDlyaKompyuteraX2 {
-          altText
-          sourceUrl
-        }
-        blogPostPreviewIzobrazhenieDlyaTelefonaX1 {
-          altText
-          sourceUrl
-        }
-        blogPostPreviewIzobrazhenieDlyaTelefonaX2 {
-          altText
-          sourceUrl
+          gatsbyImage(width: 600, outputPixelDensities: 2, formats: WEBP)
         }
       }
     }
@@ -125,14 +113,9 @@ export const query = graphql` query BlogPage {
           footerContactsKommentarij
           footerContactsTekst
         }
-        
         footerLogotip {
           altText
-          sourceUrl
-        }
-        footerLogotipMobile {
-          altText
-          sourceUrl
+          gatsbyImage(width: 200, outputPixelDensities: 2, formats: WEBP)
         }
         footerPolitikaKonfidenczialnosti {
           mediaItemUrl
@@ -145,7 +128,7 @@ export const query = graphql` query BlogPage {
           footerSocialTekst
           footerSocialIkonka {
             altText
-            sourceUrl
+            gatsbyImage(width: 100, outputPixelDensities: 2, formats: WEBP)
           }
         }
       }
@@ -155,14 +138,9 @@ export const query = graphql` query BlogPage {
         headerTelefon
         headerLogotip {
           altText
-          sourceUrl
-        }
-        headerLogotipMobile {
-          altText
-          sourceUrl
+          gatsbyImage(outputPixelDensities: 2, width: 100, formats: WEBP)
         }
       }
- 
       online {
         onlineTekst
         onlineTekstKnopki
@@ -180,19 +158,7 @@ export const query = graphql` query BlogPage {
         publicationsPodrobnoeOpisanie
         publicationsImageKompyuter1x {
           altText
-          sourceUrl
-        }
-        publicationsImageKompyuter2x {
-          altText
-          sourceUrl
-        }
-        publicationsImageTelefon1x {
-          altText
-          sourceUrl
-        }
-        publicationsImageTelefon2x {
-          altText
-          sourceUrl
+          gatsbyImage(width: 500, outputPixelDensities: 2, formats: WEBP)
         }
       }
     }

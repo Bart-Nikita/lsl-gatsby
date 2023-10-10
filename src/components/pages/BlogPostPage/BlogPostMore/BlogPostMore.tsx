@@ -7,6 +7,7 @@ import { usePosts } from "../../../../hooks/usePosts";
 import { Link } from "gatsby";
 import Picture from "../../../images/Picture/Picture";
 import { usePost } from '../../../../hooks/usePost';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const isBrowser = typeof window !== "undefined"
 
@@ -28,13 +29,7 @@ const BlogPostMore = () => {
             <ul className={styles.list}>
                 {posts?.filter(item => item.slug !== blogPostPage?.slug)?.slice(0, firstListSize).map((item, index) => <li key={index} className={styles.item}>
                     <Link to={"/blog/" + item.slug}>
-                        <Picture imageClassName={styles.item__image}
-                            alt={item?.blog?.blogPostPreviewIzobrazhenieDlyaKompyuteraX1?.altText || ''}
-                            className={styles?.item__picture}
-                            desktopIImageX1={item?.blog?.blogPostPreviewIzobrazhenieDlyaKompyuteraX1?.sourceUrl || ''}
-                            desktopIImageX2={item?.blog?.blogPostPreviewIzobrazhenieDlyaKompyuteraX2?.sourceUrl || ''}
-                            mobileIImageX2={item?.blog?.blogPostPreviewIzobrazhenieDlyaTelefonaX1?.sourceUrl || ''}
-                            mobileIImageX1={item?.blog?.blogPostPreviewIzobrazhenieDlyaTelefonaX2?.sourceUrl || ''}></Picture>
+               <GatsbyImage className={styles.item__picture} image={item?.blog?.blogPostPreviewIzobrazhenieDlyaKompyuteraX1?.gatsbyImage} alt={item?.blog?.blogPostPreviewIzobrazhenieDlyaKompyuteraX1?.altText}></GatsbyImage>
                         <p className={styles.item__title}
                             dangerouslySetInnerHTML={{ __html: item.blog?.blogPostHeroZagolovok || '' }}></p>
                         <p className={styles.item__text}

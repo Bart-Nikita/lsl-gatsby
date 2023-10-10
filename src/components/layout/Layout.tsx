@@ -69,7 +69,7 @@ const ModalLayer = () => {
     return <FixedLayer>
         {historyLength < 2 && <Cookies></Cookies>}
         <Modal open={isNavModalOpen} setOpen={onNavModalClose}>
-        {isNavModalOpen && <Navigation></Navigation>}
+            {isNavModalOpen && <Navigation></Navigation>}
         </Modal>
         <Modal open={isTrainingModalOpen} setOpen={onTrainingModalClose}>
             {isTrainingModalOpen && <TrainingsModal></TrainingsModal>}
@@ -104,13 +104,13 @@ const Layout = memo(({ children }: LayoutProps) => {
 
     return (
         <ApolloProvider client={client}>
-            <Header></Header>
-            <ModalLayer></ModalLayer>
-            <main id="main">
-                {children}
-            </main>
-            <Footer></Footer>
-         </ApolloProvider>
+                <Header></Header>
+                <ModalLayer></ModalLayer>
+                <main id="main">
+                    {children}
+                </main>
+                <Footer></Footer>
+        </ApolloProvider>
     );
 });
 

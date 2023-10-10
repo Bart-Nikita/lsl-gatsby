@@ -25,7 +25,7 @@
 }
 
 .item__image {
-    @apply block object-contain h-[85px] mb-[26px]
+    @apply block object-contain h-[85px] mb-[26px] w-auto
     xl:h-[45px] xl:mb-[28px]
     md:mb-[16px]
 }

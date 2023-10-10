@@ -3,6 +3,7 @@ import * as styles from './InstructionBooksAdvantages.module.css'
 import {useGlobalContext} from "../../../../context/context";
 import {stack} from "../../../../hooks/useClassName";
 import {typo} from "../../../../tipograf";
+import { GatsbyImage } from 'gatsby-plugin-image';
 const InstructionBooksAdvantages = () => {
     const {instructionBooksPage} = useGlobalContext()
     return (
@@ -12,7 +13,7 @@ const InstructionBooksAdvantages = () => {
                     if (!item?.dekor) return
                     return <li key={index}
                                className={styles.item}>
-                        <img className={styles.image} src={item?.dekor?.sourceUrl || ''} alt={item?.dekor?.altText || ''}/>
+                       <GatsbyImage className={styles.image} image={item?.dekor?.gatsbyImage} alt={item?.dekor?.altText}></GatsbyImage>
                         <h3 className={styles?.title}>{item?.zagolovok}</h3>
                         <p className={styles?.text} >{typo?.execute(item?.tekst || '')}</p>
                     </li>

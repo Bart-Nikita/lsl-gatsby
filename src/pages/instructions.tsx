@@ -92,21 +92,18 @@ export const query = graphql` query InstructionsPage {
         zagolovok
         dekor {
           altText
-          sourceUrl
+          gatsbyImage(outputPixelDensities: 2, width: 400, formats: WEBP)
         }
       }
       instructionsHeroFonovoeIzobrazhenie {
         altText
-        sourceUrl
+        gatsbyImage(outputPixelDensities: 2, width: 800, formats: WEBP)
       }
       instructionsHeroIzobrazhenieDlyaKompyutera {
         altText
-        sourceUrl
+        gatsbyImage(outputPixelDensities: 2, width: 800, formats: WEBP)
       }
-      instructionsHeroIzobrazhenieDlyaTelefona {
-        altText
-        sourceUrl
-      }
+
       instructionsInstructionsSpisok {
         czena
         kratkoeOpisanie
@@ -114,11 +111,7 @@ export const query = graphql` query InstructionsPage {
         polnoeOpisanie
         izobrazhenieDlyaKompyutera {
           altText
-          sourceUrl
-        }
-        izobrazhenieDlyaTelefona {
-          altText
-          sourceUrl
+          gatsbyImage(outputPixelDensities: 2, width: 800, formats: WEBP)
         }
         vRamkeVModalnomOkne {
           tekst
@@ -130,12 +123,9 @@ export const query = graphql` query InstructionsPage {
       }
       instructionsOrderFonovoeIzobrazhenieDlyaKonpyutera {
         altText
-        sourceUrl
+        gatsbyImage(outputPixelDensities: 2, width: 1900, formats: WEBP)
       }
-      instructionsOrderFonovoeIzobrazhenieDlyaTelefona {
-        altText
-        sourceUrl
-      }
+
       instructionsStepsStadiiOformleniya {
         opisanie
       }
@@ -144,70 +134,13 @@ export const query = graphql` query InstructionsPage {
   allWpBlog {
     nodes {
       slug
+      id
       blog {
-        blogPostContentTekst
         blogPostHeroKratkoeOpisanie
         blogPostHeroZagolovok
-        blogPostMediaTekstNadIzobrazheniem
-        blogPostMediaTekstPodVideo
-        blogPostHeroImageKompyuter1x {
-          altText
-          sourceUrl
-        }
-        blogPostHeroImageKompyuter2x {
-          altText
-          sourceUrl
-        }
-        blogPostHeroImageTelefon1x {
-          altText
-          sourceUrl
-        }
-        blogPostHeroImageTelefon2x {
-          altText
-          sourceUrl
-        }
-        blogPostMediaIzobrazhenieDlyaKompyuteraX1 {
-          altText
-          sourceUrl
-        }
-        blogPostMediaIzobrazhenieDlyaKompyuteraX2 {
-          altText
-          sourceUrl
-        }
-        blogPostMediaIzobrazhenieDlyaTelefonaX1 {
-          altText
-          sourceUrl
-        }
-        blogPostMediaIzobrazhenieDlyaTelefonaX2 {
-          altText
-          sourceUrl
-        }
-        blogPostMediaVideo {
-          mediaItemUrl
-        }
-        blogPostMediaZastavkaDlyaVideoKompyuter {
-          altText
-          sourceUrl
-        }
-        blogPostMediaZastavkaDlyaVideoKompyuterKopiya {
-          altText
-          sourceUrl
-        }
         blogPostPreviewIzobrazhenieDlyaKompyuteraX1 {
           altText
-          sourceUrl
-        }
-        blogPostPreviewIzobrazhenieDlyaKompyuteraX2 {
-          altText
-          sourceUrl
-        }
-        blogPostPreviewIzobrazhenieDlyaTelefonaX1 {
-          altText
-          sourceUrl
-        }
-        blogPostPreviewIzobrazhenieDlyaTelefonaX2 {
-          altText
-          sourceUrl
+          gatsbyImage(width: 600, outputPixelDensities: 2, formats: WEBP)
         }
       }
     }
@@ -234,14 +167,9 @@ export const query = graphql` query InstructionsPage {
           footerContactsKommentarij
           footerContactsTekst
         }
-        
         footerLogotip {
           altText
-          sourceUrl
-        }
-        footerLogotipMobile {
-          altText
-          sourceUrl
+          gatsbyImage(width: 200, outputPixelDensities: 2, formats: WEBP)
         }
         footerPolitikaKonfidenczialnosti {
           mediaItemUrl
@@ -254,7 +182,7 @@ export const query = graphql` query InstructionsPage {
           footerSocialTekst
           footerSocialIkonka {
             altText
-            sourceUrl
+            gatsbyImage(width: 100, outputPixelDensities: 2, formats: WEBP)
           }
         }
       }
@@ -264,11 +192,7 @@ export const query = graphql` query InstructionsPage {
         headerTelefon
         headerLogotip {
           altText
-          sourceUrl
-        }
-        headerLogotipMobile {
-          altText
-          sourceUrl
+          gatsbyImage(outputPixelDensities: 2, width: 100, formats: WEBP)
         }
       }
     }

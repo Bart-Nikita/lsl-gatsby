@@ -50,16 +50,15 @@ const IndexPage: React.FC<PageProps<Queries.IndexPageQuery>> = ({ data }: PagePr
 
 export default IndexPage
 
-export const query = graphql` query IndexPage {
-  
-   wpMenu(slug: {eq: "osnovnoe"}) {
+export const query = graphql`query IndexPage {
+  wpMenu(slug: {eq: "osnovnoe"}) {
     favicon {
       favikon {
         sourceUrl
       }
     }
   }
-   site {
+  site {
     siteMetadata {
       title
       url
@@ -67,22 +66,22 @@ export const query = graphql` query IndexPage {
   }
   allWpMenuItem(filter: {parentId: {eq: null}}, sort: {order: ASC}) {
     nodes {
-        label
-        url
-        childItems {
+      label
+      url
+      childItems {
+        nodes {
+          url
+          label
+          childItems {
             nodes {
-                url
-                label
-                childItems {
-                    nodes {
-                        url
-                        label
-                    }
-                }
+              url
+              label
             }
+          }
         }
+      }
     }
-}
+  }
   allFile {
     nodes {
       name
@@ -97,8 +96,7 @@ export const query = graphql` query IndexPage {
     }
     main {
       mainAboutImageKompyuter1x {
-        altText
-        sourceUrl
+        gatsbyImage(width: 400, outputPixelDensities: 2, formats: WEBP)
       }
       mainAboutTekst
       mainAboutZagolovok
@@ -112,19 +110,7 @@ export const query = graphql` query IndexPage {
       mainHeroSlajder {
         mainHeroSlajderKompyuter1x {
           altText
-          sourceUrl
-        }
-        mainHeroSlajderKompyuter2x {
-          altText
-          sourceUrl
-        }
-        mainHeroSlajderTelefon1x {
-          altText
-          sourceUrl
-        }
-        mainHeroSlajderTelefon2x {
-          altText
-          sourceUrl
+          gatsbyImage(width: 700, outputPixelDensities: 2, formats: WEBP)
         }
       }
       mainHeroTekst
@@ -150,87 +136,18 @@ export const query = graphql` query IndexPage {
         mainValuesNomer
         mainValuesTekst
       }
-      mainAboutImageKompyuter2x {
-        altText
-        sourceUrl
-      }
-      mainAboutImageTelefon1x {
-        altText
-        sourceUrl
-      }
-      mainAboutImageTelefon2x {
-        altText
-        sourceUrl
-      }
     }
   }
   allWpBlog {
     nodes {
       slug
+      id
       blog {
-        blogPostContentTekst
         blogPostHeroKratkoeOpisanie
         blogPostHeroZagolovok
-        blogPostMediaTekstNadIzobrazheniem
-        blogPostMediaTekstPodVideo
-        blogPostHeroImageKompyuter1x {
-          altText
-          sourceUrl
-        }
-        blogPostHeroImageKompyuter2x {
-          altText
-          sourceUrl
-        }
-        blogPostHeroImageTelefon1x {
-          altText
-          sourceUrl
-        }
-        blogPostHeroImageTelefon2x {
-          altText
-          sourceUrl
-        }
-        blogPostMediaIzobrazhenieDlyaKompyuteraX1 {
-          altText
-          sourceUrl
-        }
-        blogPostMediaIzobrazhenieDlyaKompyuteraX2 {
-          altText
-          sourceUrl
-        }
-        blogPostMediaIzobrazhenieDlyaTelefonaX1 {
-          altText
-          sourceUrl
-        }
-        blogPostMediaIzobrazhenieDlyaTelefonaX2 {
-          altText
-          sourceUrl
-        }
-        blogPostMediaVideo {
-          mediaItemUrl
-        }
-        blogPostMediaZastavkaDlyaVideoKompyuter {
-          altText
-          sourceUrl
-        }
-        blogPostMediaZastavkaDlyaVideoKompyuterKopiya {
-          altText
-          sourceUrl
-        }
         blogPostPreviewIzobrazhenieDlyaKompyuteraX1 {
           altText
-          sourceUrl
-        }
-        blogPostPreviewIzobrazhenieDlyaKompyuteraX2 {
-          altText
-          sourceUrl
-        }
-        blogPostPreviewIzobrazhenieDlyaTelefonaX1 {
-          altText
-          sourceUrl
-        }
-        blogPostPreviewIzobrazhenieDlyaTelefonaX2 {
-          altText
-          sourceUrl
+          gatsbyImage(width: 600, outputPixelDensities: 2, formats: WEBP)
         }
       }
     }
@@ -253,19 +170,7 @@ export const query = graphql` query IndexPage {
         feedbacksImageSlajder {
           feedbacksImageKompyuter1x {
             altText
-            sourceUrl
-          }
-          feedbacksImageKompyuter2x {
-            altText
-            sourceUrl
-          }
-          feedbacksImageTelefon1x {
-            altText
-            sourceUrl
-          }
-          feedbacksImageTelefon2x {
-            altText
-            sourceUrl
+            gatsbyImage(formats: WEBP, outputPixelDensities: 2, width: 400)
           }
         }
         feedbacksSimpleSlajder {
@@ -274,19 +179,7 @@ export const query = graphql` query IndexPage {
           feedbacksSimpleTekstOtzyva
           feedbacksSimpleKompyuter1x {
             altText
-            sourceUrl
-          }
-          feedbacksSimpleKompyuter2x {
-            altText
-            sourceUrl
-          }
-          feedbacksSimpleTelefon1x {
-            altText
-            sourceUrl
-          }
-          feedbacksSimpleTelefon2x {
-            altText
-            sourceUrl
+            gatsbyImage(formats: WEBP, width: 400, outputPixelDensities: 2)
           }
         }
       }
@@ -303,14 +196,9 @@ export const query = graphql` query IndexPage {
           footerContactsKommentarij
           footerContactsTekst
         }
-        
         footerLogotip {
           altText
-          sourceUrl
-        }
-        footerLogotipMobile {
-          altText
-          sourceUrl
+          gatsbyImage(width: 200, outputPixelDensities: 2, formats: WEBP)
         }
         footerPolitikaKonfidenczialnosti {
           mediaItemUrl
@@ -323,7 +211,7 @@ export const query = graphql` query IndexPage {
           footerSocialTekst
           footerSocialIkonka {
             altText
-            sourceUrl
+            gatsbyImage(width: 100, outputPixelDensities: 2, formats: WEBP)
           }
         }
       }
@@ -333,11 +221,7 @@ export const query = graphql` query IndexPage {
         headerTelefon
         headerLogotip {
           altText
-          sourceUrl
-        }
-        headerLogotipMobile {
-          altText
-          sourceUrl
+          gatsbyImage(outputPixelDensities: 2, width: 100, formats: WEBP)
         }
       }
       messenger {
@@ -348,19 +232,7 @@ export const query = graphql` query IndexPage {
         messengerZagolovok
         messengerImageKompyuter1x {
           altText
-          sourceUrl
-        }
-        messengerImageKompyuter2x {
-          altText
-          sourceUrl
-        }
-        messengerImageTelefon1x {
-          altText
-          sourceUrl
-        }
-        messengerImageTelefon2x {
-          altText
-          sourceUrl
+          gatsbyImage(width: 400, formats: WEBP, outputPixelDensities: 2)
         }
       }
       online {
@@ -386,19 +258,7 @@ export const query = graphql` query IndexPage {
         supportZagolovok
         supportImageKompyuterX1 {
           altText
-          sourceUrl
-        }
-        supportImageKompyuterX2 {
-          altText
-          sourceUrl
-        }
-        supportImageTelefonX1 {
-          altText
-          sourceUrl
-        }
-        supportImageTelefonX2 {
-          altText
-          sourceUrl
+          gatsbyImage(outputPixelDensities: 2, width: 400, formats: WEBP)
         }
       }
     }
@@ -413,19 +273,7 @@ export const query = graphql` query IndexPage {
         publicationsPodrobnoeOpisanie
         publicationsImageKompyuter1x {
           altText
-          sourceUrl
-        }
-        publicationsImageKompyuter2x {
-          altText
-          sourceUrl
-        }
-        publicationsImageTelefon1x {
-          altText
-          sourceUrl
-        }
-        publicationsImageTelefon2x {
-          altText
-          sourceUrl
+          gatsbyImage(width: 500, outputPixelDensities: 2, formats: WEBP)
         }
       }
     }
@@ -442,20 +290,12 @@ export const query = graphql` query IndexPage {
         trainingGallereya {
           izobrazhenieDlyaKompyutera {
             altText
-            sourceUrl
-          }
-          izobrazhenieDlyaTelefona {
-            altText
-            sourceUrl
+            gatsbyImage(width: 500, outputPixelDensities: 2, formats: WEBP)
           }
         }
         trainingImageKompyuter {
           altText
-          sourceUrl
-        }
-        trainingImageTelefon {
-          altText
-          sourceUrl
+          gatsbyImage(width: 500, outputPixelDensities: 2, formats: WEBP)
         }
         trainingMedia {
           mediaItemUrl

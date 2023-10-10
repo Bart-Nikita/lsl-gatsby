@@ -1,7 +1,7 @@
 
 
 .footer {
-    @apply pt-[73px] relative z-[2]
+    @apply pt-[73px] relative z-[2] mt-auto
     mb-[42px]
     pt-[55px] mb-[80px]
     xl:mb-[60px]

@@ -5,6 +5,7 @@ import * as styles from "./TrainingsFeedbacks.module.css";
 import SwiperLight from "../../../lowleveled/SwiperLight/SwiperLight";
 import Picture from "../../../images/Picture/Picture";
 import {Link} from "gatsby";
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const TrainingsFeedbacks = ({className}: { className?: string }) => {
     const [section] = useCommonSection('otzyvy')
@@ -25,12 +26,7 @@ const TrainingsFeedbacks = ({className}: { className?: string }) => {
 
                             <div key={index} className={styles.slider__item}>
                                 <div className={styles.slider__top}>
-                                    <Picture className={styles.slider__picture}
-                                             mobileIImageX1={item?.feedbacksSimpleTelefon1x?.sourceUrl || ''}
-                                             mobileIImageX2={item?.feedbacksSimpleTelefon2x?.sourceUrl || ''}
-                                             desktopIImageX1={item?.feedbacksSimpleKompyuter1x?.sourceUrl || ''}
-                                             desktopIImageX2={item?.feedbacksSimpleKompyuter2x?.sourceUrl || ''}
-                                             alt={item?.feedbacksSimpleKompyuter1x?.altText || ''}></Picture>
+                                  <GatsbyImage className={styles.slider__picture} image={item?.feedbacksSimpleKompyuter1x?.gatsbyImage} alt={item?.feedbacksSimpleKompyuter1x?.altText}></GatsbyImage>
                                     <div className={styles.slider__person}>
                                         <h3 className={stack(styles.slider__name)}
                                             dangerouslySetInnerHTML={{__html: item?.feedbacksSimpleImya || ''}}></h3>

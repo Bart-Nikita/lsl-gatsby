@@ -6,6 +6,7 @@ import { stack } from "../../../hooks/useClassName";
 import { Link } from "gatsby";
 import Logo from "../../images/Logo/Logo";
 import ToTopButton from "../../common/ToTopButton/ToTopButton";
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const Footer = () => {
 
@@ -20,9 +21,9 @@ const Footer = () => {
             <ToTopButton className={styles.buttonToTop}></ToTopButton>
             <div className={styles.footer__body}>
                 <div className={styles.logo}>
-                    <Logo className={styles.logo__link} mobileUrl={section?.footer?.footerLogotipMobile?.sourceUrl || ''}
-                        desktopUrl={section?.footer?.footerLogotip?.sourceUrl || ''}
-                        alt={section?.footer?.footerLogotip?.altText || ''}></Logo>
+                    <Link to={'/'} className={stack('link')}>
+                        <GatsbyImage className={styles.logo__link} image={section?.footer?.footerLogotip?.gatsbyImage} alt={section?.footer?.footerLogotip?.altText}></GatsbyImage>
+                    </Link>
                     <p className={stack(styles.text, styles.logo__copy)}
                         dangerouslySetInnerHTML={{ __html: section?.footer?.footerKopirajt || '' }}></p>
                 </div>
@@ -53,13 +54,10 @@ const Footer = () => {
                     <ul className={styles.social__list}>
                         {section?.footer?.footerSocialSpisok?.map((item, index) => <li className={styles.li}
                             key={index}>
-                            <a
-                                href={item?.footerSocialAdres || ''}
+                            <a href={item?.footerSocialAdres || ''}
                                 target={"_blank"}
-                                className={stack('link', styles.social__item)}
-                            >
-                                <img className={styles.social__icon} src={item?.footerSocialIkonka?.sourceUrl || ''}
-                                    alt={item?.footerSocialIkonka?.altText || ''} />
+                                className={stack('link', styles.social__item)}>
+                                <GatsbyImage className={styles.social__icon} image={item?.footerSocialIkonka?.gatsbyImage} alt={item?.footerSocialIkonka?.altText}></GatsbyImage>
                                 <p className={stack(styles.text, styles.social__text)}>{item?.footerSocialTekst || ''}</p>
                             </a>
                         </li>)}
@@ -93,7 +91,7 @@ const Footer = () => {
                 </div>
 
             </div>
-        </footer>
+        </footer >
     );
 };
 

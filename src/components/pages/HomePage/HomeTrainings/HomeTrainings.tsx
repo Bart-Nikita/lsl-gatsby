@@ -7,6 +7,7 @@ import { sortDate } from "../../../../hooks/useSortDate";
 import Picture from "../../../images/Picture/Picture";
 import LightPicture from "../../../images/LightPicture/LightPicture";
 import { useTrainings } from "../../../../hooks/useTrainings";
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const HomeTrainings = () => {
 
@@ -25,10 +26,7 @@ const HomeTrainings = () => {
 
                     if (!item?.training?.trainingImageKompyuter && !item?.training?.trainingImageTelefon) return
                     return <button onClick={() => itemCLickHandler(item)} key={index} className={stack(styles.list__item)}>
-                        <LightPicture className={styles.item__image} imageClassName={styles.picture__image}
-                            desktopIImage={item?.training?.trainingImageKompyuter?.sourceUrl || ''}
-                            mobileIImage={item?.training?.trainingImageTelefon?.sourceUrl || ''}
-                            alt={item?.training?.trainingImageKompyuter?.altText || ''}></LightPicture>
+                        <GatsbyImage className={styles.item__image} imgClassName={styles.picture__image} image={item?.training?.trainingImageKompyuter?.gatsbyImage} alt={item?.training?.trainingImageKompyuter?.altText || ''}></GatsbyImage>
                         <div className={styles.item__content}>
                             <div className={styles.item__top}>
                                 <h3 className={stack('text-primary', styles.item__title)}
@@ -49,3 +47,8 @@ const HomeTrainings = () => {
 };
 
 export default HomeTrainings;
+
+{/* <LightPicture className={styles.item__image} imageClassName={styles.picture__image}
+                            desktopIImage={item?.training?.trainingImageKompyuter?.sourceUrl || ''}
+                            mobileIImage={item?.training?.trainingImageTelefon?.sourceUrl || ''}
+                            alt={item?.training?.trainingImageKompyuter?.altText || ''}></LightPicture> */}

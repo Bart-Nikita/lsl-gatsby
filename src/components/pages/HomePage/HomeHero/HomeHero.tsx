@@ -6,6 +6,7 @@ import Carousel from 're-carousel'
 import Picture from "../../../images/Picture/Picture";
 import { usePage } from "../../../../hooks/usePage";
 import { useFile } from '../../../../hooks/useFile';
+import { GatsbyImage, StaticImage } from 'gatsby-plugin-image';
 
 
 function Buttons(props: any) {
@@ -55,11 +56,7 @@ const HomeHero = () => {
                 {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
                 {/*@ts-ignore  */}
                 <Carousel loop widgets={[Buttons]} className={styles.slider__carousel}>
-                    {page?.wpPage?.main?.mainHeroSlajder?.map((item, index) => <Picture key={index}
-                        className={styles.slider__picture} imageClassName={styles.slider__image} desktopIImageX1={item?.mainHeroSlajderKompyuter1x?.sourceUrl || ''}
-                        desktopIImageX2={item?.mainHeroSlajderKompyuter2x?.sourceUrl || ''}
-                        mobileIImageX1={item?.mainHeroSlajderTelefon1x?.sourceUrl || ''}
-                        mobileIImageX2={item?.mainHeroSlajderTelefon2x?.sourceUrl || ''} alt={item?.mainHeroSlajderKompyuter1x?.altText || ''}></Picture>)}
+                    {page?.wpPage?.main?.mainHeroSlajder?.map((item, index) => <GatsbyImage image={item?.mainHeroSlajderKompyuter1x?.gatsbyImage} alt={item?.mainHeroSlajderKompyuter1x?.altText || ''}></GatsbyImage>)}
                     {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
                     {/*@ts-ignore  */}
                 </Carousel>
@@ -71,3 +68,12 @@ const HomeHero = () => {
 };
 
 export default HomeHero;
+
+
+
+{/* <Picture key={index}
+                        className={styles.slider__picture} imageClassName={styles.slider__image} desktopIImageX1={item?.mainHeroSlajderKompyuter1x?.sourceUrl || ''}
+                        desktopIImageX2={item?.mainHeroSlajderKompyuter2x?.sourceUrl || ''}
+                        mobileIImageX1={item?.mainHeroSlajderTelefon1x?.sourceUrl || ''}
+                        mobileIImageX2={item?.mainHeroSlajderTelefon2x?.sourceUrl || ''} alt={item?.mainHeroSlajderKompyuter1x?.altText || ''}></Picture> */}
+

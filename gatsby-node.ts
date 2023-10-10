@@ -77,14 +77,9 @@ exports.createPages = async ({ graphql, actions, reporter }: CreatePagesArgs) =>
               footerContactsKommentarij
               footerContactsTekst
             }
-            
             footerLogotip {
               altText
-              sourceUrl
-            }
-            footerLogotipMobile {
-              altText
-              sourceUrl
+              gatsbyImage(width: 200, outputPixelDensities: 2, formats: WEBP)
             }
             footerPolitikaKonfidenczialnosti {
               mediaItemUrl
@@ -97,7 +92,7 @@ exports.createPages = async ({ graphql, actions, reporter }: CreatePagesArgs) =>
               footerSocialTekst
               footerSocialIkonka {
                 altText
-                sourceUrl
+                gatsbyImage(width: 100, outputPixelDensities: 2, formats: WEBP)
               }
             }
           }
@@ -107,11 +102,7 @@ exports.createPages = async ({ graphql, actions, reporter }: CreatePagesArgs) =>
             headerTelefon
             headerLogotip {
               altText
-              sourceUrl
-            }
-            headerLogotipMobile {
-              altText
-              sourceUrl
+              gatsbyImage(outputPixelDensities: 2, width: 100, formats: WEBP)
             }
           }
          
@@ -119,6 +110,9 @@ exports.createPages = async ({ graphql, actions, reporter }: CreatePagesArgs) =>
       }
         allWpBlog {
           nodes {
+            pageStatus {
+              status
+            }
             slug
             blog {
               blogPostContentTekst
@@ -128,62 +122,22 @@ exports.createPages = async ({ graphql, actions, reporter }: CreatePagesArgs) =>
               blogPostMediaTekstPodVideo
               blogPostHeroImageKompyuter1x {
                 altText
-                sourceUrl
-              }
-              blogPostHeroImageKompyuter2x {
-                altText
-                sourceUrl
-              }
-              blogPostHeroImageTelefon1x {
-                altText
-                sourceUrl
-              }
-              blogPostHeroImageTelefon2x {
-                altText
-                sourceUrl
+                gatsbyImage(outputPixelDensities: 2, width: 1500, formats: WEBP)
               }
               blogPostMediaIzobrazhenieDlyaKompyuteraX1 {
                 altText
-                sourceUrl
-              }
-              blogPostMediaIzobrazhenieDlyaKompyuteraX2 {
-                altText
-                sourceUrl
-              }
-              blogPostMediaIzobrazhenieDlyaTelefonaX1 {
-                altText
-                sourceUrl
-              }
-              blogPostMediaIzobrazhenieDlyaTelefonaX2 {
-                altText
-                sourceUrl
+                gatsbyImage(outputPixelDensities: 2, width: 800, formats: WEBP)
               }
               blogPostMediaVideo {
                 mediaItemUrl
               }
               blogPostMediaZastavkaDlyaVideoKompyuter {
                 altText
-                sourceUrl
-              }
-              blogPostMediaZastavkaDlyaVideoKompyuterKopiya {
-                altText
-                sourceUrl
+                gatsbyImage(outputPixelDensities: 2, width: 800, formats: WEBP)
               }
               blogPostPreviewIzobrazhenieDlyaKompyuteraX1 {
                 altText
-                sourceUrl
-              }
-              blogPostPreviewIzobrazhenieDlyaKompyuteraX2 {
-                altText
-                sourceUrl
-              }
-              blogPostPreviewIzobrazhenieDlyaTelefonaX1 {
-                altText
-                sourceUrl
-              }
-              blogPostPreviewIzobrazhenieDlyaTelefonaX2 {
-                altText
-                sourceUrl
+                gatsbyImage(outputPixelDensities: 2, width: 500, formats: WEBP)
               }
             }
           }

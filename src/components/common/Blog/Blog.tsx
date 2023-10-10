@@ -6,6 +6,7 @@ import { sortDate } from "../../../hooks/useSortDate";
 import Picture from "../../images/Picture/Picture";
 import { Link } from "gatsby";
 import LightPicture from '../../images/LightPicture/LightPicture';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 export type BlogProps = {
     title: string,
@@ -25,11 +26,8 @@ const Blog = ({ title, linkHref, linkText, remark }: BlogProps) => {
         <section className={stack('container', 'section-indent', styles.body)}>
             <h2 className={stack('title-secondary', styles.title)} dangerouslySetInnerHTML={{ __html: title }}></h2>
             <ul className={styles.list}>
-                {posts?.slice(0, 3)?.map((item, index) => <li key={index} className={stack(styles.item)} ><Link className={styles.item__link} to={'/blog/' + item.slug} >
-                    <LightPicture imageClassName={stack('link', styles.item__image)} className={styles.item__picture}
-                        desktopIImage={item?.blog?.blogPostHeroImageKompyuter1x?.sourceUrl || ''}
-                        mobileIImage={item?.blog?.blogPostHeroImageTelefon1x?.sourceUrl || ''}
-                        alt={item?.blog?.blogPostHeroImageKompyuter1x?.altText || ''}></LightPicture>
+                {posts?.slice(0, 3)?.map((item, index) => <li key={index} className={stack(styles.item)} ><Link className={stack('link',styles.item__link)} to={'/blog/' + item.slug} >
+                    <GatsbyImage className={styles.item__picture} image={item?.blog?.blogPostHeroImageKompyuter1x?.gatsbyImage} alt={item?.blog?.blogPostHeroImageKompyuter1x?.altText} ></GatsbyImage>
                 </Link>
                 </li>)}
             </ul>

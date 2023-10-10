@@ -98,19 +98,7 @@ export const query = graphql` query FeedbacksPage {
         feedbacksImageSlajder {
           feedbacksImageKompyuter1x {
             altText
-            sourceUrl
-          }
-          feedbacksImageKompyuter2x {
-            altText
-            sourceUrl
-          }
-          feedbacksImageTelefon1x {
-            altText
-            sourceUrl
-          }
-          feedbacksImageTelefon2x {
-            altText
-            sourceUrl
+            gatsbyImage(formats: WEBP, outputPixelDensities: 2, width: 400)
           }
         }
         feedbacksSimpleSlajder {
@@ -119,19 +107,7 @@ export const query = graphql` query FeedbacksPage {
           feedbacksSimpleTekstOtzyva
           feedbacksSimpleKompyuter1x {
             altText
-            sourceUrl
-          }
-          feedbacksSimpleKompyuter2x {
-            altText
-            sourceUrl
-          }
-          feedbacksSimpleTelefon1x {
-            altText
-            sourceUrl
-          }
-          feedbacksSimpleTelefon2x {
-            altText
-            sourceUrl
+            gatsbyImage(formats: WEBP, width: 400, outputPixelDensities: 2)
           }
         }
       }
@@ -148,14 +124,9 @@ export const query = graphql` query FeedbacksPage {
           footerContactsKommentarij
           footerContactsTekst
         }
-        
         footerLogotip {
           altText
-          sourceUrl
-        }
-        footerLogotipMobile {
-          altText
-          sourceUrl
+          gatsbyImage(width: 200, outputPixelDensities: 2, formats: WEBP)
         }
         footerPolitikaKonfidenczialnosti {
           mediaItemUrl
@@ -168,7 +139,7 @@ export const query = graphql` query FeedbacksPage {
           footerSocialTekst
           footerSocialIkonka {
             altText
-            sourceUrl
+            gatsbyImage(width: 100, outputPixelDensities: 2, formats: WEBP)
           }
         }
       }
@@ -178,11 +149,7 @@ export const query = graphql` query FeedbacksPage {
         headerTelefon
         headerLogotip {
           altText
-          sourceUrl
-        }
-        headerLogotipMobile {
-          altText
-          sourceUrl
+          gatsbyImage(outputPixelDensities: 2, width: 100, formats: WEBP)
         }
       }
       messenger {
@@ -193,19 +160,7 @@ export const query = graphql` query FeedbacksPage {
         messengerZagolovok
         messengerImageKompyuter1x {
           altText
-          sourceUrl
-        }
-        messengerImageKompyuter2x {
-          altText
-          sourceUrl
-        }
-        messengerImageTelefon1x {
-          altText
-          sourceUrl
-        }
-        messengerImageTelefon2x {
-          altText
-          sourceUrl
+          gatsbyImage(width: 400, formats: WEBP, outputPixelDensities: 2)
         }
       }
     }
@@ -213,24 +168,14 @@ export const query = graphql` query FeedbacksPage {
   allWpPublication {
     nodes {
       slug
-      id
       publications {
         publicationsAdresSsylki
+        publicationsKratkoeOpisanie
+        publicationsNazvanie
+        publicationsPodrobnoeOpisanie
         publicationsImageKompyuter1x {
           altText
-          sourceUrl
-        }
-        publicationsImageKompyuter2x {
-          altText
-          sourceUrl
-        }
-        publicationsImageTelefon1x {
-          altText
-          sourceUrl
-        }
-        publicationsImageTelefon2x {
-          altText
-          sourceUrl
+          gatsbyImage(width: 500, outputPixelDensities: 2, formats: WEBP)
         }
       }
     }

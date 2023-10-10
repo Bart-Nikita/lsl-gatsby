@@ -399,14 +399,9 @@ export const query = graphql` query CertsPage {
               footerContactsKommentarij
               footerContactsTekst
             }
-            
             footerLogotip {
               altText
-              sourceUrl
-            }
-            footerLogotipMobile {
-              altText
-              sourceUrl
+              gatsbyImage(width: 200, outputPixelDensities: 2, formats: WEBP)
             }
             footerPolitikaKonfidenczialnosti {
               mediaItemUrl
@@ -419,7 +414,7 @@ export const query = graphql` query CertsPage {
               footerSocialTekst
               footerSocialIkonka {
                 altText
-                sourceUrl
+                gatsbyImage(width: 100, outputPixelDensities: 2, formats: WEBP)
               }
             }
           }
@@ -429,14 +424,9 @@ export const query = graphql` query CertsPage {
             headerTelefon
             headerLogotip {
               altText
-              sourceUrl
-            }
-            headerLogotipMobile {
-              altText
-              sourceUrl
+              gatsbyImage(outputPixelDensities: 2, width: 100, formats: WEBP)
             }
           }
-    
       }
     }
 }

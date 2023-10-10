@@ -6,6 +6,7 @@ import * as styles from "./Publications.module.css";
 import Picture from "../../images/Picture/Picture";
 import { Link } from "gatsby";
 import SwiperLight from "../../lowleveled/SwiperLight/SwiperLight";
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 
 const SlideItem = (item: Queries.WpPublication) => {
@@ -15,14 +16,10 @@ const SlideItem = (item: Queries.WpPublication) => {
     }
 
 
-    return <Link onMouseDown={onMouseDownHandler}  to={item?.publications?.publicationsAdresSsylki || ''} target={"_blank"} onMouseMove={(e) => e.preventDefault()} className={stack('link', styles.item)}>
+    return <Link onMouseDown={onMouseDownHandler} to={item?.publications?.publicationsAdresSsylki || ''} target={"_blank"} onMouseMove={(e) => e.preventDefault()} className={stack('link', styles.item)}>
         <div className={styles.item__top}>
             <div className={styles.item__decor}></div>
-            <Picture imageClassName={styles.item__image} className={styles.item__picture}
-                desktopIImageX1={item?.publications?.publicationsImageKompyuter1x?.sourceUrl || ''}
-                desktopIImageX2={item?.publications?.publicationsImageKompyuter2x?.sourceUrl || ''}
-                mobileIImageX1={item?.publications?.publicationsImageTelefon1x?.sourceUrl || ''}
-                mobileIImageX2={item?.publications?.publicationsImageTelefon2x?.sourceUrl || ''} alt={item?.publications?.publicationsImageKompyuter1x?.altText || ''}></Picture>
+            <GatsbyImage image={item?.publications?.publicationsImageKompyuter1x?.gatsbyImage} className={styles.item__picture} alt={item?.publications?.publicationsImageKompyuter1x?.altText}></GatsbyImage>
         </div>
 
         <p className={stack('text-secondary', styles.item__text)}

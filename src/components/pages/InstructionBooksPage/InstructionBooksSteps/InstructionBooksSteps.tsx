@@ -21,9 +21,6 @@ const InstructionBooksSteps = () => {
             const fullWith = window.innerWidth < 768 ? listItem.current.getBoundingClientRect().height : listItem.current.getBoundingClientRect().width
             const itemWith = decorItem.current.getBoundingClientRect().width
             const int = Math.floor(fullWith / (itemWith + 10))
-            console.log('fullWith', fullWith)
-            console.log('itemWith', itemWith)
-            console.log('int', int)
 
             setInt(int)
         }

@@ -1,33 +1,28 @@
-import React, {useEffect, useLayoutEffect, useState} from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import * as styles from './BlogList.module.css'
-import {stack} from "../../../../hooks/useClassName";
-import {useGlobalContext} from "../../../../context/context";
+import { stack } from "../../../../hooks/useClassName";
+import { useGlobalContext } from "../../../../context/context";
 import Picture from "../../../images/Picture/Picture";
-import {usePosts} from "../../../../hooks/usePosts";
-import {Link} from "gatsby";
+import { usePosts } from "../../../../hooks/usePosts";
+import { Link } from "gatsby";
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const width = typeof window === 'undefined' ? 0 : window.innerWidth
 
 const BlogListItem = (item: Queries.WpBlog) => {
     return <li key={item.id}
         className={styles.list__item}>
-        <Link className={styles.list__link} to={'/blog/'+item.slug} >
-            <Picture alt={item?.blog?.blogPostPreviewIzobrazhenieDlyaKompyuteraX1?.altText || ''}
-                     className={styles?.item__picture}
-                     desktopIImageX2={item?.blog?.blogPostPreviewIzobrazhenieDlyaKompyuteraX2?.sourceUrl || ''}
-                     desktopIImageX1={item?.blog?.blogPostPreviewIzobrazhenieDlyaKompyuteraX1?.sourceUrl || ''}
-                     mobileIImageX2={item?.blog?.blogPostPreviewIzobrazhenieDlyaTelefonaX2?.sourceUrl || ''}
-                     mobileIImageX1={item?.blog?.blogPostPreviewIzobrazhenieDlyaTelefonaX1?.sourceUrl || ''}
-                     imageClassName={styles?.item__image}></Picture>
+        <Link className={styles.list__link} to={'/blog/' + item.slug} >
+            <GatsbyImage className={styles.item__picture} image={item?.blog?.blogPostPreviewIzobrazhenieDlyaKompyuteraX1?.gatsbyImage} alt={item?.blog?.blogPostPreviewIzobrazhenieDlyaKompyuteraX1?.altText}></GatsbyImage>
             <p className={styles?.item__title}
-               dangerouslySetInnerHTML={{__html: item?.blog?.blogPostHeroZagolovok || ''}}></p>
+                dangerouslySetInnerHTML={{ __html: item?.blog?.blogPostHeroZagolovok || '' }}></p>
             <p className={styles?.item__text}
-               dangerouslySetInnerHTML={{__html: item?.blog?.blogPostHeroKratkoeOpisanie || ''}}></p>
+                dangerouslySetInnerHTML={{ __html: item?.blog?.blogPostHeroKratkoeOpisanie || '' }}></p>
         </Link>
     </li>
 }
 const BlogList = () => {
-    const {blogPage, posts} = useGlobalContext()
+    const { blogPage, posts } = useGlobalContext()
     const [firstListSize, setFirstListSize] = useState(9)
     const [isListOpen, setIsListOpen] = useState(false)
 
@@ -43,10 +38,10 @@ const BlogList = () => {
     return (
         <div className={stack('container-new', styles.body)}>
             <h1 className={stack('text-page', styles.title)}
-                dangerouslySetInnerHTML={{__html: blogPage?.wpPage?.blogPage?.blogZagolovok || ''}}></h1>
+                dangerouslySetInnerHTML={{ __html: blogPage?.wpPage?.blogPage?.blogZagolovok || '' }}></h1>
             <div className={styles.screen}>
                 <ul className={styles.list}>
-                    {posts?.slice(0, firstListSize ).map((item, index) => <BlogListItem {...item} key={index}></BlogListItem>)}
+                    {posts?.slice(0, firstListSize).map((item, index) => <BlogListItem {...item} key={index}></BlogListItem>)}
                     {isListOpen && posts?.slice(firstListSize).map((item, index) => <BlogListItem {...item} key={index}></BlogListItem>)}
                 </ul>
             </div>

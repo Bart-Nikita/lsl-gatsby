@@ -6,6 +6,7 @@ import { stack } from "../../../../hooks/useClassName";
 import { Link } from "gatsby";
 import Picture from "../../../images/Picture/Picture";
 import LightPicture from "../../../images/LightPicture/LightPicture";
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 
 const buttonTextClose = 'Смотреть дальше'
@@ -40,10 +41,7 @@ const SelectItem = (item: Queries.WpTraining & { index: number }) => {
 
     return <li key={item?.date?.toString()} className={styles.item}>
         <button onClick={itemCLickHandler} className={stack(styles.link)}>
-            <LightPicture className={styles.picture} imageClassName={styles.image}
-                desktopIImage={item?.training?.trainingImageKompyuter?.sourceUrl || ''}
-                mobileIImage={item?.training?.trainingImageTelefon?.sourceUrl || ''}
-                alt={item?.training?.trainingImageKompyuter?.altText || ''}></LightPicture>
+       <GatsbyImage className={styles.picture} image={item?.training?.trainingImageKompyuter?.gatsbyImage} alt={item?.training?.trainingImageKompyuter?.altText}></GatsbyImage>
             <div className={styles.item__content}>
                 <p className={styles.content__title}
                     dangerouslySetInnerHTML={{ __html: item?.title  || ''}}></p>
