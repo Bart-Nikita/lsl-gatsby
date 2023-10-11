@@ -44,7 +44,7 @@ export default function InstructionsBooksModal() {
         setIsInstructionBooksFormModalOpen(true)
     }
     useEffect(() => {
-        console.log(instructionBooksModalData)
+        //console.log(instructionBooksModalData)
     }, [instructionBooksModalData])
 
     const [play] = useFile('play')
@@ -69,7 +69,10 @@ export default function InstructionsBooksModal() {
                                         <img className={styles.video__image} src={play}
                                             alt="Иконка Play" /></button>
                                 }
-                             <GatsbyImage className={styles.video__picture} image={instructionBooksModalData?.izobrazhenieDlyaKompyutera?.gatsbyImage} alt={instructionBooksModalData?.izobrazhenieDlyaKompyutera?.altText}></GatsbyImage>
+                                <div className={styles.video__picture} >
+                                <GatsbyImage className={'w-full h-full'} image={instructionBooksModalData?.izobrazhenieDlyaKompyutera?.gatsbyImage} alt={instructionBooksModalData?.izobrazhenieDlyaKompyutera?.altText}></GatsbyImage>
+
+                                </div>
                             </div>
                         </div>
                     </div>

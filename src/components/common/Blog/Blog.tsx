@@ -18,16 +18,12 @@ const Blog = ({ title, linkHref, linkText, remark }: BlogProps) => {
 
     const { posts } = useGlobalContext()
 
-    useEffect(() => {
-        console.log(posts)
-    }, [posts])
-
     return (
         <section className={stack('container', 'section-indent', styles.body)}>
             <h2 className={stack('title-secondary', styles.title)} dangerouslySetInnerHTML={{ __html: title }}></h2>
             <ul className={styles.list}>
                 {posts?.slice(0, 3)?.map((item, index) => <li key={index} className={stack(styles.item)} ><Link className={stack('link',styles.item__link)} to={'/blog/' + item.slug} >
-                    <GatsbyImage className={styles.item__picture} image={item?.blog?.blogPostHeroImageKompyuter1x?.gatsbyImage} alt={item?.blog?.blogPostHeroImageKompyuter1x?.altText} ></GatsbyImage>
+                    <GatsbyImage className={styles.item__picture} image={item?.blog?.blogPostPreviewIzobrazhenieDlyaKompyuteraX1?.gatsbyImage} alt={item?.blog?.blogPostPreviewIzobrazhenieDlyaKompyuteraX1?.altText} ></GatsbyImage>
                 </Link>
                 </li>)}
             </ul>

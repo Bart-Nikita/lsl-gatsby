@@ -23,7 +23,10 @@ const Support = () => {
                         to={section?.support?.supportAdresSsylki || ''}
                         dangerouslySetInnerHTML={{ __html: section?.support?.supportTekstSsylki || '' }}></Link>
                 </div>
-                <GatsbyImage className={styles.picture} image={section?.support?.supportImageKompyuterX1?.gatsbyImage} alt={section?.support?.supportImageKompyuterX1?.altText}></GatsbyImage>
+                <div className={styles.box}>
+                <GatsbyImage className={styles.picture} imgClassName={styles.image} image={section?.support?.supportImageKompyuterX1?.gatsbyImage} alt={section?.support?.supportImageKompyuterX1?.altText}></GatsbyImage>
+
+                </div>
             </div>
         </div>
     );

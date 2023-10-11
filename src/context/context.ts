@@ -137,7 +137,7 @@ export const globalState = (data: PageData): GlobalContextType => {
     useEffect(() => {
         if ((isTrainingFormModalOpen || isNavModalOpen || isTrainingModalOpen || isInstructionBooksFormModalOpen || isInstructionBooksHeroFormModalOpen || isInstructionBooksModalOpen) && isBrowser) {
             window.document.body.classList.add('scroll-prohibited')
-            console.log(doc)
+            //console.log(doc)
             return () => {
                 window.document.body.classList.remove('scroll-prohibited')
             }
@@ -177,7 +177,7 @@ export const globalState = (data: PageData): GlobalContextType => {
               setTrainings(data?.allWpTraining?.nodes)
 
             if (data?.pageContext) {
-                console.log(data?.pageContext)
+                //console.log(data?.pageContext)
                 //@ts-ignore
                 setCommonSections(data?.pageContext?.commonSections)
                 //@ts-ignore

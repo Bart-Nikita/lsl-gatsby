@@ -8,16 +8,11 @@ type ToTopButtonProps = {
     className: string
 }
 const ToTopButton = ({className}: ToTopButtonProps) => {
-    const {blogPostPage} = useGlobalContext()
     const clickHandler = () => {
         scrollTo(0, 0)
     }
     const [arrow] = useFile('arrow-up')
 
-    useEffect(() => {
-     console.log( arrow)
-    }, [arrow])
-    
     return (
         <button onClick={clickHandler}
                 className={stack('link',  styles.body, className)}>

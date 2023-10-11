@@ -32,7 +32,9 @@ const Messenger = ({ isPhoneButton, text, className }: MessengerProps) => {
                         </div>
                     }
                 </div>
+                <div className={styles.picture}>
                 <GatsbyImage className={styles.picture} image={section?.messenger?.messengerImageKompyuter1x?.gatsbyImage} alt={section?.messenger?.messengerImageKompyuter1x?.altText}></GatsbyImage>
+                </div>
             </div>
         </section>
     );

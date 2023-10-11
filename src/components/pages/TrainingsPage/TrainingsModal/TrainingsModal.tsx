@@ -10,6 +10,7 @@ import { InView } from "react-intersection-observer";
 import trainingsSelect from "../TrainingsSelect/TrainingsSelect";
 import ReactModal from 'react-modal';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import { useFile } from '../../../../hooks/useFile';
 
 
 
@@ -92,6 +93,8 @@ const TrainingsModal = () => {
     const onOrderClick = () => {
         setIsTrainingFormModalOpen(true)
     }
+
+    const [play] = useFile('play')
     return (
         <div className={stack(styles.container, !isBottomVisible && styles.light)}>
 
@@ -108,10 +111,13 @@ const TrainingsModal = () => {
                                 {!isPlaying &&
                                     <button
                                         className={stack('link', styles.video__button)}>
-                                        <img className={styles.video__image} src="/image/play.png"
+                                        <img className={styles.video__image} src={play}
                                             alt="Иконка Play" /></button>
                                 }
-                                  <GatsbyImage className={styles.video__picture} image={selectedItem?.izobrazhenieDlyaKompyutera?.gatsbyImage} alt={selectedItem?.izobrazhenieDlyaKompyutera?.altText}></GatsbyImage>
+                                <div className={styles.video__picture}>
+                                <GatsbyImage className={'w-full h-full'} image={selectedItem?.izobrazhenieDlyaKompyutera?.gatsbyImage} alt={selectedItem?.izobrazhenieDlyaKompyutera?.altText}></GatsbyImage>
+                                </div>
+                              
                             </div> :
                                  <GatsbyImage className={styles.gallery__picture} image={selectedItem?.izobrazhenieDlyaKompyutera?.gatsbyImage} alt={selectedItem?.izobrazhenieDlyaKompyutera?.altText}></GatsbyImage>
                             }
@@ -124,9 +130,12 @@ const TrainingsModal = () => {
                                         <button onClick={() => item && setSelectedItem(item)}
                                             className={stack(styles.images__button, selectedItem === item && styles.selected)}>
                                             {item?.video?.mediaItemUrl &&
-                                                <img className={styles.images__play} src="/image/play.png"
+                                                <img className={styles.images__play} src={play}
                                                     alt="Иконка Play" />}
-                                            <GatsbyImage className={styles.images__picture} image={item?.izobrazhenieDlyaKompyutera?.gatsbyImage} alt={item?.izobrazhenieDlyaKompyutera?.altText}></GatsbyImage>
+                                                    <div className={styles.images__picture}>
+                                                    <GatsbyImage className={'w-full h-full'} image={item?.izobrazhenieDlyaKompyutera?.gatsbyImage} imgClassName='image-normalize' alt={item?.izobrazhenieDlyaKompyutera?.altText}></GatsbyImage>
+
+                                                    </div>
                                         </button>
                                     </li>)}
                             </ul>}

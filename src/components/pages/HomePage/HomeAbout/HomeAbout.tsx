@@ -8,11 +8,6 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 const HomeAbout = () => {
     const { mainPage: page } = useGlobalContext()
 
-    useEffect(() => {
-        if (page) {
-            console.log()
-        }
-    }, [page])
     return (
         <section className={stack('container', 'section-indent', styles.body)}>
             <GatsbyImage className={styles.picture} image={page?.wpPage?.main?.mainAboutImageKompyuter1x?.gatsbyImage} alt={page?.wpPage?.main?.mainAboutImageKompyuter1x?.altText}></GatsbyImage>

@@ -7,8 +7,8 @@ export const usePosts = (excludeSlug?: string) => {
     useEffect(() => {
         if (posts) {
             if (excludeSlug) {
-                console.log(excludeSlug)
-                console.log(posts.find(item => item.slug === excludeSlug))
+                //console.log(excludeSlug)
+                //console.log(posts.find(item => item.slug === excludeSlug))
                 setPostsFiltered(posts.filter(item => item.slug !== excludeSlug))
                 return
             }

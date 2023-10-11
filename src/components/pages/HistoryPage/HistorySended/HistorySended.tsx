@@ -4,6 +4,7 @@ import { stack } from "../../../../hooks/useClassName";
 import { useGlobalContext } from "../../../../context/context";
 import { InView } from "react-intersection-observer";
 import { useView } from "../../../../hooks/useView";
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 type DisplayRow = {
     row: Queries.WpPage_History_historySendedGoroda,
@@ -67,8 +68,7 @@ const DisplayRow = ({ row, isInView, index }: DisplayRow) => {
         className={styles.display__row}
         style={{ transform: `translateX(${directionLeft ? -x : x}px)` }}>
         {row?.strokaGorodov?.map((item, index) => <div key={index} className={styles.display__item}>
-            <img className={styles.display__image} src={item?.izobrazhenie?.sourceUrl || ''}
-                alt={item?.izobrazhenie?.altText || ''} />
+            <GatsbyImage className={styles.display__image} image={item?.izobrazhenie?.gatsbyImage} alt={item?.izobrazhenie?.altText}></GatsbyImage>
             <p className={styles?.display__text}>{item?.nazvanieGoroda}</p>
         </div>)}
     </div>

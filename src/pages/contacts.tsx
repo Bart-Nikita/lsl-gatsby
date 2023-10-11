@@ -101,7 +101,7 @@ export const query = graphql` query ContactsPage {
         }
         footerLogotip {
           altText
-          gatsbyImage(width: 200, outputPixelDensities: 2, formats: WEBP)
+          gatsbyImage(width: 200, outputPixelDensities: 2, formats: WEBP, placeholder: NONE)
         }
         footerPolitikaKonfidenczialnosti {
           mediaItemUrl
@@ -124,7 +124,7 @@ export const query = graphql` query ContactsPage {
         headerTelefon
         headerLogotip {
           altText
-          gatsbyImage(outputPixelDensities: 2, width: 100, formats: WEBP)
+          gatsbyImage(outputPixelDensities: 2, width: 100, formats: WEBP,  placeholder: NONE)
         }
       }
       messenger {

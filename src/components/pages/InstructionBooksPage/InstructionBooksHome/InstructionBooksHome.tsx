@@ -16,14 +16,16 @@ const InstructionBooksHome = () => {
             <div className={stack('container', styles.container)}>
                 <div className={styles.first}
                 >
-                 <GatsbyImage className={styles.first__picture} alt={instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroFonovoeIzobrazhenie?.altText} image={instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroFonovoeIzobrazhenie?.gatsbyImage}></GatsbyImage>
+                    <div className={styles.first__picture}>
+               {instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroFonovoeIzobrazhenie?.gatsbyImage &&  <GatsbyImage className='w-full h-full' alt={instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroFonovoeIzobrazhenie?.altText || ''} image={instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroFonovoeIzobrazhenie?.gatsbyImage}></GatsbyImage>}
+                 </div>
                     <h1 className={styles.title}>{typo.execute(instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroZagolovok || '')}</h1>
                     <p className={styles.subtitle}>{typo.execute(instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroPodzagolovok || '')}</p>
                     <button onClick={onClickHandler} className={stack('button-secondary-new', styles.button)}>
                         {instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroTekstKnopki}
                     </button>
                 </div>
-            <GatsbyImage className={styles.second} image={instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroIzobrazhenieDlyaKompyutera?.gatsbyImage} alt={instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroIzobrazhenieDlyaKompyutera?.altText}></GatsbyImage>
+        {instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroIzobrazhenieDlyaKompyutera?.gatsbyImage &&    <GatsbyImage className={styles.second} image={instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroIzobrazhenieDlyaKompyutera?.gatsbyImage} alt={instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroIzobrazhenieDlyaKompyutera?.altText || ''}></GatsbyImage>}
                 <p className={stack(styles.text, styles.desktop)}>
                     {typo.execute(instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroTekstSleva || '')}
                 </p>

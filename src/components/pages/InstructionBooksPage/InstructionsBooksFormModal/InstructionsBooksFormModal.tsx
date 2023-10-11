@@ -122,7 +122,7 @@ const FormInput = (item: InputItem & {dialog?: HTMLDialogElement}) => {
             if (!hover) {
                 !isMobile &&  setIsSublistOpen(false)
             }
-            console.log('hi')
+            //console.log('hi')
         }, [clickCounter])
 
         return <div  className={stack(styles.form__block, item.input.error && styles.error)} onKeyDown={onBlockKeyDown}
@@ -275,7 +275,7 @@ export default function InstructionsBooksFormModal() {
         }
 
         if (!error) {
-            console.log(emailBody)
+            //console.log(emailBody)
 
             sendMail({
                 variables: {

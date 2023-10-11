@@ -6,6 +6,7 @@ import {useGlobalContext} from "../../../../context/context";
 import QuoteTop from "../../../svg/QuoteTop";
 import QuoteBottom from "../../../svg/QuoteBottom";
 import {useResize} from "../../../../hooks/useResize";
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const HistoryWe = () => {
     const {historyPage} = useGlobalContext()
@@ -34,13 +35,9 @@ const HistoryWe = () => {
                     <div className={styles.top__back}>
 
                     </div>
-                    <Picture imageClassName={styles.top__image}
-                             className={styles.top__picture}
-                             alt={historyPage?.wpPage?.history?.historyWeFirstImageKompyuterX1?.altText || ''}
-                             desktopIImageX1={historyPage?.wpPage?.history?.historyWeFirstImageKompyuterX1?.sourceUrl || ''}
-                             desktopIImageX2={historyPage?.wpPage?.history?.historyWeFirstImageKompyuterX2?.sourceUrl || ''}
-                             mobileIImageX1={historyPage?.wpPage?.history?.historyWeFirstImageTelefonX1?.sourceUrl || ''}
-                             mobileIImageX2={historyPage?.wpPage?.history?.historyWeFirstImageTelefonX2?.sourceUrl || ''}></Picture>
+         <div className={styles.top__picture}>
+            <GatsbyImage className='w-full h-full' imgClassName={styles.top__image} image={historyPage?.wpPage?.history?.historyWeFirstImageKompyuterX1?.gatsbyImage} alt={historyPage?.wpPage?.history?.historyWeFirstImageKompyuterX1?.altText}></GatsbyImage>
+         </div>
                 </div>
                 <div className={styles?.top__content}>
                     <h2 className={styles?.title}
@@ -64,13 +61,9 @@ const HistoryWe = () => {
                                   dangerouslySetInnerHTML={{__html: historyPage?.wpPage?.history?.historyWeCzitata || ''}}></span>
                             <QuoteBottom className={styles?.quote__bottom}></QuoteBottom>
                         </p>
-                        <Picture setPosition={setPictureBottom} imageClassName={styles?.bottom__image}
-                                 className={styles?.bottom__picture}
-                                 alt={historyPage?.wpPage?.history?.historyWeSecondImageKompyuterX1?.altText || ''}
-                                 desktopIImageX1={historyPage?.wpPage?.history?.historyWeSecondImageKompyuterX1?.sourceUrl || ''}
-                                 desktopIImageX2={historyPage?.wpPage?.history?.historyWeSecondImageKompyuterX2?.sourceUrl || ''}
-                                 mobileIImageX1={historyPage?.wpPage?.history?.historyWeSecondImageTelefonX1?.sourceUrl || ''}
-                                 mobileIImageX2={historyPage?.wpPage?.history?.historyWeSecondImageTelefonX2?.sourceUrl || ''}></Picture>
+                     <div className={styles.bottom__picture}>
+                     <GatsbyImage className='w-full h-full' imgClassName={styles.bottom__image} image={historyPage?.wpPage?.history?.historyWeSecondImageKompyuterX1?.gatsbyImage} alt={historyPage?.wpPage?.history?.historyWeSecondImageKompyuterX1?.altText}></GatsbyImage>
+                     </div>
                     </div>
                 </div>
             </div>

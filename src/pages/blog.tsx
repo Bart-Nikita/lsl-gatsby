@@ -77,7 +77,7 @@ export const query = graphql` query BlogPage {
       blogZagolovok
     }
   }
-  allWpBlog {
+  allWpBlog(sort: {date: DESC}) {
     nodes {
       slug
       id
@@ -115,7 +115,7 @@ export const query = graphql` query BlogPage {
         }
         footerLogotip {
           altText
-          gatsbyImage(width: 200, outputPixelDensities: 2, formats: WEBP)
+          gatsbyImage(width: 200, outputPixelDensities: 2, formats: WEBP, placeholder: NONE)
         }
         footerPolitikaKonfidenczialnosti {
           mediaItemUrl
@@ -138,7 +138,7 @@ export const query = graphql` query BlogPage {
         headerTelefon
         headerLogotip {
           altText
-          gatsbyImage(outputPixelDensities: 2, width: 100, formats: WEBP)
+          gatsbyImage(outputPixelDensities: 2, width: 100, formats: WEBP,  placeholder: NONE)
         }
       }
       online {

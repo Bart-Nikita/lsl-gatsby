@@ -318,7 +318,7 @@ const TrainingsFormModal = () => {
         }
 
         if (!error) {
-            console.log(emailBody)
+            //console.log(emailBody)
 
             sendMail({
                 variables: {

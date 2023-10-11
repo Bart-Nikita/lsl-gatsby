@@ -25,7 +25,7 @@ const config: GatsbyConfig = {
         path: `${__dirname}/src/images`,
 
     },
-}, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-postcss"]
+}, "gatsby-plugin-image", "gatsby-transformer-sharp",  `gatsby-plugin-sharp`, "gatsby-plugin-postcss"]
 };
 
 export default config;

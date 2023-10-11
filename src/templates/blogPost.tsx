@@ -9,7 +9,7 @@ import { GlobalContext, globalState } from '../context/context'
 import Layout from '../components/layout/Layout'
 
 export const Head = (data: BlogPostProps) => {
-  console.log(data.pageContext.site.siteMetadata?.url)
+  //console.log(data.pageContext.site.siteMetadata?.url)
   return (
     <Seo favicon={data.pageContext.favicon} url={data.pageContext.site.siteMetadata?.url || ''} title={('LSL | ' + data.pageContext.post.blog?.blogPostHeroZagolovok) || ''} description={data.pageContext.post.blog?.blogPostHeroKratkoeOpisanie || ''}></Seo>)
 }

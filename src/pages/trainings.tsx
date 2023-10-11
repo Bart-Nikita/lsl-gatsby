@@ -89,7 +89,7 @@ export const query = graphql` query TrainingsPage {
     trainings {
       trainingsAboutIzobrazhenieDlyaKompyutera {
         altText
-        gatsbyImage(width: 800, outputPixelDensities: 2, formats: WEBP)
+        gatsbyImage(width: 800, outputPixelDensities: 2, formats: WEBP, placeholder: NONE)
       }
       trainingsAboutTekst
       trainingsAboutZagolovok
@@ -99,14 +99,14 @@ export const query = graphql` query TrainingsPage {
         zagolovok
         dekor {
           altText
-          gatsbyImage(width: 400, outputPixelDensities: 2, formats: WEBP)
+          gatsbyImage(width: 400, outputPixelDensities: 2, formats: WEBP, placeholder: NONE)
         }
       }
       trainingsDeliverySpisok {
         tekst
         dekor {
           altText
-          gatsbyImage(height: 200, outputPixelDensities: 2, formats: WEBP)
+          gatsbyImage(height: 200, outputPixelDensities: 2, formats: WEBP, placeholder: NONE)
         }
       }
       trainingsGiftIzobrazhenieDlyaKompyuteraX1 {
@@ -132,7 +132,7 @@ export const query = graphql` query TrainingsPage {
       trainingsStepsZagolovok
     }
   }
-  allWpBlog {
+  allWpBlog(sort: {date: DESC}) {
     nodes {
       slug
       id
@@ -164,7 +164,7 @@ export const query = graphql` query TrainingsPage {
         feedbacksImageSlajder {
           feedbacksImageKompyuter1x {
             altText
-            gatsbyImage(formats: WEBP, outputPixelDensities: 2, width: 400)
+            gatsbyImage(formats: WEBP, outputPixelDensities: 2, width: 400, placeholder: NONE)
           }
         }
         feedbacksSimpleSlajder {
@@ -173,7 +173,7 @@ export const query = graphql` query TrainingsPage {
           feedbacksSimpleTekstOtzyva
           feedbacksSimpleKompyuter1x {
             altText
-            gatsbyImage(formats: WEBP, width: 400, outputPixelDensities: 2)
+            gatsbyImage(formats: WEBP, width: 400, outputPixelDensities: 2, placeholder: NONE)
           }
         }
       }
@@ -192,7 +192,7 @@ export const query = graphql` query TrainingsPage {
         }
         footerLogotip {
           altText
-          gatsbyImage(width: 200, outputPixelDensities: 2, formats: WEBP)
+          gatsbyImage(width: 200, outputPixelDensities: 2, formats: WEBP, placeholder: NONE)
         }
         footerPolitikaKonfidenczialnosti {
           mediaItemUrl
@@ -215,7 +215,7 @@ export const query = graphql` query TrainingsPage {
         headerTelefon
         headerLogotip {
           altText
-          gatsbyImage(outputPixelDensities: 2, width: 100, formats: WEBP)
+          gatsbyImage(outputPixelDensities: 2, width: 100, formats: WEBP,  placeholder: NONE)
         }
       }
       online {
@@ -240,13 +240,13 @@ export const query = graphql` query TrainingsPage {
             altText
             gatsbyImage(outputPixelDensities: 2, width: 800, formats: WEBP)
           }
+          video {
+            mediaItemUrl
+          }
         }
         trainingImageKompyuter {
           altText
           gatsbyImage(outputPixelDensities: 2, width: 800, formats: WEBP)
-        }
-        trainingMedia {
-          mediaItemUrl
         }
         trainingVRamke {
           tekst

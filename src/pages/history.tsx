@@ -90,7 +90,7 @@ export const query = graphql` query HistoryPage {
         historyHeroBolshojTekst
         historyHeroImageKompyuterX1 {
           altText
-          gatsbyImage(formats: WEBP, outputPixelDensities: 2, width: 1500)
+          gatsbyImage(formats: WEBP, outputPixelDensities: 2, width: 2300, placeholder: NONE)
         }
         historyHeroMalyjTekst
         historyHistoryList {
@@ -101,7 +101,7 @@ export const query = graphql` query HistoryPage {
         historyProjectsSpisok {
           kompyuterX1 {
             altText
-            gatsbyImage(formats: WEBP, outputPixelDensities: 2, width: 400)
+            gatsbyImage(formats: WEBP, outputPixelDensities: 2, width: 400, placeholder: NONE)
           }
         }
         historyProjectsTekst
@@ -124,11 +124,11 @@ export const query = graphql` query HistoryPage {
         historyWeCzitata
         historyWeFirstImageKompyuterX1 {
           altText
-          gatsbyImage(formats: WEBP, outputPixelDensities: 2, width: 800)
+          gatsbyImage(formats: WEBP, outputPixelDensities: 2, width: 800, placeholder: NONE)
         }
         historyWeSecondImageKompyuterX1 {
           altText
-          gatsbyImage(formats: WEBP, outputPixelDensities: 2, width: 800)
+          gatsbyImage(formats: WEBP, outputPixelDensities: 2, width: 800, placeholder: NONE)
         }
         historyWeTekstSverhu
         historyWeTekstVnizu
@@ -159,7 +159,7 @@ export const query = graphql` query HistoryPage {
         }
         footerLogotip {
           altText
-          gatsbyImage(width: 200, outputPixelDensities: 2, formats: WEBP)
+          gatsbyImage(width: 200, outputPixelDensities: 2, formats: WEBP, placeholder: NONE)
         }
         footerPolitikaKonfidenczialnosti {
           mediaItemUrl
@@ -182,7 +182,7 @@ export const query = graphql` query HistoryPage {
         headerTelefon
         headerLogotip {
           altText
-          gatsbyImage(outputPixelDensities: 2, width: 100, formats: WEBP)
+          gatsbyImage(outputPixelDensities: 2, width: 100, formats: WEBP,  placeholder: NONE)
         }
       }
       messenger {

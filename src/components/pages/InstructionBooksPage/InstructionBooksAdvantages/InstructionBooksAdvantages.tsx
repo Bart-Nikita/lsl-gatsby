@@ -13,7 +13,7 @@ const InstructionBooksAdvantages = () => {
                     if (!item?.dekor) return
                     return <li key={index}
                                className={styles.item}>
-                       <GatsbyImage className={styles.image} image={item?.dekor?.gatsbyImage} alt={item?.dekor?.altText}></GatsbyImage>
+                       <GatsbyImage className={styles.image} backgroundColor={'transparent'} image={item?.dekor?.gatsbyImage} alt={item?.dekor?.altText}></GatsbyImage>
                         <h3 className={styles?.title}>{item?.zagolovok}</h3>
                         <p className={styles?.text} >{typo?.execute(item?.tekst || '')}</p>
                     </li>

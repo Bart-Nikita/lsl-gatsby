@@ -98,7 +98,7 @@ export const query = graphql` query FeedbacksPage {
         feedbacksImageSlajder {
           feedbacksImageKompyuter1x {
             altText
-            gatsbyImage(formats: WEBP, outputPixelDensities: 2, width: 400)
+            gatsbyImage(formats: WEBP, outputPixelDensities: 2, width: 400, placeholder: NONE)
           }
         }
         feedbacksSimpleSlajder {
@@ -107,7 +107,7 @@ export const query = graphql` query FeedbacksPage {
           feedbacksSimpleTekstOtzyva
           feedbacksSimpleKompyuter1x {
             altText
-            gatsbyImage(formats: WEBP, width: 400, outputPixelDensities: 2)
+            gatsbyImage(formats: WEBP, width: 400, outputPixelDensities: 2, placeholder: NONE)
           }
         }
       }
@@ -126,7 +126,7 @@ export const query = graphql` query FeedbacksPage {
         }
         footerLogotip {
           altText
-          gatsbyImage(width: 200, outputPixelDensities: 2, formats: WEBP)
+          gatsbyImage(width: 200, outputPixelDensities: 2, formats: WEBP, placeholder: NONE)
         }
         footerPolitikaKonfidenczialnosti {
           mediaItemUrl
@@ -149,7 +149,7 @@ export const query = graphql` query FeedbacksPage {
         headerTelefon
         headerLogotip {
           altText
-          gatsbyImage(outputPixelDensities: 2, width: 100, formats: WEBP)
+          gatsbyImage(outputPixelDensities: 2, width: 100, formats: WEBP,  placeholder: NONE)
         }
       }
       messenger {

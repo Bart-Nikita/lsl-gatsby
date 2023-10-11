@@ -401,7 +401,7 @@ export const query = graphql` query CertsPage {
             }
             footerLogotip {
               altText
-              gatsbyImage(width: 200, outputPixelDensities: 2, formats: WEBP)
+              gatsbyImage(width: 200, outputPixelDensities: 2, formats: WEBP, placeholder: NONE)
             }
             footerPolitikaKonfidenczialnosti {
               mediaItemUrl
@@ -414,7 +414,7 @@ export const query = graphql` query CertsPage {
               footerSocialTekst
               footerSocialIkonka {
                 altText
-                gatsbyImage(width: 100, outputPixelDensities: 2, formats: WEBP)
+                gatsbyImage(width: 100, outputPixelDensities: 2, formats: WEBP, placeholder: NONE)
               }
             }
           }
@@ -424,7 +424,7 @@ export const query = graphql` query CertsPage {
             headerTelefon
             headerLogotip {
               altText
-              gatsbyImage(outputPixelDensities: 2, width: 100, formats: WEBP)
+              gatsbyImage(outputPixelDensities: 2, width: 100, formats: WEBP, placeholder: NONE)
             }
           }
       }

@@ -85,7 +85,7 @@ const FormInput = (item: InputItem) => {
         }
 
         const onBlockKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-            // console.log('hi')
+            // //console.log('hi')
 
             if (e.key === "Enter" || e.key === "Space") {
                 setIsSublistOpen(prev => !prev)
@@ -96,7 +96,7 @@ const FormInput = (item: InputItem) => {
         }
 
         const onItemKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>, item: Queries.WpTraining) => {
-            // console.log('hi')
+            // //console.log('hi')
             if (e.key === "Enter" || e.key === "Space") {
                 e.stopPropagation()
                 e.preventDefault()
@@ -263,7 +263,7 @@ const InstructionBooksOrder = () => {
 
 
         if (!error) {
-            console.log(emailBody)
+            //console.log(emailBody)
 
             sendMail({
                 variables: {
@@ -285,7 +285,10 @@ const InstructionBooksOrder = () => {
 
     return (
         <section className={stack(styles.section)} >
-           <GatsbyImage className={styles.picture} image={instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderFonovoeIzobrazhenieDlyaKonpyutera?.gatsbyImage} alt={instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderFonovoeIzobrazhenieDlyaKonpyutera?.altText}></GatsbyImage>
+            <div className={styles.picture}>
+   {instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderFonovoeIzobrazhenieDlyaKonpyutera?.gatsbyImage &&         <GatsbyImage className='w-full h-full' image={instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderFonovoeIzobrazhenieDlyaKonpyutera?.gatsbyImage} alt={instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderFonovoeIzobrazhenieDlyaKonpyutera?.altText || ''}></GatsbyImage>}
+
+            </div>
             <div className={stack('container', styles.container)} >
                 <div className={styles.left}>
                     <h2 className={styles.title}>{typo.execute(instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderZagolovok || '')}</h2>

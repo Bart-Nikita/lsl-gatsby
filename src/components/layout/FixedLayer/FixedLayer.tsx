@@ -12,7 +12,6 @@ const FixedLayer = ({ children }: FixedLayerProps) => {
     if (!root) return
     return createPortal(children, root
     )
-
 };
 
 export default FixedLayer;

@@ -92,7 +92,7 @@ export const query = graphql` query InstructionsPage {
         zagolovok
         dekor {
           altText
-          gatsbyImage(outputPixelDensities: 2, width: 400, formats: WEBP)
+          gatsbyImage(outputPixelDensities: 2, width: 400, formats: WEBP, placeholder: NONE)
         }
       }
       instructionsHeroFonovoeIzobrazhenie {
@@ -131,7 +131,7 @@ export const query = graphql` query InstructionsPage {
       }
     }
   }
-  allWpBlog {
+  allWpBlog(sort: {date: DESC}) {
     nodes {
       slug
       id
@@ -169,7 +169,7 @@ export const query = graphql` query InstructionsPage {
         }
         footerLogotip {
           altText
-          gatsbyImage(width: 200, outputPixelDensities: 2, formats: WEBP)
+          gatsbyImage(width: 200, outputPixelDensities: 2, formats: WEBP, placeholder: NONE)
         }
         footerPolitikaKonfidenczialnosti {
           mediaItemUrl
@@ -192,7 +192,7 @@ export const query = graphql` query InstructionsPage {
         headerTelefon
         headerLogotip {
           altText
-          gatsbyImage(outputPixelDensities: 2, width: 100, formats: WEBP)
+          gatsbyImage(outputPixelDensities: 2, width: 100, formats: WEBP,  placeholder: NONE)
         }
       }
     }

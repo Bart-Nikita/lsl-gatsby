@@ -108,7 +108,7 @@ exports.createPages = async ({ graphql, actions, reporter }: CreatePagesArgs) =>
          
         }
       }
-        allWpBlog {
+        allWpBlog(sort: {date: DESC}) {
           nodes {
             pageStatus {
               status

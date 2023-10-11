@@ -25,7 +25,12 @@
 }
 
 .item__image {
-    @apply block object-contain h-[85px] mb-[26px] w-auto
+    @apply block h-[85px] mb-[26px] w-auto
     xl:h-[45px] xl:mb-[28px]
+    md:mb-[16px]
+}
+
+.list__item:nth-child(2) .item__image {
+    @apply h-[95px] mb-[16px]  xl:h-[45px] xl:mb-[28px]
     md:mb-[16px]
 }

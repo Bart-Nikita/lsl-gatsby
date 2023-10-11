@@ -1,26 +1,3 @@
-.old.body {
-
-}
-
-.old .content {
-
-}
-
-.old .title {
-}
-
-.old .text {
-
-}
-
-.old .link {
-}
-
-.old .picture {
-}
-
-.old .image {
-}
 
 .body {
 
@@ -57,10 +34,14 @@
     md:py-[12px] md:px-[53px] md:absolute md:z-[2] md:whitespace-nowrap md:right-[50%] md:translate-x-[50%] md:bottom-[24px] md:text-[16px]
 }
 
+.box {
+    @apply absolute bottom-0 right-[138px] xl:right-[24px] md:right-[50%] md:translate-x-[50%] md:bottom-[74px] w-[493px] h-[635px]  z-0
+    xl:w-[285px] xl:h-[367px] 
+    md:w-[183px] md:h-[236px] 
+}
+
 .picture {
-    @apply absolute w-[493px] h-[635px] bottom-0 right-[138px] z-0
-    xl:w-[285px] xl:h-[367px] xl:right-[24px]
-    md:w-[183px] md:h-[236px] md:right-[50%] md:translate-x-[50%] md:bottom-[74px]
+    @apply w-full h-full 
 }
 
 .image {
