@@ -8,7 +8,7 @@ import ReactInputMask from 'react-input-mask';
 import { useTrainings } from '../../../../hooks/useTrainings';
 import { useInputState, useInputStateType } from '../../../../hooks/useInputState';
 import { InView } from 'react-intersection-observer';
-import { CONTACTS_MAIL_SUBJECT, EMAIL_FROM, EMAIL_TO } from '../../../../config';
+import { CONTACTS_MAIL_SUBJECT, EMAIL_FROM, EMAIL_TO, INSTRUCTION_MAIL_SUBJECT } from '../../../../config';
 import { useMutation } from '@apollo/client';
 import { useCommonSection } from '../../../../hooks/useCommonSection';
 import { SEND_MAIL } from '../../../../gql/mutations/sendMail';
@@ -289,7 +289,7 @@ export default function InstructionsBooksFormModal() {
                 variables: {
                     emailTo: EMAIL_TO,
                     emailFrom: EMAIL_FROM,
-                    subject: CONTACTS_MAIL_SUBJECT,
+                    subject: INSTRUCTION_MAIL_SUBJECT,
                     body: emailBody
                 }
             }).then(() => {

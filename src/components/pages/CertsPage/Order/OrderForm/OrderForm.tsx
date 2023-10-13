@@ -1,6 +1,6 @@
 import { useMutation } from '@apollo/client'
 import React, { useEffect, useState } from 'react'
-import { EMAIL_TO, EMAIL_FROM, CONTACTS_MAIL_SUBJECT } from '../../../../../config'
+import { EMAIL_TO, EMAIL_FROM, CONTACTS_MAIL_SUBJECT, CERT_MAIL_SUBJECT } from '../../../../../config'
 import { SEND_MAIL } from '../../../../../gql/mutations/sendMail'
 import { stack } from '../../../../../hooks/useClassName'
 import { useInputStateType } from '../../../../../hooks/useInputState'
@@ -101,7 +101,7 @@ export default function OrderForm({inputsGroup, certType, isMockVisible, goMock}
                 variables: {
                     emailTo: EMAIL_TO,
                     emailFrom: EMAIL_FROM,
-                    subject: CONTACTS_MAIL_SUBJECT,
+                    subject: CERT_MAIL_SUBJECT,
                     body: emailBody
                 }
             }).then(() => {

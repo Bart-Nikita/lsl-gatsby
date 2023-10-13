@@ -9,7 +9,7 @@ import ReactInputMask from 'react-input-mask';
 import { useCommonSection } from '../../../../hooks/useCommonSection';
 import { useMutation } from '@apollo/client';
 import { SEND_MAIL } from '../../../../gql/mutations/sendMail';
-import { CONTACTS_MAIL_SUBJECT, EMAIL_FROM, EMAIL_TO } from '../../../../config';
+import { CONTACTS_MAIL_SUBJECT, EMAIL_FROM, EMAIL_TO, INSTRUCTION_MAIL_SUBJECT } from '../../../../config';
 import LightPicture from '../../../images/LightPicture/LightPicture';
 import ArrowDown from '../../../svg/ArrowDown';
 import { GatsbyImage } from 'gatsby-plugin-image';
@@ -271,7 +271,7 @@ const InstructionBooksOrder = () => {
                 variables: {
                     emailTo: EMAIL_TO,
                     emailFrom: EMAIL_FROM,
-                    subject: CONTACTS_MAIL_SUBJECT,
+                    subject: INSTRUCTION_MAIL_SUBJECT,
                     body: emailBody
                 }
             }).then(() => {
@@ -321,7 +321,7 @@ const InstructionBooksOrder = () => {
                                 href={section?.footer?.footerPolitikaKonfidenczialnosti?.mediaItemUrl || ''}>условиями
                                 обработки</a> персональных данных</p>
                         </div>
-                        <button type={"submit"} onClick={onSubmit} className={stack(styles.button, 'button-secondary-new')}>Отправить
+                        <button type={"submit"} onClick={onSubmit} className={stack(styles.button, 'button-secondary-new', loading && 'disabled')}>Отправить
                         </button>
                     </form>
                 </div>

@@ -7,13 +7,12 @@ import { GlobalContext, globalState } from "../context/context"
 import Layout from "../components/layout/Layout"
 import BlogList from "../components/pages/BlogPage/BlogList/BlogList"
 import Online from "../components/common/Online/Online"
+import {  SUBSCRIPTION_MAIL_SUBJECT } from "../config"
 
 export const Head = ({ data }: PageProps<Queries.BlogPageQuery>) => {
   return (
     <Seo favicon={data.wpMenu?.favicon?.favikon?.sourceUrl || ''} url={data?.site?.siteMetadata?.url || ''} title={data.wpPage?.metaData?.metaZagolovok || ''} description={data.wpPage?.metaData?.metaOpisanie || ''}></Seo>)
 }
-
-
 
 
 const BlogPage: React.FC<PageProps<Queries.BlogPageQuery>> = ({ data }: PageProps<Queries.BlogPageQuery>) => {
@@ -22,7 +21,7 @@ const BlogPage: React.FC<PageProps<Queries.BlogPageQuery>> = ({ data }: PageProp
   return <GlobalContext.Provider value={state}>
     <Layout>
       <BlogList></BlogList>
-      <Online></Online>
+      <Online mailSubject={SUBSCRIPTION_MAIL_SUBJECT}></Online>
     </Layout>
   </GlobalContext.Provider>
 }

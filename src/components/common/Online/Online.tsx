@@ -10,12 +10,13 @@ import { useMock } from '../../../hooks/useMock';
 type OnlineProps = {
     className?: string,
     isSmall?: boolean,
+    mailSubject: string
 }
 
 const emptyError = 'Поле необходимо заполнить'
 
 const emailError = 'Email должен содержать "@" и "."'
-const Online = ({ className, isSmall }: OnlineProps) => {
+const Online = ({ className, isSmall, mailSubject }: OnlineProps) => {
     const [section] = useCommonSection('budem-na-svyazi')
     const [email, setEmail] = useState<string>()
     const [emailEmptyError, setEmailEmptyError] = useState(false)
@@ -45,7 +46,7 @@ const Online = ({ className, isSmall }: OnlineProps) => {
                 variables: {
                     emailTo: EMAIL_TO,
                     emailFrom: EMAIL_FROM,
-                    subject: CONTACTS_MAIL_SUBJECT,
+                    subject: mailSubject,
                     body: emailBody
                 }
             }).then(() => {

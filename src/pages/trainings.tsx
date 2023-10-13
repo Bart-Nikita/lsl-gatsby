@@ -14,6 +14,7 @@ import TrainingsSelect from "../components/pages/TrainingsPage/TrainingsSelect/T
 import TrainingsSteps from "../components/pages/TrainingsPage/TrainingsSteps/TrainingsSteps"
 import { GlobalContext, globalState } from "../context/context"
 import Layout from "../components/layout/Layout"
+import { SUBSCRIPTION_MAIL_SUBJECT } from "../config"
 
 export const Head = ({ data }: PageProps<Queries.TrainingsPageQuery>) => {
 
@@ -33,7 +34,7 @@ const TrainingsPage: React.FC<PageProps<Queries.TrainingsPageQuery>> = ({ data }
       <TrainingsDelivery></TrainingsDelivery>
       <TrainingsSteps></TrainingsSteps>
       <TrainingsFeedbacks></TrainingsFeedbacks>
-      <Online className={'mb-[140px] xl:mb-[92px] md:mb-[64px]'}></Online>
+      <Online mailSubject={SUBSCRIPTION_MAIL_SUBJECT}  className={'mb-[140px] xl:mb-[92px] md:mb-[64px]'}></Online>
       <TrainingsAbout></TrainingsAbout>
     </Layout>
   </GlobalContext.Provider>

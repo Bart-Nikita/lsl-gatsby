@@ -9,7 +9,7 @@ import ReactInputMask from "react-input-mask";
 import { useCommonSection } from "../../../../hooks/useCommonSection";
 import { useMutation } from "@apollo/client";
 import { SEND_MAIL } from "../../../../gql/mutations/sendMail";
-import { CONTACTS_MAIL_SUBJECT, EMAIL_FROM, EMAIL_TO } from "../../../../config";
+import { CONTACTS_MAIL_SUBJECT, EMAIL_FROM, EMAIL_TO, TRAINING_MAIL_SUBJECT } from "../../../../config";
 import ArrowDown from '../../../svg/ArrowDown';
 import { useMock } from '../../../../hooks/useMock';
 
@@ -272,8 +272,10 @@ const TrainingsFormModal = () => {
 
     useEffect(() => {
 
-        const firstInputsGroupBody = firstInputsGroup.reduce((str, item) => str + `<p><strong>${item.label}:</strong>${item.input.value}</p>`, ``)
-        const secondInputsGroupBody = secondInputsGroup.reduce((str, item) => str + `<p><strong>${item.label}:</strong>${item.input.value}</p>`, ``)
+        const str = `<p><strong>Название тренажера:</strong>${trainingModalData?.title}</p><p><strong>Юр. лицо (организация):</strong>${isOrganisation ? 'Да' : 'Нет'}</p>`
+
+        const firstInputsGroupBody = firstInputsGroup.reduce((str, item) => str + `<p><strong>${item.label}:</strong>${item.input.value}</p>`, str)
+        const secondInputsGroupBody = secondInputsGroup.reduce((str, item) => str + `<p><strong>${item.label}:</strong>${item.input.value}</p>`, str)
         setEmailBody(isOrganisation ? secondInputsGroupBody : firstInputsGroupBody)
 
     }, [JSON.stringify(firstInputsGroup), JSON.stringify(secondInputsGroup)])
@@ -353,7 +355,7 @@ const TrainingsFormModal = () => {
                 variables: {
                     emailTo: EMAIL_TO,
                     emailFrom: EMAIL_FROM,
-                    subject: CONTACTS_MAIL_SUBJECT,
+                    subject: TRAINING_MAIL_SUBJECT,
                     body: emailBody
                 }
             }).then(() => {
