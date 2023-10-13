@@ -42,3 +42,40 @@ md:flex-col md:justify-start md:gap-[34px]  xl:mt-[50px]
 @apply rounded-[12px] text-[24px] h-[74px]
 }
 
+
+.ldsHeart {
+    display: inline-block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    transform: rotate(45deg) translate(9px,2px);
+}
+
+
+
+
+.ldsHeart div {
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #FEC955;
+}
+.ldsHeart div:after,
+.ldsHeart div:before {
+    content: " ";
+    position: absolute;
+    display: block;
+    width: 15px;
+    height: 15px;
+    background: #FEC955;
+}
+.ldsHeart div:before {
+    left: -7px;
+    border-radius: 50% 0 0 50%;
+}
+.ldsHeart div:after {
+    top: -7px;
+    border-radius: 50% 50% 0 0;
+}

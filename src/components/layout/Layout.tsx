@@ -100,16 +100,18 @@ const Layout = memo(({ children }: LayoutProps) => {
         setMainPage
     } = useGlobalContext()
 
-
+    useEffect(() => {
+        scrollTo(0, 0)
+    }, [])
 
     return (
         <ApolloProvider client={client}>
-                <Header></Header>
-                <ModalLayer></ModalLayer>
-                <main id="main">
-                    {children}
-                </main>
-                <Footer></Footer>
+            <Header></Header>
+            <ModalLayer></ModalLayer>
+            <main id="main">
+                {children}
+            </main>
+            <Footer></Footer>
         </ApolloProvider>
     );
 });

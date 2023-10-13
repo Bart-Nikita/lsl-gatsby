@@ -82,11 +82,11 @@ const LeaveContacts = ({ title, buttonText }: LeaveContacts) => {
         <section className={stack('section-indent', 'container', styles.body)}>
             <h2 className={stack(styles.title)} dangerouslySetInnerHTML={{ __html: title || '' }}></h2>
             <div className={styles.form}>
-                <div className={`absolute top-0 left-0 right-0 bottom-0 z-[5] bg-[#FFF] bg-opacity-[0.9] duration-700 transition-all ${isMockVisible ? 'pointer-events-auto opacity-[1]' : 'pointer-events-none opacity-0'}`}>
+                <div className={`absolute top-0 left-0 right-0 bottom-0 z-[5] bg-[#FFF] bg-opacity-[0.9] duration-700 transition-all ${isMockVisible === isMockVisible ? 'pointer-events-auto opacity-[1]' : 'pointer-events-none opacity-0'}`}>
                     <div className='flex h-full justify-center items-center '>
-                        <div className={'max-w-[341px] px-[42px] py-[32px] rounded-[12px] bg-[#FFF4DE]'}>
-                            <h3 className='text-[38px] leading-[1.2] text-[#FEC955] font-bold mb-[12px]'>Спасибо!</h3>
-                            <p className='text-[24px] leading-[1.2] font-bold'>Мы свяжемся с вами в ближайшее время</p>
+                        <div className={'max-w-[346px] px-[42px] py-[32px] rounded-[12px] bg-[#FFF4DE] md:max-w-[267px]'}>
+                            <h3 className='text-[38px] leading-[1.2] text-[#FEC955] font-bold mb-[12px] md:text-[24px]'>Спасибо!</h3>
+                            <p className='text-[24px] leading-[1.2] font-bold md:text-[16px] '>Мы свяжемся с&nbsp;вами в&nbsp;ближайшее время&nbsp;<span className={styles.ldsHeart}><div></div></span></p>
                         </div>
                     </div>
                 </div>
