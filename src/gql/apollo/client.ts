@@ -1,7 +1,11 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
+import fetch from 'isomorphic-fetch';
+
 
 export const client = new ApolloClient({
-
-    uri: 'https://lsl-test.bart-group.com/?graphql=true',
-    cache: new InMemoryCache()
-})
+    cache: new InMemoryCache(),
+    link: new HttpLink({
+        uri: 'https://lsl-test.bart-group.com/graphql',
+        fetch
+    })
+});

@@ -28,9 +28,10 @@ const numberTypeError = 'Поле должно содержать только �
 const FormInput = (item: InputItem) => {
 
     if (item.id === 'city') {
-        const { trainingsPage } = useGlobalContext()
+        const { trainingsPage, mainPage } = useGlobalContext()
         const [value, setValue] = useState<string>()
         const [searchValue, setSearchValue] = useState<string>()
+        const [initArr, setInitArr] = useState<Queries.WpPage_Trainings_trainingsModalSpisokGorodov[]>()
         const [filteredArr, setFilteredArr] = useState<Queries.WpPage_Trainings_trainingsModalSpisokGorodov[]>()
 
         useEffect(() => {
@@ -43,20 +44,41 @@ const FormInput = (item: InputItem) => {
         const [isSublistOpen, setIsSublistOpen] = useState(false)
 
         useEffect(() => {
+            if (trainingsPage) {
+                //@ts-ignore
+                setInitArr(trainingsPage?.wpPage?.trainings?.trainingsModalSpisokGorodov)
+            }
+            if (mainPage) {
+                //@ts-ignore
+                setInitArr(mainPage?.wpPage?.main?.mainSpisokGorodovVForme)
+
+            }
+        }, [mainPage, trainingsPage])
+
+        useEffect(() => {
+            if (initArr) {
+                console.log(initArr)
+            }
+        }, [initArr])
+
+        useEffect(() => {
+
             if (!!searchValue) {
-                if (trainingsPage?.wpPage?.trainings?.trainingsModalSpisokGorodov?.some(item => item?.nazvanieGoroda === searchValue)) {
+                if (initArr?.some(item => item?.nazvanieGoroda === searchValue)) {
                     //@ts-ignore
-                    setFilteredArr(trainingsPage?.wpPage?.trainings?.trainingsModalSpisokGorodov)
+                    setFilteredArr(initArr)
                     return
                 }
                 setValue('')
                 //@ts-ignore
-                setFilteredArr(trainingsPage?.wpPage?.trainings?.trainingsModalSpisokGorodov.filter(item => item.nazvanieGoroda.toLowerCase().includes(searchValue.toLowerCase())))
+                setFilteredArr(initArr.filter(item => item.nazvanieGoroda.toLowerCase().includes(searchValue.toLowerCase())))
             } else {
                 //@ts-ignore
-                setFilteredArr(trainingsPage?.wpPage?.trainings?.trainingsModalSpisokGorodov)
+                setFilteredArr(initArr)
             }
-        }, [searchValue]);
+
+
+        }, [searchValue, initArr]);
 
         const onChange = (e: ChangeEvent<HTMLInputElement>) => {
             setSearchValue(e.target.value)
@@ -285,7 +307,7 @@ const TrainingsFormModal = () => {
 
     const nullify = () => {
         // @ts-ignore
-        inputsGroup.forEach(item => item.input.onChange({target: {value: ''}}))
+        inputsGroup.forEach(item => item.input.onChange({ target: { value: '' } }))
     }
 
     const onSubmit = () => {
@@ -384,7 +406,7 @@ const TrainingsFormModal = () => {
                             href={section?.footer?.footerPolitikaKonfidenczialnosti?.mediaItemUrl || ''}>условиями
                             обработки</a> персональных данных</p>
                     </div>
-                    <button type={"submit"} onClick={onSubmit} className={stack(styles.button, 'button-secondary-new',  loading && 'disabled')}>Оформить заказ
+                    <button type={"submit"} onClick={onSubmit} className={stack(styles.button, 'button-secondary-new', loading && 'disabled')}>Оформить заказ
                     </button>
                 </form>
             </dialog>

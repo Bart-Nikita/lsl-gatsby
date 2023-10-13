@@ -98,6 +98,9 @@ export const query = graphql`query IndexPage {
       mainAboutImageKompyuter1x {
         gatsbyImage(width: 400, outputPixelDensities: 2, formats: WEBP)
       }
+      mainSpisokGorodovVForme {
+        nazvanieGoroda
+      }
       mainAboutTekst
       mainAboutZagolovok
       mainBlogAdresSsylki
