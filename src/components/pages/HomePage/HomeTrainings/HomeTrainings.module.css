@@ -86,7 +86,9 @@
 
 .item__price {}
 
-.item__content {}
+.item__content {
+    @apply w-full
+}
 
 .item__top {
     @apply flex justify-between mb-[8px]

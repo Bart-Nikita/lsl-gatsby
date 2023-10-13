@@ -13,6 +13,7 @@ import { CONTACTS_MAIL_SUBJECT, EMAIL_FROM, EMAIL_TO } from '../../../../config'
 import LightPicture from '../../../images/LightPicture/LightPicture';
 import ArrowDown from '../../../svg/ArrowDown';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import { useMock } from '../../../../hooks/useMock';
 
 type InputItem = {
     input: useInputStateType
@@ -32,7 +33,7 @@ const isBrowser = typeof window !== "undefined"
 const FormInput = (item: InputItem) => {
 
     if (item.id === 'training') {
-        const {trainings, isMobile} = useGlobalContext()
+        const { trainings, isMobile } = useGlobalContext()
         const [value, setValue] = useState<string>()
         const [searchValue, setSearchValue] = useState<string>()
         const [filteredArr, setFilteredArr] = useState<Queries.WpTraining[]>()
@@ -109,7 +110,7 @@ const FormInput = (item: InputItem) => {
 
         useEffect(() => {
             if (isBrowser && block?.current) {
-                
+
                 window.document.addEventListener('mousedown', (e) => {
 
                     setClickCOunter(prev => prev + 1)
@@ -124,12 +125,12 @@ const FormInput = (item: InputItem) => {
 
         useEffect(() => {
             if (!hover) {
-                !isMobile &&  setIsSublistOpen(false)
+                !isMobile && setIsSublistOpen(false)
             }
         }, [clickCounter])
 
         return <div ref={block} className={stack(styles.form__block, item.input.error && styles.error)} onKeyDown={onBlockKeyDown}
-            onMouseEnter={() =>!isMobile && setHover(true)} onMouseLeave={() =>!isMobile &&  setHover(false)} >
+            onMouseEnter={() => !isMobile && setHover(true)} onMouseLeave={() => !isMobile && setHover(false)} >
             <label className={styles.label} htmlFor={item.id}>{item.label}</label>
             <input onClick={() => setIsSublistOpen(prev => !prev)} id={item.id} onKeyDown={onInputKeyDown} className={styles.input} type="text"
                 placeholder={item.placeholder}
@@ -174,6 +175,7 @@ const InstructionBooksOrder = () => {
     const phone = useInputState()
     const email = useInputState()
     const [emailBody, setEmailBody] = useState('')
+    const { goMock, isMockVisible } = useMock()
 
 
     const inputsGroup: InputItem[] = [
@@ -226,6 +228,7 @@ const InstructionBooksOrder = () => {
 
 
     const onSubmit = () => {
+        
         const inputArr = inputsGroup
         let error: boolean | undefined;
 
@@ -263,7 +266,6 @@ const InstructionBooksOrder = () => {
 
 
         if (!error) {
-            //console.log(emailBody)
 
             sendMail({
                 variables: {
@@ -272,7 +274,9 @@ const InstructionBooksOrder = () => {
                     subject: CONTACTS_MAIL_SUBJECT,
                     body: emailBody
                 }
-            }).then(() => nullifyInputs())
+            }).then(() => {
+                goMock()
+                nullifyInputs()})
         }
 
     }
@@ -286,7 +290,7 @@ const InstructionBooksOrder = () => {
     return (
         <section className={stack(styles.section)} >
             <div className={styles.picture}>
-   {instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderFonovoeIzobrazhenieDlyaKonpyutera?.gatsbyImage &&         <GatsbyImage className='w-full h-full' image={instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderFonovoeIzobrazhenieDlyaKonpyutera?.gatsbyImage} alt={instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderFonovoeIzobrazhenieDlyaKonpyutera?.altText || ''}></GatsbyImage>}
+                {instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderFonovoeIzobrazhenieDlyaKonpyutera?.gatsbyImage && <GatsbyImage className='w-full h-full' image={instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderFonovoeIzobrazhenieDlyaKonpyutera?.gatsbyImage} alt={instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderFonovoeIzobrazhenieDlyaKonpyutera?.altText || ''}></GatsbyImage>}
 
             </div>
             <div className={stack('container', styles.container)} >
@@ -295,14 +299,22 @@ const InstructionBooksOrder = () => {
                     <p className={styles.text}>{typo.execute(instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderPodzagolovok || '')}</p>
                 </div>
 
-                <div className={styles.right}>
-                    <form onSubmit={e => e.preventDefault()} className={styles.form} action="#">
+                <div className={stack(styles.right )}>
+                    <div className={`absolute top-0 left-0 right-0 bottom-0 z-[5]  duration-700 transition-all ${isMockVisible ? 'pointer-events-auto opacity-[1]' : 'pointer-events-none opacity-0'}`}>
+                        <div className='flex  h-full justify-start items-center '>
+                            <div className={'w-full  py-[32px] rounded-[12px] flex flex-col justify-center max-w-[500px]'}>
+                                <h3 className='text-center text-[28px] xl:text-[24px] leading-[1.4]  font-bold mb-[12px]'>Ваша заявка в&nbsp;работе.</h3>
+                                <p className='text-center text-[24px] xl:text-[16px] leading-[1.4]'>Мы свяжемся с&nbsp;вами в&nbsp;ближайшее время</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form onSubmit={e => e.preventDefault()} className={stack(styles.form, `transition-all duration-700  ${isMockVisible ? 'opacity-[0.2] filter blur-md' : ''}`)} action="#">
 
                         {inputsGroup.map(item => <FormInput key={item.id} {...item}></FormInput>)}
 
                         <div className={styles.checkbox}>
                             <button type={"button"} onClick={onCheckboxClick}
-                                className={stack(styles.checkbox__box, isAgree && styles.checked, isAgreeError && styles.error)}>
+                                className={stack(styles.checkbox__box, isAgree && styles.checked, isAgreeError && styles.error,  loading && 'disabled')}>
                                 <div className={styles.checkbox__sign}></div>
                             </button>
                             <p className={styles.checkbox__text}>Я соглашаюсь с&nbsp; <a className={styles.checkbox__link}

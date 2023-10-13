@@ -136,10 +136,10 @@ export const globalState = (data: PageData): GlobalContextType => {
 
     useEffect(() => {
         if ((isTrainingFormModalOpen || isNavModalOpen || isTrainingModalOpen || isInstructionBooksFormModalOpen || isInstructionBooksHeroFormModalOpen || isInstructionBooksModalOpen) && isBrowser) {
-            window.document.body.classList.add('scroll-prohibited')
-            //console.log(doc)
+            document.documentElement.style.overflow = 'hidden';         
             return () => {
-                window.document.body.classList.remove('scroll-prohibited')
+                document.documentElement.style.overflow = 'auto'
+
             }
         }
     }, [isTrainingFormModalOpen, isNavModalOpen, isTrainingModalOpen, isInstructionBooksFormModalOpen, isInstructionBooksHeroFormModalOpen, isInstructionBooksModalOpen, isBrowser]);

@@ -11,6 +11,7 @@ import { EMAIL_TO, EMAIL_FROM, CONTACTS_MAIL_SUBJECT } from '../../../../../conf
 import { SEND_MAIL } from '../../../../../gql/mutations/sendMail'
 import OrderBox from '../OrderBox/OrderBox'
 import OrderForm from '../OrderForm/OrderForm'
+import { useMock } from '../../../../../hooks/useMock'
 
 type InputItem = {
     input: useInputStateType
@@ -145,6 +146,9 @@ export default function FirstSection(img: GatsbyImageProps) {
     const email = useInputState()
     const sum = useInputState()
 
+    const { goMock, isMockVisible } = useMock()
+
+
     const inputsGroup: InputItem[] = [
         {
             input: sum,
@@ -172,69 +176,11 @@ export default function FirstSection(img: GatsbyImageProps) {
         }]
 
 
-    const [emailBody, setEmailBody] = useState('')
-
-    useEffect(() => {
-
-        const inputsGroupBody = inputsGroup.reduce((str, item) => str + `<p><strong>${item.label}:</strong>${item.input.value}</p>`, ``)
-        setEmailBody(inputsGroupBody)
-
-    }, [JSON.stringify(inputsGroup)])
-    const [sendMail, { data, loading }] = useMutation(SEND_MAIL)
 
 
-    const onSubmit = () => {
-        const inputArr = inputsGroup
-        let error: boolean | undefined;
-
-        inputArr.forEach(item => {
-            if (item.input.value === '') {
-                item.input.setError(textEmptyError)
-                error = true
-                return
-            }
-            if (item.input.value.includes('_') && item.id === 'phone') {
-                item.input.setError(phoneEmptyError)
-                error = true
-                return
-            }
-            if (item.id === 'email' && (!item.input.value.includes('.') || !item.input.value.includes('@'))) {
-                item.input.setError(emailTypeError)
-                error = true
-                return
-            }
-            if ((item.id === 'sum') && !Number(item.input.value)) {
-                item.input.setError(numberTypeError)
-                error = true
-                return
-            }
-            item.input.setError('')
-        })
-
-
-
-        if (!error) {
-
-            sendMail({
-                variables: {
-                    emailTo: EMAIL_TO,
-                    emailFrom: EMAIL_FROM,
-                    subject: CONTACTS_MAIL_SUBJECT,
-                    body: emailBody
-                }
-            }).then(() => nullify)
-        }
-
-    }
-
-
-    function nullify() {
-        //@ts-ignore
-        inputsGroup.forEach(item => item.input.onChange({ target: { value: '' } }))
-    }
     return (
-        <OrderBox>
-          <OrderForm inputsGroup={inputsGroup} certType='Онлайн' ></OrderForm>
+        <OrderBox isMockVisible={isMockVisible}>
+          <OrderForm goMock={goMock} isMockVisible={isMockVisible} inputsGroup={inputsGroup} certType='Онлайн' ></OrderForm>
             <div className='absolute top-0 left-0 right-0 bottom-0 [background:radial-gradient(78.53%_82.97%_at_100%_100%,_rgba(255,_255,_255,_0.50)_0%,_#FFF_100%)] z-[2] xl:[background:radial-gradient(65.53%_97.97%_at_100%_100%,_rgba(255,_255,_255,_0.50)_0%,_#FFF_100%)] md:hidden'></div>
             <div className='absolute top-[177px] left-[361px] right-[-183px] bottom-[-314px] z-[1] xl:bottom-0 xl:left-[30%] xl:top-[13%] xl:right-[-5%] md:hidden' ><GatsbyImage {...img}></GatsbyImage></div>
         </OrderBox>

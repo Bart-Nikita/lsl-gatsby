@@ -34,8 +34,12 @@
         @apply scroll-smooth overflow-x-hidden 
     }
 
-    html:has(body.scroll-prohibited) {
+    html:has(.scroll-prohibited) {
      @apply   overflow-y-hidden
+    }
+
+    .scroll-prohibited  {
+        @apply   overflow-y-hidden
     }
 
     body {

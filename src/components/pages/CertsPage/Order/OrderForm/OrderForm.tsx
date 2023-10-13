@@ -22,7 +22,9 @@ export type InputItem = {
 
 type OrderFormProps = {
     inputsGroup: InputItem[],
-    certType: string
+    certType: string,
+    isMockVisible?: boolean,
+    goMock: () => void
 }
 
  const OrderFormInput = (item: InputItem) => {
@@ -49,7 +51,7 @@ type OrderFormProps = {
 }
 
  
-export default function OrderForm({inputsGroup, certType} : OrderFormProps) {
+export default function OrderForm({inputsGroup, certType, isMockVisible, goMock} : OrderFormProps) {
     const [emailBody, setEmailBody] = useState('')
 
     useEffect(() => {
@@ -62,6 +64,8 @@ export default function OrderForm({inputsGroup, certType} : OrderFormProps) {
 
 
     const onSubmit = () => {
+      
+       
         const inputArr = inputsGroup
         let error: boolean | undefined;
 
@@ -100,7 +104,9 @@ export default function OrderForm({inputsGroup, certType} : OrderFormProps) {
                     subject: CONTACTS_MAIL_SUBJECT,
                     body: emailBody
                 }
-            }).then(() => nullify)
+            }).then(() => {
+                goMock()
+                nullify()})
         }
 
     }
@@ -111,8 +117,8 @@ export default function OrderForm({inputsGroup, certType} : OrderFormProps) {
         inputsGroup.forEach(item => item.input.onChange({ target: { value: '' } }))
     }
   return (
-    <form onSubmit={e => e.preventDefault()} className={styles.form} action="#">
-    {inputsGroup.map(item => <OrderFormInput key={item.id} {...item}></OrderFormInput>)}
+    <form onSubmit={e => e.preventDefault()} className={stack(styles.form, `transition-all duration-700  ${isMockVisible ? 'pointer-events-none opacity-[0.2] filter blur-md' : ''}`)} action="#">
+    {inputsGroup.map((item,index )=> <OrderFormInput key={item.id} {...item}></OrderFormInput>)}
     <button type={"submit"} onClick={onSubmit} className={stack(styles.button, 'button-secondary-new')}>Отправить
     </button>
 </form>

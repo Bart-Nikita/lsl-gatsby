@@ -11,7 +11,7 @@ md:flex-col md:justify-start md:gap-[34px]  xl:mt-[50px]
 }
 
 .form {
-    @apply flex-col gap-[40px] w-[500px] flex
+    @apply flex-col gap-[40px] w-[500px] flex relative
     xl:w-[480px]
     xl:w-[350px] xl:flex-grow
     md:w-full

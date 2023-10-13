@@ -22,7 +22,7 @@
 
 
 .right {
-    
+    @apply relative
 }
 
 .left {
@@ -45,7 +45,7 @@
 }
 
 .form {
-    @apply grid grid-cols-2 gap-x-[20px] max-w-[500px]
+    @apply grid grid-cols-2 gap-x-[20px] max-w-[500px] relative
 }
 
 .form__block {
