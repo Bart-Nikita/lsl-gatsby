@@ -191,6 +191,7 @@ const TrainingsFormModal = () => {
         setIsTrainingFormModalOpen(false)
     }
 
+    const [sendMail2, { loading: loading5 }] = useMutation(SEND_MAIL)
 
 
     const [section] = useCommonSection("podval")
@@ -261,7 +262,7 @@ const TrainingsFormModal = () => {
 
         const send = (index: number) => {
             if (emails[index]) {
-                sendMailArr[index]({
+                sendMail2({
                     variables: {
                         subject: TRAINING_MAIL_SUBJECT,
                         emailTo: emails[index].email,
@@ -270,8 +271,9 @@ const TrainingsFormModal = () => {
                 }).then((data) => {
                     if (data?.data?.sendEmail?.sent === true) {
                         send(index + 1)
-                    }
+                    } 
                     console.log(emails[index].email)
+                    console.log(data)
                 })
             } else {
                 goMock()
