@@ -74,8 +74,8 @@ const TrainingsFormModal = () => {
 
     useEffect(() => {
         if (loadings) {
-                setLoading(loadings.some(item => item === true))
-            
+            setLoading(loadings.some(item => item === true))
+
         }
     }, [JSON.stringify(loadings)])
 
@@ -259,32 +259,28 @@ const TrainingsFormModal = () => {
 
         }
 
-        if (!error) {
-            let successArr: boolean[] = []
-            emails.forEach((item, index) => {
-
-
+        const send = (index: number) => {
+            if (emails[index]) {
                 sendMailArr[index]({
                     variables: {
-                        emailTo: item.email,
+                        emailTo: emails[index].email,
                         subject: TRAINING_MAIL_SUBJECT,
                         body: emailBody
                     }
                 }).then((data) => {
-                    if (index + 1 === emails.length && data?.data?.sendEmail?.sent === true) {
-                        if (successArr.every(i => i === true)) {
-                            goMock()
-                            nullify()
-                        }
-                    } else {
-                        successArr.push(data?.data?.sendEmail?.sent)
+                    if (data?.data?.sendEmail?.sent === true) {
+                        send(index + 1)
                     }
-                    console.log(successArr)
-                    console.log(item.email)
                     console.log(data)
-
                 })
-            })
+            } else {
+                goMock()
+                nullify()
+            }
+        }
+
+        if (!error) {
+            send(0)
         }
     }
 
