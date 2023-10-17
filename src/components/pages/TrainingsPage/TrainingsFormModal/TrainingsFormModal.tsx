@@ -27,119 +27,7 @@ const numberTypeError = 'Поле должно содержать только �
 
 const FormInput = (item: InputItem) => {
 
-    if (item.id === 'city') {
-        const { trainingsPage, mainPage } = useGlobalContext()
-        const [value, setValue] = useState<string>()
-        const [searchValue, setSearchValue] = useState<string>()
-        const [initArr, setInitArr] = useState<Queries.WpPage_Trainings_trainingsModalSpisokGorodov[]>()
-        const [filteredArr, setFilteredArr] = useState<Queries.WpPage_Trainings_trainingsModalSpisokGorodov[]>()
-
-        useEffect(() => {
-            if (value !== undefined) {
-                //@ts-ignore
-                item.input.onChange({ target: { value } })
-            }
-        }, [value]);
-
-        const [isSublistOpen, setIsSublistOpen] = useState(false)
-
-        useEffect(() => {
-            if (trainingsPage) {
-                //@ts-ignore
-                setInitArr(trainingsPage?.wpPage?.trainings?.trainingsModalSpisokGorodov)
-            }
-            if (mainPage) {
-                //@ts-ignore
-                setInitArr(mainPage?.wpPage?.main?.mainSpisokGorodovVForme)
-
-            }
-        }, [mainPage, trainingsPage])
-
-        useEffect(() => {
-            if (initArr) {
-                console.log(initArr)
-            }
-        }, [initArr])
-
-        useEffect(() => {
-
-            if (!!searchValue) {
-                if (initArr?.some(item => item?.nazvanieGoroda === searchValue)) {
-                    //@ts-ignore
-                    setFilteredArr(initArr)
-                    return
-                }
-                setValue('')
-                //@ts-ignore
-                setFilteredArr(initArr.filter(item => item.nazvanieGoroda.toLowerCase().includes(searchValue.toLowerCase())))
-            } else {
-                //@ts-ignore
-                setFilteredArr(initArr)
-            }
-
-
-        }, [searchValue, initArr]);
-
-        const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-            setSearchValue(e.target.value)
-        }
-
-        const onItemClick = (item: Queries.WpPage_Trainings_trainingsModalSpisokGorodov) => {
-
-            setValue(item.nazvanieGoroda || '')
-            setSearchValue(item.nazvanieGoroda || '')
-            setIsSublistOpen(false)
-        }
-
-        const ref = createRef<HTMLButtonElement>()
-
-        useEffect(() => {
-            if (isSublistOpen) {
-                // ref.current.focus()
-            }
-        }, [isSublistOpen]);
-
-
-        const onInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-            if (isSublistOpen && !!filteredArr?.length && e.key === "Tab") {
-                // ref.current.focus()
-            }
-        }
-
-        const onBlockKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-            if (e.key === "Enter" || e.key === "Space") {
-                setIsSublistOpen(prev => !prev)
-            } else {
-                setIsSublistOpen(true)
-
-            }
-        }
-
-        const onItemKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>, item: Queries.WpPage_Trainings_trainingsModalSpisokGorodov) => {
-            if (e.key === "Enter" || e.key === "Space") {
-                e.stopPropagation()
-                e.preventDefault()
-                onItemClick(item)
-            }
-        }
-
-        return <div className={stack(styles.form__block, item.input.error && styles.error)} onKeyDown={onBlockKeyDown}
-            onClick={() => setIsSublistOpen(prev => !prev)}>
-            <label className={styles.label} htmlFor={item.id}>{item.label}</label>
-            <input id={item.id} onKeyDown={onInputKeyDown} className={styles.input} type="text"
-                placeholder={item.placeholder}
-                onChange={onChange} value={searchValue || ''} />
-            {item.input.error && <span className={styles.error__text}>{item.input.error}</span>}
-            {isSublistOpen && <ul className={styles.sublist}>
-                {filteredArr?.map((item, index) => <li key={index} className={styles.sublist__item}>
-                    <button {...index === 0 ? { ref } : {}} onKeyDown={e => onItemKeyDown(e, item)}
-                        onClick={(e) => (e.stopPropagation(), onItemClick(item))}
-                        className={styles.sublist__button}>{item.nazvanieGoroda}</button>
-                </li>)}
-            </ul>}
-            <ArrowDown className={stack(styles.input__arrow, isSublistOpen && styles.up)}></ArrowDown>
-        </div>
-    }
+ 
 
     if (item.id === 'phone') {
         return <div className={stack(styles.form__block, item.input.error && styles.error)}>
@@ -378,6 +266,8 @@ const TrainingsFormModal = () => {
                         successArr.push(data?.data?.sendEmail?.sent)
                     }
                     console.log(successArr)
+                    console.log(data)
+
                 })
             })
         }
