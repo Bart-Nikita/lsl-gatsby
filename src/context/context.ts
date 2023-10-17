@@ -61,6 +61,7 @@ export type GlobalContextType = {
     setTrainings: Dispatch<SetStateAction<Queries.WpTraining[] | undefined | null>>,
     feedbacksPage: Queries.FeedbacksPageQuery | undefined | null,
     setFeedbacksPage: Dispatch<SetStateAction<Queries.FeedbacksPageQuery | undefined | null>>,
+    emails: Queries.WpMenu_Formmails_formsMails[]
 }
 
 const doc = typeof window === 'undefined' ? null : window.document
@@ -98,6 +99,7 @@ export const globalState = (data: PageData): GlobalContextType => {
     const [files, setFiles] = useState<Queries.File[] | null>()
     const [menuItems, setMenuItems] = useState<Queries.WpMenuItem[] | null>()
     const [trainings, setTrainings] = useState<Queries.WpTraining[] | null>()
+    const [emails, setEmails] = useState<Queries.WpMenu_Formmails_formsMails[]>()
 
 
     useEffect(() => {
@@ -173,6 +175,8 @@ export const globalState = (data: PageData): GlobalContextType => {
               setFiles(data?.allFile?.nodes)
               //@ts-ignore
               setMenuItems(data?.allWpMenuItem?.nodes)
+            //@ts-ignore
+              setEmails(data?.wpMenu?.formMails?.formsMails)
               //@ts-ignore
               setTrainings(data?.allWpTraining?.nodes)
 
@@ -186,6 +190,8 @@ export const globalState = (data: PageData): GlobalContextType => {
                 setBlogPostPage(data?.pageContext?.post)
                 setFiles(data?.pageContext?.allFiles)
                 setMenuItems(data?.pageContext?.menuItems)
+                setEmails(data?.pageContext?.emails)
+
             }
           
         }
@@ -193,6 +199,7 @@ export const globalState = (data: PageData): GlobalContextType => {
     }, [data])
 
     return {
+        emails,
         title,
         setTitle,
         description,

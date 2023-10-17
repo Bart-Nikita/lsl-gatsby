@@ -162,7 +162,7 @@ const FormInput = (item: InputItem) => {
 
 
 const TrainingsFormModal = () => {
-    const { trainingModalData, setIsTrainingFormModalOpen, trainingsPage } = useGlobalContext()
+    const { trainingModalData, setIsTrainingFormModalOpen, trainingsPage, emails } = useGlobalContext()
     const [isBottomVisible, setIsBottomVisible] = useState(false)
     const [isAgree, setIsAgree] = useState(false)
     const [isAgreeError, setIsAgreeError] = useState(false)
@@ -179,6 +179,13 @@ const TrainingsFormModal = () => {
     const city = useInputState()
     const company = useInputState()
     const [emailBody, setEmailBody] = useState('')
+    const [isMailSendedArr, setIsMailSendedArr] = useState<boolean[]>()
+
+    useEffect(() => {
+        if (emails) {
+            setIsMailSendedArr(emails.map(() => false))
+        }
+    }, [emails])
 
 
     const firstInputsGroup: InputItem[] = [
@@ -308,8 +315,12 @@ const TrainingsFormModal = () => {
     const { goMock, isMockVisible } = useMock()
 
     const nullify = () => {
+
+        const inputsGroup = isOrganisation ? secondInputsGroup : firstInputsGroup
         // @ts-ignore
         inputsGroup.forEach(item => item.input.onChange({ target: { value: '' } }))
+        nullifySetMailArr()
+
     }
 
     const onSubmit = () => {
@@ -349,22 +360,30 @@ const TrainingsFormModal = () => {
         }
 
         if (!error) {
-            //console.log(emailBody)
-
-            sendMail({
-                variables: {
-                    emailTo: EMAIL_TO,
-                    emailFrom: EMAIL_FROM,
-                    subject: TRAINING_MAIL_SUBJECT,
-                    body: emailBody
-                }
-            }).then(() => {
-                goMock()
-                nullify()
+            let successArr: boolean[] = []
+            emails.forEach((item, index) => {
+                sendMail({
+                    variables: {
+                        emailTo: item.email,
+                        subject: TRAINING_MAIL_SUBJECT,
+                        body: emailBody
+                    }
+                }).then((data) => {
+                    if (index + 1 === emails.length && data?.data?.sendEmail?.sent === true) {
+                        if (successArr.every(i => i === true)) {
+                            goMock()
+                            nullify()
+                        }
+                    } else {
+                        successArr.push(data?.data?.sendEmail?.sent)
+                    }
+                    console.log(successArr)
+                })
             })
         }
-
     }
+
+
 
     return (
         <div className={stack(styles.container, !isBottomVisible && styles.light)}>

@@ -33,6 +33,11 @@ export const query = graphql` query ContactsPage {
         sourceUrl
       }
     }
+    formMails {
+      formsMails {
+        email
+      }
+    }
   }
    site {
     siteMetadata {

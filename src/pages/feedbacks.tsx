@@ -42,6 +42,11 @@ export const query = graphql` query FeedbacksPage {
         sourceUrl
       }
     }
+    formMails {
+      formsMails {
+        email
+      }
+    }
   }
    site {
     siteMetadata {

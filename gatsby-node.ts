@@ -37,6 +37,11 @@ exports.createPages = async ({ graphql, actions, reporter }: CreatePagesArgs) =>
           sourceUrl
         }
       }
+      formMails {
+        formsMails {
+          email
+        }
+      }
     }
      site {
       siteMetadata {
@@ -171,7 +176,8 @@ exports.createPages = async ({ graphql, actions, reporter }: CreatePagesArgs) =>
         allPosts: result.data?.allWpBlog.nodes,
         post: node,
         url: process.env.BASE_URL || 'http://localhost:9000',
-        favicon: result.data?.wpMenu?.favicon?.favikon?.sourceUrl
+        favicon: result.data?.wpMenu?.favicon?.favikon?.sourceUrl,
+        emails: result.data?.wpMenu?.formMails?.formsMails
       },
     })
   })

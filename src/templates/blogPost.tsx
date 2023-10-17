@@ -24,7 +24,8 @@ export type BlogPostProps = {
     slug: string,
     site: Queries.Site,
     allFiles: Queries.File[],
-    favicon: string
+    favicon: string,
+    emails: Queries.WpMenu_Formmails_formsMails[]
   }
 }
 

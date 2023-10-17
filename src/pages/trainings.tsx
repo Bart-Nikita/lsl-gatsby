@@ -50,6 +50,11 @@ export const query = graphql` query TrainingsPage {
         sourceUrl
       }
     }
+    formMails {
+      formsMails {
+        email
+      }
+    }
   }
    site {
     siteMetadata {

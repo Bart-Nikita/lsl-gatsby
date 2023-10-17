@@ -8,12 +8,13 @@ type sendMailProps = {
 }
 
 export const SEND_MAIL =  gql`
-        mutation SendMail($subject: String!, $body: String! )  {
+        mutation SendMail($subject: String!, $mailTo: String, $body: String! )  {
             sendEmail(
                 input: {
                     subject: $subject
-                body: $body
-                clientMutationId: "${v4()}"
+                    body: $body
+                    to: $mailTo
+                    clientMutationId: "${v4()}"
                 }
             ) {
                 origin
