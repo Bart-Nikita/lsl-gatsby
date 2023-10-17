@@ -12,6 +12,7 @@ import { SEND_MAIL } from "../../../../gql/mutations/sendMail";
 import { CONTACTS_MAIL_SUBJECT, EMAIL_FROM, EMAIL_TO, TRAINING_MAIL_SUBJECT } from "../../../../config";
 import ArrowDown from '../../../svg/ArrowDown';
 import { useMock } from '../../../../hooks/useMock';
+import { useSendMailArr } from '../../../../hooks/useSendMailArr';
 
 type InputItem = {
     input: useInputStateType
@@ -68,6 +69,8 @@ const TrainingsFormModal = () => {
     const company = useInputState()
     const [emailBody, setEmailBody] = useState('')
     const [isMailSendedArr, setIsMailSendedArr] = useState<boolean[]>()
+
+    const {sendMailArr, loadings} = useSendMailArr()
 
     useEffect(() => {
         if (emails) {
@@ -188,7 +191,8 @@ const TrainingsFormModal = () => {
         setIsAgree(prev => !prev)
     }
 
-    const [sendMail, { data, loading }] = useMutation(SEND_MAIL)
+
+
 
     useEffect(() => {
         setIsAgreeError(false)
@@ -207,7 +211,6 @@ const TrainingsFormModal = () => {
         const inputsGroup = isOrganisation ? secondInputsGroup : firstInputsGroup
         // @ts-ignore
         inputsGroup.forEach(item => item.input.onChange({ target: { value: '' } }))
-        nullifySetMailArr()
 
     }
 
@@ -250,7 +253,9 @@ const TrainingsFormModal = () => {
         if (!error) {
             let successArr: boolean[] = []
             emails.forEach((item, index) => {
-                sendMail({
+
+                
+                sendMailArr[index]({
                     variables: {
                         emailTo: item.email,
                         subject: TRAINING_MAIL_SUBJECT,
@@ -266,6 +271,7 @@ const TrainingsFormModal = () => {
                         successArr.push(data?.data?.sendEmail?.sent)
                     }
                     console.log(successArr)
+                    console.log(item.email)
                     console.log(data)
 
                 })
