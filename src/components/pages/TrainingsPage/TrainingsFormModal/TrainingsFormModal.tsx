@@ -28,7 +28,7 @@ const numberTypeError = 'Поле должно содержать только �
 
 const FormInput = (item: InputItem) => {
 
- 
+
 
     if (item.id === 'phone') {
         return <div className={stack(styles.form__block, item.input.error && styles.error)}>
@@ -55,7 +55,7 @@ const TrainingsFormModal = () => {
     const [isBottomVisible, setIsBottomVisible] = useState(false)
     const [isAgree, setIsAgree] = useState(false)
     const [isAgreeError, setIsAgreeError] = useState(false)
-
+    const [loading, setLoading] = useState(false)
     const [isOrganisation, setIsOrganisation] = useState(false)
     const name = useInputState()
     const height = useInputState()
@@ -70,7 +70,14 @@ const TrainingsFormModal = () => {
     const [emailBody, setEmailBody] = useState('')
     const [isMailSendedArr, setIsMailSendedArr] = useState<boolean[]>()
 
-    const {sendMailArr, loadings} = useSendMailArr()
+    const { sendMailArr, loadings } = useSendMailArr()
+
+    useEffect(() => {
+        if (loadings) {
+                setLoading(loadings.some(item => item === true))
+            
+        }
+    }, [JSON.stringify(loadings)])
 
     useEffect(() => {
         if (emails) {
@@ -184,6 +191,8 @@ const TrainingsFormModal = () => {
         setIsTrainingFormModalOpen(false)
     }
 
+
+
     const [section] = useCommonSection("podval")
 
 
@@ -254,7 +263,7 @@ const TrainingsFormModal = () => {
             let successArr: boolean[] = []
             emails.forEach((item, index) => {
 
-                
+
                 sendMailArr[index]({
                     variables: {
                         emailTo: item.email,
