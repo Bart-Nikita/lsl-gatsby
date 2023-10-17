@@ -265,7 +265,7 @@ const TrainingsFormModal = () => {
                 sendMail2({
                     variables: {
                         subject: TRAINING_MAIL_SUBJECT,
-                        emailTo: emails[index].email,
+                        emailTo: emails[index].email?.trim(),
                         body: emailBody
                     }
                 }).then((data) => {

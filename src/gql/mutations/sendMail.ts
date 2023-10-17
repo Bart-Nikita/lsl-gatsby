@@ -8,7 +8,7 @@ type sendMailProps = {
 }
 
 export const SEND_MAIL =  gql`
-        mutation SendMail($subject: String!, $mailTo: String, $body: String! )  {
+        mutation SendMail($subject: String!, $mailTo: String!, $body: String! )  {
             sendEmail(
                 input: {
                     to: $mailTo
