@@ -263,15 +263,15 @@ const TrainingsFormModal = () => {
             if (emails[index]) {
                 sendMailArr[index]({
                     variables: {
-                        emailTo: emails[index].email,
                         subject: TRAINING_MAIL_SUBJECT,
+                        emailTo: emails[index].email,
                         body: emailBody
                     }
                 }).then((data) => {
                     if (data?.data?.sendEmail?.sent === true) {
                         send(index + 1)
                     }
-                    console.log(data)
+                    console.log(emails[index].email)
                 })
             } else {
                 goMock()

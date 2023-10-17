@@ -11,9 +11,9 @@ export const SEND_MAIL =  gql`
         mutation SendMail($subject: String!, $mailTo: String, $body: String! )  {
             sendEmail(
                 input: {
+                    to: $mailTo
                     subject: $subject
                     body: $body
-                    to: $mailTo
                     clientMutationId: "${v4()}"
                 }
             ) {
