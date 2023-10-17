@@ -26,7 +26,7 @@ export default {
         'gray': { 300: '#AFAFAF', 400: '#F5F7FA' }
       },
       animation: {
-        'appear': 'appear 1s linear',
+        'appear': 'appear 0.7s linear',
         'disappear': 'disappear 0.5s linear',
 
       },

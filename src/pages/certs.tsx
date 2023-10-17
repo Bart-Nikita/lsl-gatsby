@@ -286,6 +286,11 @@ export const query = graphql` query CertsPage {
             sourceUrl
           }
         }
+        formMails {
+          formsMails {
+            email
+          }
+        }
       }
        site {
         siteMetadata {

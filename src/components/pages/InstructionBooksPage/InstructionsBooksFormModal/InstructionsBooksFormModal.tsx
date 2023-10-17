@@ -13,6 +13,8 @@ import { useMutation } from '@apollo/client';
 import { useCommonSection } from '../../../../hooks/useCommonSection';
 import { SEND_MAIL } from '../../../../gql/mutations/sendMail';
 import { useMock } from '../../../../hooks/useMock';
+import Loading from '../../../loading/Loading';
+import { useSendMail } from '../../../../hooks/useSendMail';
 
 type InputItem = {
     input: useInputStateType
@@ -237,7 +239,7 @@ export default function InstructionsBooksFormModal() {
         setIsAgree(prev => !prev)
     }
 
-    const [sendMail, { data, loading }] = useMutation(SEND_MAIL)
+    const { sendMail, loading } = useSendMail()
 
     const nullify = () => {
         // @ts-ignore
@@ -283,26 +285,12 @@ export default function InstructionsBooksFormModal() {
         }
 
         if (!error) {
-            //console.log(emailBody)
-
-            sendMail({
-                variables: {
-                    emailTo: EMAIL_TO,
-                    emailFrom: EMAIL_FROM,
-                    subject: INSTRUCTION_MAIL_SUBJECT,
-                    body: emailBody
-                }
-            }).then(() => {
+            sendMail(emailBody, INSTRUCTION_MAIL_SUBJECT, () => {
                 goMock()
                 nullify()
-            } )
+            })
+
         }
-
-    }
-
-    function closeModal() {
-        setIsInstructionBooksFormModalOpen(false)
-        setIsInstructionBooksHeroFormModalOpen(false)
 
     }
 
@@ -312,12 +300,13 @@ export default function InstructionsBooksFormModal() {
         <div className={stack(styles.container, !isBottomVisible && styles.light)}>
             <dialog ref={ref} onClick={e => e.stopPropagation()}
                 className={stack(styles.body)}>
-                <div className={`absolute top-0 left-0 right-0 bottom-0 z-[5] bg-[#FFF] bg-opacity-[0.7] backdrop-blur-md duration-700 transition-all ${isMockVisible ? 'pointer-events-auto opacity-[1]' : 'pointer-events-none opacity-0'}`}>
-                    <div className='flex  h-full justify-center items-center '>
-                        <div className={'w-full px-[42px] py-[32px] rounded-[12px] flex flex-col justify-center'}>
+               <div className={`absolute top-0 left-0 right-0 bottom-0 z-[5] bg-[#FFF] bg-opacity-[0.7] backdrop-blur-md duration-700 transition-all ${isMockVisible || loading  ? 'pointer-events-auto opacity-[1]' : 'pointer-events-none opacity-0'}`}>
+                    <div className='flex  h-full justify-center items-center relative '>
+                         <Loading isLoading={loading } className=''></Loading>
+                   {isMockVisible && <div className={`w-full px-[42px] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] py-[32px] animate-appear rounded-[12px] flex flex-col justify-center duration-700 transiiton-all ${loading ? 'opacity-0 hidden' : ''}`}>
                             <h3 className='text-center text-[28px] leading-[1.4]  font-bold mb-[12px]'>Ваша заявка в&nbsp;работе.</h3>
                             <p className='text-center text-[24px] leading-[1.4]'>Мы свяжемся с&nbsp;вами в&nbsp;ближайшее время</p>
-                        </div>
+                        </div>}
                     </div>
                 </div>
                 <button onClick={closeClickHandler} className={styles.close}>

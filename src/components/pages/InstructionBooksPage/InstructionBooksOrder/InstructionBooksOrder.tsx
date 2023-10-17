@@ -14,6 +14,8 @@ import LightPicture from '../../../images/LightPicture/LightPicture';
 import ArrowDown from '../../../svg/ArrowDown';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { useMock } from '../../../../hooks/useMock';
+import { useSendMail } from '../../../../hooks/useSendMail';
+import Loading from '../../../loading/Loading';
 
 type InputItem = {
     input: useInputStateType
@@ -224,11 +226,11 @@ const InstructionBooksOrder = () => {
         setIsAgree(prev => !prev)
     }
 
-    const [sendMail, { data, loading }] = useMutation(SEND_MAIL)
+    const { sendMail, loading } = useSendMail()
 
 
     const onSubmit = () => {
-        
+
         const inputArr = inputsGroup
         let error: boolean | undefined;
 
@@ -266,17 +268,10 @@ const InstructionBooksOrder = () => {
 
 
         if (!error) {
-
-            sendMail({
-                variables: {
-                    emailTo: EMAIL_TO,
-                    emailFrom: EMAIL_FROM,
-                    subject: INSTRUCTION_MAIL_SUBJECT,
-                    body: emailBody
-                }
-            }).then(() => {
+            sendMail(emailBody, INSTRUCTION_MAIL_SUBJECT, () => {
                 goMock()
-                nullifyInputs()})
+                nullifyInputs()
+            })
         }
 
     }
@@ -299,22 +294,24 @@ const InstructionBooksOrder = () => {
                     <p className={styles.text}>{typo.execute(instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderPodzagolovok || '')}</p>
                 </div>
 
-                <div className={stack(styles.right )}>
-                    <div className={`absolute top-0 left-0 right-0 bottom-0 z-[5]  duration-700 transition-all ${isMockVisible ? 'pointer-events-auto opacity-[1]' : 'pointer-events-none opacity-0'}`}>
-                        <div className='flex  h-full justify-start items-center '>
-                            <div className={'w-full  py-[32px] rounded-[12px] flex flex-col justify-center max-w-[500px]'}>
-                                <h3 className='text-center text-[28px] xl:text-[24px] leading-[1.4]  font-bold mb-[12px]'>Ваша заявка в&nbsp;работе.</h3>
+                <div className={stack(styles.right)}>
+                    <div className={`absolute top-0 left-0 right-0 bottom-0 z-[5]  duration-700 transition-all ${isMockVisible || loading ? 'pointer-events-auto opacity-[1]' : 'pointer-events-none opacity-0'}`}>
+                        <div className='block max-w-[500px] h-full  relative'>
+                            {loading && <div className='flex absolute animate-appear top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] justify-start items-center '>
+                                <Loading isLoading={loading} className=''></Loading>
+                            </div>}
+                            {isMockVisible && <div className={'w-full animate-appear absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] py-[32px] rounded-[12px] flex flex-col justify-center max-w-[500px]'}><h3 className='text-center text-[28px] xl:text-[24px] leading-[1.4]  font-bold mb-[12px]'>Ваша заявка в&nbsp;работе.</h3>
                                 <p className='text-center text-[24px] xl:text-[16px] leading-[1.4]'>Мы свяжемся с&nbsp;вами в&nbsp;ближайшее время</p>
-                            </div>
+                            </div>}
                         </div>
                     </div>
-                    <form onSubmit={e => e.preventDefault()} className={stack(styles.form, `transition-all duration-700  ${isMockVisible ? 'opacity-[0.2] filter blur-md' : ''}`)} action="#">
+                    <form onSubmit={e => e.preventDefault()} className={stack(styles.form, `transition-all duration-700  ${isMockVisible || loading ? 'opacity-[0.2] filter blur-md' : ''}`)} action="#">
 
                         {inputsGroup.map(item => <FormInput key={item.id} {...item}></FormInput>)}
 
                         <div className={styles.checkbox}>
                             <button type={"button"} onClick={onCheckboxClick}
-                                className={stack(styles.checkbox__box, isAgree && styles.checked, isAgreeError && styles.error,  loading && 'disabled')}>
+                                className={stack(styles.checkbox__box, isAgree && styles.checked, isAgreeError && styles.error, loading && 'disabled')}>
                                 <div className={styles.checkbox__sign}></div>
                             </button>
                             <p className={styles.checkbox__text}>Я соглашаюсь с&nbsp; <a className={styles.checkbox__link}

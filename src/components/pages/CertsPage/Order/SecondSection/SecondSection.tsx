@@ -10,13 +10,13 @@ import OrderForm, { InputItem } from '../OrderForm/OrderForm'
 import { useMock } from '../../../../../hooks/useMock'
 
 export default function SecondSection(img: GatsbyImageProps) {
-    
+
     const name = useInputState()
     const phone = useInputState()
     const address = useInputState()
     const sum = useInputState()
     const { goMock, isMockVisible } = useMock()
-
+    const [loading, setLoading] = useState<boolean>(false)
     const inputsGroup: InputItem[] = [
         {
             input: sum,
@@ -45,8 +45,8 @@ export default function SecondSection(img: GatsbyImageProps) {
 
 
     return (
-        <OrderBox isMockVisible={isMockVisible}>
-          <OrderForm isMockVisible={isMockVisible} goMock={goMock} inputsGroup={inputsGroup} certType='На руки' ></OrderForm>
+        <OrderBox loading={loading} isMockVisible={isMockVisible}>
+            <OrderForm setLoading={setLoading} isMockVisible={isMockVisible} goMock={goMock} inputsGroup={inputsGroup} certType='На руки' ></OrderForm>
             <div className='absolute top-[-5px] left-[-5px] right-[-5px] bottom-[-5px] [background:linear-gradient(270deg,_rgba(255,_255,_255,_0.80)_1.53%,_#FFF_40.77%)] z-[2] md:hidden'></div>
             <div className='absolute top-0 left-[200] right-[-50px] bottom-0 z-[1] md:hidden' ><GatsbyImage {...img}></GatsbyImage></div>
         </OrderBox>

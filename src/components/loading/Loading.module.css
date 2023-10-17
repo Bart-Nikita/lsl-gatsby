@@ -1,6 +1,6 @@
 
 .disappear {
-    @apply animate-disappear opacity-[0] pointer-events-none
+    @apply  opacity-[0] pointer-events-none animate-disappear
 }
 
 .ldsHeart {
@@ -63,3 +63,10 @@
         transform: scale(0.9);
     }
 }
+
+.heart {
+    @apply transition-all w-[172px] h-[158px] xl:w-[164px] xl:h-[152px] md:w-[140px] md:h-[130px] ;
+    animation: ldsHeart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+

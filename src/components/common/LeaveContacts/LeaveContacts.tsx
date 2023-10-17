@@ -6,6 +6,8 @@ import { useMutation } from "@apollo/client";
 import { SEND_MAIL } from "../../../gql/mutations/sendMail";
 import { CONTACTS_MAIL_SUBJECT, EMAIL_FROM, EMAIL_TO } from "../../../config";
 import { useMock } from '../../../hooks/useMock';
+import { useSendMail } from '../../../hooks/useSendMail';
+import Loading from '../../loading/Loading';
 
 type LeaveContacts = {
     title?: string,
@@ -27,7 +29,7 @@ const LeaveContacts = ({ title, buttonText }: LeaveContacts) => {
     const [emailTypeError, setEmailTypeError] = useState(false)
     const [emailBody, setEmailBody] = useState('')
     const { goMock, isMockVisible } = useMock()
-    const [sendMail, { data, loading }] = useMutation(SEND_MAIL)
+    const { sendMail, loading } = useSendMail()
 
 
 
@@ -60,21 +62,16 @@ const LeaveContacts = ({ title, buttonText }: LeaveContacts) => {
         setPhoneEmptyError(phoneError)
 
         if (!nameError && !emailError && !emailTypeError && !phoneError) {
-            sendMail({
-                variables: {
-                    emailTo: EMAIL_TO,
-                    emailFrom: EMAIL_FROM,
-                    subject: CONTACTS_MAIL_SUBJECT,
-                    body: emailBody
-                }
-            }).then(() => goMock())
-            nullify()
+            sendMail(emailBody, CONTACTS_MAIL_SUBJECT, () => {
+                goMock()
+                nullify()
+            })
         }
     }
 
 
     const onSubmit = () => {
-        
+
         validate()
     }
 
@@ -82,12 +79,15 @@ const LeaveContacts = ({ title, buttonText }: LeaveContacts) => {
         <section className={stack('section-indent', 'container', styles.body)}>
             <h2 className={stack(styles.title)} dangerouslySetInnerHTML={{ __html: title || '' }}></h2>
             <div className={styles.form}>
-                <div className={`absolute top-0 left-0 right-0 bottom-0 z-[5] bg-[#FFF] bg-opacity-[0.9] duration-700 transition-all ${isMockVisible ? 'pointer-events-auto opacity-[1]' : 'pointer-events-none opacity-0'}`}>
-                    <div className='flex h-full justify-center items-center '>
-                        <div className={'max-w-[346px] px-[42px] py-[32px] rounded-[12px] bg-[#FFF4DE] md:max-w-[267px]'}>
+                <div className={`absolute top-0 left-0 right-0 bottom-0 z-[5] bg-[#FFF] bg-opacity-[0.9] duration-700 transition-all ${isMockVisible || loading ? 'pointer-events-auto opacity-[1]' : 'pointer-events-none opacity-0'}`}>
+                    <div className=' block  h-full  relative '>
+                        {loading && <div className='flex absolute animate-appear top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] justify-start items-center '>
+                            <Loading isLoading={loading} className=''></Loading>
+                        </div>}
+                        {isMockVisible && <div className={'w-[346px] animate-appear absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] px-[42px] py-[32px] rounded-[12px] bg-[#FFF4DE] md:w-[267px]'}>
                             <h3 className='text-[38px] leading-[1.2] text-[#FEC955] font-bold mb-[12px] md:text-[24px]'>Спасибо!</h3>
                             <p className='text-[24px] leading-[1.2] font-bold md:text-[16px] '>Мы свяжемся с&nbsp;вами в&nbsp;ближайшее время&nbsp;<span className={styles.ldsHeart}><div></div></span></p>
-                        </div>
+                        </div>}
                     </div>
                 </div>
                 <div className={styles.form__item}>

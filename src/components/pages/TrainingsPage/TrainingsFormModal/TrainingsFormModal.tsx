@@ -13,6 +13,8 @@ import { CONTACTS_MAIL_SUBJECT, EMAIL_FROM, EMAIL_TO, TRAINING_MAIL_SUBJECT } fr
 import ArrowDown from '../../../svg/ArrowDown';
 import { useMock } from '../../../../hooks/useMock';
 import { useSendMailArr } from '../../../../hooks/useSendMailArr';
+import { useSendMail } from '../../../../hooks/useSendMail';
+import Loading from '../../../loading/Loading';
 
 type InputItem = {
     input: useInputStateType
@@ -55,7 +57,6 @@ const TrainingsFormModal = () => {
     const [isBottomVisible, setIsBottomVisible] = useState(false)
     const [isAgree, setIsAgree] = useState(false)
     const [isAgreeError, setIsAgreeError] = useState(false)
-    const [loading, setLoading] = useState(false)
     const [isOrganisation, setIsOrganisation] = useState(false)
     const name = useInputState()
     const height = useInputState()
@@ -68,23 +69,8 @@ const TrainingsFormModal = () => {
     const city = useInputState()
     const company = useInputState()
     const [emailBody, setEmailBody] = useState('')
-    const [isMailSendedArr, setIsMailSendedArr] = useState<boolean[]>()
 
-    const { sendMailArr, loadings } = useSendMailArr()
-
-    useEffect(() => {
-        if (loadings) {
-            setLoading(loadings.some(item => item === true))
-
-        }
-    }, [JSON.stringify(loadings)])
-
-    useEffect(() => {
-        if (emails) {
-            setIsMailSendedArr(emails.map(() => false))
-        }
-    }, [emails])
-
+    const { sendMail, loading } = useSendMail()
 
     const firstInputsGroup: InputItem[] = [
         {
@@ -191,9 +177,6 @@ const TrainingsFormModal = () => {
         setIsTrainingFormModalOpen(false)
     }
 
-    const [sendMail2, { loading: loading5 }] = useMutation(SEND_MAIL)
-
-
     const [section] = useCommonSection("podval")
 
 
@@ -260,29 +243,11 @@ const TrainingsFormModal = () => {
 
         }
 
-        const send = (index: number) => {
-            if (emails[index]) {
-                sendMail2({
-                    variables: {
-                        subject: TRAINING_MAIL_SUBJECT,
-                        mailTo: emails[index].email?.trim(),
-                        body: emailBody
-                    }
-                }).then((data) => {
-                    if (data?.data?.sendEmail?.sent === true) {
-                        send(index + 1)
-                    } 
-                    console.log(emails[index].email)
-                    console.log(data)
-                })
-            } else {
+        if (!error) {
+            sendMail(emailBody, TRAINING_MAIL_SUBJECT, () => {
                 goMock()
                 nullify()
-            }
-        }
-
-        if (!error) {
-            send(0)
+            })
         }
     }
 
@@ -292,12 +257,13 @@ const TrainingsFormModal = () => {
         <div className={stack(styles.container, !isBottomVisible && styles.light)}>
             <dialog onClick={e => e.stopPropagation()}
                 className={stack(styles.body)}>
-                <div className={`absolute top-0 left-0 right-0 bottom-0 z-[5] bg-[#FFF] bg-opacity-[0.7] backdrop-blur-md duration-700 transition-all ${isMockVisible ? 'pointer-events-auto opacity-[1]' : 'pointer-events-none opacity-0'}`}>
-                    <div className='flex  h-full justify-center items-center '>
-                        <div className={'w-full px-[42px] py-[32px] rounded-[12px] flex flex-col justify-center'}>
+                <div className={`absolute top-0 left-0 right-0 bottom-0 z-[5] bg-[#FFF] bg-opacity-[0.7] backdrop-blur-md duration-700 transition-all ${isMockVisible || loading  ? 'pointer-events-auto opacity-[1]' : 'pointer-events-none opacity-0'}`}>
+                    <div className='flex  h-full justify-center items-center relative '>
+                         <Loading isLoading={loading } className=''></Loading>
+                   {isMockVisible && <div className={`w-full px-[42px] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] py-[32px] animate-appear rounded-[12px] flex flex-col justify-center duration-700 transiiton-all ${loading ? 'opacity-0 hidden' : ''}`}>
                             <h3 className='text-center text-[28px] leading-[1.4]  font-bold mb-[12px]'>Ваша заявка в&nbsp;работе.</h3>
                             <p className='text-center text-[24px] leading-[1.4]'>Мы свяжемся с&nbsp;вами в&nbsp;ближайшее время</p>
-                        </div>
+                        </div>}
                     </div>
                 </div>
                 <button onClick={closeClickHandler} className={styles.close}>

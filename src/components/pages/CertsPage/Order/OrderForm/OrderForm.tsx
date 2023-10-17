@@ -6,12 +6,13 @@ import { stack } from '../../../../../hooks/useClassName'
 import { useInputStateType } from '../../../../../hooks/useInputState'
 import ReactInputMask from 'react-input-mask'
 import * as styles from './OrderForm.module.css'
+import { useSendMail } from '../../../../../hooks/useSendMail'
 
 
- const textEmptyError = 'Поле необходимо заполнить'
- const phoneEmptyError = 'Не корректный номер'
- const emailTypeError = 'Email должен содержать "@" и "."'
- const numberTypeError = 'Поле должно содержать только цифры'
+const textEmptyError = 'Поле необходимо заполнить'
+const phoneEmptyError = 'Не корректный номер'
+const emailTypeError = 'Email должен содержать "@" и "."'
+const numberTypeError = 'Поле должно содержать только цифры'
 
 export type InputItem = {
     input: useInputStateType
@@ -24,10 +25,11 @@ type OrderFormProps = {
     inputsGroup: InputItem[],
     certType: string,
     isMockVisible?: boolean,
-    goMock: () => void
+    goMock: () => void,
+    setLoading: (value: boolean) => void
 }
 
- const OrderFormInput = (item: InputItem) => {
+const OrderFormInput = (item: InputItem) => {
 
 
 
@@ -50,8 +52,8 @@ type OrderFormProps = {
     </div>
 }
 
- 
-export default function OrderForm({inputsGroup, certType, isMockVisible, goMock} : OrderFormProps) {
+
+export default function OrderForm({ inputsGroup, certType, isMockVisible, goMock, setLoading }: OrderFormProps) {
     const [emailBody, setEmailBody] = useState('')
 
     useEffect(() => {
@@ -60,12 +62,14 @@ export default function OrderForm({inputsGroup, certType, isMockVisible, goMock}
         setEmailBody(inputsGroupBody)
 
     }, [JSON.stringify(inputsGroup)])
-    const [sendMail, { data, loading }] = useMutation(SEND_MAIL)
-
+    const { sendMail, loading } = useSendMail()
+    useEffect(() => {
+        setLoading(loading)
+    }, [loading])
 
     const onSubmit = () => {
-      
-       
+
+
         const inputArr = inputsGroup
         let error: boolean | undefined;
 
@@ -96,17 +100,10 @@ export default function OrderForm({inputsGroup, certType, isMockVisible, goMock}
 
 
         if (!error) {
-
-            sendMail({
-                variables: {
-                    emailTo: EMAIL_TO,
-                    emailFrom: EMAIL_FROM,
-                    subject: CERT_MAIL_SUBJECT,
-                    body: emailBody
-                }
-            }).then(() => {
+            sendMail(emailBody, CERT_MAIL_SUBJECT, () => {
                 goMock()
-                nullify()})
+                nullify()
+            })
         }
 
     }
@@ -116,11 +113,11 @@ export default function OrderForm({inputsGroup, certType, isMockVisible, goMock}
         //@ts-ignore
         inputsGroup.forEach(item => item.input.onChange({ target: { value: '' } }))
     }
-  return (
-    <form onSubmit={e => e.preventDefault()} className={stack(styles.form, `transition-all duration-700  ${isMockVisible ? 'pointer-events-none opacity-[0.2] filter blur-md' : ''}`)} action="#">
-    {inputsGroup.map((item,index )=> <OrderFormInput key={item.id} {...item}></OrderFormInput>)}
-    <button type={"submit"} onClick={onSubmit} className={stack(styles.button, 'button-secondary-new')}>Отправить
-    </button>
-</form>
-  )
+    return (
+        <form onSubmit={e => e.preventDefault()} className={stack(styles.form, `transition-all duration-700  ${isMockVisible || loading ? 'pointer-events-none opacity-[0.2] filter blur-md' : ''}`)} action="#">
+            {inputsGroup.map((item, index) => <OrderFormInput key={item.id} {...item}></OrderFormInput>)}
+            <button type={"submit"} onClick={onSubmit} className={stack(styles.button, 'button-secondary-new')}>Отправить
+            </button>
+        </form>
+    )
 }

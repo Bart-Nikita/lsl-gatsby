@@ -145,7 +145,7 @@ export default function FirstSection(img: GatsbyImageProps) {
     const phone = useInputState()
     const email = useInputState()
     const sum = useInputState()
-
+    const [loading, setLoading] = useState<boolean>(false)
     const { goMock, isMockVisible } = useMock()
 
 
@@ -179,8 +179,8 @@ export default function FirstSection(img: GatsbyImageProps) {
 
 
     return (
-        <OrderBox isMockVisible={isMockVisible}>
-          <OrderForm goMock={goMock} isMockVisible={isMockVisible} inputsGroup={inputsGroup} certType='Онлайн' ></OrderForm>
+        <OrderBox loading={loading}  isMockVisible={isMockVisible}>
+          <OrderForm setLoading={setLoading} goMock={goMock} isMockVisible={isMockVisible} inputsGroup={inputsGroup} certType='Онлайн' ></OrderForm>
             <div className='absolute top-0 left-0 right-0 bottom-0 [background:radial-gradient(78.53%_82.97%_at_100%_100%,_rgba(255,_255,_255,_0.50)_0%,_#FFF_100%)] z-[2] xl:[background:radial-gradient(65.53%_97.97%_at_100%_100%,_rgba(255,_255,_255,_0.50)_0%,_#FFF_100%)] md:hidden'></div>
             <div className='absolute top-[177px] left-[361px] right-[-183px] bottom-[-314px] z-[1] xl:bottom-0 xl:left-[30%] xl:top-[13%] xl:right-[-5%] md:hidden' ><GatsbyImage {...img}></GatsbyImage></div>
         </OrderBox>
