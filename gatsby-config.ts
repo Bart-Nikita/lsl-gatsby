@@ -15,17 +15,48 @@ const config: GatsbyConfig = {
   plugins: [{
     resolve: 'gatsby-source-wordpress',
     options: {
-      "url":process.env.GATSBY_GRAPHQL_ENDPOINT || "https://lsl-test.bart-group.com/graphql"
+      "url": process.env.GATSBY_GRAPHQL_ENDPOINT || "https://lsl-test.bart-group.com/graphql"
     }
   },
   {
     resolve: `gatsby-source-filesystem`,
     options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+      name: `images`,
+      path: `${__dirname}/src/images`,
 
     },
-}, "gatsby-plugin-image", "gatsby-transformer-sharp",  `gatsby-plugin-sharp`, "gatsby-plugin-postcss"]
+  }, {
+    resolve: `gatsby-plugin-sharp`,
+    options: {
+      icon: 'src/images/gatsby-icon.png' 
+  }
+  },{
+    resolve: `gatsby-plugin-manifest`,
+    options: {
+      name: `Детские развивающие тренажеры Little Sweet Lemon`,
+      short_name: `Little Sweet Lemon`,
+      description: `Производство развивающих тренажеров для нужд детей, проходящих путь восстановления и тренировок разных групп мышц. Чуткий подход к восстановлению детей`,
+      lang: `ru`,
+      display: `standalone`,
+      icon: `src/images/gatsby-icon.png`,
+      icons: [
+        {
+          src: `/favicons/android-chrome-192x192.png`,
+          sizes: `192x192`,
+          type: `image/png`,
+        },
+        {
+          src: `/favicons/android-chrome-512x512.png`,
+          sizes: `512x512`,
+          type: `image/png`,
+        },
+      ],
+      start_url: `/`,
+      background_color: `#000`,
+      theme_color: `#fff`,
+    
+    },
+  }, "gatsby-plugin-image", "gatsby-transformer-sharp", "gatsby-plugin-postcss"]
 };
 
 export default config;
