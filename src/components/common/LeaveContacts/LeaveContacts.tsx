@@ -97,7 +97,7 @@ const LeaveContacts = ({ title, buttonText }: LeaveContacts) => {
                     {nameEmptyError && <p className={styles.form__error}>{emptyError}</p>}
                 </div>
                 <div className={styles.form__item}>
-                    <p className={styles.label}>Имя</p>
+                    <p className={styles.label}>Телефон</p>
                     <ReactInputMask onChange={e => setPhone(e.target.value)} value={phone || ''}
                         className={styles.input} type="text"
                         mask={'+7\\ (999) 999-99-99'}
