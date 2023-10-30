@@ -15,6 +15,7 @@ import { useMock } from '../../../../hooks/useMock';
 import { useSendMailArr } from '../../../../hooks/useSendMailArr';
 import { useSendMail } from '../../../../hooks/useSendMail';
 import Loading from '../../../loading/Loading';
+import Agreement from '../../../common/Agreement/Agreement';
 
 type InputItem = {
     input: useInputStateType
@@ -257,14 +258,14 @@ const TrainingsFormModal = () => {
         <div className={stack(styles.container, !isBottomVisible && styles.light)}>
             <dialog onClick={e => e.stopPropagation()}
                 className={stack(styles.body)}>
-                <div className={`absolute top-0 left-0 right-0 bottom-0 z-[5] bg-[#FFF] bg-opacity-[0.7] backdrop-blur-md duration-700 transition-all ${isMockVisible  || loading  ? 'pointer-events-auto opacity-[1]' : 'pointer-events-none opacity-0'}`}>
+                <div className={`absolute top-0 left-0 right-0 bottom-0 z-[5] bg-[#FFF] bg-opacity-[0.7] backdrop-blur-md duration-700 transition-all ${isMockVisible || loading ? 'pointer-events-auto opacity-[1]' : 'pointer-events-none opacity-0'}`}>
                     <div className='flex  h-full justify-center items-center relative '>
-                         <Loading isLoading={loading } className=''></Loading>
-                   {isMockVisible  && <div className={`w-full px-[42px] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] py-[32px] animate-appear rounded-[12px] flex flex-col justify-center duration-700 transiiton-all ${loading ? 'opacity-0 hidden' : ''}`}>
+                        <Loading isLoading={loading} className=''></Loading>
+                        {isMockVisible && <div className={`w-full px-[42px] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] py-[32px] animate-appear rounded-[12px] flex flex-col justify-center duration-700 transiiton-all ${loading ? 'opacity-0 hidden' : ''}`}>
                             <h3 className='text-center text-[28px] leading-[1.4]  font-bold mb-[12px]'>Ваша заявка в&nbsp;работе.</h3>
                             <p className='text-center text-[24px] relative leading-[1.4]'>Мы свяжемся с&nbsp;вами в&nbsp;ближайшее время&nbsp;<svg xmlns="http://www.w3.org/2000/svg" className='inline translate-y-[-5px]' width="35" height="30" viewBox="0 0 172 158" fill="none">
-                <path d="M86 158C83.3445 157.997 80.7514 157.198 78.5581 155.708C46.0659 133.757 31.9965 118.706 24.2363 109.296C7.6987 89.2371 -0.218666 68.6436 0.0045909 46.3426C0.265058 20.7869 20.8667 0 45.9294 0C64.1539 0 76.7762 10.2165 84.1271 18.7255C84.36 18.9923 84.6477 19.2063 84.9708 19.3529C85.2939 19.4995 85.6449 19.5754 86 19.5754C86.3551 19.5754 86.7061 19.4995 87.0292 19.3529C87.3523 19.2063 87.64 18.9923 87.8729 18.7255C95.2238 10.2083 107.846 0 126.071 0C151.133 0 171.735 20.7869 171.995 46.3467C172.219 68.6518 164.293 89.2453 147.764 109.3C140.003 118.71 125.934 133.761 93.4419 155.712C91.2481 157.201 88.6551 157.998 86 158Z" fill="#FEC955" />
-            </svg></p>
+                                <path d="M86 158C83.3445 157.997 80.7514 157.198 78.5581 155.708C46.0659 133.757 31.9965 118.706 24.2363 109.296C7.6987 89.2371 -0.218666 68.6436 0.0045909 46.3426C0.265058 20.7869 20.8667 0 45.9294 0C64.1539 0 76.7762 10.2165 84.1271 18.7255C84.36 18.9923 84.6477 19.2063 84.9708 19.3529C85.2939 19.4995 85.6449 19.5754 86 19.5754C86.3551 19.5754 86.7061 19.4995 87.0292 19.3529C87.3523 19.2063 87.64 18.9923 87.8729 18.7255C95.2238 10.2083 107.846 0 126.071 0C151.133 0 171.735 20.7869 171.995 46.3467C172.219 68.6518 164.293 89.2453 147.764 109.3C140.003 118.71 125.934 133.761 93.4419 155.712C91.2481 157.201 88.6551 157.998 86 158Z" fill="#FEC955" />
+                            </svg></p>
                         </div>}
                     </div>
                 </div>
@@ -289,15 +290,7 @@ const TrainingsFormModal = () => {
                         <>
                             {firstInputsGroup.map(item => <FormInput key={item.id} {...item}></FormInput>)}
                         </>}
-                    <div className={styles.checkbox}>
-                        <button type={"button"} onClick={onCheckboxClick}
-                            className={stack(styles.checkbox__box, isAgree && styles.checked, isAgreeError && styles.error)}>
-                            <div className={styles.checkbox__sign}></div>
-                        </button>
-                        <p className={styles.checkbox__text}>Я соглашаюсь с&nbsp; <a className={styles.checkbox__link}
-                            href={section?.footer?.footerPolitikaKonfidenczialnosti?.mediaItemUrl || ''}>условиями
-                            обработки</a> персональных данных</p>
-                    </div>
+                    <Agreement className='mb-[50px] md:mb-[36px] col-span-2' isChecked={isAgree} error={isAgreeError} setIsChecked={setIsAgree} isSmall={false}></Agreement>
                     <button type={"submit"} onClick={onSubmit} className={stack(styles.button, 'button-secondary-new', loading && 'disabled')}>Оформить заказ
                     </button>
                 </form>

@@ -8,6 +8,7 @@ import { CONTACTS_MAIL_SUBJECT, EMAIL_FROM, EMAIL_TO } from "../../../config";
 import { useMock } from '../../../hooks/useMock';
 import { useSendMail } from '../../../hooks/useSendMail';
 import Loading from '../../loading/Loading';
+import Agreement from '../Agreement/Agreement';
 
 type LeaveContacts = {
     title?: string,
@@ -23,6 +24,8 @@ const LeaveContacts = ({ title, buttonText }: LeaveContacts) => {
     const [name, setName] = useState<string>()
     const [email, setEmail] = useState<string>()
     const [phone, setPhone] = useState<string>()
+    const [isAgreed, setIsAgreed] = useState(false)
+    const [agreedError, setAgreedError] = useState(false)
     const [nameEmptyError, setNameEmptyError] = useState(false)
     const [phoneEmptyError, setPhoneEmptyError] = useState(false)
     const [emailEmptyError, setEmailEmptyError] = useState(false)
@@ -30,8 +33,6 @@ const LeaveContacts = ({ title, buttonText }: LeaveContacts) => {
     const [emailBody, setEmailBody] = useState('')
     const { goMock, isMockVisible } = useMock()
     const { sendMail, loading } = useSendMail()
-
-
 
     useEffect(() => {
         if (name || phone || email) {
@@ -56,12 +57,14 @@ const LeaveContacts = ({ title, buttonText }: LeaveContacts) => {
         const emailError = !email || !email.trim()
         const emailTypeError = !!email && !!email.trim() && !email.includes('@') && !email.includes('.')
         const phoneError = !phone || phone.includes('_')
+        const agreedError = !isAgreed
         setNameEmptyError(nameError)
         setEmailEmptyError(emailError)
         setEmailTypeError(emailTypeError)
         setPhoneEmptyError(phoneError)
+        setAgreedError(agreedError)
 
-        if (!nameError && !emailError && !emailTypeError && !phoneError) {
+        if (!nameError && !emailError && !emailTypeError && !phoneError && !agreedError) {
             sendMail(emailBody, CONTACTS_MAIL_SUBJECT, () => {
                 goMock()
                 nullify()
@@ -76,7 +79,7 @@ const LeaveContacts = ({ title, buttonText }: LeaveContacts) => {
     }
 
     return (
-        <section className={stack('section-indent', 'container', styles.body)}>
+        <section className={stack('mb-[71px] md:mb-[86px]', 'container', styles.body)}>
             <h2 className={stack(styles.title)} dangerouslySetInnerHTML={{ __html: title || '' }}></h2>
             <div className={styles.form}>
                 <div className={`absolute top-0 left-0 right-0 bottom-0 z-[5] bg-[#FFF] bg-opacity-[0.9] duration-700 transition-all ${isMockVisible || loading ? 'pointer-events-auto opacity-[1]' : 'pointer-events-none opacity-0'}`}>
@@ -114,6 +117,7 @@ const LeaveContacts = ({ title, buttonText }: LeaveContacts) => {
                 </div>
                 <button onClick={onSubmit}
                     className={stack('button-secondary-new', styles.submit, loading && 'disabled')}>{buttonText}</button>
+                <Agreement className='mt-[-20px]' isChecked={isAgreed} error={agreedError} setIsChecked={setIsAgreed} isSmall={false}></Agreement>
             </div>
         </section>
     );

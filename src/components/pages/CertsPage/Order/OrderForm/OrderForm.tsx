@@ -7,6 +7,7 @@ import { useInputStateType } from '../../../../../hooks/useInputState'
 import ReactInputMask from 'react-input-mask'
 import * as styles from './OrderForm.module.css'
 import { useSendMail } from '../../../../../hooks/useSendMail'
+import Agreement from '../../../../common/Agreement/Agreement'
 
 
 const textEmptyError = 'Поле необходимо заполнить'
@@ -55,7 +56,8 @@ const OrderFormInput = (item: InputItem) => {
 
 export default function OrderForm({ inputsGroup, certType, isMockVisible, goMock, setLoading }: OrderFormProps) {
     const [emailBody, setEmailBody] = useState('')
-
+    const [isAgree, setIsAgree] = useState(false)
+    const [isAgreeError, setIsAgreeError] = useState(false)
     useEffect(() => {
 
         const inputsGroupBody = inputsGroup.reduce((str, item) => str + `<p><strong>${item.label}:</strong>${item.input.value}</p>`, `<p><strong>Тип получения:</strong>${certType}</p>`)
@@ -72,6 +74,8 @@ export default function OrderForm({ inputsGroup, certType, isMockVisible, goMock
 
         const inputArr = inputsGroup
         let error: boolean | undefined;
+
+        setIsAgreeError(!isAgree)
 
         inputArr.forEach(item => {
             if (item.input.value === '') {
@@ -118,6 +122,8 @@ export default function OrderForm({ inputsGroup, certType, isMockVisible, goMock
             {inputsGroup.map((item, index) => <OrderFormInput key={item.id} {...item}></OrderFormInput>)}
             <button type={"submit"} onClick={onSubmit} className={stack(styles.button, 'button-secondary-new')}>Отправить
             </button>
+            <Agreement className='col-span-2 mt-[25px] xl:mt-[20px] md:mt-[16px]' isChecked={isAgree} error={isAgreeError} setIsChecked={setIsAgree} isSmall={false}></Agreement>
+
         </form>
     )
 }

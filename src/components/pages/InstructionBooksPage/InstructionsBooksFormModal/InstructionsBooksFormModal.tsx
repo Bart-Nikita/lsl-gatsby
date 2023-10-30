@@ -15,6 +15,7 @@ import { SEND_MAIL } from '../../../../gql/mutations/sendMail';
 import { useMock } from '../../../../hooks/useMock';
 import Loading from '../../../loading/Loading';
 import { useSendMail } from '../../../../hooks/useSendMail';
+import Agreement from '../../../common/Agreement/Agreement';
 
 type InputItem = {
     input: useInputStateType
@@ -321,18 +322,10 @@ export default function InstructionsBooksFormModal() {
                 <form onSubmit={e => e.preventDefault()} className={styles.form} action="#">
 
                     {inputsGroup.map(item => <FormInput dialog={ref.current || undefined} key={item.id} {...item}></FormInput>)}
-
-                    <div className={styles.checkbox}>
-                        <button type={"button"} onClick={onCheckboxClick}
-                            className={stack(styles.checkbox__box, isAgree && styles.checked, isAgreeError && styles.error)}>
-                            <div className={styles.checkbox__sign}></div>
-                        </button>
-                        <p className={styles.checkbox__text}>Я соглашаюсь с&nbsp; <a className={styles.checkbox__link}
-                            href={section?.footer?.footerPolitikaKonfidenczialnosti?.mediaItemUrl || ''}>условиями
-                            обработки</a> персональных данных</p>
-                    </div>
+                    <Agreement className='mb-[50px] md:mb-[36px] col-span-2' isChecked={isAgree} error={isAgreeError} setIsChecked={setIsAgree} isSmall={false}></Agreement>
                     <button type={"submit"} onClick={onSubmit} className={stack(styles.button, 'button-secondary-new',loading && 'disabled')}>Отправить
                     </button>
+                  
                 </form>
             </dialog>
             <InView onChange={value => setIsBottomVisible(value)}></InView>

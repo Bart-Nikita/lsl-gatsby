@@ -1,7 +1,7 @@
 .body {
-    @apply pt-[96px]
-     pt-[171px]
-        xl:pt-[73px]
+    @apply
+    
+        pt-[73px]
     xl:pt-[37px]
     md:pt-[0px]
 }
@@ -52,9 +52,8 @@
 }
 
 .picture {
-    @apply w-[474px] h-[581px] absolute bottom-0 right-[143px]
-     w-[437px]  h-[536px]  right-[54px]
-    xl:w-[340px] xl:h-[417px] xl:right-[62px]
+    @apply  absolute bottom-0
+    w-[340px] h-[417px] right-[62px]
     xl:w-[285px] xl:h-[350px] xl:right-[18px]
     md:w-[215px] md:h-[264px] md:right-[20px]
     sm:w-[181px] sm:h-[222px] sm:right-[13px]

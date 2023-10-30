@@ -5,6 +5,7 @@ import {stack} from "../../../../hooks/useClassName";
 import Picture from "../../../images/Picture/Picture";
 import SwiperLight from "../../../lowleveled/SwiperLight/SwiperLight";
 import { GatsbyImage } from 'gatsby-plugin-image';
+import { typo } from '../../../../tipograf';
 
 const FeedbacksSimple = ({className} : {className?: string}) => {
     const [section] = useCommonSection('otzyvy')
@@ -34,7 +35,7 @@ const FeedbacksSimple = ({className} : {className?: string}) => {
                                             </div>
                                         </div>
                                         <p className={stack('text-simple', styles.slider__text)}
-                                           dangerouslySetInnerHTML={{__html: item?.feedbacksSimpleTekstOtzyva || ''}}></p>
+                                        >{typo.execute( item?.feedbacksSimpleTekstOtzyva || '')}</p>
 
                                   </div>
                     )   }

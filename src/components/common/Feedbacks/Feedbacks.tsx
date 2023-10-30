@@ -5,6 +5,7 @@ import { stack } from "../../../hooks/useClassName";
 import Picture from "../../images/Picture/Picture";
 import SwiperLight from "../../lowleveled/SwiperLight/SwiperLight";
 import { GatsbyImage } from 'gatsby-plugin-image';
+import { typo } from '../../../tipograf';
 
 const Feedbacks = ({ className }: { className?: string }) => {
     const [section] = useCommonSection('otzyvy')
@@ -37,7 +38,6 @@ const Feedbacks = ({ className }: { className?: string }) => {
                     <SwiperLight>
                         <div className={styles.sliderSecond__list}>
                             {
-
                                 section?.feedbacks?.feedbacksSimpleSlajder?.map((item, index) =>
                                     <div key={index} className={styles.sliderSecond__item}>
                                         <div className={styles.sliderSecond__top}>
@@ -46,11 +46,11 @@ const Feedbacks = ({ className }: { className?: string }) => {
                                                 <h3 className={stack(styles.sliderSecond__name)}
                                                     dangerouslySetInnerHTML={{ __html: item?.feedbacksSimpleImya || '' }}></h3>
                                                 <p className={stack('text-simple', styles?.sliderSecond__desc)}
-                                                    dangerouslySetInnerHTML={{ __html: item?.feedbacksSimpleOpisanieKlienta || '' }}></p>
+                                                    dangerouslySetInnerHTML={{ __html: item?.feedbacksSimpleOpisanieKlienta || '' }}>{}</p>
                                             </div>
                                         </div>
                                         <p className={stack('text-simple', styles.sliderSecond__text)}
-                                            dangerouslySetInnerHTML={{ __html: item?.feedbacksSimpleTekstOtzyva || '' }}></p>
+                                           >{typo.execute(item?.feedbacksSimpleTekstOtzyva || '')}</p>
 
                                     </div>
                                 )}
