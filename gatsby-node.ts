@@ -84,13 +84,15 @@ exports.createPages = async ({ graphql, actions, reporter }: CreatePagesArgs) =>
             }
             footerLogotip {
               altText
-              gatsbyImage(width: 200, outputPixelDensities: 2, formats: WEBP)
-            }
-            footerPolitikaKonfidenczialnosti {
-              mediaItemUrl
+              gatsbyImage(
+                width: 200
+                outputPixelDensities: 2
+                formats: WEBP
+                placeholder: NONE
+              )
             }
             footerPublichnayaOferta {
-              mediaItemUrl
+              publicUrl
             }
             footerSocialSpisok {
               footerSocialAdres
@@ -99,6 +101,15 @@ exports.createPages = async ({ graphql, actions, reporter }: CreatePagesArgs) =>
                 altText
                 gatsbyImage(width: 100, outputPixelDensities: 2, formats: WEBP)
               }
+            }
+            footerPolitikaKonfidenczialnosti {
+              publicUrl
+            }
+            footerSoglasieNaObrabotkuPersonalnyhDannyh {
+              publicUrl
+            }
+            footerSoglasieNaReklamu {
+              publicUrl
             }
           }
           header {

@@ -116,7 +116,7 @@ export const query = graphql` query FeedbacksPage {
           }
         }
       }
-      footer {
+     footer {
         footerAdresSajta
         footerContactsZagolovok
         footerKopirajt
@@ -131,13 +131,15 @@ export const query = graphql` query FeedbacksPage {
         }
         footerLogotip {
           altText
-          gatsbyImage(width: 200, outputPixelDensities: 2, formats: WEBP, placeholder: NONE)
-        }
-        footerPolitikaKonfidenczialnosti {
-          mediaItemUrl
+          gatsbyImage(
+            width: 200
+            outputPixelDensities: 2
+            formats: WEBP
+            placeholder: NONE
+          )
         }
         footerPublichnayaOferta {
-          mediaItemUrl
+          publicUrl
         }
         footerSocialSpisok {
           footerSocialAdres
@@ -146,6 +148,15 @@ export const query = graphql` query FeedbacksPage {
             altText
             gatsbyImage(width: 100, outputPixelDensities: 2, formats: WEBP)
           }
+        }
+        footerPolitikaKonfidenczialnosti {
+          publicUrl
+        }
+        footerSoglasieNaObrabotkuPersonalnyhDannyh {
+          publicUrl
+        }
+        footerSoglasieNaReklamu {
+          publicUrl
         }
       }
       header {
