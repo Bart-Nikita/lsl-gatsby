@@ -1,5 +1,5 @@
 .body {
-    @apply flex justify-between
+    @apply flex justify-between relative
     xl:block
 }
 
@@ -91,7 +91,7 @@
 }
 
 .sliders {
-    @apply w-[calc(100%-630px)]
+    @apply w-[calc(100%-630px)] relative
      w-[calc(100%-463px)]
     xl:w-full
 }

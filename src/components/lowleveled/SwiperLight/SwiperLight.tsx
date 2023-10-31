@@ -8,16 +8,18 @@ import React, {
     useLayoutEffect,
     createRef
 } from 'react';
-import {stack} from "../../../hooks/useClassName";
+import { stack } from "../../../hooks/useClassName";
 import * as styles from './SwiperLight.module.css'
-import {InView} from 'react-intersection-observer'
+import { InView } from 'react-intersection-observer'
 
 type SwiperProps = {
     children: ReactNode | ReactElement,
-    className?: string
+    className?: string,
+    forcedSliderIndex?: number,
+    setForcedSliderIndex?: (index: number) => void
 }
 
-const SwiperLight = ({children, className}: SwiperProps) => {
+const SwiperLight = ({ children, className, forcedSliderIndex, setForcedSliderIndex}: SwiperProps) => {
     const [initX, setInitX] = useState(0)
     const [x, setX] = useState(0)
     const [changedX, setChangedX] = useState(0)
@@ -25,6 +27,8 @@ const SwiperLight = ({children, className}: SwiperProps) => {
     const [moving, setMoving] = useState(false)
     const [slideIndex, setSlideIndex] = useState(0)
     const [initSlideIndex, setInitSlideIndex] = useState(0)
+
+    // useEffect(() => {console.log(slideIndex)} ,[slideIndex])
 
     const ref = createRef<HTMLDivElement>()
 
@@ -51,25 +55,53 @@ const SwiperLight = ({children, className}: SwiperProps) => {
         return index;
     }
 
-    const setSlide = (index: number) => {
+    const setSlide = (index: number, isControls?: boolean) => {
 
         if (ref.current && ref.current.children[0].children[index] && index >= 0 && index < ref.current.children[0].children.length) {
             const pixels = (ref.current.children[0].children[index].getBoundingClientRect().left - ref.current.children[0].getBoundingClientRect().left)
             const widthWindow = ref.current.parentElement.getBoundingClientRect().width
             const widthWrapper = ref.current.children[0].getBoundingClientRect().width
             const maxTranslate = widthWrapper - widthWindow
+            const length = ref?.current?.children[0]?.children?.length
+            console.log(length)
 
-            if (maxTranslate < pixels) {
-                setTranslateX(- maxTranslate )
+            if (maxTranslate < pixels && !isControls) {
+                setTranslateX(- maxTranslate)
                 const index2 = getCurrentSlide()
-                index2 && setSlideIndex(index2)
+                
+                if (index2 && !(index2 > length)) {
+                    setSlideIndex(index2)
+                } else {
+                    setSlideIndex(length - 1)
+                }
             } else {
                 setTranslateX(-pixels)
-                setSlideIndex(index)
+                if (!(index > length)) {
+                    setSlideIndex(index)
+                } else {
+                    setSlideIndex(length - 1)
+                }
+             
             }
 
         }
     }
+
+
+ 
+
+    useEffect(() => {
+        if (typeof slideIndex === 'number' && setForcedSliderIndex) {
+            setForcedSliderIndex(slideIndex)
+        }
+    }, [slideIndex])
+
+    useEffect(() => {
+        if (typeof forcedSliderIndex === 'number') {
+            setSlide(forcedSliderIndex)
+        }
+
+    }, [forcedSliderIndex])
 
     useEffect(() => {
         if (moving) {
@@ -79,7 +111,7 @@ const SwiperLight = ({children, className}: SwiperProps) => {
     }, [changedX, moving])
 
 
-    const startSwiping = ({initX, changedX}: { initX: number, changedX: number }) => {
+    const startSwiping = ({ initX, changedX }: { initX: number, changedX: number }) => {
         setInitX(initX)
         setChangedX(changedX)
         setMoving(true)
@@ -103,24 +135,24 @@ const SwiperLight = ({children, className}: SwiperProps) => {
         setX(0)
     }
 
-    const swiping = ({changedX}: { changedX: number }) => {
+    const swiping = ({ changedX }: { changedX: number }) => {
         setChangedX(changedX)
     }
 
     const touchStart = (e: TouchEvent<HTMLDivElement>) => {
-        startSwiping({initX: e.touches[0].clientX, changedX: e.touches[0].clientX})
+        startSwiping({ initX: e.touches[0].clientX, changedX: e.touches[0].clientX })
     }
 
     const touchMove = (e: TouchEvent<HTMLDivElement>) => {
-        swiping({changedX: e.touches[0].clientX})
+        swiping({ changedX: e.touches[0].clientX })
     }
 
     const touchMouseStart = (e: MouseEvent<HTMLDivElement>) => {
-        startSwiping({initX: e.clientX, changedX: e.clientX})
+        startSwiping({ initX: e.clientX, changedX: e.clientX })
     }
 
     const touchMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-        swiping({changedX: e.clientX})
+        swiping({ changedX: e.clientX })
     }
 
     const focusHandler = () => {
@@ -128,16 +160,18 @@ const SwiperLight = ({children, className}: SwiperProps) => {
 
     }
 
+
     return (
         <div className={stack(styles.swiper, className)} onTouchStart={touchStart} onTouchEnd={endSwiping}
-             onTouchMove={touchMove} onMouseDown={touchMouseStart}
-             onMouseUp={endSwiping} onMouseMove={touchMouseMove} onMouseLeave={endSwiping}>
+            onTouchMove={touchMove} onMouseDown={touchMouseStart}
+            onMouseUp={endSwiping} onMouseMove={touchMouseMove} onMouseLeave={endSwiping}>
             <div
                 onFocusCapture={focusHandler}
                 className={stack(styles.swiper__wrapper, !moving && styles.transition)} ref={ref}
-                style={{transform: `translateX(${translateX + x}px)`}}>
+                style={{ transform: `translateX(${translateX + x}px)` }}>
                 {children}
             </div>
+
         </div>
     );
 };

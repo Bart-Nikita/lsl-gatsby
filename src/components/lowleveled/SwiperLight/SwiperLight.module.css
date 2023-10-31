@@ -1,5 +1,5 @@
 .swiper {
-@apply z-0
+@apply z-0 relative
 }
 
 .swiper__wrapper {
