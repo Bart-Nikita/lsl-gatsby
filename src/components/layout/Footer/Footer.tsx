@@ -28,7 +28,7 @@ const Footer = () => {
                         dangerouslySetInnerHTML={{ __html: section?.footer?.footerKopirajt || '' }}></p>
                 </div>
                 <div className={styles.doc}>
-                    <a href={section?.footer?.footerSoglasieNaObrabotkuPersonalnyhDannyh?.publicUrl || ''}
+                    <a href={section?.footer?.footerPublichnayaOferta?.publicUrl || ''}
                         className={stack('link', styles.text, styles.doc__item)}
                         target={"_blank"}>Публичная оферта</a>
                     <a href={section?.footer?.footerPolitikaKonfidenczialnosti?.publicUrl || ''}
