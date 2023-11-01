@@ -146,7 +146,7 @@ export const query = graphql` query HistoryPage {
       cookies {
         fieldGroupName
         cookiesPolitikaKonfidenczialnosti {
-          mediaItemUrl
+          publicUrl
         }
       }
      footer {

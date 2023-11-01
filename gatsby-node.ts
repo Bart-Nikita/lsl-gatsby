@@ -66,7 +66,7 @@ exports.createPages = async ({ graphql, actions, reporter }: CreatePagesArgs) =>
           cookies {
             fieldGroupName
             cookiesPolitikaKonfidenczialnosti {
-              mediaItemUrl
+              publicUrl
             }
           }
           footer {

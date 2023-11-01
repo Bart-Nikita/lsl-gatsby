@@ -1,5 +1,5 @@
 .body {
-    @apply flex justify-between relative overflow-hidden
+    @apply flex justify-between relative
     xl:block
 }
 

@@ -158,7 +158,7 @@ export const query = graphql` query TrainingsPage {
       cookies {
         fieldGroupName
         cookiesPolitikaKonfidenczialnosti {
-          mediaItemUrl
+          publicUrl
         }
       }
       feedbacks {

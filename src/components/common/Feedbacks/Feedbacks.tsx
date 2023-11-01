@@ -22,6 +22,7 @@ const Feedbacks = ({ className }: { className?: string }) => {
             </div>
             <div className={styles.sliders}>
                 <div className={styles.sliderFirst}>
+                    
                     <SwiperLight>
                         <div className={styles.sliderFirst__list}>
                             {section?.feedbacks?.feedbacksImageSlajder?.map((item, index) =>

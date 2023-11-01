@@ -18,17 +18,11 @@ export type GlobalContextType = {
     historyLength: number,
     setHistoryLength: Dispatch<SetStateAction<number>>,
     mainPage: Queries.IndexPageQuery | undefined,
-    setMainPage: Dispatch<SetStateAction<Queries.IndexPageQuery | undefined>>,
     historyPage: Queries.HistoryPageQuery | undefined,
-    setHistoryPage: Dispatch<SetStateAction<Queries.HistoryPageQuery | undefined>>,
     contactPage: Queries.ContactsPageQuery | undefined,
-    setContactPage: Dispatch<SetStateAction<Queries.ContactsPageQuery | undefined>>,
     blogPage: Queries.BlogPageQuery | undefined,
-    setBlogPage: Dispatch<SetStateAction<Queries.BlogPageQuery | undefined>>,
     trainingsPage: Queries.TrainingsPageQuery | undefined,
-    setTrainingsPage: Dispatch<SetStateAction<Queries.TrainingsPageQuery | undefined>>,
     blogPostPage: Queries.WpBlog | undefined,
-    setBlogPostPage: Dispatch<SetStateAction<Queries.WpBlog | undefined>>,
     isNewContainer: boolean,
     setIsNewContainer: Dispatch<SetStateAction<boolean>>,
     isTrainingModalOpen: boolean,
@@ -48,19 +42,12 @@ export type GlobalContextType = {
     instructionBooksModalData: Queries.WpPage_Instructionbooks_instructionsInstructionsSpisok | null,
     setInstructionBooksModalData: Dispatch<SetStateAction<Queries.WpPage_Instructionbooks_instructionsInstructionsSpisok | null>>
     commonSections: Queries.WpCommonSection[] | undefined | null,
-    setCommonSections: Dispatch<SetStateAction<Queries.WpCommonSection[] | undefined | null>>,
     posts: Queries.WpBlog[] | undefined | null,
-    setPosts: Dispatch<SetStateAction<Queries.WpBlog[] | undefined | null>>,
     publications: Queries.WpPublication[] | undefined | null,
-    setPublications: Dispatch<SetStateAction<Queries.WpPublication[] | undefined | null>>,
     files: Queries.File[] | undefined | null,
-    setFiles: Dispatch<SetStateAction<Queries.File[] | undefined | null>>,
     menuItems: Queries.WpMenuItem[] | undefined | null,
-    setMenuItems: Dispatch<SetStateAction<Queries.WpMenuItem[] | undefined | null>>,
     trainings: Queries.WpTraining[] | undefined | null,
-    setTrainings: Dispatch<SetStateAction<Queries.WpTraining[] | undefined | null>>,
     feedbacksPage: Queries.FeedbacksPageQuery | undefined | null,
-    setFeedbacksPage: Dispatch<SetStateAction<Queries.FeedbacksPageQuery | undefined | null>>,
     emails: Queries.WpMenu_Formmails_formsMails[]
 }
 
@@ -75,12 +62,6 @@ export const globalState = (data: PageData): GlobalContextType => {
     const [isNavModalOpen, setIsNavModalOpen] = useState(false)
     const [isMobile, setIsMobile] = useState(false)
     const [historyLength, setHistoryLength] = useState<number>(0)
-    const [mainPage, setMainPage] = useState<Queries.IndexPageQuery>()
-    const [contactPage, setContactPage] = useState<Queries.ContactsPageQuery>()
-    const [historyPage, setHistoryPage] = useState<Queries.HistoryPageQuery>()
-    const [blogPage, setBlogPage] = useState<Queries.BlogPageQuery>()
-    const [blogPostPage, setBlogPostPage] = useState<Queries.WpBlog>()
-    const [trainingsPage, setTrainingsPage] = useState<Queries.TrainingsPageQuery>()
     const [isNewContainer, setIsNewContainer] = useState<boolean>(false)
     const [isTrainingModalOpen, setIsTrainingModalOpen] = useState(false)
     const [isTrainingFormModalOpen, setIsTrainingFormModalOpen] = useState(false)
@@ -93,13 +74,7 @@ export const globalState = (data: PageData): GlobalContextType => {
     const [isInstructionBooksHeroFormModalOpen, setIsInstructionBooksHeroFormModalOpen] = useState(false)
 
     const [instructionBooksModalData, setInstructionBooksModalData] = useState<Queries.WpPage_Instructionbooks_instructionsInstructionsSpisok | null>(null)
-    const [commonSections, setCommonSections] = useState<Queries.WpCommonSection[] | null>()
-    const [posts, setPosts] = useState<Queries.WpBlog[] | null>()
-    const [publications, setPublications] = useState<Queries.WpPublication[] | null>()
-    const [files, setFiles] = useState<Queries.File[] | null>()
-    const [menuItems, setMenuItems] = useState<Queries.WpMenuItem[] | null>()
-    const [trainings, setTrainings] = useState<Queries.WpTraining[] | null>()
-    const [emails, setEmails] = useState<Queries.WpMenu_Formmails_formsMails[]>()
+
 
 
     useEffect(() => {
@@ -130,15 +105,10 @@ export const globalState = (data: PageData): GlobalContextType => {
 
     }, [isBrowser])
 
-    // useLayoutEffect(() => {
-    //     setHistoryLength(prev => prev + 1)
-    //     scrollTo(0, 0)
-
-    // }, [window?.location?.href])
 
     useEffect(() => {
         if ((isTrainingFormModalOpen || isNavModalOpen || isTrainingModalOpen || isInstructionBooksFormModalOpen || isInstructionBooksHeroFormModalOpen || isInstructionBooksModalOpen) && isBrowser) {
-            document.documentElement.style.overflow = 'hidden';         
+            document.documentElement.style.overflow = 'hidden';
             return () => {
                 document.documentElement.style.overflow = 'auto'
 
@@ -146,60 +116,9 @@ export const globalState = (data: PageData): GlobalContextType => {
         }
     }, [isTrainingFormModalOpen, isNavModalOpen, isTrainingModalOpen, isInstructionBooksFormModalOpen, isInstructionBooksHeroFormModalOpen, isInstructionBooksModalOpen, isBrowser]);
 
-    useEffect(() => {
-        if (data) {
-            if (data?.wpPage) {
-                //@ts-ignore
-                data?.wpPage.slug === 'glavnaya' && setMainPage(data)
-                //@ts-ignore
-                data?.wpPage.slug === 'istoriya' && setHistoryPage(data)
-                //@ts-ignore
-                data?.wpPage.slug === 'trenazhery' && setTrainingsPage(data)
-                //@ts-ignore
-                data?.wpPage.slug === 'blog' && setBlogPage(data)
-                //@ts-ignore
-                data?.wpPage.slug === 'kontakty' && setContactPage(data)
-                //@ts-ignore
-                data?.wpPage.slug === 'otzyvy' && setFeedbacksPage(data)
-                //@ts-ignore
-                data?.wpPage.slug === 'obuchayushhie-posobiya' && setInstructionBooksPage(data)
-            }
-
-              //@ts-ignore
-              setCommonSections(data?.allWpCommonSection?.nodes)
-              //@ts-ignore
-              setPosts(data?.allWpBlog?.nodes)
-              //@ts-ignore
-              setPublications(data?.allWpPublication?.nodes)
-              //@ts-ignore
-              setFiles(data?.allFile?.nodes)
-              //@ts-ignore
-              setMenuItems(data?.allWpMenuItem?.nodes)
-            //@ts-ignore
-              setEmails(data?.wpMenu?.formMails?.formsMails)
-              //@ts-ignore
-              setTrainings(data?.allWpTraining?.nodes)
-
-            if (data?.pageContext) {
-                //console.log(data?.pageContext)
-                //@ts-ignore
-                setCommonSections(data?.pageContext?.commonSections)
-                //@ts-ignore
-                setPosts(data?.pageContext?.allPosts)
-                //@ts-ignore
-                setBlogPostPage(data?.pageContext?.post)
-                setFiles(data?.pageContext?.allFiles)
-                setMenuItems(data?.pageContext?.menuItems)
-                setEmails(data?.pageContext?.emails)
-
-            }
-          
-        }
-
-    }, [data])
 
     return {
-        emails,
+        emails:data?.pageContext?.emails || data?.wpMenu?.formMails?.formsMails,
         title,
         setTitle,
         description,
@@ -211,18 +130,12 @@ export const globalState = (data: PageData): GlobalContextType => {
         isMobile,
         historyLength,
         setHistoryLength,
-        setMainPage,
-        mainPage,
-        setContactPage,
-        contactPage,
-        blogPage,
-        setBlogPage,
-        historyPage,
-        setHistoryPage,
-        setTrainingsPage,
-        trainingsPage,
-        blogPostPage,
-        setBlogPostPage,
+        mainPage: data,
+        contactPage: data,
+        blogPage: data,
+        historyPage: data,
+        trainingsPage: data,
+        blogPostPage: data?.pageContext?.post,
         isNewContainer,
         setIsNewContainer,
         isTrainingModalOpen,
@@ -238,7 +151,17 @@ export const globalState = (data: PageData): GlobalContextType => {
         setInstructionBooksPage,
         setIsInstructionBooksFormModalOpen,
         isInstructionBooksModalOpen,
-        setIsInstructionBooksModalOpen, isInstructionBooksHeroFormModalOpen, setIsInstructionBooksHeroFormModalOpen, commonSections, setCommonSections, posts, setPosts, publications, setPublications, files, setFiles, menuItems, setMenuItems, trainings, setTrainings, feedbacksPage, setFeedbacksPage
+        setIsInstructionBooksModalOpen,
+        isInstructionBooksHeroFormModalOpen,
+        setIsInstructionBooksHeroFormModalOpen,
+        commonSections: data?.pageContext?.commonSections || data?.allWpCommonSection?.nodes,
+        posts: data?.pageContext?.allPosts || data?.allWpBlog?.nodes,
+        publications: data?.allWpPublication?.nodes,
+        files:data?.pageContext?.allFiles || data?.allFile?.nodes,
+        menuItems:data?.pageContext?.menuItems || data?.allWpMenuItem?.nodes,
+        trainings: data?.allWpTraining?.nodes,
+        feedbacksPage,
+        setFeedbacksPage
     }
 }
 

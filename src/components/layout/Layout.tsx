@@ -88,17 +88,6 @@ const ModalLayer = () => {
 }
 
 const Layout = memo(({ children }: LayoutProps) => {
-    const {
-        title,
-        description,
-        isLoading,
-        isNavModalOpen,
-        historyLength,
-        isTrainingFormModalOpen,
-        isTrainingModalOpen,
-        mainPage,
-        setMainPage
-    } = useGlobalContext()
 
     useEffect(() => {
         scrollTo(0, 0)

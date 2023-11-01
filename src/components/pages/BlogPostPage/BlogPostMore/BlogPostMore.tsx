@@ -2,7 +2,7 @@ import React, { useEffect, useLayoutEffect, useState } from 'react';
 import * as styles from './BlogPostMore.module.css'
 import { stack } from "../../../../hooks/useClassName";
 import { useGlobalContext } from "../../../../context/context";
-import SwiperLight from "../../../lowleveled/SwiperLight/SwiperLight";
+import SwiperLight from '../../../lowleveled/SwiperLight/SwiperLight.1';
 import { usePosts } from "../../../../hooks/usePosts";
 import { Link } from "gatsby";
 import Picture from "../../../images/Picture/Picture";

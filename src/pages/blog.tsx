@@ -101,7 +101,7 @@ export const query = graphql` query BlogPage {
       cookies {
         fieldGroupName
         cookiesPolitikaKonfidenczialnosti {
-          mediaItemUrl
+          publicUrl
         }
       }
      footer {

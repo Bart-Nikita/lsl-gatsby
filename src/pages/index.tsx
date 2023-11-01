@@ -166,7 +166,7 @@ export const query = graphql`query IndexPage {
       cookies {
         fieldGroupName
         cookiesPolitikaKonfidenczialnosti {
-          mediaItemUrl
+          publicUrl
         }
       }
       feedbacks {

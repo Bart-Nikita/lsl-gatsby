@@ -3,7 +3,7 @@ import * as styles from './TrainingsModal.module.css'
 import { useGlobalContext } from "../../../../context/context";
 import { stack } from "../../../../hooks/useClassName";
 import Chrest from "../../../svg/Chrest";
-import SwiperLight from "../../../lowleveled/SwiperLight/SwiperLight";
+import SwiperLight from '../../../lowleveled/SwiperLight/SwiperLight.1';
 import LightPicture from "../../../images/LightPicture/LightPicture";
 import { typo } from "../../../../tipograf";
 import { InView } from "react-intersection-observer";

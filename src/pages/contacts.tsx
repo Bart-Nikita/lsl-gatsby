@@ -88,7 +88,7 @@ export const query = graphql` query ContactsPage {
       cookies {
         fieldGroupName
         cookiesPolitikaKonfidenczialnosti {
-          mediaItemUrl
+          publicUrl
         }
       }
      footer {
