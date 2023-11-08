@@ -145,7 +145,7 @@ export const globalState = (data: PageData): GlobalContextType => {
         setTrainingModalData,
         trainingModalData,
         instructionBooksModalData,
-        instructionBooksPage,
+        instructionBooksPage: data,
         isInstructionBooksFormModalOpen,
         setInstructionBooksModalData,
         setInstructionBooksPage,
