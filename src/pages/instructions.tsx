@@ -102,11 +102,11 @@ export const query = graphql` query InstructionsPage {
       }
       instructionsHeroFonovoeIzobrazhenie {
         altText
-        gatsbyImage(outputPixelDensities: 2, width: 800, formats: WEBP)
+        gatsbyImage(outputPixelDensities: 2, width: 1500, formats: WEBP, placeholder: NONE)
       }
       instructionsHeroIzobrazhenieDlyaKompyutera {
         altText
-        gatsbyImage(outputPixelDensities: 2, width: 800, formats: WEBP)
+        gatsbyImage(outputPixelDensities: 2, width: 800, formats: WEBP, placeholder: NONE)
       }
 
       instructionsInstructionsSpisok {
@@ -128,7 +128,7 @@ export const query = graphql` query InstructionsPage {
       }
       instructionsOrderFonovoeIzobrazhenieDlyaKonpyutera {
         altText
-        gatsbyImage(outputPixelDensities: 2, width: 1900, formats: WEBP)
+        gatsbyImage(outputPixelDensities: 2, width: 2500, formats: WEBP)
       }
 
       instructionsStepsStadiiOformleniya {
