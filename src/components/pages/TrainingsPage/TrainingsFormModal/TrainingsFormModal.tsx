@@ -253,7 +253,6 @@ const TrainingsFormModal = () => {
     }
 
 
-
     return (
         <div className={stack(styles.container, !isBottomVisible && styles.light)}>
             <dialog onClick={e => e.stopPropagation()}
@@ -294,6 +293,7 @@ const TrainingsFormModal = () => {
                     <button type={"submit"} onClick={onSubmit} className={stack(styles.button, 'button-secondary-new', loading && 'disabled')}>Оформить заказ
                     </button>
                 </form>
+  
             </dialog>
             <InView onChange={value => setIsBottomVisible(value)}></InView>
 

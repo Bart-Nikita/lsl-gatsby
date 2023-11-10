@@ -11,6 +11,7 @@ import trainingsSelect from "../TrainingsSelect/TrainingsSelect";
 import ReactModal from 'react-modal';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { useFile } from '../../../../hooks/useFile';
+import { useCommonSection } from '../../../../hooks/useCommonSection';
 
 
 
@@ -95,6 +96,8 @@ const TrainingsModal = () => {
     }
 
     const [play] = useFile('play')
+    const [header] = useCommonSection('shapka')
+
     return (
         <div className={stack(styles.container, !isBottomVisible && styles.light)}>
 
@@ -143,7 +146,7 @@ const TrainingsModal = () => {
                     <div className={styles.content}>
                         <div className={styles.content__top}>
                             <h2 className={styles.content__title}>{typo.execute(trainingModalData?.title || '')}</h2>
-                            <p className={styles.content__exist}>{trainingModalData?.training?.trainingEstVNalichii === 'true' ? 'В наличии' : 'Нет в наличии'}</p>
+                            <p className={styles.content__exist}>{trainingModalData?.training?.trainingEstVNalichii === 'true' ? 'В наличии' : trainingModalData?.training?.trainingEstVNalichii === 'false' ?'Нет в наличии' : 'Под заказ'}</p>
                             <p className={styles.content__price}
                                 dangerouslySetInnerHTML={{ __html: trainingModalData?.training?.trainingCzena || ''}}></p>
                         </div>
@@ -157,12 +160,15 @@ const TrainingsModal = () => {
                         <button onClick={onOrderClick}
                             className={stack('button-secondary-new', styles.content__submit)}>Оформить заказ
                         </button>
+                        <a target='_blank' href={`https://wa.me/${header?.header?.headerTelefon?.split('-').join('').split('(').join('').split(')').join('').split(' ').join('').split('−').join('')}`} className={stack(styles.content__submit, styles.second, 'button-secondary-new')}>Написать нам
+                    </a>
                         <p className={styles.content__remark}>{typo.execute('*Тренажёр не является медицинским изделием')}</p>
                     </div>
                 </div>
                 <button onClick={closeClickHandler} className={styles.close}>
                     <Chrest className={styles.close__svg}></Chrest>
                 </button>
+            
             </dialog>
             <InView onChange={value => setIsBottomVisible(value)}></InView>
         </div>
