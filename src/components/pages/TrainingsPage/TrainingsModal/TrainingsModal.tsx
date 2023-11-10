@@ -159,14 +159,14 @@ const TrainingsModal = () => {
                         </ul>}
                         <div className='flex gap-[16px] xl:flex-col xl:gap-[12px] xl:hidden'>
                         <a target='_blank' href={`https://wa.me/${header?.header?.headerTelefon?.split('-').join('').split('(').join('').split(')').join('').split(' ').join('').split('−').join('')}`} className={stack(styles.content__submit,  styles.second, 'button-primary-new')}>Быстрый заказ <StaticImage className='w-[24px] h-[24px]' src="./images/wa.png" alt="whatsapp-logo" /> </a>
-                          <button onClick={onOrderClick}
+                          {/* <button onClick={onOrderClick}
                             className={stack('button-secondary-new', styles.content__submit)}>Оформить заказ
-                        </button>
+                        </button> */}
                         </div>
                         <a target='_blank' href={`https://wa.me/${header?.header?.headerTelefon?.split('-').join('').split('(').join('').split(')').join('').split(' ').join('').split('−').join('')}`} className={stack(styles.content__submit, styles.second,  'button-primary-new ', styles.mobile)}>Быстрый заказ <StaticImage className='w-[24px] h-[24px]' src="./images/wa.png" alt="whatsapp-logo" /> </a>
-                          <button onClick={onOrderClick}
+                          {/* <button onClick={onOrderClick}
                             className={stack('button-secondary-new ', styles.content__submit, styles.mobile)}>Оформить заказ
-                        </button>
+                        </button> */}
                         
                         <p className={styles.content__remark}>{typo.execute('*Тренажёр не является медицинским изделием')}</p>
                     </div>
