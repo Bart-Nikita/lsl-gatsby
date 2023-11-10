@@ -9,7 +9,7 @@ import { typo } from "../../../../tipograf";
 import { InView } from "react-intersection-observer";
 import trainingsSelect from "../TrainingsSelect/TrainingsSelect";
 import ReactModal from 'react-modal';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import { GatsbyImage, StaticImage } from 'gatsby-plugin-image';
 import { useFile } from '../../../../hooks/useFile';
 import { useCommonSection } from '../../../../hooks/useCommonSection';
 
@@ -44,7 +44,7 @@ const GalleryItem = (item: Queries.WpTraining_Training_trainingGallereya) => {
                 <img className={styles.video__image} src="/image/play.png"
                     alt="Иконка Play" /></button>
         }
-      <GatsbyImage className={styles.video__picture} image={item?.izobrazhenieDlyaKompyutera?.gatsbyImage} alt={item?.izobrazhenieDlyaKompyutera?.altText}></GatsbyImage>
+        <GatsbyImage className={styles.video__picture} image={item?.izobrazhenieDlyaKompyutera?.gatsbyImage} alt={item?.izobrazhenieDlyaKompyutera?.altText}></GatsbyImage>
     </li>
 
 
@@ -67,7 +67,7 @@ const TrainingsModal = () => {
 
     useEffect(() => {
         if (trainingModalData && trainingModalData?.training?.trainingGallereya) {
-            trainingModalData?.training?.trainingGallereya[0] &&  setSelectedItem(trainingModalData?.training?.trainingGallereya[0])
+            trainingModalData?.training?.trainingGallereya[0] && setSelectedItem(trainingModalData?.training?.trainingGallereya[0])
         }
     }, [trainingModalData]);
 
@@ -157,11 +157,17 @@ const TrainingsModal = () => {
                                 <p className={styles.border__text} dangerouslySetInnerHTML={{ __html: item?.tekst || ''}}></p>
                             </li>)}
                         </ul>}
-                        <button onClick={onOrderClick}
+                        <div className='flex gap-[16px] xl:flex-col xl:gap-[12px] xl:hidden'>
+                        <a target='_blank' href={`https://wa.me/${header?.header?.headerTelefon?.split('-').join('').split('(').join('').split(')').join('').split(' ').join('').split('−').join('')}`} className={stack(styles.content__submit,  styles.second, 'button-primary-new')}>Быстрый заказ <StaticImage className='w-[24px] h-[24px]' src="./images/wa.png" alt="whatsapp-logo" /> </a>
+                          <button onClick={onOrderClick}
                             className={stack('button-secondary-new', styles.content__submit)}>Оформить заказ
                         </button>
-                        <a target='_blank' href={`https://wa.me/${header?.header?.headerTelefon?.split('-').join('').split('(').join('').split(')').join('').split(' ').join('').split('−').join('')}`} className={stack(styles.content__submit, styles.second, 'button-secondary-new')}>Написать нам
-                    </a>
+                        </div>
+                        <a target='_blank' href={`https://wa.me/${header?.header?.headerTelefon?.split('-').join('').split('(').join('').split(')').join('').split(' ').join('').split('−').join('')}`} className={stack(styles.content__submit, styles.second,  'button-primary-new ', styles.mobile)}>Быстрый заказ <StaticImage className='w-[24px] h-[24px]' src="./images/wa.png" alt="whatsapp-logo" /> </a>
+                          <button onClick={onOrderClick}
+                            className={stack('button-secondary-new ', styles.content__submit, styles.mobile)}>Оформить заказ
+                        </button>
+                        
                         <p className={styles.content__remark}>{typo.execute('*Тренажёр не является медицинским изделием')}</p>
                     </div>
                 </div>
@@ -169,9 +175,9 @@ const TrainingsModal = () => {
                     <Chrest className={styles.close__svg}></Chrest>
                 </button>
             
-            </dialog>
-            <InView onChange={value => setIsBottomVisible(value)}></InView>
-        </div>
+            </dialog >
+    <InView onChange={value => setIsBottomVisible(value)}></InView>
+        </div >
     );
 };
 

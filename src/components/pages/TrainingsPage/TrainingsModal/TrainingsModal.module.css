@@ -149,14 +149,22 @@
 }
 
 .body .content__submit {
-    @apply text-[24px] py-[12px] px-[40px] w-fit mb-[10px] z-10
+    @apply text-[20px] py-[20px] px-[40px] w-fit mb-[10px] z-10 flex items-center justify-center gap-[10px]
     xl:w-full xl:text-center xl:mb-0 xl:text-[24px] xl:sticky xl:bottom-[0px]
     md:text-[16px] md:py-[15px] md:px-[20px]
 
 }
 
 .body .content__submit.second {
-    @apply mt-[20px]
+    @apply xl:mb-[12px]
+}
+
+.body .content__submit.desktop {
+    @apply hidden xl:flex
+}
+
+.body .content__submit.mobile {
+    @apply hidden xl:flex
 }
 
 .content__remark {
