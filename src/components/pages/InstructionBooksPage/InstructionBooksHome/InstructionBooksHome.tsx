@@ -5,12 +5,15 @@ import { stack } from "../../../../hooks/useClassName";
 import LightPicture from "../../../images/LightPicture/LightPicture";
 import { typo } from "../../../../tipograf";
 import { GatsbyImage } from 'gatsby-plugin-image';
+import { useCommonSection } from '../../../../hooks/useCommonSection';
 
 const InstructionBooksHome = () => {
     const { instructionBooksPage, setIsInstructionBooksHeroFormModalOpen } = useGlobalContext()
     function onClickHandler() {
         setIsInstructionBooksHeroFormModalOpen(true)
     }
+    const [header] = useCommonSection('shapka')
+
     return (
         <section className={styles.section}>
             <div className={stack('container', styles.container)}>
@@ -21,9 +24,9 @@ const InstructionBooksHome = () => {
                  </div>
                     <h1 className={styles.title}>{typo.execute(instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroZagolovok || '')}</h1>
                     <p className={styles.subtitle}>{typo.execute(instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroPodzagolovok || '')}</p>
-                    <button onClick={onClickHandler} className={stack('button-secondary-new', styles.button)}>
+                    <a target='_blank' href={`https://wa.me/${header?.header?.headerTelefon?.split('-').join('').split('(').join('').split(')').join('').split(' ').join('').split('−').join('')}`} className={stack('button-secondary-new', styles.button)}>
                         {instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroTekstKnopki}
-                    </button>
+                    </a>
                 </div>
         {instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroIzobrazhenieDlyaKompyutera?.gatsbyImage &&    <GatsbyImage className={styles.second} image={instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroIzobrazhenieDlyaKompyutera?.gatsbyImage} alt={instructionBooksPage?.wpPage?.instructionBooks?.instructionsHeroIzobrazhenieDlyaKompyutera?.altText || ''}></GatsbyImage>}
                 <p className={stack(styles.text, styles.desktop)}>

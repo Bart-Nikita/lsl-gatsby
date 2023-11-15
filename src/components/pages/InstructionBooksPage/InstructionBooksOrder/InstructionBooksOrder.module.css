@@ -1,5 +1,5 @@
 .section {
-    @apply mb-[-30px] pt-[85px] pb-[167px] relative after:absolute after:h-[61px] after:[background:linear-gradient(0deg,#FFF_0%,rgba(255,255,255,0.00)100%)] after:left-0 after:right-0 after:bottom-0 after:z-[2] before:h-[61px] before:[background:linear-gradient(180deg,#FFF_0%,rgba(255,255,255,0.00)100%)] before:left-0 before:right-0 before:top-0 before:absolute before:z-[2] 
+    @apply mb-[-30px] pt-[85px] pb-[140px] overflow-hidden relative after:absolute after:h-[61px] after:[background:linear-gradient(0deg,#FFF_0%,rgba(255,255,255,0.00)100%)] after:left-0 after:right-0 after:bottom-0 after:z-[2] before:h-[61px] before:[background:linear-gradient(180deg,#FFF_0%,rgba(255,255,255,0.00)100%)] before:left-0 before:right-0 before:top-0 before:absolute before:z-[2] 
     xl:pt-[62px] xl:pb-[64px]
     md:pb-[22px]
 }
@@ -12,8 +12,10 @@
 }
 
 .container {
-    @apply grid grid-cols-2 gap-[40px] md:block relative z-[10]
-    xl:gap-[20px]
+    /* @apply grid grid-cols-2 gap-[40px] md:block relative z-[10]
+    xl:gap-[20px] */
+    @apply flex items-center justify-center gap-[40px]  relative z-[10]
+    xl:gap-[20px] md:flex-col md:items-start
 }
 
 .right, .left {
@@ -26,7 +28,7 @@
 }
 
 .left {
-    @apply md:mb-[24px]
+    @apply md:mb-[0px] md:mx-auto 
 }
 
 .title {
@@ -34,7 +36,7 @@
 }
 
 .text {
-    @apply text-[24px] leading-[1.4] max-w-[433px] xl:max-w-[310px] md:max-w-none xl:text-[16px]
+    @apply text-[24px] leading-[1.4] max-w-[433px] xl:max-w-[310px]  xl:text-[16px]
 }
 
 
@@ -127,4 +129,16 @@
 
 .section .button {
     @apply w-full col-span-2 mt-[-12px] py-[20px] rounded-[12px] text-[24px] font-bold leading-[1.4] md:text-[18px] md:mt-[3px]
+}
+
+
+ .content__submit {
+    @apply text-[20px] py-[20px] px-[40px] w-fit mb-[10px] z-10 flex items-center justify-center gap-[10px]
+     xl:text-center xl:mb-0 xl:text-[24px] xl:sticky xl:bottom-[0px]
+    md:text-[16px] md:py-[15px] md:px-[20px] 
+
+}
+
+.content {
+@apply md:mx-auto md:w-[310px] 
 }

@@ -18,7 +18,8 @@ const ContactsPage: React.FC<PageProps<Queries.ContactsPageQuery>> = ({ data }: 
   const state = globalState(data)
   return <GlobalContext.Provider value={state}>
     <Layout>
-      <LeaveContacts title={data?.wpPage?.contacts?.contactsPageZagolovok || ''} buttonText={data?.wpPage?.contacts?.contactsPageTekstKnopki || ''}></LeaveContacts>
+      <div className="h-[50px] xl:h-[30px]"></div>
+      {/* <LeaveContacts title={data?.wpPage?.contacts?.contactsPageZagolovok || ''} buttonText={data?.wpPage?.contacts?.contactsPageTekstKnopki || ''}></LeaveContacts> */}
       <Messenger text={data?.wpPage?.contacts?.contactsPagePodzagolovok || ''}></Messenger>
     </Layout>
   </GlobalContext.Provider>

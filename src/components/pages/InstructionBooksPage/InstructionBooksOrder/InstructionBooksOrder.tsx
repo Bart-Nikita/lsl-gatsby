@@ -12,7 +12,7 @@ import { SEND_MAIL } from '../../../../gql/mutations/sendMail';
 import { CONTACTS_MAIL_SUBJECT, EMAIL_FROM, EMAIL_TO, INSTRUCTION_MAIL_SUBJECT } from '../../../../config';
 import LightPicture from '../../../images/LightPicture/LightPicture';
 import ArrowDown from '../../../svg/ArrowDown';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import { GatsbyImage, StaticImage } from 'gatsby-plugin-image';
 import { useMock } from '../../../../hooks/useMock';
 import { useSendMail } from '../../../../hooks/useSendMail';
 import Loading from '../../../loading/Loading';
@@ -283,6 +283,9 @@ const InstructionBooksOrder = () => {
         setIsAgree(false)
     }
 
+    const [header] = useCommonSection('shapka')
+
+
     return (
         <section className={stack(styles.section)} >
             <div className={styles.picture}>
@@ -294,8 +297,10 @@ const InstructionBooksOrder = () => {
                     <h2 className={styles.title}>{typo.execute(instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderZagolovok || '')}</h2>
                     <p className={styles.text}>{typo.execute(instructionBooksPage?.wpPage?.instructionBooks?.instructionsOrderPodzagolovok || '')}</p>
                 </div>
-
-                <div className={stack(styles.right)}>
+                <div className={styles.content}>
+                    <a target='_blank' href={`https://wa.me/${header?.header?.headerTelefon?.split('-').join('').split('(').join('').split(')').join('').split(' ').join('').split('−').join('')}`} className={stack(styles.content__submit, 'button-primary-new')}>Быстрый заказ <StaticImage className='w-[24px] h-[24px]' src="./images/wa.png" alt="whatsapp-logo" /> </a>
+                </div>
+                {/* <div className={stack(styles.right)}>
                     <div className={`absolute top-0 left-0 right-0 bottom-0 z-[5]  duration-700 transition-all ${isMockVisible || loading ? 'pointer-events-auto opacity-[1]' : 'pointer-events-none opacity-0'}`}>
                         <div className='block max-w-[500px] h-full  relative'>
                             {loading && <div className='flex absolute animate-appear top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] justify-start items-center '>
@@ -308,6 +313,7 @@ const InstructionBooksOrder = () => {
                             </div>}
                         </div>
                     </div>
+                  
                     <form onSubmit={e => e.preventDefault()} className={stack(styles.form, `transition-all duration-700  ${isMockVisible || loading ? 'opacity-[0.2] filter blur-md' : ''}`)} action="#">
 
                         {inputsGroup.map(item => <FormInput key={item.id} {...item}></FormInput>)}
@@ -316,7 +322,7 @@ const InstructionBooksOrder = () => {
                         <button type={"submit"} onClick={onSubmit} className={stack(styles.button, 'button-secondary-new', loading && 'disabled')}>Отправить
                         </button>
                     </form>
-                </div>
+                </div> */}
 
             </div>
         </section>

@@ -38,7 +38,7 @@ const CertsPage: React.FC<PageProps<Queries.CertsPageQuery>> = ({ data }: PagePr
     setGettingTypeId(data?.wpPage?.certs?.certsGetVidyPolucheniya && data?.wpPage?.certs?.certsGetVidyPolucheniya[0]?.nazvanieTipaPolucheniya || '')
   }, [])
 
-  const [orderSectionType, setOrderSectionType] = React.useState<string>(orderSectionArr[0])
+  const [orderSectionType, setOrderSectionType] = React.useState<string>(orderSectionArr[2])
 
   const [selectedQuestion, setSelectedQuestion] = React.useState<string | null>(null)
 
@@ -151,7 +151,7 @@ const CertsPage: React.FC<PageProps<Queries.CertsPageQuery>> = ({ data }: PagePr
         <section id="form" className=" pt-[72px] mb-[140px] xl:pt-[48px] xl:mb-[72px] md:pt-[32px] md:mb-[56px] [background:linear-gradient(180deg,_#FFF4DE_0%,_rgba(255,_244,_222,_0.00)_100%)] md:bg-gradient-to-b md:from-[#FFF4DE] md:to-[rgba(255,_244,_222,_0.00)] to-50%">
           <div className="container max-w-[1061px]">
             <h2 className="text-center mb-[36px] text-[38px] leading-[1.4] font-bold xl:mb-[40px] xl:text-[24px] xl:leading-[1.2]  md:hidden">{typo.execute(data?.wpPage?.certs?.certsOrderZagolovok || '')}</h2>
-            <ul className="flex md:gap-[16px] md:flex-col md:mb-[24px]">
+            {/* <ul className="flex md:gap-[16px] md:flex-col md:mb-[24px]">
               {orderSectionArr?.map((item, index) => {
                 const onButtonClick = () => {
                   setOrderSectionType((item))
@@ -169,18 +169,18 @@ const CertsPage: React.FC<PageProps<Queries.CertsPageQuery>> = ({ data }: PagePr
                   <button className={`transition-all relative [box-shadow:0px_4px_10px_0px_rgba(0,_0,_0,_0.15)]  md:rounded-[12px] text-[24px] leading-[1.4] font-bold py-[24px] overflow-visible px-[36px] xl:text-[16px] xl:py-[16px] xl:px-[28px] md:py-[12px] md:px-[16px] ${item === orderSectionType ? 'bg-white rounded-t-[20px] ' : 'bg-[#FFF4DE]'} ${selectedRight ? 'rounded-tr-[20px]' : ''} ${selectedLeft ? 'rounded-tl-[20px]' : ''} ${index === 1 ? 'after:absolute after:top-[50%] after:translate-y-[-50%] after:bg-[#B3B3B3] after:rounded-[2px] after:w-[2px] after:h-[46px] xl:after:h-[28px] after:right-[0px] after:opacity-[0] before:absolute before:top-[50%] before:translate-y-[-50%]  before:bg-[#B3B3B3] before:rounded-[2px] before:w-[2px] before:h-[46px] xl:before:h-[28px] before:left-[0px] before:opacity-[0] md:after:hidden md:before:hidden' : ''} ${index === 1 && selectedLeft ? 'after:opacity-[1] [clip-path:inset(-5px_0px_-5px_-5px)]' : ''} ${index === 1 && selectedRight ? 'before:opacity-[1] [clip-path:inset(-5px_-5px_-5px_0px)]' : ''} ${selectedAfterOneLeft ? '[clip-path:inset(-5px_0px_-5px_-5px)]' : ""} ${selectedAfterOneRight ? "[clip-path:inset(-5px_-5px_-5px_0px)]" : ""} ${firstItem ? "rounded-tl-[20px]" : ''}  ${lastItem ? "rounded-tr-[20px]" : ''}`} onClick={onButtonClick}>{item}</button>
                 </li>
               })}
-            </ul>
+            </ul> */}
             {orderSectionArr?.map((item, index) => {
               const selected = item === orderSectionType
 
-              if (selected && index === 0) {
-                return (
-                  data?.wpPage?.certs?.certsOrderIzobrazhenieDlyaPolucheniyaOnlajn?.gatsbyImage && <FirstSection className='image-normalize' image={data?.wpPage?.certs?.certsOrderIzobrazhenieDlyaPolucheniyaOnlajn.gatsbyImage} alt={data?.wpPage?.certs?.certsOrderIzobrazhenieDlyaPolucheniyaOnlajn?.altText || ''}></FirstSection>
-                )
-              }
-              if (selected && index === 1) {
-                return data?.wpPage?.certs?.certsOrderIzobrazhenieDlyaPoluceniaVRuki?.gatsbyImage && <SecondSection className='image-normalize' image={data?.wpPage?.certs?.certsOrderIzobrazhenieDlyaPoluceniaVRuki?.gatsbyImage} alt={data?.wpPage?.certs?.certsOrderIzobrazhenieDlyaPoluceniaVRuki?.altText || ''}></SecondSection>
-              }
+              // if (selected && index === 0) {
+              //   return (
+              //     data?.wpPage?.certs?.certsOrderIzobrazhenieDlyaPolucheniyaOnlajn?.gatsbyImage && <FirstSection className='image-normalize' image={data?.wpPage?.certs?.certsOrderIzobrazhenieDlyaPolucheniyaOnlajn.gatsbyImage} alt={data?.wpPage?.certs?.certsOrderIzobrazhenieDlyaPolucheniyaOnlajn?.altText || ''}></FirstSection>
+              //   )
+              // }
+              // if (selected && index === 1) {
+              //   return data?.wpPage?.certs?.certsOrderIzobrazhenieDlyaPoluceniaVRuki?.gatsbyImage && <SecondSection className='image-normalize' image={data?.wpPage?.certs?.certsOrderIzobrazhenieDlyaPoluceniaVRuki?.gatsbyImage} alt={data?.wpPage?.certs?.certsOrderIzobrazhenieDlyaPoluceniaVRuki?.altText || ''}></SecondSection>
+              // }
 
               if (selected && index === 2) {
                 return data?.wpPage?.certs?.certsOrderIzobrazhenieDlyaPoluceniaVRuki?.gatsbyImage && <ThirdSection className='image-normalize' whatsappLink={data?.wpPage?.certs?.certsOrderWhatsapp || ''} email={data?.wpPage?.certs?.certsOrderEmail || ''} image={data?.wpPage?.certs?.certsOrderIzobrazhenieDlyaPoluceniaVRuki?.gatsbyImage} alt={data?.wpPage?.certs?.certsOrderIzobrazhenieDlyaPoluceniaVRuki?.altText || ''}></ThirdSection>
@@ -263,8 +263,8 @@ const CertsPage: React.FC<PageProps<Queries.CertsPageQuery>> = ({ data }: PagePr
                 })}
               </div>
               <div className="flex gap-[24px] xl:flex-col xl:gap-[12px] xl:max-w-[72%] md:max-w-full relative z-[2] md:gap-[16px]">
-                <a className="button-secondary-new px-[40px] py-[20px] xl:px-[30px] md:w-full md:py-[15px] shrink-0" href={data?.wpPage?.certs?.certsNotFoundWhatsapp || ''}>Написать в WhatsApp</a>
-                <a className="button-primary-new px-[40px] py-[20px] xl:px-[30px] md:w-full md:py-[15px] shrink-0" href={`tel:${data?.wpPage?.certs?.certsNotFoundTelefon?.split(' ').join('').split('−').join('')}`}>{data?.wpPage?.certs?.certsNotFoundTelefon}</a>
+                <a target="_blank" className="button-secondary-new px-[40px] py-[20px] xl:px-[30px] md:w-full md:py-[15px] shrink-0" href={data?.wpPage?.certs?.certsNotFoundWhatsapp || ''}>Написать в WhatsApp</a>
+                <a target="_blank" className="button-primary-new px-[40px] py-[20px] xl:px-[30px] md:w-full md:py-[15px] shrink-0" href={`tel:${data?.wpPage?.certs?.certsNotFoundTelefon?.split(' ').join('').split('−').join('')}`}>{data?.wpPage?.certs?.certsNotFoundTelefon}</a>
               </div>
             </div>
           </div>

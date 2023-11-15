@@ -4,10 +4,10 @@ import { GatsbyImage, GatsbyImageProps } from 'gatsby-plugin-image'
 
 export default function ThirdSection(img: GatsbyImageProps & { whatsappLink: string, email: string }) {
     return (
-        <OrderBox>
+        <OrderBox loading={false}>
                 <div className=' max-w-[662px] mx-auto z-[3] xl:max-w-[54%] md:max-w-none'>
                     <p className='text-[32px] font-bold leading-[1.4] xl:text-[24px] mb-[40px] md:mb-[20px]'>
-                        Чтобы заказать подарочный сертификат, напишите нам в&nbsp;<a className='link text-[#FEC955] underline' href={img.whatsappLink}>WhatsApp</a> или на&nbsp;почту <a className='link text-[#FEC955] underline' href={"mailto:" + img.email}>{img.email}</a>
+                        Чтобы заказать подарочный сертификат, напишите нам в&nbsp;<a target="_blank" className='link text-[#FEC955] underline' href={img.whatsappLink}>WhatsApp</a> или на&nbsp;почту <a target="_blank" className='link text-[#FEC955] underline' href={"mailto:" + img.email}>{img.email}</a>
                     </p>
                     <p className='text-[22px] leading-[1.4] max-w-[400px] xl:text-[18px]'>
                         Если не&nbsp;получим ответ, то&nbsp;перезвоним по&nbsp;указанному номеру телефона
