@@ -133,7 +133,7 @@
 
 
  .content__submit {
-    @apply text-[20px] py-[20px] px-[40px] w-fit mb-[10px] z-10 flex items-center justify-center gap-[10px]
+    @apply text-[20px] py-[20px] px-[40px] w-fit mt-[20px] xl:mt-[3px] z-10 flex items-center justify-center gap-[10px]
      xl:text-center xl:mb-0 xl:text-[24px] xl:sticky xl:bottom-[0px]
     md:text-[16px] md:py-[15px] md:px-[20px] 
 
