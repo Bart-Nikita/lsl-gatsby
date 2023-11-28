@@ -4,7 +4,7 @@ import type { HeadFC, PageProps } from "gatsby"
 import { graphql } from "gatsby"
 import Seo from "../components/seo/Seo"
 import InstructionBooksAdvantages from "../components/pages/InstructionBooksPage/InstructionBooksAdvantages/InstructionBooksAdvantages"
-import InstructionBooksInstructions from "../components/pages/InstructionBooksPage/InstructionBooksInstructions/InstructionBooksInstructions"
+import InstructionBooksInstructionsNew from "../components/pages/InstructionBooksPage/InstructionBooksInstructionsNew/InstructionBooksInstructionsNew"
 import InstructionBooksOrder from "../components/pages/InstructionBooksPage/InstructionBooksOrder/InstructionBooksOrder"
 import InstructionBooksSteps from "../components/pages/InstructionBooksPage/InstructionBooksSteps/InstructionBooksSteps"
 import { GlobalContext, globalState } from "../context/context"
@@ -24,7 +24,7 @@ const InstructionsPage: React.FC<PageProps<Queries.InstructionsPageQuery>> = ({ 
     <Layout>
       <InstructionBooksHome></InstructionBooksHome>
       <InstructionBooksAdvantages></InstructionBooksAdvantages>
-      <InstructionBooksInstructions></InstructionBooksInstructions>
+      <InstructionBooksInstructionsNew></InstructionBooksInstructionsNew>
       <InstructionBooksSteps></InstructionBooksSteps>
       <InstructionBooksOrder></InstructionBooksOrder>
     </Layout>

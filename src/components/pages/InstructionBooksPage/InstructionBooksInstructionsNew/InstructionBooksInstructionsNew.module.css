@@ -1,0 +1,86 @@
+.section {
+    @apply mb-[124px] xl:mb-[67px] md:mb-[47px]
+}
+
+.title {
+    @apply text-[38px] font-bold leading-[1.2] mb-[64px] xl:mb-[27px] xl:text-[28px] md:text-[24px] md:mb-[37px]
+}
+
+
+.body {
+    @apply grid grid-cols-2 gap-[28px] xl:gap-[22px] md:grid-cols-1
+}
+
+.display {
+    @apply border-yellow-400 rounded-[24px] border-[4px] overflow-hidden relative xl:rounded-[12px] xl:border-[2px] md:rounded-[12px]
+
+    md:h-[147vw]
+}
+
+.name {
+    @apply h-[270px] absolute [background:linear-gradient(180deg,rgba(254,201,85,0.00)0%,#FEC955_59.66%)] bottom-0 left-0 right-0
+     xl:h-[140px] md:h-[130px]
+}
+
+
+.name_text {
+    @apply font-bold leading-[1.4] text-[32px] absolute left-[28px] right-[28px] bottom-[36px] xl:text-[24px] xl:left-[14px] xl:bottom-[19px] md:text-[20px]
+}
+
+.list {
+    @apply grid-rows-4 grid my-[-10px] gap-[11px] xl:my-[0px] xl:gap-[16px] md:grid-rows-none md:grid-cols-2 md:gap-x-[12px] md:gap-y-[20px]
+}
+
+.list_item {
+    @apply h-[237px] xl:h-[17vw] md:h-auto
+}
+
+.list_item.current {
+ @apply pointer-events-none
+}
+
+.button {
+    @apply h-full w-full grid grid-cols-5 gap-[31px] xl:gap-[17px] md:gap-[4px] md:flex md:flex-col p-[10px] xl:p-[0px] rounded-[22px] transition-all xl:rounded-none
+
+    hover:[box-shadow:0px_4px_10px_0px_rgba(0,0,0,0.15)] xl:hover:shadow-none
+}
+
+.screen {
+    @apply h-full overflow-hidden relative rounded-[15px]   md:rounded-[12px] col-span-2 md:w-full
+    md:h-[42vw] after:rounded-[15px] after:block after:border-transparent after:border-[4px]  after:md:rounded-[12px] after:transition-all after:absolute after:top-0 after:left-0 after:right-0 after:bottom-0 after:z-10
+}
+
+
+.current .screen {
+    @apply  after:border-yellow-400
+}
+
+
+.screen_progress {
+    @apply hidden absolute top-0 bottom-0 left-0 rounded-[15px] md:rounded-[12px] opacity-80 bg-yellow-400
+}
+
+.list_item.current .screen_progress {
+@apply block transition-all
+}
+
+.screen_image {
+    @apply absolute top-0 left-0 bottom-0 right-0
+}
+
+.content {
+    @apply h-full col-span-3 md:col-span-5 flex items-center md:h-auto md:items-start
+}
+
+.content_title {
+    @apply text-left text-[24px] font-bold leading-[1.4] xl:text-[18px] md:text-[14px]
+}
+
+.content_description {
+    @apply text-left text-[20px] leading-[1.3] xl:text-[15px] md:text-[12px] md:mb-[0px]
+}
+
+.media {
+    @apply w-[675px] h-[1205px] absolute top-[50%] left-[50%] right-0 bottom-0 translate-x-[-50%] translate-y-[-50%]
+    xl:w-[48vw] xl:h-[95vw] md:h-[167vw] md:w-[95vw]
+}
