@@ -6,7 +6,6 @@ import Seo from "../components/seo/Seo"
 import InstructionBooksAdvantages from "../components/pages/InstructionBooksPage/InstructionBooksAdvantages/InstructionBooksAdvantages"
 import InstructionBooksInstructionsNew from "../components/pages/InstructionBooksPage/InstructionBooksInstructionsNew/InstructionBooksInstructionsNew"
 import InstructionBooksOrder from "../components/pages/InstructionBooksPage/InstructionBooksOrder/InstructionBooksOrder"
-import InstructionBooksSteps from "../components/pages/InstructionBooksPage/InstructionBooksSteps/InstructionBooksSteps"
 import { GlobalContext, globalState } from "../context/context"
 import Layout from "../components/layout/Layout"
 import InstructionBooksHome from "../components/pages/InstructionBooksPage/InstructionBooksHome/InstructionBooksHome"
@@ -25,7 +24,6 @@ const InstructionsPage: React.FC<PageProps<Queries.InstructionsPageQuery>> = ({ 
       <InstructionBooksHome></InstructionBooksHome>
       <InstructionBooksAdvantages></InstructionBooksAdvantages>
       <InstructionBooksInstructionsNew></InstructionBooksInstructionsNew>
-      <InstructionBooksSteps></InstructionBooksSteps>
       <InstructionBooksOrder></InstructionBooksOrder>
     </Layout>
   </GlobalContext.Provider>
