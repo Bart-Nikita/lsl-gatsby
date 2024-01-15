@@ -1,5 +1,5 @@
 .body {
-@apply absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-[12px] bg-yellow-400 p-[30px] xl:py-[22px] md:px-[17px] flex flex-col items-center gap-[25px] xl:gap-[20px] md:gap-[16px] 
+@apply w-[656px] xl:w-[596px] md:w-[320px] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-[12px] bg-yellow-400 p-[30px] xl:py-[22px] md:px-[17px] flex flex-col items-center gap-[25px] xl:gap-[20px] md:gap-[16px] 
 }
 
 .text {
