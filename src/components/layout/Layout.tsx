@@ -14,6 +14,7 @@ import TrainingsModal from "../pages/TrainingsPage/TrainingsModal/TrainingsModal
 import InstructionsBooksFormModal from '../pages/InstructionBooksPage/InstructionsBooksFormModal/InstructionsBooksFormModal';
 import InstructionsBooksModal from '../pages/InstructionBooksPage/InstructionsBooksModal/InstructionsBooksModal';
 import { client } from '../../gql/apollo/client';
+import Warning from '../pages/BlogPage/BlogListNew/Warning/Warning';
 
 type LayoutProps = {
     children: ReactElement | ReactNode
@@ -35,7 +36,9 @@ const ModalLayer = () => {
         setIsInstructionBooksHeroFormModalOpen,
         setIsInstructionBooksModalOpen,
         setIsInstructionBooksFormModalOpen,
-        historyLength
+        historyLength,
+        blogRedirectLink,
+        setBlogRedirectLink
     } = useGlobalContext()
     const onNavModalClose = (value: boolean) => {
         setIsNavModalOpen(false)
@@ -66,7 +69,14 @@ const ModalLayer = () => {
     const onInstructionsHeroFormModalClose = (value: boolean) => {
         setIsInstructionBooksHeroFormModalOpen(false)
     }
+
+    const onBlogWarningModalClose = () => {
+        setBlogRedirectLink(null)
+    }
     return <FixedLayer>
+        <Modal open={!!blogRedirectLink} setOpen={onBlogWarningModalClose}>
+            {!!blogRedirectLink && <Warning></Warning>}
+        </Modal>
         {historyLength < 2 && <Cookies></Cookies>}
         <Modal open={isNavModalOpen} setOpen={onNavModalClose}>
             {isNavModalOpen && <Navigation></Navigation>}

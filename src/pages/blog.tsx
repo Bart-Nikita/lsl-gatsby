@@ -8,6 +8,7 @@ import Layout from "../components/layout/Layout"
 import BlogList from "../components/pages/BlogPage/BlogList/BlogList"
 import Online from "../components/common/Online/Online"
 import {  SUBSCRIPTION_MAIL_SUBJECT } from "../config"
+import BlogListNew from "../components/pages/BlogPage/BlogListNew/BlogListNew"
 
 export const Head = ({ data }: PageProps<Queries.BlogPageQuery>) => {
   return (
@@ -20,7 +21,8 @@ const BlogPage: React.FC<PageProps<Queries.BlogPageQuery>> = ({ data }: PageProp
   const state = globalState(data)
   return <GlobalContext.Provider value={state}>
     <Layout>
-      <BlogList></BlogList>
+      {/* <BlogList></BlogList> */}
+      <BlogListNew></BlogListNew>
       <Online mailSubject={SUBSCRIPTION_MAIL_SUBJECT}></Online>
     </Layout>
   </GlobalContext.Provider>
@@ -79,6 +81,14 @@ export const query = graphql` query BlogPage {
       }
     blogPage {
       blogZagolovok
+      blogSpisokSsylok {
+        adresSsylki
+        prosmotry
+        izobrazhenie {
+          altText
+          gatsbyImage(width: 600, outputPixelDensities: 1, formats: WEBP)
+        }
+      }
     }
   }
   allWpBlog(sort: {date: DESC}) {

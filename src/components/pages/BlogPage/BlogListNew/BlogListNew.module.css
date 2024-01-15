@@ -1,0 +1,53 @@
+.body {
+    @apply mb-[120px] mt-[86px] xl:mt-[70px] md:mt-[25px] xl:mb-[92px] md:mb-[48px]
+}
+
+.title {
+@apply text-center mb-[64px] xl:mb-[33px] md:mb-[24px]
+}
+
+.list {
+    @apply grid grid-cols-3 gap-x-[30px] gap-y-[60px] auto-rows-[770px]
+   xl:grid-cols-2 xl:gap-x-[20px] xl:gap-y-[28px] xl:auto-rows-[81.5vw]
+    md:gap-x-[12px] md:gap-y-[22px] md:auto-rows-[76vw]
+}
+
+.item {
+    @apply col-span-1
+}
+
+.item__link {
+    @apply block w-full h-full relative transition-all z-0 overflow-hidden rounded-[27px] xl:rounded-[10px] border-[1px] border-[#DFDFDF]
+}
+
+
+
+.item__link::after {
+    @apply absolute top-0 transition-all left-0 right-0 bottom-0 z-10 ;
+    content: '';
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 75.18%, rgba(0, 0, 0, 0.20) 95.88%);
+}
+
+ .item__link:hover:after {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.10) 75.18%, rgba(0, 0, 0, 0.30) 95.88%);
+}
+
+.item__image {
+    @apply w-full h-full
+}
+
+.watchings {
+@apply absolute z-30 flex items-center gap-[11px] left-[26px] bottom-[25px] 
+xl:left-[25px] xl:bottom-[25px] xl:gap-[8px]
+md:left-[8px] md:bottom-[8px]
+}
+
+.watchings__icon {
+    @apply w-[17px] h-[17px]
+    xl:w-[15px] xl:h-[15px]
+md:w-[10px] md:h-[10px]
+}
+
+.watchings__value {
+    @apply text-[24px] font-bold leading-[140%] text-white xl:text-[20px] md:text-[14px]
+}

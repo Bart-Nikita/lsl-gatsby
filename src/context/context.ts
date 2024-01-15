@@ -48,7 +48,9 @@ export type GlobalContextType = {
     menuItems: Queries.WpMenuItem[] | undefined | null,
     trainings: Queries.WpTraining[] | undefined | null,
     feedbacksPage: Queries.FeedbacksPageQuery | undefined | null,
-    emails: Queries.WpMenu_Formmails_formsMails[]
+    emails: Queries.WpMenu_Formmails_formsMails[],
+    blogRedirectLink: string | null,
+    setBlogRedirectLink: Dispatch<SetStateAction<string | null>>
 }
 
 const doc = typeof window === 'undefined' ? null : window.document
@@ -75,7 +77,7 @@ export const globalState = (data: PageData): GlobalContextType => {
 
     const [instructionBooksModalData, setInstructionBooksModalData] = useState<Queries.WpPage_Instructionbooks_instructionsInstructionsSpisok | null>(null)
 
-
+    const [blogRedirectLink, setBlogRedirectLink] = useState<string | null>(null)
 
     useEffect(() => {
 
@@ -107,18 +109,18 @@ export const globalState = (data: PageData): GlobalContextType => {
 
 
     useEffect(() => {
-        if ((isTrainingFormModalOpen || isNavModalOpen || isTrainingModalOpen || isInstructionBooksFormModalOpen || isInstructionBooksHeroFormModalOpen || isInstructionBooksModalOpen) && isBrowser) {
+        if ((blogRedirectLink || isTrainingFormModalOpen || isNavModalOpen || isTrainingModalOpen || isInstructionBooksFormModalOpen || isInstructionBooksHeroFormModalOpen || isInstructionBooksModalOpen) && isBrowser) {
             document.documentElement.style.overflow = 'hidden';
             return () => {
                 document.documentElement.style.overflow = 'auto'
 
             }
         }
-    }, [isTrainingFormModalOpen, isNavModalOpen, isTrainingModalOpen, isInstructionBooksFormModalOpen, isInstructionBooksHeroFormModalOpen, isInstructionBooksModalOpen, isBrowser]);
+    }, [blogRedirectLink,isTrainingFormModalOpen, isNavModalOpen, isTrainingModalOpen, isInstructionBooksFormModalOpen, isInstructionBooksHeroFormModalOpen, isInstructionBooksModalOpen, isBrowser]);
 
 
     return {
-        emails:data?.pageContext?.emails || data?.wpMenu?.formMails?.formsMails,
+        emails: data?.pageContext?.emails || data?.wpMenu?.formMails?.formsMails,
         title,
         setTitle,
         description,
@@ -157,11 +159,13 @@ export const globalState = (data: PageData): GlobalContextType => {
         commonSections: data?.pageContext?.commonSections || data?.allWpCommonSection?.nodes,
         posts: data?.pageContext?.allPosts || data?.allWpBlog?.nodes,
         publications: data?.allWpPublication?.nodes,
-        files:data?.pageContext?.allFiles || data?.allFile?.nodes,
-        menuItems:data?.pageContext?.menuItems || data?.allWpMenuItem?.nodes,
+        files: data?.pageContext?.allFiles || data?.allFile?.nodes,
+        menuItems: data?.pageContext?.menuItems || data?.allWpMenuItem?.nodes,
         trainings: data?.allWpTraining?.nodes,
         feedbacksPage,
-        setFeedbacksPage
+        setFeedbacksPage,
+        blogRedirectLink,
+        setBlogRedirectLink
     }
 }
 

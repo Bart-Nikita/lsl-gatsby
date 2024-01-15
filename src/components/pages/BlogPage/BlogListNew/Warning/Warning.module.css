@@ -1,0 +1,15 @@
+.body {
+@apply absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-[12px] bg-yellow-400 p-[30px] xl:py-[22px] md:px-[17px] flex flex-col items-center gap-[25px] xl:gap-[20px] md:gap-[16px] 
+}
+
+.text {
+    @apply text-center text-[22px] leading-[130%] xl:text-[20px] md:text-[14px]
+}
+
+.emphasized {
+@apply font-bold underline
+}
+
+.button {
+     @apply px-[50px] py-[14px] border-[1px] transition-all hover:bg-white border-white rounded-[4px] leading-none text-[22px] xl:text-[20px] md:text-[14px]
+}
