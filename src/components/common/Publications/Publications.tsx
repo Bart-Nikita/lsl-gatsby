@@ -16,21 +16,32 @@ const SlideItem = (item: Queries.WpPublication) => {
     }
 
 
-    return <Link onMouseDown={onMouseDownHandler} to={item?.publications?.publicationsAdresSsylki || ''} target={"_blank"} onMouseMove={(e) => e.preventDefault()} className={stack('link', styles.item)}>
+    return <a onMouseDown={onMouseDownHandler} href={item?.publications?.publicationsAdresSsylki || ''} target={"_blank"} onMouseMove={(e) => e.preventDefault()} className={stack('link', styles.item)}>
         <div className={styles.item__top}>
             <div className={styles.item__decor}></div>
-            {item?.publications?.publicationsImageKompyuter1x?.gatsbyImage && <GatsbyImage  image={item?.publications?.publicationsImageKompyuter1x?.gatsbyImage} className={styles.item__picture} alt={item?.publications?.publicationsImageKompyuter1x?.altText || ''}></GatsbyImage>}
+            <div className={styles.item__picture}>
+            {item?.publications?.publicationsImageKompyuter1x?.gatsbyImage && <GatsbyImage  image={item?.publications?.publicationsImageKompyuter1x?.gatsbyImage} className={"image-normalize"} alt={item?.publications?.publicationsImageKompyuter1x?.altText || ''}></GatsbyImage>}
+            </div>
+        
         </div>
 
         <p className={stack('text-secondary', styles.item__text)}
             dangerouslySetInnerHTML={{ __html: item?.publications?.publicationsKratkoeOpisanie || '' }}></p>
-    </Link>
+    </a>
 }
 
 
 const Publications = ({ className }: { className?: string }) => {
 
     const { publications } = useGlobalContext()
+
+    useEffect(() => {
+        if (publications) {
+            console.log(publications?.map(item => item.slug))
+
+        }
+        console.log('hi')
+    }, [publications])
  
     return (
         <section className={stack('container', 'section-indent ', styles.body, className)}>
@@ -40,7 +51,7 @@ const Publications = ({ className }: { className?: string }) => {
             </div>
             <div className={styles.slider}>
                 <SwiperLight>
-                    <div className={styles.slider__list}>
+                    <div  className={styles.slider__list}>
                         {publications?.map((item, index) => <SlideItem key={index} {...item}></SlideItem>)}
                     </div>
                 </SwiperLight>

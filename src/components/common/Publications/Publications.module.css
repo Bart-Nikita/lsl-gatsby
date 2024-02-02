@@ -56,7 +56,7 @@
 
 
 .item {
-    @apply mx-auto inline-block text-left shrink-0 select-none
+    @apply mx-auto inline-block text-left shrink-0 select-none pointer-events-auto
 
 
 }

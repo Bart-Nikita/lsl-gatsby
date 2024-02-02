@@ -282,7 +282,7 @@ export const query = graphql`query IndexPage {
       }
     }
   }
-  allWpPublication {
+  allWpPublication(sort: {date: DESC}) {
     nodes {
       slug
       publications {

@@ -181,7 +181,7 @@ export const query = graphql` query FeedbacksPage {
       }
     }
   }
-  allWpPublication {
+  allWpPublication(sort: {date: DESC}) {
     nodes {
       slug
       publications {

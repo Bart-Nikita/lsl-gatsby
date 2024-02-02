@@ -4,8 +4,8 @@
 }
 
 .swiper__back {
-    @apply absolute z-10 top-0 bottom-0 right-[-100px] left-[-150px] before:left-0 before:absolute  before:top-0 before:right-auto before:bottom-0 before:w-[150px] before:bg-[linear-gradient(90deg,#FFF_0%,rgba(255,255,255,0.00)100%)]
-    after:absolute after:z-10 after:top-0 after:right-[-3px] after:bottom-0 after:w-[150px] after:pointer-events-none after:bg-[linear-gradient(270deg,#FFF_0%,rgba(255,255,255,0.00)100%)] xl:after:hidden xl:hidden
+    @apply absolute z-10 top-0 bottom-0 right-[-100px] left-[-150px] pointer-events-none before:left-0 before:absolute  before:top-0 before:right-auto before:bottom-0 before:w-[150px] before:bg-[linear-gradient(90deg,#FFF_0%,rgba(255,255,255,0.00)100%)]
+    after:absolute after:z-10 after:top-0 after:right-[-3px] after:bottom-0 after:w-[150px] after:pointer-events-none after:bg-[linear-gradient(270deg,#FFF_0%,rgba(255,255,255,0.00)100%)] xl:after:hidden xl:hidden 
 }
 
 .swiper__white {

@@ -173,7 +173,7 @@ export const query = graphql` query BlogPage {
       }
     }
   }
-  allWpPublication {
+  allWpPublication(sort: {date: DESC}) {
     nodes {
       slug
       publications {
