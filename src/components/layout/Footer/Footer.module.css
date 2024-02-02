@@ -18,7 +18,7 @@
 }
 
  .logo {
-    @apply row-start-1 row-end-2 col-start-1 col-end-2
+    @apply row-start-1 row-end-2 col-start-1 col-end-2 md:relative
 }
 
  .logo__link {
@@ -93,12 +93,12 @@
 
 
  .nav__link {
-    @apply whitespace-nowrap text-[0px]
+    @apply whitespace-nowrap text-[0px] md:whitespace-normal
 }
 
  .social {
     @apply row-start-1 row-end-3 col-start-3 col-end-4
-    xl:row-start-1 xl:row-end-2 xl:col-start-3 xl:col-end-4
+    xl:row-start-1 xl:row-end-2 xl:col-start-3 xl:col-end-4 xl:relative
     md:row-start-2 md:row-end-3 md:col-start-2 md:col-end-3
     sm:row-start-4 sm:row-end-5 sm:col-start-1 sm:col-end-3 sm:mt-[-20px]
 }
@@ -194,3 +194,19 @@
     @apply text-[0px]
 }
 
+
+.bart {
+    @apply mt-[40px] xl:mt-[0px] xl:absolute xl:left-0 xl:top-[151px] md:top-[139px] sm:relative sm:top-auto sm:left-auto sm:col-start-1 sm:col-end-3 sm:row-start-6 sm:row-end-7
+}
+
+.bart__body {
+@apply max-w-[215px] sm:max-w-none
+}
+
+.bart__text {
+@apply text-[18px] font-medium leading-[1.4] xl:text-[14px] sm:text-[12px]
+}
+
+.bart__link {
+@apply text-[#FEC955] px-[8px] ml-[6px] rounded-[8px] bg-black hover:bg-gray-700 transition-all
+}

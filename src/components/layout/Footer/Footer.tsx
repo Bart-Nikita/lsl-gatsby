@@ -26,6 +26,14 @@ const Footer = () => {
                     </Link>
                     <p className={stack(styles.text, styles.logo__copy)}
                         dangerouslySetInnerHTML={{ __html: section?.footer?.footerKopirajt || '' }}></p>
+                    <div className={stack(styles.bart, 'hidden xl:hidden md:block sm:hidden')}>
+                        <div className={styles.bart__body} >
+                            <p className={styles.bart__text}>
+                                Разработано с&nbsp;любовью к&nbsp;деталям —
+                                <a className={styles.bart__link} target='_blank' href="https://bart-group.com">B.ART</a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
                 <div className={styles.doc}>
                     <a href={section?.footer?.footerPublichnayaOferta?.publicUrl || ''}
@@ -61,6 +69,14 @@ const Footer = () => {
                                 <p className={stack(styles.text, styles.social__text)}>{item?.footerSocialTekst || ''}</p>
                             </a>
                         </li>)}
+                        <li className={stack(styles.bart, 'hidden xl:block md:hidden')}>
+                            <div className={styles.bart__body} >
+                                <p className={styles.bart__text}>
+                                    Разработано с&nbsp;любовью к&nbsp;деталям —
+                                    <a className={styles.bart__link} target='_blank' href="https://bart-group.com">B.ART</a>
+                                </p>
+                            </div>
+                        </li>
                     </ul>
                     <p className={stack(isNewContainer ? 'remark-new' : 'remark', styles.social__remark)}
                         dangerouslySetInnerHTML={{ __html: section?.footer?.footerSocialRemarka || '' }}></p>
@@ -79,17 +95,24 @@ const Footer = () => {
 
                             </a>
                         </li>)}
-                        <li className='mt-[40px] xl:hidden'>
-                            <div className='max-w-[215px] ' >
-                                <p className='text-[18px] font-medium leading-[1.4]'>
+                        <li className={stack(styles.bart, 'xl:hidden')}>
+                            <div className={styles.bart__body} >
+                                <p className={styles.bart__text}>
                                     Разработано с&nbsp;любовью к&nbsp;деталям —
-                                    <a className='text-[#FEC955] px-[8px] ml-[6px] rounded-[8px] bg-black hover:bg-gray-700 transition-all' target='_blank' href="https://bart-group.com">B.ART</a>
+                                    <a className={styles.bart__link} target='_blank' href="https://bart-group.com">B.ART</a>
                                 </p>
                             </div>
                         </li>
                     </ul>
                 </div>
-
+                <div className={stack(styles.bart, 'hidden xl:hidden md:hidden sm:block')}>
+                        <div className={styles.bart__body} >
+                            <p className={styles.bart__text}>
+                                Разработано с&nbsp;любовью к&nbsp;деталям —
+                                <a className={styles.bart__link} target='_blank' href="https://bart-group.com">B.ART</a>
+                            </p>
+                        </div>
+                    </div>
             </div>
         </footer >
     );
