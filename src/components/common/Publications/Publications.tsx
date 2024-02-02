@@ -35,13 +35,6 @@ const Publications = ({ className }: { className?: string }) => {
 
     const { publications } = useGlobalContext()
 
-    useEffect(() => {
-        if (publications) {
-            console.log(publications?.map(item => item.slug))
-
-        }
-        console.log('hi')
-    }, [publications])
  
     return (
         <section className={stack('container', 'section-indent ', styles.body, className)}>
