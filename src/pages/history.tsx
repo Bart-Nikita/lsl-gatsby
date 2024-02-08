@@ -93,10 +93,6 @@ export const query = graphql` query HistoryPage {
         historyFindTrainingTekst
         historyFindTrainingTekstSsylki
         historyHeroBolshojTekst
-        historyHeroImageKompyuterX1 {
-          altText
-          gatsbyImage(formats: WEBP, outputPixelDensities: 2, width: 2300, placeholder: NONE)
-        }
         historyHeroMalyjTekst
         historyHistoryList {
           god

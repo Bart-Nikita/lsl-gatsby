@@ -1,7 +1,6 @@
 .body {
-@apply mt-[-20px]
-    xl:mt-[-14px]
-    md:mt-[-2px]
+@apply mt-[8px]
+    xl:mt-[0px]
 }
 
 .image {
@@ -9,31 +8,21 @@
 }
 
 .display {
-    @apply relative
-    h-[600px]
-    xl:h-[47.4vw]
-    md:min-h-[320px]
+@apply bg-[#FEC955] rounded-[35px] min-h-[209px] flex items-center px-[40px] py-[24px]
+xl:rounded-[24px] xl:min-h-[150px] xl:flex-wrap xl:py-[40px]
+md:px-[20px] md:py-[16px] md:min-h-[109px]
 }
 
-.picture {
-    @apply h-full  rounded-[24px] z-0 border-[4px] border-[#FEC955] overflow-hidden block relative
-
-}
-
-.content {
-    @apply absolute bottom-0 left-0 bg-[#FEC955] rounded-[0px_24px_0px_0px] p-[24px_32px_24px_40px] max-w-[568px]
-    xl:max-w-[426px]
-    md:rounded-[24px] md:max-w-full md:px-[20px] md:py-[16px]
-}
 
 .title {
-    @apply mb-[5px]
-        xl:mb-[10px]
-    md:mb-[2px]
+    @apply mb-[5px] mr-[15px]
+        xl:mb-[4px]
+    md:mb-[2px] md:mr-[8px]
 }
 
 .text {
     @apply text-[32px] font-medium leading-[1.2]
     xl:text-[20px] xl:font-bold
     md:text-[16px]
+    sm:max-w-[280px]
 }
