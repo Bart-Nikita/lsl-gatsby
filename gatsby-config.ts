@@ -15,7 +15,7 @@ const config: GatsbyConfig = {
   plugins: [{
     resolve: 'gatsby-source-wordpress',
     options: {
-      "url": process.env.GATSBY_GRAPHQL_ENDPOINT || "https://lsl-test.bart-group.com/graphql"
+      "url": process.env.GATSBY_GRAPHQL_ENDPOINT || "https://admin.littlesweetlemon.ru//graphql"
     }
   },
   {
